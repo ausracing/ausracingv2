@@ -59,6 +59,9 @@ src/app/
 ---
 
 ## Folder Structure & Ownership
+
+**This is js a skeleton** Use the current dir structure as a reference on where you are meant to work, as a starting base, as different tasks are delegated the requirements may change, you are free to navigate and work in different parts of the repositry at your own risk
+
 ```bash
 src/
 ├── app/
@@ -98,7 +101,7 @@ public/
 │   └── sponsors/                         ← sponsor logos (WebP)
 └── fonts/
 ```
-**Stick to your folder.** Only edit files in your assigned component folder and your assigned page. If you need something from another section, ask on the WhatsApp GC first.
+
 
 ---
 
