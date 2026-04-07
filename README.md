@@ -28,6 +28,8 @@ npm run dev
 ## How the App Directory Works
 
 This project uses the **Next.js App Router**. Every folder inside `src/app/` that has a `page.tsx` becomes a route automatically.
+
+```bash
 src/app/
 ├── page.tsx              → /           (homepage)
 ├── layout.tsx            → wraps every page (Header + Footer live here)
@@ -39,7 +41,7 @@ src/app/
 │   └── page.tsx          → /sponsors
 └── media/
 └── page.tsx          → /media
-
+```
 **layout.tsx** is the global wrapper. Hashir owns this file — it imports Header and Footer so they appear on every page automatically. Do not add page-specific content here.
 
 ---
@@ -57,6 +59,7 @@ src/app/
 ---
 
 ## Folder Structure & Ownership
+```bash
 src/
 ├── app/
 │   ├── layout.tsx                         ← Hashir (global layout)
@@ -94,7 +97,7 @@ public/
 │   ├── team/                             ← team member photos (WebP)
 │   └── sponsors/                         ← sponsor logos (WebP)
 └── fonts/
-
+```
 **Stick to your folder.** Only edit files in your assigned component folder and your assigned page. If you need something from another section, ask on the WhatsApp GC first.
 
 ---
