@@ -2,6 +2,15 @@
 // OWNER: Adam
 // Server component — press/media kit page.
 // Contains: downloadable logos, hi-res images, car specs sheet, press contact info.
-export default function MediaPage() {
-  return <main>Media Page placeholder</main>
+
+import MediaHero from "./MediaComponents/MediaHero";
+import MediaGrid from "./MediaComponents/MediaGrid";
+
+export default function Media() {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <MediaHero />
+      <MediaGrid />
+    </div>
+  );
 }
