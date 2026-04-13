@@ -64,7 +64,7 @@ export default function TeamPage() {
           /* CARD WITH CONDITIONAL LEADER GLOW */
           <div 
             key={index} 
-            className={`group bg-[#18181b] rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer w-full sm:w-[220px] flex-shrink-0
+            className={`group bg-[#18181b] rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer w-[260px] sm:w-[220px] flex-shrink-0
               ${index === 0 
                 ? "border-2 border-primary shadow-[0_0_35px_rgba(234,179,8,0.6)]" 
                 : "border border-white/10 hover:border-primary hover:shadow-[0_8px_24px_rgba(234,179,8,0.15)]"
