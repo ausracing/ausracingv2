@@ -23,7 +23,7 @@ export default function Header() {
       </Link>
 
       {/* NAVIGATION LINKS */}
-      <ul className="absolute left-1/2 -translate-x-1/2 flex gap-6 list-none m-0 p-0">
+      <ul className="absolute left-1/2 -translate-x-1/2 flex gap-6 list-none m-0 p-0 hidden md:flex">
         <li className="font-mono text-[11px] tracking-[0.06em] uppercase text-foreground pb-0.5 border-b-[1.5px] border-white/50 cursor-pointer">
           <Link href="/">Home</Link>
         </li>
@@ -40,7 +40,7 @@ export default function Header() {
           <Link href="/#footer">Contact Us</Link>
         </li>
       </ul>
-      
+
       {/* CTA BUTTON - Now a functional Link */}
       <Link 
         href="/sponsors" 
