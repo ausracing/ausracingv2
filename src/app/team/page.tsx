@@ -12,7 +12,7 @@ import { FILTERS, TEAM_MEMBERS, TEAM_DESCRIPTIONS } from "@/data/team";
 export default function TeamPage() {
 
   // STATE: This remembers which filter bubble is currently clicked.
-  const [activeFilter, setActiveFilter] = useState("Main Board");
+  const [activeFilter, setActiveFilter] = useState(FILTERS[0]);
   const [showAllFilters, setShowAllFilters] = useState(false); // NEW STATE
 
   const filteredTeam = TEAM_MEMBERS.filter(member => member.category === activeFilter);
@@ -21,45 +21,51 @@ export default function TeamPage() {
   const visibleFilters = showAllFilters ? FILTERS : FILTERS.slice(0, 7);
 
   return (
-    <div className="min-h-screen bg-background pt-8 pb-16 px-6">
+    <div className="min-h-screen bg-background pt-7 pb-16 px-6">
       
       {/* SECTION HEADER */}
-      <div className="text-center max-w-4xl mx-auto mb-8">
+      <div className="text-center max-w-4xl mx-auto mb-5">
         <h1 className="font-mono text-3xl font-semibold tracking-[0.12em] uppercase text-white mb-2">
           Meet the Team
         </h1>
-        <div className="w-20 h-[2px] bg-primary mx-auto mb-8"></div>
+        <div className="w-20 h-[2px] bg-primary mx-auto mb-5"></div>
 
-        {/* FILTERS MAP */}
-        <div className="flex flex-wrap justify-center gap-2.5">
-          {visibleFilters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`font-mono text-[11px] tracking-[0.07em] uppercase px-4 py-2 rounded-full border transition-all duration-200 cursor-pointer
-                ${activeFilter === filter 
-                  ? "bg-primary border-primary text-black font-semibold" 
-                  : "bg-[#18181b] border-white/10 text-white/70 hover:border-primary hover:text-white"
-                }`}
-            >
-              {filter}
-            </button>
-          ))}
+        {/* FILTER BUTTONS CONTAINER */}
+        <div className="flex flex-wrap justify-center items-center gap-2 w-full max-w-[1400px] mx-auto mb-6 px-4"> 
           
-          {/* THE "SEE MORE" BUTTON */}
-          {FILTERS.length > 7 && (
-            <button
-              onClick={() => setShowAllFilters(!showAllFilters)}
-              className="font-mono text-[11px] tracking-[0.1em] font-bold uppercase px-4 py-2 rounded-full border border-white/10 bg-black text-primary hover:bg-white/5 transition-all duration-200 cursor-pointer"
-            >
-              {showAllFilters ? "LESS ↑" : "MORE ..."}
-            </button>
-          )}
+          {FILTERS.map((filter, index) => {
+            const isActive = activeFilter === filter;
+            // Hide on mobile if collapsed, unless it's in the first 5 or is the active button
+            const isHiddenOnMobile = !showAllFilters && index > 4 && !isActive;
+
+            return (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`
+                  px-4 py-2 rounded-full border text-[11px] font-mono tracking-wider transition-all duration-300 uppercase
+                  ${isActive ? "bg-primary text-black border-primary font-bold" : "bg-[#18181b] text-white/70 border-white/10 hover:border-white/30 hover:text-white"}
+                  ${isHiddenOnMobile ? "hidden md:block" : "block"}
+                `}
+              >
+                {filter}
+              </button>
+            );
+          })}
+
+          {/* INLINE MORE/LESS BUTTON (Mobile Only) */}
+          <button
+            onClick={() => setShowAllFilters(!showAllFilters)}
+            className="md:hidden px-4 py-2 rounded-full border border-primary/50 text-primary text-[11px] font-mono tracking-wider uppercase hover:bg-primary/10 transition-colors"
+          >
+            {showAllFilters ? "LESS ↑" : "MORE ..."}
+          </button>
+
         </div>
       </div>
 
       {/* DYNAMIC TEAM DESCRIPTION */}
-      <div className="max-w-2xl mx-auto mt-8 mb-4 h-12 flex items-center justify-center px-4">
+      <div className="max-w-2xl mx-auto mb-2 flex items-start justify-center px-4 min-h-[40px]">
         <p className="text-[13px] sm:text-[14px] text-white/60 text-center italic transition-opacity duration-300">
           "{TEAM_DESCRIPTIONS[activeFilter] || "Pushing the absolute limits of collegiate motorsport engineering."}"
         </p>

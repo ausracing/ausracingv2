@@ -1,30 +1,41 @@
 export const FILTERS = [
-  "Main Board", "Electrical", "Power Delivery", "Suspension", "Chassis", 
-  "Aerodynamics", "Steering", "Drivetrain", "Brakes", "Cooling", "Drivers", 
-  "External Relations", "Internal Relations", "Deputy Exec. Assistants", 
-  "Supply Chain", "Web Development", "Media & Marketing", "Treasury"
+  "Executive Board", 
+  "Electrical", 
+  "Powertrain", // Combined Drivetrain & Cooling
+  "Suspension & Steering", 
+  "Chassis",
+  "Aerodynamics",
+  "Brakes",
+  "Drivers", 
+  "Public Relations", // Combined Internal & External
+  "Operations", // Combined Treasury & Deputy Execs
+  "Supply Chain",
+  "Web Development", 
+  "Media & Marketing"
 ];
-
 export const TEAM_DESCRIPTIONS: Record<string, string> = {
-  "Main Board": "Guiding the strategic vision, operations, and ultimate success of the racing team.",
+  "Executive Board": "Guiding the strategic vision, operations, and ultimate success of the racing team.",
   "Electrical": "Designing the custom wiring harnesses and high-voltage systems that power our vehicle.",
-  "Power Delivery": "Optimizing battery output and energy efficiency for peak track performance.",
-  "Suspension": "Engineering dynamic suspension geometry to maximize tire grip and driver handling.",
+  "Powertrain": "Optimizing battery output and energy efficiency for peak track performance.",
+  "Suspension & Steering": "Engineering dynamic suspension geometry to maximize tire grip and driver handling.",
   "Chassis": "Fabricating a lightweight, structurally rigid frame to protect the driver and anchor the car.",
   "Aerodynamics": "Manipulating airflow to reduce drag and generate massive cornering downforce.",
+  "Brakes": "Engineering high-performance stopping power and thermal management for precision cornering.",
+  "Drivers": "Pushing the engineered vehicle to its absolute physical limits on the track.",
+  "Public Relations": "Managing sponsor relationships, community outreach, and the team's professional image.",
+  "Operations": "Managing team finances, logistics, and internal administration for peak operational efficiency.",
+  "Supply Chain": "Procuring crucial components and managing logistics to keep manufacturing strictly on schedule.",
   "Web Development": "Building the digital track: developing our high-performance team platform.",
   "Media & Marketing": "Crafting our story and showcasing our speed to the world.",
-  "Treasury": "Managing the financial resources and ensuring the team's economic sustainability.",
-  // Add more descriptions as needed...
 };
 
 export const TEAM_MEMBERS = [
   // --- MAIN BOARD ---
-  { name: "Saad Ibrahim", role: "Team Principal", emoji: "👑", quote: "Driven by performance.", category: "Main Board" },
-  { name: "Saurav Gupte", role: "VP / Head of Engineering", emoji: "⚙️", quote: "Driven by performance.", category: "Main Board" },
-  { name: "Shwetambari Abhirajan", role: "External Coordinator", emoji: "🤝", quote: "Driven by performance.", category: "Main Board" },
-  { name: "Mirra Swaminathan", role: "Head of Treasury", emoji: "💰", quote: "Driven by performance.", category: "Main Board" },
-  { name: "Sameeksha Ramesh", role: "Executive Assistant", emoji: "📋", quote: "Driven by performance.", category: "Main Board" },
+  { name: "Saad Ibrahim", role: "Team Principal", emoji: "👑", quote: "Driven by performance.", category: "Executive Board" },
+  { name: "Saurav Gupte", role: "VP / Head of Engineering", emoji: "⚙️", quote: "Driven by performance.", category: "Executive Board" },
+  { name: "Shwetambari Abhirajan", role: "External Coordinator", emoji: "🤝", quote: "Driven by performance.", category: "Executive Board" },
+  { name: "Mirra Swaminathan", role: "Head of Treasury", emoji: "💰", quote: "Driven by performance.", category: "Executive Board" },
+  { name: "Sameeksha Ramesh", role: "Executive Assistant", emoji: "📋", quote: "Driven by performance.", category: "Executive Board" },
 
   // --- ELECTRICAL ---
   { name: "Name6", role: "Lead", emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
