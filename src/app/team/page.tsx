@@ -7,7 +7,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { FILTERS, TEAM_MEMBERS } from "@/data/team";
+import { FILTERS, TEAM_MEMBERS, TEAM_DESCRIPTIONS } from "@/data/team";
 
 export default function TeamPage() {
 
@@ -56,6 +56,13 @@ export default function TeamPage() {
             </button>
           )}
         </div>
+      </div>
+
+      {/* DYNAMIC TEAM DESCRIPTION */}
+      <div className="max-w-2xl mx-auto mt-8 mb-4 h-12 flex items-center justify-center px-4">
+        <p className="text-[13px] sm:text-[14px] text-white/60 text-center italic transition-opacity duration-300">
+          "{TEAM_DESCRIPTIONS[activeFilter] || "Pushing the absolute limits of collegiate motorsport engineering."}"
+        </p>
       </div>
 
       {/* TEAM CARDS CONTAINER - Now using Flex Wrap for auto-centering */}

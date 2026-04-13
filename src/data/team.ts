@@ -5,6 +5,19 @@ export const FILTERS = [
   "Supply Chain", "Web Development", "Media & Marketing", "Treasury"
 ];
 
+export const TEAM_DESCRIPTIONS: Record<string, string> = {
+  "Main Board": "Guiding the strategic vision, operations, and ultimate success of the racing team.",
+  "Electrical": "Designing the custom wiring harnesses and high-voltage systems that power our vehicle.",
+  "Power Delivery": "Optimizing battery output and energy efficiency for peak track performance.",
+  "Suspension": "Engineering dynamic suspension geometry to maximize tire grip and driver handling.",
+  "Chassis": "Fabricating a lightweight, structurally rigid frame to protect the driver and anchor the car.",
+  "Aerodynamics": "Manipulating airflow to reduce drag and generate massive cornering downforce.",
+  "Web Development": "Building the digital track: developing our high-performance team platform.",
+  "Media & Marketing": "Crafting our story and showcasing our speed to the world.",
+  "Treasury": "Managing the financial resources and ensuring the team's economic sustainability.",
+  // Add more descriptions as needed...
+};
+
 export const TEAM_MEMBERS = [
   // --- MAIN BOARD ---
   { name: "Saad Ibrahim", role: "Team Principal", emoji: "👑", quote: "Driven by performance.", category: "Main Board" },
