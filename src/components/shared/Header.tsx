@@ -28,23 +28,25 @@ export default function Header() {
           <Link href="/">Home</Link>
         </li>
         <li className="font-mono text-[11px] tracking-[0.06em] uppercase text-white/60 pb-0.5 border-b-[1.5px] border-transparent hover:text-primary hover:border-primary transition-colors cursor-pointer">
-          <Link href="/">Our Car</Link>
+          <Link href="/car-concept">Our Car</Link>
         </li>
         <li className="font-mono text-[11px] tracking-[0.06em] uppercase text-white/60 pb-0.5 border-b-[1.5px] border-transparent hover:text-primary hover:border-primary transition-colors cursor-pointer">
-          <Link href="/">Team</Link>
+          <Link href="/team">Team</Link>
         </li>
         <li className="font-mono text-[11px] tracking-[0.06em] uppercase text-white/60 pb-0.5 border-b-[1.5px] border-transparent hover:text-primary hover:border-primary transition-colors cursor-pointer">
-          <Link href="/">Newsletter</Link>
+          <Link href="/#newsletter">Newsletter</Link>
         </li>
         <li className="font-mono text-[11px] tracking-[0.06em] uppercase text-white/60 pb-0.5 border-b-[1.5px] border-transparent hover:text-primary hover:border-primary transition-colors cursor-pointer">
-          <Link href="/">Contact Us</Link>
+          <Link href="/#footer">Contact Us</Link>
         </li>
       </ul>
-
-      {/* CTA BUTTON */}
-      <div className="font-mono text-[10px] tracking-[0.1em] uppercase px-5 py-2.5 bg-primary text-background font-bold rounded hover:opacity-90 transition-opacity cursor-pointer">
-        Partner With Us &rarr;
-      </div>
+      
+      {/* CTA BUTTON - Now a functional Link */}
+      <Link 
+        href="/sponsors" 
+        className="font-mono text-[10px] tracking-[0.1em] uppercase px-5 py-2.5 bg-primary text-background font-bold rounded hover:opacity-90 transition-opacity cursor-pointer">
+      Partner With Us &rarr;
+      </Link>
       
     </nav>
   );
