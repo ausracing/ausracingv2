@@ -9,16 +9,76 @@ import { useState } from "react";
 import Image from "next/image";
 import { FILTERS, TEAM_MEMBERS, TEAM_DESCRIPTIONS } from "@/data/team";
 
-export default function TeamPage() {
+/**
+ * HELPER COMPONENT: TeamCard
+ * Handles local image state to prevent 404 spam.
+ */
+const TeamCard = ({ member }: { member: any }) => {
+  // Generate the dynamic path based on the "Name Photo" requirement
+  const namePhotoPath = `/images/team/${member.name.toLowerCase().split(' ').join('-')}.jpg`;
+  
+  // Local state for the image source
+  const [imgSrc, setImgSrc] = useState(namePhotoPath);
 
+  return (
+    <div 
+      className={`group bg-[#18181b] rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer w-[260px] sm:w-[220px] flex-shrink-0 border
+        ${member.isLeader 
+          ? "border-2 border-primary shadow-[0_0_35px_rgba(234,179,8,0.6)]" 
+          : "border border-white/10 hover:border-primary hover:shadow-[0_8px_24px_rgba(234,179,8,0.15)]"
+        }`}
+    >
+      {/* PHOTO CONTAINER */}
+      <div className={`w-full aspect-[4/5] relative flex items-center justify-center overflow-hidden border-b ${member.isLeader ? "border-primary" : "border-white/10"}`}>
+        
+        <Image 
+          src={imgSrc}
+          alt={member.name}
+          fill
+          className={`transition-all duration-500 group-hover:scale-105 ${
+            imgSrc.includes('placeholder') 
+            ? "object-contain p-8 opacity-20" // Logo looks like a watermark
+            : "object-cover opacity-60"       // Real photos look like portraits
+          }`}
+          // If the specific name-photo is missing, it swaps to the placeholder
+          onError={() => setImgSrc('/images/placeholder.webp')}
+        />
+
+        {/* Overlay to keep the "dark" aesthetic consistent */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+
+        {/* OVERLAPPING ROLE BADGE */}
+        <div className="absolute bottom-3 left-3 bg-black/85 backdrop-blur-sm px-2.5 py-1.5 rounded-md flex items-center gap-2 border border-white/5 max-w-[calc(100%-24px)] z-10">
+          <span className="text-sm leading-none shrink-0">{member.emoji}</span>
+          <span className="font-mono text-[9px] font-semibold tracking-widest uppercase text-primary leading-tight text-left line-clamp-2 text-ellipsis overflow-hidden">
+            {member.role}
+          </span>
+        </div>
+      </div>
+
+      {/* CARD INFO */}
+      <div className="p-4">
+        <h3 className="font-mono text-[14px] font-semibold tracking-[0.04em] text-white mb-2.5">
+          {member.name}
+        </h3>
+        <div className="flex items-center gap-2">
+          <div className="flex-1 h-[1px] bg-white/10"></div>
+          <p className="text-[11px] italic text-white/50 truncate max-w-[140px]">
+            {member.quote || "Driven by performance."}
+          </p>
+          <div className="flex-1 h-[1px] bg-white/10"></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default function TeamPage() {
   // STATE: This remembers which filter bubble is currently clicked.
   const [activeFilter, setActiveFilter] = useState(FILTERS[0]);
-  const [showAllFilters, setShowAllFilters] = useState(false); // NEW STATE
+  const [showAllFilters, setShowAllFilters] = useState(false);
 
   const filteredTeam = TEAM_MEMBERS.filter(member => member.category === activeFilter);
-  
-  // Decide how many to show: all of them, or just the first 7
-  const visibleFilters = showAllFilters ? FILTERS : FILTERS.slice(0, 7);
 
   return (
     <div className="min-h-screen bg-background pt-7 pb-16 px-6">
@@ -35,7 +95,6 @@ export default function TeamPage() {
           
           {FILTERS.map((filter, index) => {
             const isActive = activeFilter === filter;
-            // Hide on mobile if collapsed, unless it's in the first 5 or is the active button
             const isHiddenOnMobile = !showAllFilters && index > 4 && !isActive;
 
             return (
@@ -60,7 +119,6 @@ export default function TeamPage() {
           >
             {showAllFilters ? "LESS ↑" : "MORE ..."}
           </button>
-
         </div>
       </div>
 
@@ -71,57 +129,13 @@ export default function TeamPage() {
         </p>
       </div>
 
-      {/* TEAM CARDS CONTAINER - Now using Flex Wrap for auto-centering */}
+      {/* TEAM CARDS CONTAINER */}
       <div className="flex flex-wrap justify-center gap-6 max-w-[1200px] mx-auto">
-        {[...filteredTeam].sort((a, b) => (a.isLeader === b.isLeader ? 0 : a.isLeader ? -1 : 1)).map((member, index) => (
-          /* CARD WITH CONDITIONAL LEADER GLOW */
-          <div 
-            key={index} 
-            className={`group bg-[#18181b] rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer w-[260px] sm:w-[220px] flex-shrink-0
-              ${member.isLeader 
-                ? "border-2 border-primary shadow-[0_0_35px_rgba(234,179,8,0.6)]" 
-                : "border border-white/10 hover:border-primary hover:shadow-[0_8px_24px_rgba(234,179,8,0.15)]"
-              }`}
-          >
-            {/* PHOTO CONTAINER */}
-            <div className={`w-full aspect-[4/5] bg-[#111113] relative flex items-center justify-center 
-              ${member.isLeader ? "border-b-2 border-primary" : "border-b border-white/10"}
-            `}>
-              
-              {/* NEXT/IMAGE PLACEHOLDER */}
-              {/* <Image src="/images/placeholder.webp" fill alt="Profile" className="object-cover opacity-40 grayscale" /> */}
-              
-              {/* CSS SILHOUETTE (Just until you add the real images) */}
-              <div className="flex flex-col items-center opacity-15">
-                <div className="w-14 h-14 rounded-full bg-white"></div>
-                <div className="w-[90px] h-[60px] bg-white rounded-t-[40px] mt-2"></div>
-              </div>
-
-              {/* OVERLAPPING ROLE BADGE */}
-              <div className="absolute bottom-3 left-3 bg-black/85 backdrop-blur-sm px-2.5 py-1.5 rounded-md flex items-center gap-2 border border-white/5 max-w-[calc(100%-24px)]">
-                <span className="text-sm leading-none shrink-0">{member.emoji}</span>
-                <span className="font-mono text-[9px] font-semibold tracking-widest uppercase text-primary leading-tight text-left line-clamp-2 text-ellipsis overflow-hidden">
-                  {member.role}
-                </span>
-              </div>
-            </div>
-
-
-            {/* CARD INFO */}
-            <div className="p-4">
-              <h3 className="font-mono text-[14px] font-semibold tracking-[0.04em] text-white mb-2.5">
-                {member.name}
-              </h3>
-              <div className="flex items-center gap-2">
-                <div className="flex-1 h-[1px] bg-white/10"></div>
-                <p className="text-[11px] italic text-white/50 truncate max-w-[140px]">
-                  {member.quote}
-                </p>
-                <div className="flex-1 h-[1px] bg-white/10"></div>
-              </div>
-            </div>
-          </div>
-        ))}
+        {[...filteredTeam]
+          .sort((a, b) => (a.isLeader === b.isLeader ? 0 : a.isLeader ? -1 : 1))
+          .map((member, index) => (
+            <TeamCard key={`${member.name}-${index}`} member={member} />
+          ))}
       </div>
       
     </div>
