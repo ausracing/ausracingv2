@@ -73,19 +73,19 @@ export default function TeamPage() {
 
       {/* TEAM CARDS CONTAINER - Now using Flex Wrap for auto-centering */}
       <div className="flex flex-wrap justify-center gap-6 max-w-[1200px] mx-auto">
-        {filteredTeam.map((member, index) => (
+        {[...filteredTeam].sort((a, b) => (a.isLeader === b.isLeader ? 0 : a.isLeader ? -1 : 1)).map((member, index) => (
           /* CARD WITH CONDITIONAL LEADER GLOW */
           <div 
             key={index} 
             className={`group bg-[#18181b] rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer w-[260px] sm:w-[220px] flex-shrink-0
-              ${index === 0 
+              ${member.isLeader 
                 ? "border-2 border-primary shadow-[0_0_35px_rgba(234,179,8,0.6)]" 
                 : "border border-white/10 hover:border-primary hover:shadow-[0_8px_24px_rgba(234,179,8,0.15)]"
               }`}
           >
             {/* PHOTO CONTAINER */}
             <div className={`w-full aspect-[4/5] bg-[#111113] relative flex items-center justify-center 
-              ${index === 0 ? "border-b-2 border-primary" : "border-b border-white/10"}
+              ${member.isLeader ? "border-b-2 border-primary" : "border-b border-white/10"}
             `}>
               
               {/* NEXT/IMAGE PLACEHOLDER */}
