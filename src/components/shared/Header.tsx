@@ -10,17 +10,19 @@ export default function Header() {
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between px-12 h-[68px] bg-background/90 backdrop-blur-md border-b border-white/10 select-none">
       
-      {/* LOGO BLOCK */}
-      <Link href="/" className="flex items-center cursor-pointer hover:opacity-80 transition-opacity">
-        <Image 
-          src="/images/logo.webp" 
-          alt="AUS Racing Logo" 
-          width={150} 
-          height={50} 
-          className="object-contain w-auto h-[40px]"
-          priority
-        />
-      </Link>
+      {/* LEFT SECTION: Logo Anchor */}
+      <div className="flex-1 flex items-center justify-start">
+        <Link href="/" className="ml-6 hover:opacity-80 transition-opacity flex items-center translate-y-[2px]">
+          <Image
+            src="/images/logo.webp"
+            alt="AUS Racing Logo"
+            width={150}
+            height={42}
+            priority
+            className="h-[42px] w-auto block"
+          />
+        </Link>
+      </div>
 
       {/* NAVIGATION LINKS */}
       <ul className="absolute left-1/2 -translate-x-1/2 flex gap-6 list-none m-0 p-0 hidden md:flex">
