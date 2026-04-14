@@ -28,7 +28,8 @@ export default function Header() {
             width={150}
             height={42}
             priority
-            className="h-[42px] w-auto block"
+            className="h-10.5 w-auto block"
+            style={"height: auto; width: auto;"}
           />
         </Link>
       </div>
