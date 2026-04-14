@@ -27,9 +27,9 @@ export default function Header() {
             alt="AUS Racing Logo"
             width={150}
             height={42}
+            style={{ height: "42px", width: "auto" }}
             priority
-            className="h-10.5 w-auto block"
-            style={"height: auto; width: auto;"}
+            className="block"
           />
         </Link>
       </div>
