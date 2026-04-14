@@ -9,7 +9,7 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "Our Car", href: "/car-concept" },
   { name: "Team", href: "/team" },
-  { name: "Newsletter", href: "/#newsletter" },
+  { name: "Newsletter", href: "/newsletter" },
   { name: "Contact Us", href: "/#footer" },
 ];
 
