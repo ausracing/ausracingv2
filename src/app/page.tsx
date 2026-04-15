@@ -2,17 +2,19 @@
 
 import { useState } from "react";
 import Loader from "@/components/hero/Loader";
+import HeroVideo from "@/components/hero/HeroVideo";
+import SponsorsSlider from "@/components/sponsors/SponsorSlider";
+import AUSParagraph from "@/components/hero/AUSParagraph";
 
 export default function Home() {
   // Keeps track of when the loader is completely finished to unmount it
   const [isLoaderDone, setIsLoaderDone] = useState(false);
   
-  // Ready for your <video onCanPlayThrough={() => setVideoReady(true)} />
-  // Defaulting to true for now so the branch doesn't stall if someone else pulls it
-  const [videoReady, setVideoReady] = useState(true);
+  // Set to FALSE so the loader actually waits for the video to buffer
+  const [videoReady, setVideoReady] = useState(false);
 
   return (
-    <main className="min-h-screen bg-[#18181b] text-foreground relative flex flex-col items-center justify-center overflow-hidden">
+    <main className="bg-[#18181b] text-foreground relative flex flex-col">
       
       {/* THE LOADER */}
       {!isLoaderDone && (
@@ -22,12 +24,10 @@ export default function Home() {
         />
       )}
 
-      {/* HERO CONTENT PLACEHOLDER */}
-      <div className="relative z-10 text-center mt-20">
-        <h1 className="text-4xl font-mono text-white mb-4 uppercase tracking-[0.1em]">AUS Racing</h1>
-        <p className="text-white/50 italic">[ Hero Video Goes Here ]</p>
-      </div>
-      
+      {/* HERO CONTENT */}
+      <HeroVideo onVideoReady={() => setVideoReady(true)} />
+      <SponsorsSlider />
+      <AUSParagraph />
     </main>
   );
 }
