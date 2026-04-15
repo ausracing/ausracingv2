@@ -62,7 +62,7 @@ export default function HeroVideo({ onVideoReady }: HeroVideoProps) {
             View Sponsorship Specs
           </a>
           <a 
-            href="/car" 
+            href="/car-concept" 
             className="px-8 py-3 bg-black/85 border-[1.5px] border-white/20 text-white font-mono text-sm tracking-[0.1em] uppercase font-bold rounded-[4px] hover:bg-black hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
           >
             See the Car &rarr;
