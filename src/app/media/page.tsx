@@ -1,16 +1,13 @@
-// page.tsx — /media route
-// OWNER: Adam
-// Server component — press/media kit page.
-// Contains: downloadable logos, hi-res images, car specs sheet, press contact info.
-
 import MediaHero from "./MediaComponents/MediaHero";
-import MediaGrid from "./MediaComponents/MediaGrid";
+import MediaGallery from "./MediaComponents/MediaGallery";
+import Footer from "@/components/shared/Footer";
 
-export default function Media() {
+export default function MediaPage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-black text-white px-6 md:px-10 py-10">
       <MediaHero />
-      <MediaGrid />
+      <MediaGallery />
+      <Footer />
     </div>
   );
 }
