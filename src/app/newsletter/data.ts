@@ -4,38 +4,42 @@ export type Article = {
   shortDescription: string;
   image: string;
   content: string;
+  date: string;
 };
 
 export const newsletterArticles: Article[] = [
   {
-    slug: "new-car-launch",
-    title: "New Car Launch",
+    slug: "POST 1",
+    title: "post 1",
     shortDescription: "A new aerodynamic update has been revealed.",
-    image: "/public/ausracing.jpg",
+    image: "/post1.jpg",
     content: "Full article about the new car launch goes here...",
+     date: "16-04-2026",
   },
   {
-    slug: "weekly-testing",
-    title: "Weekly Testing Results",
+    slug: "POST 2",
+    title: "post 2",
     shortDescription: "Strong performance during testing sessions.",
-    image:"/public/ausracing.jpg",
+    image:"/post2.jpg",
     content: "Full testing breakdown and analysis goes here...",
+    date: "19-05-2026",
   },
-];
-export const newsletterArticle = [
-  {
-    slug: "latest-news",
-    title: "Latest News Title",
-    content: "This is the latest news content...",
-    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+{
+    slug: "POST 3",
+    title: "post 3",
+    shortDescription: "A new aerodynamic update has been revealed.",
+    image: "/post2.jpg",
+    content: "Full article about the new car launch goes here...",
+     date: "16-06-2026",
   },
 
-  // 👇 NEW POST
-  {
-    slug: "new-post-1",
-    title: "My New Post",
-    content: "This is my new article content...",
-    image: "/public/ausracing.jpg",
 
-  },
+
+
+
+
+
+
+
+
 ];
