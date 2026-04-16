@@ -11,19 +11,31 @@ export const newsletterArticles: Article[] = [
     slug: "new-car-launch",
     title: "New Car Launch",
     shortDescription: "A new aerodynamic update has been revealed.",
-    image: "/images/news/car.jpg",
+    image: "/public/ausracing.jpg",
     content: "Full article about the new car launch goes here...",
   },
   {
     slug: "weekly-testing",
     title: "Weekly Testing Results",
     shortDescription: "Strong performance during testing sessions.",
-    image: "/images/news/testing.jpg",
+    image:"/public/ausracing.jpg",
     content: "Full testing breakdown and analysis goes here...",
   },
 ];
-export type NewsletterArticle = {
-  slug: "testing slug";
-  title: "testing title";
-  content: "testing content";
-};
+export const newsletterArticle = [
+  {
+    slug: "latest-news",
+    title: "Latest News Title",
+    content: "This is the latest news content...",
+    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+  },
+
+  // 👇 NEW POST
+  {
+    slug: "new-post-1",
+    title: "My New Post",
+    content: "This is my new article content...",
+    image: "/public/ausracing.jpg",
+
+  },
+];
