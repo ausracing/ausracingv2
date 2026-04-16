@@ -9,7 +9,7 @@ export type Article = {
 
 export const newsletterArticles: Article[] = [
   {
-    slug: "POST 1",
+    slug: "POST-1",
     title: "post 1",
     shortDescription: "A new aerodynamic update has been revealed.",
     image: "/post1.jpg",
@@ -17,7 +17,7 @@ export const newsletterArticles: Article[] = [
      date: "16-04-2026",
   },
   {
-    slug: "POST 2",
+    slug: "POST-2",
     title: "post 2",
     shortDescription: "Strong performance during testing sessions.",
     image:"/post2.jpg",
@@ -25,7 +25,7 @@ export const newsletterArticles: Article[] = [
     date: "19-05-2026",
   },
 {
-    slug: "POST 3",
+    slug: "POST-3",
     title: "post 3",
     shortDescription: "A new aerodynamic update has been revealed.",
     image: "/post2.jpg",

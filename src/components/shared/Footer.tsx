@@ -1,5 +1,6 @@
 import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -10,15 +11,26 @@ export default function Footer() {
         {/* COLUMN 1 — BRAND */}
         <div className="flex flex-col gap-4">
 
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gray-800 rounded-md" />
-            <h3 className="text-lg font-medium text-gray-200">
-              AUS Racing
-            </h3>
-          </div>
+          {/* LOGO BOX */}
+      <div className="relative w-12 h-12 bg-gradient-to-b from-gray-800 to-gray-900 rounded-md border border-gray-700 flex items-center justify-center overflow-visible">
+
+  <div className="absolute w-14 h-14">
+    <Image
+      src="/ausracinglogo.jpg"
+      alt="AUS Racing logo"
+      fill
+      className="object-contain scale-110"
+    />
+  </div>
+
+</div>
+
+          <h3 className="text-lg font-medium text-gray-200">
+            AUS Racing
+          </h3>
 
           <div className="text-base text-gray-400">
-               🏎️ 🔥🔥
+            🏎️ 🔥🔥
           </div>
 
           <p className="text-sm text-gray-400">
@@ -41,7 +53,7 @@ export default function Footer() {
 
         </div>
 
-        {/* COLUMN 3 — UAE INFO + SOCIALS */}
+        {/* COLUMN 3 — CONTACT */}
         <div className="flex flex-col gap-3">
 
           <h4 className="text-sm font-medium text-gray-300">
@@ -90,17 +102,17 @@ export default function Footer() {
 
           <div className="flex items-center w-full rounded-md border border-gray-800 bg-gray-900 overflow-hidden">
 
-  <input
-    type="email"
-    placeholder="Email address"
-    className="flex-1 px-3 py-2 bg-transparent text-sm text-gray-200 placeholder-gray-600 outline-none"
-  />
+            <input
+              type="email"
+              placeholder="Email address"
+              className="flex-1 px-3 py-2 bg-transparent text-sm text-gray-200 placeholder-gray-600 outline-none"
+            />
 
-  <button className="px-5 py-2 text-sm text-gray-300 hover:bg-gray-800 transition border-l border-gray-800">
-    Subscribe
-  </button>
+            <button className="px-5 py-2 text-sm text-gray-300 hover:bg-gray-800 transition border-l border-gray-800">
+              Subscribe
+            </button>
 
-</div>
+          </div>
 
         </div>
 
