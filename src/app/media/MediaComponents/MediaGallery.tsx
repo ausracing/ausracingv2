@@ -14,12 +14,13 @@ const media = [
 ];
 
 const thumbs = [
-  "/thumb1.jpg",
-  "/thumb2.jpg",
-  "/thumb3.jpg",
-  "/thumb4.jpg",
-  "/thumb5.jpg",
-  "/thumb6.jpg",
+  "/ausracinglogo.jpg",
+  "/ausracinglogo.jpg",
+  "/ausracinglogo.jpg",
+  "/ausracinglogo.jpg",
+  "/ausracinglogo.jpg",
+  "/ausracinglogo.jpg",
+
 ];
 
 export default function MediaGallery() {
@@ -122,24 +123,7 @@ export default function MediaGallery() {
         })}
       </div>
 
-      {/* FOOTER */}
-      <div className="mt-14 border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-
-        <p className="text-white/40 text-sm">
-          © {new Date().getFullYear()} AUS Racing. All rights reserved.
-        </p>
-
-        <div className="relative w-28 h-10">
-          <Image
-            src="/ausracinglogo.jpg"
-            alt="AUS Racing Logo"
-            fill
-            sizes="120px"
-            className="object-contain opacity-80"
-          />
-        </div>
-
-      </div>
+    
     </div>
   );
 }
