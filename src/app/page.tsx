@@ -16,80 +16,52 @@ export default function Home() {
   );
 
   const latest = sorted[0];
-  const rest = sorted.slice(1, 6);
 
   return (
-    <div className="min-h-screen bg-black text-white px-10 py-10">
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-        {/* LEFT: SMALL LIST */}
-        <div className="lg:col-span-1 space-y-3">
-          <h2 className="text-lg font-semibold mb-2">
-            Latest Updates
-          </h2>
-
-          {rest.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/newsletter/${post.slug}`}
-              className="flex gap-3 p-3 border border-white/10 rounded-lg hover:bg-white/5 transition"
-            >
-              <div className="relative w-16 h-14 flex-shrink-0 rounded-md overflow-hidden">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <h3 className="text-sm font-medium line-clamp-1">
-                  {post.title}
-                </h3>
-
-                <p className="text-xs text-white/50">
-                  {post.date}
-                </p>
-
-                <p className="text-xs text-white/40 line-clamp-2 mt-1">
-                  {post.shortDescription}
-                </p>
-              </div>
-            </Link>
-          ))}
+    <div className="min-h-screen bg-black text-white flex flex-col items-center px-6 py-12">
+      
+      {/* MAIN LATEST NEWS CARD */}
+      <div className="w-full max-w-2xl border border-white/10 rounded-xl overflow-hidden bg-white/5">
+        
+        <div className="relative w-full h-64">
+          <Image
+            src={latest.image}
+            alt={latest.title}
+            fill
+            className="object-cover"
+          />
         </div>
 
-        {/* RIGHT: BIG MAIN STORY */}
-        <div className="lg:col-span-2 border border-white/10 rounded-xl p-5">
-
-          <div className="relative w-full h-[320px] rounded-lg overflow-hidden mb-4">
-            <Image
-              src={latest.image}
-              alt={latest.title}
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <h1 className="text-2xl font-bold">
-            {latest.title}
-          </h1>
+        <div className="p-5">
+          <h1 className="text-2xl font-bold">{latest.title}</h1>
 
           <p className="text-white/60 mt-2 text-sm leading-relaxed">
             {latest.shortDescription}
           </p>
 
+          <p className="text-xs text-white/40 mt-2">{latest.date}</p>
+
           <Link
             href={`/newsletter/${latest.slug}`}
-            className="inline-block mt-3 underline text-sm"
+            className="inline-block mt-4 underline text-sm"
           >
             Read full article →
           </Link>
-
         </div>
+      </div>
 
+      {/* CTA */}
+      <div className="mt-10 text-center">
+        <p className="text-white/70 text-sm">
+          Interested? Check out our newsletter for more updates.
+        </p>
+
+        <Link
+          href="/newsletter"
+          className="mt-3 inline-block px-5 py-2 border border-white/20 rounded-lg hover:bg-white/10 transition text-sm"
+        >
+          Go to Newsletter
+        </Link>
       </div>
 
       <Footer />

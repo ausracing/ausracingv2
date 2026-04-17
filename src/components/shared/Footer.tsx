@@ -49,7 +49,7 @@ export default function Footer() {
           <a href="/" className="text-sm text-gray-400 hover:text-gray-300 transition">Home</a>
           <a href="/media" className="text-sm text-gray-400 hover:text-gray-300 transition">Media</a>
           <a href="/team" className="text-sm text-gray-400 hover:text-gray-300 transition">Team</a>
-          <a href="/contact" className="text-sm text-gray-400 hover:text-gray-300 transition">Contact</a>
+          <a href="/newsletter" className="text-sm text-gray-400 hover:text-gray-300 transition">Newsletter</a>
 
         </div>
 
@@ -57,7 +57,7 @@ export default function Footer() {
         <div className="flex flex-col gap-3">
 
           <h4 className="text-sm font-medium text-gray-300">
-            UAE Office
+            American Univesity of Sharjah
           </h4>
 
           <div className="flex items-center gap-2 text-sm text-gray-400">
@@ -67,7 +67,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-2 text-sm text-gray-400">
             <FiPhone />
-            <span>+971 000 000 000</span>
+            <span>+971 50 000 6767</span>
           </div>
 
           <div className="flex items-center gap-2 text-sm text-gray-400">
