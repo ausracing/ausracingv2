@@ -57,12 +57,12 @@ export default function Footer() {
         <div className="flex flex-col gap-3">
 
           <h4 className="text-sm font-medium text-gray-300">
-            American Univesity of Sharjah
+            📍 American Univesity of Sharjah
           </h4>
 
           <div className="flex items-center gap-2 text-sm text-gray-400">
             <FiMail />
-            <span>contact@ausracing.com</span>
+            <span>ausracing@aus.edu</span>
           </div>
 
           <div className="flex items-center gap-2 text-sm text-gray-400">
@@ -77,11 +77,11 @@ export default function Footer() {
 
           <div className="flex gap-4 pt-2 text-gray-400">
 
-            <a href="https://instagram.com" target="_blank">
+            <a href="https://www.instagram.com/ausracingfs" target="_blank">
               <FaInstagram className="text-lg hover:text-gray-300 transition" />
             </a>
 
-            <a href="https://linkedin.com" target="_blank">
+            <a href="https://www.linkedin.com/company/aus-racing-team/" target="_blank">
               <FaLinkedin className="text-lg hover:text-gray-300 transition" />
             </a>
 
