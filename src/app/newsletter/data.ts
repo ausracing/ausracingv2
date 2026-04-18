@@ -18,7 +18,7 @@ export const newsletterArticles: Article[] = [
     slug: "June-News",
     title: "June News",
     shortDescription:
-      "Wheel selection, suspension design, and early development work.",
+      "In our first installment, you can read about our choice of wheels and tires or learn about how a suspension and steering system are designed!",
     image: "/newsletter/June24/June_news_page-0001.jpg",
     date: "01-07-2024",
     sections: [
@@ -59,7 +59,7 @@ export const newsletterArticles: Article[] = [
     slug: "July-News",
     title: "July News",
     shortDescription:
-      "Wheel selection, suspension design, and early development work.",
+      "In our second installment, you can read about our choice of wheels and tires or learn about battery design or how suspension geometries are tuned.",
     image: "/newsletter/July24/July_news_page-0001.jpg",
     date: "01-08-2024",
     sections: [
@@ -96,7 +96,7 @@ export const newsletterArticles: Article[] = [
     slug: "Aug-News",
     title: "August News",
     shortDescription:
-      "Wheel selection, suspension design, and early development work.",
+      "In our August 2024 edition, we dive deeper into the dynamics of our car, and introduce a new and rather unexpected dimension to it environmental conscience.",
     image: "/newsletter/Aug24/Aug_news_page-0001.jpg",
     date: "01-09-2024",
     sections: [
@@ -139,7 +139,7 @@ export const newsletterArticles: Article[] = [
     slug: "Sept-News",
     title: "September News",
     shortDescription:
-      "Wheel selection, suspension design, and early development work.",
+      "In the September 2024 edition, AUS Racing is shaking things up with cell management, high-stakes meetings, and a game-changing new team.",
     image: "/newsletter/Sep24/Sep_news_page-0001.jpg",
     date: "01-10-2024",
     sections: [
@@ -168,10 +168,10 @@ export const newsletterArticles: Article[] = [
         image: "/newsletter/Sep24/Sep_news_page-0009.jpg",
       },
       {
-        image: "/newsletter/Sep24/Sep_news_page-00010.jpg",
+        image: "/newsletter/Sep24/Sep_news_page-0010.jpg",
       },
       {
-        image: "/newsletter/Sep24/Sep_news_page-00011.jpg",
+        image: "/newsletter/Sep24/Sep_news_page-0011.jpg",
       }
     ]
   }
