@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Loader from "@/components/hero/Loader";
 import HeroVideo from "@/components/hero/HeroVideo";
-import SponsorsSlider from "@/components/sponsors/SponsorSlider";
+// import SponsorsSlider from "@/components/sponsors/SponsorSlider";
 import AUSParagraph from "@/components/hero/AUSParagraph";
 import CarTeaser from "@/components/car-concept/CarTeaser";
 import NewsletterHome from "@/components/newsletterinfo/NewsletterHome";
@@ -26,7 +26,7 @@ export default function Home() {
 
       {/* HERO CONTENT */}
       <HeroVideo onVideoReady={() => setVideoReady(true)} />
-      <SponsorsSlider />
+      {/* <SponsorsSlider /> */}
       <AUSParagraph />
       <CarTeaser />
       <NewsletterHome />
