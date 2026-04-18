@@ -10,13 +10,13 @@ import {
 } from "../ui/carousel"
 
 const baseSponsors = [
-  { name: "AGMC", src: "/partners/agmc.png" },
-  { name: "Ansys", src: "/partners/ansys1.png" },
-  { name: "Automech", src: "/partners/automech2.png" },
-  { name: "DEWESoft", src: "/partners/dewesoft.png" },
-  { name: "Fluid Codes", src: "/partners/fluidcodes1.png" },
-  { name: "Juma Al Majid", src: "/partners/juma.png" },
-  { name: "SRTI Park", src: "/partners/srti.png" },
+  { name: "AGMC", src: "/logos/agmc.png" },
+  { name: "Ansys", src: "/logos/ansys1.png" },
+  { name: "Automech", src: "/logos/automech2.png" },
+  { name: "DEWESoft", src: "/logos/dewesoft.png" },
+  { name: "Fluid Codes", src: "/logos/fluidcodes1.png" },
+  { name: "Juma Al Majid", src: "/logos/juma.png" },
+  { name: "SRTI Park", src: "/logos/srti.png" },
 ]
 
 const sponsors = [...baseSponsors, ...baseSponsors, ...baseSponsors]
