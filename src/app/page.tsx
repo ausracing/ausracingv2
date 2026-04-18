@@ -1,3 +1,9 @@
+feature/header
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-background text-foreground">
+      {/* Your dark canvas is now clean and ready for the Hero video */}
+
 import type { Metadata } from "next";
 import CarTeaser from "@/components/car-concept/CarTeaser";
 
@@ -10,6 +16,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-background overflow-x-hidden">
       <CarTeaser />
+main
     </main>
   );
 }
