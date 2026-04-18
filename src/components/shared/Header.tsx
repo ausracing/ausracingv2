@@ -9,7 +9,7 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "Our Car", href: "/car-concept" },
   { name: "Team", href: "/team" },
-  { name: "Newsletter", href: "/#newsletter" },
+  { name: "Newsletter", href: "/newsletter" },
   { name: "Contact Us", href: "/#footer" },
 ];
 
@@ -27,8 +27,9 @@ export default function Header() {
             alt="AUS Racing Logo"
             width={150}
             height={42}
+            style={{ height: "42px", width: "auto" }}
             priority
-            className="h-[42px] w-auto block"
+            className="block"
           />
         </Link>
       </div>
