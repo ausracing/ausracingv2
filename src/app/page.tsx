@@ -6,6 +6,9 @@ import HeroVideo from "@/components/hero/HeroVideo";
 import AUSParagraph from "@/components/hero/AUSParagraph";
 import CarTeaser from "@/components/car-concept/CarTeaser";
 import NewsletterHome from "@/components/newsletterinfo/NewsletterHome";
+import CompetitionCountdown from "@/components/Countdown_quote/CompetitionCountdown";
+import { Quote } from "lucide-react";
+import QuoteSection from "@/components/Countdown_quote/QuoteSection";
 
 export default function Home() {
   // Keeps track of when the loader is completely finished to unmount it
@@ -28,6 +31,8 @@ export default function Home() {
       <HeroVideo onVideoReady={() => setVideoReady(true)} />
       {/* <SponsorsSlider /> */}
       <AUSParagraph />
+      <CompetitionCountdown />
+      <QuoteSection />
       <CarTeaser />
       <NewsletterHome />
 
