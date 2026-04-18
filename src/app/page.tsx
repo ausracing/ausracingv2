@@ -1,5 +1,6 @@
 "use client";
 
+<!-- <<<<<<< feature/newsletter -->
 import Image from "next/image";
 import Link from "next/link";
 import { newsletterArticles } from "./newsletter/data";
@@ -66,5 +67,37 @@ export default function Home() {
 
       <Footer />
     </div>
+// =======
+import { useState } from "react";
+import Loader from "@/components/hero/Loader";
+import HeroVideo from "@/components/hero/HeroVideo";
+import SponsorsSlider from "@/components/sponsors/SponsorSlider";
+import AUSParagraph from "@/components/hero/AUSParagraph";
+import CarTeaser from "@/components/car-concept/CarTeaser";
+
+export default function Home() {
+  // Keeps track of when the loader is completely finished to unmount it
+  const [isLoaderDone, setIsLoaderDone] = useState(false);
+
+  // Set to FALSE so the loader actually waits for the video to buffer
+  const [videoReady, setVideoReady] = useState(false);
+
+  return (
+    <main className="bg-[#18181b] text-foreground relative flex flex-col">
+      {/* THE LOADER */}
+      {!isLoaderDone && (
+        <Loader
+          isReady={videoReady}
+          onComplete={() => setIsLoaderDone(true)}
+        />
+      )}
+
+      {/* HERO CONTENT */}
+      <HeroVideo onVideoReady={() => setVideoReady(true)} />
+      <SponsorsSlider />
+      <AUSParagraph />
+      <CarTeaser />
+    </main>
+// >>>>>>> main
   );
 }
