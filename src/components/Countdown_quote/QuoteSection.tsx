@@ -1,6 +1,6 @@
 export default function QuoteSection() {
     return (
-        <section className="w-full bg-[#0a0a0a] px-4 py-20 text-white">
+        <section className="w-full bg-black px-4 py-20 text-white">
             <div className="mx-auto max-w-5xl">
                 <div className="relative overflow-hidden rounded-2xl border border-[#fcb13b] bg-zinc-950 px-10 py-20 text-center shadow-[0_0_30px_rgba(255,215,0,0.08)]">
                     <div className="pointer-events-none absolute left-10 top-6 text-[120px] leading-none text-zinc-200/90 [font-family:var(--font-orbitron)] md:text-[150px]">
