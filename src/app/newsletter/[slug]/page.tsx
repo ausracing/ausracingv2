@@ -42,7 +42,7 @@ export default async function ArticlePage({
 
       </div>
 
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

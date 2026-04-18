@@ -66,7 +66,7 @@ export default function NewsletterClient({ articles }: any) {
       </div>
 
       {/* FOOTER */}
-      <Footer />
+      {/* <Footer /> */}
 
     </div>
   );

@@ -4,11 +4,6 @@ import "./globals.css";
 import Header from "@/components/shared/Header";
 import FooterClient from "@/components/shared/Footer";
 
-// <<<<<<< feature/newsletter
-import { Inter } from "next/font/google";
-
-// =======
-// >>>>>>> main
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,34 +19,19 @@ export const metadata: Metadata = {
   description: "The official Formula Student team of the American University of Sharjah.",
 };
 
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-<!-- <<<<<<< feature/newsletter -->
-    <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased">
-        {children}
-<!-- ======= -->
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Header />
         <main className="flex-1">
           {children}
         </main>
         <FooterClient />
-<!-- >>>>>>> main -->
       </body>
     </html>
   );
