@@ -19,46 +19,161 @@ export const newsletterArticles: Article[] = [
     title: "June News",
     shortDescription:
       "Wheel selection, suspension design, and early development work.",
-    image: "/newsletter/June_news_page/June_news_page-0001.jpg",
+    image: "/newsletter/June24/June_news_page-0001.jpg",
     date: "01-07-2024",
     sections: [
       {
-        heading: "Wheel & Tire Selection",
-        text: "We carefully selected performance-focused wheels and tires based on grip, durability, and track performance."
+        image: "/newsletter/June24/June_news_page-0002.jpg",
       },
       {
-        image: "/newsletter/June_news_page/tires.jpg",
-        text: "Multiple simulations were run to determine optimal tire compounds."
+        image: "/newsletter/June24/June_news_page-0003.jpg",
       },
       {
-        heading: "Suspension System",
-        text: "The suspension geometry was designed to improve stability during high-speed cornering."
+        image: "/newsletter/June24/June_news_page-0004.jpg",
       },
       {
-        image: "/newsletter/June_news_page/suspension.jpg"
+        image: "/newsletter/June24/June_news_page-0005.jpg",
+      },
+      {
+        image: "/newsletter/June24/June_news_page-0006.jpg",
+      },
+      {
+        image: "/newsletter/June24/June_news_page-0007.jpg",
+      },
+      {
+        image: "/newsletter/June24/June_news_page-0008.jpg",
+      },
+      {
+        image: "/newsletter/June24/June_news_page-0009.jpg",
+      },
+      {
+        image: "/newsletter/June24/June_news_page-0010.jpg",
+      },
+      {
+        image: "/newsletter/June24/June_news_page-0011.jpg",
       }
     ]
   },
 
-  {
+ {
     slug: "July-News",
     title: "July News",
     shortDescription:
-      "Battery systems, tuning, and mechanical refinement updates.",
-    image: "/newsletter/July_news_page/July_news_page-0001.jpg",
+      "Wheel selection, suspension design, and early development work.",
+    image: "/newsletter/July24/July_news_page-0001.jpg",
     date: "01-08-2024",
     sections: [
       {
-        heading: "Battery Design",
-        text: "We optimized the battery layout for weight distribution and efficiency."
+        image: "/newsletter/July24/July_news_page-0002.jpg",
       },
       {
-        image: "/newsletter/July_news_page/battery.jpg"
+        image: "/newsletter/July24/July_news_page-0003.jpg",
       },
       {
-        heading: "Suspension Tuning",
-        text: "Fine adjustments were made to improve handling response."
+        image: "/newsletter/July24/July_news_page-0004.jpg",
+      },
+      {
+        image: "/newsletter/July24/July_news_page-0005.jpg",
+      },
+      {
+        image: "/newsletter/July24/July_news_page-0006.jpg",
+      },
+      {
+        image: "/newsletter/July24/July_news_page-0007.jpg",
+      },
+      {
+        image: "/newsletter/July24/July_news_page-0008.jpg",
+      },
+      {
+        image: "/newsletter/July24/July_news_page-0009.jpg",
+      },
+      {
+        image: "/newsletter/July24/July_news_page-0010.jpg",
+      }
+    ]
+  },
+{
+    slug: "Aug-News",
+    title: "August News",
+    shortDescription:
+      "Wheel selection, suspension design, and early development work.",
+    image: "/newsletter/Aug24/Aug_news_page-0001.jpg",
+    date: "01-09-2024",
+    sections: [
+      {
+        image: "/newsletter/Aug24/Aug_news_page-0002.jpg",
+      },
+      {
+        image: "/newsletter/Aug24/Aug_news_page-0003.jpg",
+      },
+      {
+        image: "/newsletter/Aug24/Aug_news_page-0004.jpg",
+      },
+      {
+        image: "/newsletter/Aug24/Aug_news_page-0005.jpg",
+      },
+      {
+        image: "/newsletter/Aug24/Aug_news_page-0006.jpg",
+      },
+      {
+        image: "/newsletter/Aug24/Aug_news_page-0007.jpg",
+      },
+      {
+        image: "/newsletter/Aug24/Aug_news_page-0008.jpg",
+      },
+      {
+        image: "/newsletter/Aug24/Aug_news_page-0009.jpg",
+      },
+      {
+        image: "/newsletter/Aug24/Aug_news_page-0010.jpg",
+      },
+      {
+        image: "/newsletter/Aug24/Aug_news_page-0011.jpg",
+      },
+      {
+        image: "/newsletter/Aug24/Aug_news_page-0012.jpg",
+      }
+    ]
+  },
+  {
+    slug: "Sept-News",
+    title: "September News",
+    shortDescription:
+      "Wheel selection, suspension design, and early development work.",
+    image: "/newsletter/Sep24/Sep_news_page-0001.jpg",
+    date: "01-10-2024",
+    sections: [
+      {
+        image: "/newsletter/Sep24/Sep_news_page-0002.jpg",
+      },
+      {
+        image: "/newsletter/Sep24/Sep_news_page-0003.jpg",
+      },
+      {
+        image: "/newsletter/Sep24/Sep_news_page-0004.jpg",
+      },
+      {
+        image: "/newsletter/Sep24/Sep_news_page-0005.jpg",
+      },
+      {
+        image: "/newsletter/Sep24/Sep_news_page-0006.jpg",
+      },
+      {
+        image: "/newsletter/Sep24/Sep_news_page-0007.jpg",
+      },
+      {
+        image: "/newsletter/Sep24/Sep_news_page-0008.jpg",
+      },
+      {
+        image: "/newsletter/Sep24/Sep_news_page-0009.jpg",
+      },
+      {
+        image: "/newsletter/Sep24/Sep_news_page-00010.jpg",
+      },
+      {
+        image: "/newsletter/Sep24/Sep_news_page-00011.jpg",
       }
     ]
   }
+
 ];

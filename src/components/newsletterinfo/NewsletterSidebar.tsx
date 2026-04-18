@@ -7,8 +7,8 @@ type Article = {
   title: string;
   shortDescription: string;
   image: string;
-  content: string;
   date: string;
+  sections: any[];
 };
 
 function parseDate(dateStr: string) {
@@ -28,58 +28,54 @@ export default function NewsletterSidebar({
   activeSlug,
 }: {
   articles: Article[];
-  onSelect: (article: Article) => void;
+  onSelect: (a: Article) => void;
   activeSlug: string;
 }) {
   const [query, setQuery] = useState("");
-  const [range, setRange] = useState<"all" | "7" | "30" | "90">("all");
+  const [filter, setFilter] = useState<"all" | "7" | "30" | "90">("all");
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase();
 
     return [...articles]
-      .filter((article) => {
-        // Search
+      .filter((a) => {
         const matchesSearch =
-          article.title.toLowerCase().includes(q) ||
-          article.shortDescription.toLowerCase().includes(q);
+          a.title.toLowerCase().includes(q) ||
+          a.shortDescription.toLowerCase().includes(q);
 
-        // Date range
-        const matchesRange =
-          range === "all" || isWithinDays(article.date, Number(range));
+        const matchesFilter =
+          filter === "all" || isWithinDays(a.date, Number(filter));
 
-        return matchesSearch && matchesRange;
+        return matchesSearch && matchesFilter;
       })
       .sort((a, b) => parseDate(b.date) - parseDate(a.date));
-  }, [articles, query, range]);
+  }, [articles, query, filter]);
 
   return (
-    <div className="w-[280px] h-screen overflow-y-auto bg-zinc-900 border-r border-zinc-800 p-4 shrink-0">
-      <h2 className="text-lg font-bold mb-3">Weekly News</h2>
+    <div className="w-[280px] h-screen bg-zinc-900 border-r border-zinc-800 p-4 flex flex-col">
 
-      {/* Search */}
+      {/* SEARCH */}
       <input
-        type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search news..."
-        className="w-full mb-3 px-3 py-2 rounded-lg bg-zinc-800 text-sm outline-none border border-zinc-700"
+        placeholder="Search articles..."
+        className="w-full mb-3 px-3 py-2 bg-zinc-800 rounded outline-none text-sm"
       />
 
-      {/* Filters */}
+      {/* FILTER BUTTONS */}
       <div className="flex flex-wrap gap-2 mb-4">
         {[
           { label: "All", value: "all" },
-          { label: "7d", value: "7" },
-          { label: "30d", value: "30" },
-          { label: "90d", value: "90" },
+          { label: "7D", value: "7" },
+          { label: "30D", value: "30" },
+          { label: "90D", value: "90" },
         ].map((btn) => (
           <button
             key={btn.value}
-            onClick={() => setRange(btn.value as "all" | "7" | "30" | "90")}
-            className={`text-xs px-2 py-1 rounded-md border transition ${
-              range === btn.value
-                ? "bg-white text-black border-white"
+            onClick={() => setFilter(btn.value as any)}
+            className={`text-xs px-2 py-1 rounded border transition ${
+              filter === btn.value
+                ? "bg-white text-black"
                 : "border-zinc-700 text-zinc-300 hover:bg-zinc-800"
             }`}
           >
@@ -88,31 +84,39 @@ export default function NewsletterSidebar({
         ))}
       </div>
 
-      {/* Articles */}
-      <div className="space-y-3">
+      {/* SCROLLABLE LIST */}
+      <div className="flex-1 overflow-y-scroll pr-1 space-y-2 custom-scroll">
+
         {filtered.length === 0 ? (
-          <p className="text-sm text-zinc-500">No results found.</p>
+          <p className="text-sm text-zinc-500">
+            No articles found
+          </p>
         ) : (
-          filtered.map((article) => (
+          filtered.map((a) => (
             <button
-              key={article.slug}
-              onClick={() => onSelect(article)}
-              className={`w-full text-left p-3 rounded-xl transition border ${
-                activeSlug === article.slug
-                  ? "bg-zinc-800 border-zinc-600"
-                  : "border-transparent hover:bg-zinc-800/60"
+              key={a.slug}
+              onClick={() => onSelect(a)}
+              className={`w-full text-left p-3 rounded transition ${
+                activeSlug === a.slug
+                  ? "bg-zinc-700"
+                  : "hover:bg-zinc-800"
               }`}
             >
-              <p className="font-semibold line-clamp-1">{article.title}</p>
-
-              <p className="text-sm text-zinc-400 line-clamp-2 mt-1">
-                {article.shortDescription}
+              <p className="font-semibold line-clamp-1">
+                {a.title}
               </p>
 
-              <p className="text-xs text-zinc-500 mt-2">{article.date}</p>
+              <p className="text-xs text-zinc-400 line-clamp-2">
+                {a.shortDescription}
+              </p>
+
+              <p className="text-[10px] text-zinc-500 mt-1">
+                {a.date}
+              </p>
             </button>
           ))
         )}
+
       </div>
     </div>
   );
