@@ -30,118 +30,116 @@ export const TEAM_DESCRIPTIONS: Record<string, string> = {
 };
 
 export const TEAM_MEMBERS = [
-  // --- MAIN BOARD ---
+  // --- Executive Board (Main Board) ---
   { name: "Saad Ibrahim", role: "Team Principal", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Executive Board" },
-  { name: "Saurav Gupte", role: "VP / Head of Engineering", isLeader: false, emoji: "⚙️", quote: "Driven by performance.", category: "Executive Board" },
-  { name: "Shwetambari Abhirajan", role: "External Coordinator", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "Executive Board" },
-  { name: "Mirra Swaminathan", role: "Head of Treasury", isLeader: false, emoji: "💰", quote: "Driven by performance.", category: "Executive Board" },
-  { name: "Sameeksha Ramesh", role: "Executive Assistant", isLeader: false, emoji: "📋", quote: "Driven by performance.", category: "Executive Board" },
+  { name: "Saurav Gupte", role: "Vice Principal/Head of Engineering", isLeader: false, emoji: "👑", quote: "Driven by performance.", category: "Executive Board" },
+  { name: "Shwetambari Abhirajan", role: "External Coordinator", isLeader: false, emoji: "👑", quote: "Driven by performance.", category: "Executive Board" },
+  { name: "Mirra Swaminathan", role: "Head of Treasury", isLeader: false, emoji: "👑", quote: "Driven by performance.", category: "Executive Board" },
+  { name: "Sameeksha Ramesh", role: "Executive Assistant", isLeader: false, emoji: "👑", quote: "Driven by performance.", category: "Executive Board" },
 
-  // --- ELECTRICAL ---
-  { name: "Name6", role: "Lead", isLeader: true, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
-  { name: "Name7", role: "Advisor", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
-  { name: "Name8", role: "Advisor", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
-  { name: "Name9", role: "Team Member", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
-  { name: "Name10", role: "Team Member", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
-  { name: "Name11", role: "Team Member", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
-  { name: "Name12", role: "Team Member", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
-  { name: "Name13", role: "Team Member", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
-  { name: "Name14", role: "Team Member", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
+  // --- Electrical ---
+  { name: "Syed Muneeb Ali", role: "Lead", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Electrical" },
+  { name: "Mohammed Baraa Adnan", role: "Advisor", isLeader: false, emoji: "🧠", quote: "Driven by performance.", category: "Electrical" },
+  { name: "Mark Farag", role: "Advisor", isLeader: false, emoji: "🧠", quote: "Driven by performance.", category: "Electrical" },
+  { name: "Ehab Taha Galal", role: "Team", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
+  { name: "Hammad Ahmed Adil", role: "Team", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
+  { name: "Mohammed Shakhawat Hossain", role: "Team", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
+  { name: "Abdallah Yassin", role: "Team", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
+  { name: "Abdullah Alnojoum", role: "Team", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
+  // Power Delivery -> Mapped to Electrical
+  { name: "Aria Habibagahi", role: "Team", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
+  { name: "Mehdi Kermani", role: "Team", isLeader: false, emoji: "⚡", quote: "Driven by performance.", category: "Electrical" },
 
-  // --- POWER DELIVERY ---
-  { name: "Name15", role: "Advisor", isLeader: false, emoji: "🔋", quote: "Driven by performance.", category: "Power Delivery" },
-  { name: "Name16", role: "Lead", isLeader: true, emoji: "🔋", quote: "Driven by performance.", category: "Power Delivery" },
-  { name: "Name17", role: "Team Member", isLeader: false, emoji: "🔋", quote: "Driven by performance.", category: "Power Delivery" },
-  { name: "Name18", role: "Team Member", isLeader: false, emoji: "🔋", quote: "Driven by performance.", category: "Power Delivery" },
+  // --- Powertrain (Drivetrain & Cooling) ---
+  // Drivetrain
+  { name: "Turki Khalid Algarawi", role: "Drivetrain Lead", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Powertrain" },
+  { name: "Saurav Gupte", role: "Team", isLeader: false, emoji: "⚙️", quote: "Driven by performance.", category: "Powertrain" },
+  { name: "Farasha Imran", role: "Team", isLeader: false, emoji: "⚙️", quote: "Driven by performance.", category: "Powertrain" },
+  { name: "Mohammed Abdulrahman", role: "Team", isLeader: false, emoji: "⚙️", quote: "Driven by performance.", category: "Powertrain" },
+  // Cooling
+  { name: "Nafiz Imteaz", role: "Cooling Lead", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Powertrain" },
+  { name: "Aria Habibagahi", role: "Team", isLeader: false, emoji: "❄️", quote: "Driven by performance.", category: "Powertrain" },
+  { name: "Mohammed Mustafa Yaqoub Al Hinai", role: "Team", isLeader: false, emoji: "❄️", quote: "Driven by performance.", category: "Powertrain" },
 
-  // --- SUSPENSION ---
-  { name: "Name19", role: "Lead", isLeader: true, emoji: "🛠️", quote: "Driven by performance.", category: "Suspension" },
-  { name: "Name20", role: "Team Member", isLeader: false, emoji: "🛠️", quote: "Driven by performance.", category: "Suspension" },
+  // --- Suspension & Steering ---
+  // Suspension
+  { name: "Nafiz Imteaz", role: "Lead", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Suspension & Steering" },
+  { name: "Saurav Gupte", role: "Team", isLeader: false, emoji: "🔧", quote: "Driven by performance.", category: "Suspension & Steering" },
+  // Steering
+  { name: "Saad Ibrahim", role: "Team", isLeader: false, emoji: "👑", quote: "Driven by performance.", category: "Suspension & Steering" },
 
-  // --- CHASSIS ---
-  { name: "Name21", role: "Lead", isLeader: true, emoji: "🏗️", quote: "Driven by performance.", category: "Chassis" },
-  { name: "Name22", role: "Team Member", isLeader: false, emoji: "🏗️", quote: "Driven by performance.", category: "Chassis" },
-  { name: "Name23", role: "Team Member", isLeader: false, emoji: "🏗️", quote: "Driven by performance.", category: "Chassis" },
-  { name: "Name24", role: "Team Member", isLeader: false, emoji: "🏗️", quote: "Driven by performance.", category: "Chassis" },
-  { name: "Name25", role: "Team Member", isLeader: false, emoji: "🏗️", quote: "Driven by performance.", category: "Chassis" },
-  { name: "Name26", role: "Team Member", isLeader: false, emoji: "🏗️", quote: "Driven by performance.", category: "Chassis" },
-  { name: "Name27", role: "Team Member", isLeader: false, emoji: "🏗️", quote: "Driven by performance.", category: "Chassis" },
+  // --- Chassis ---
+  { name: "Devansh Ajay Sapru", role: "Chassis Lead", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Chassis" },
+  { name: "Hammad Ahmed Adil", role: "Team", isLeader: false, emoji: "🔧", quote: "Driven by performance.", category: "Chassis" },
+  { name: "Syed Ibrahim Abidi", role: "Team", isLeader: false, emoji: "🔧", quote: "Driven by performance.", category: "Chassis" },
+  { name: "Abbas Murtaza", role: "Team", isLeader: false, emoji: "🔧", quote: "Driven by performance.", category: "Chassis" },
+  { name: "Ethann Thomas Danthi", role: "Team", isLeader: false, emoji: "🔧", quote: "Driven by performance.", category: "Chassis" },
+  { name: "Hazin Zahid", role: "Team", isLeader: false, emoji: "🔧", quote: "Driven by performance.", category: "Chassis" },
+  { name: "Arjun Bomma", role: "Team", isLeader: false, emoji: "🔧", quote: "Driven by performance.", category: "Chassis" },
 
-  // --- AERODYNAMICS ---
-  { name: "Name28", role: "Lead", isLeader: true, emoji: "🌬️", quote: "Driven by performance.", category: "Aerodynamics" },
-  { name: "Name29", role: "Team Member", isLeader: false, emoji: "🌬️", quote: "Driven by performance.", category: "Aerodynamics" },
-  { name: "Name30", role: "Team Member", isLeader: false, emoji: "🌬️", quote: "Driven by performance.", category: "Aerodynamics" },
+  // --- Aerodynamics (Bodywork/Aerodynamics) ---
+  { name: "Zouheir Al Halabi", role: "Aerodynamics Lead", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Aerodynamics" },
+  { name: "Ali Diab", role: "Team", isLeader: false, emoji: "💨", quote: "Driven by performance.", category: "Aerodynamics" },
+  { name: "Rakan", role: "Team", isLeader: false, emoji: "💨", quote: "Driven by performance.", category: "Aerodynamics" },
 
-  // --- STEERING ---
-  { name: "Name31", role: "Lead", isLeader: true, emoji: "🔄", quote: "Driven by performance.", category: "Steering" },
+  // --- Brakes ---
+  { name: "Mihir Avirneni", role: "Brakes Lead", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Brakes" },
+  { name: "Amritha Rajeev", role: "Team", isLeader: false, emoji: "🛑", quote: "Driven by performance.", category: "Brakes" },
+  { name: "Safa Muhammed Umer", role: "Team", isLeader: false, emoji: "🛑", quote: "Driven by performance.", category: "Brakes" },
+  { name: "Aboubakr Mohammad", role: "Team", isLeader: false, emoji: "🛑", quote: "Driven by performance.", category: "Brakes" },
 
-  // --- DRIVETRAIN ---
-  { name: "Name32", role: "Lead", isLeader: true, emoji: "⚙️", quote: "Driven by performance.", category: "Drivetrain" },
-  { name: "Name33", role: "Team Member", isLeader: false, emoji: "⚙️", quote: "Driven by performance.", category: "Drivetrain" },
-  { name: "Name34", role: "Team Member", isLeader: false, emoji: "⚙️", quote: "Driven by performance.", category: "Drivetrain" },
-  { name: "Name35", role: "Team Member", isLeader: false, emoji: "⚙️", quote: "Driven by performance.", category: "Drivetrain" },
+  // --- Drivers (Vehicle Dynamics Drivers) ---
+  { name: "Said Tayara", role: "Test Driver", isLeader: true, emoji: "🏎️", quote: "Driven by performance.", category: "Drivers" },
+  { name: "Anas Saleh", role: "Test Driver", isLeader: false, emoji: "🏎️", quote: "Driven by performance.", category: "Drivers" },
+  { name: "Hassan Eraky", role: "Test Driver", isLeader: false, emoji: "🏎️", quote: "Driven by performance.", category: "Drivers" },
+  { name: "Saurav Gupte", role: "Test Driver", isLeader: false, emoji: "🏎️", quote: "Driven by performance.", category: "Drivers" },
 
-  // --- BRAKES ---
-  { name: "Name36", role: "Lead", isLeader: true, emoji: "🛑", quote: "Driven by performance.", category: "Brakes" },
-  { name: "Name37", role: "Team Member", isLeader: false, emoji: "🛑", quote: "Driven by performance.", category: "Brakes" },
-  { name: "Name38", role: "Team Member", isLeader: false, emoji: "🛑", quote: "Driven by performance.", category: "Brakes" },
-  { name: "Name39", role: "Team Member", isLeader: false, emoji: "🛑", quote: "Driven by performance.", category: "Brakes" },
+  // --- Public Relations (External & Internal) ---
+  // External Relations
+  { name: "Syeda Suha Nawaz", role: "Head of External Relations", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Aisha Abu Sa'ad", role: "Assistant Head of External Relations", isLeader: false, emoji: "👑", quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Sidratul Sara", role: "Team", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Mazin Zakki", role: "Team", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Muhammad Adnan", role: "Team", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Sameer Ahmed", role: "Team", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "Public Relations" },
+  // Internal Relations
+  { name: "Brahmishtha Bhattacharjee", role: "Head of Internal Relations", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Sanaaz Aju Anoob", role: "Team", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Amira", role: "Team", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Hassan Eraky", role: "Team", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Syed Musab", role: "Team", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Pavan Lokesh", role: "Team", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "Public Relations" },
 
-  // --- COOLING ---
-  { name: "Name40", role: "Lead", isLeader: true, emoji: "❄️", quote: "Driven by performance.", category: "Cooling" },
-  { name: "Name41", role: "Team Member", isLeader: false, emoji: "❄️", quote: "Driven by performance.", category: "Cooling" },
+  // --- Operations (Deputy Execs & Treasury) ---
+  // Treasury
+  { name: "Mirra Swaminathan", role: "Head of Treasury", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Operations" },
+  { name: "Toleen", role: "Team", isLeader: false, emoji: "💰", quote: "Driven by performance.", category: "Operations" },
+  // Deputy Executive Assistants
+  { name: "Adrish Hussein Danka", role: "Engineering", isLeader: false, emoji: "💼", quote: "Driven by performance.", category: "Operations" },
+  { name: "Navaal Ghazanfar", role: "Commerce", isLeader: false, emoji: "💼", quote: "Driven by performance.", category: "Operations" },
 
-  // --- DRIVERS ---
-  { name: "Name42", role: "Driver", isLeader: false, emoji: "🏎️", quote: "Driven by performance.", category: "Drivers" },
-  { name: "Name43", role: "Driver", isLeader: false, emoji: "🏎️", quote: "Driven by performance.", category: "Drivers" },
-  { name: "Name44", role: "Driver", isLeader: false, emoji: "🏎️", quote: "Driven by performance.", category: "Drivers" },
-  { name: "Name45", role: "Driver", isLeader: false, emoji: "🏎️", quote: "Driven by performance.", category: "Drivers" },
-  { name: "Name46", role: "Driver", isLeader: false, emoji: "🏎️", quote: "Driven by performance.", category: "Drivers" },
+  // --- Supply Chain ---
+  { name: "Pranav Rajesh", role: "Head of Supply Chain", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Supply Chain" },
+  { name: "Aryan Agrawal", role: "Team", isLeader: false, emoji: "📦", quote: "Driven by performance.", category: "Supply Chain" },
+  { name: "Abdullah Ashar", role: "Team", isLeader: false, emoji: "📦", quote: "Driven by performance.", category: "Supply Chain" },
+  { name: "Noel Daniel", role: "Team", isLeader: false, emoji: "📦", quote: "Driven by performance.", category: "Supply Chain" },
 
-  // --- EXTERNAL RELATIONS ---
-  { name: "Name47", role: "Head of External Relations", isLeader: true, emoji: "🤝", quote: "Driven by performance.", category: "External Relations" },
-  { name: "Name48", role: "Assistant Head of External Relations", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "External Relations" },
-  { name: "Name49", role: "Team Member", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "External Relations" },
-  { name: "Name50", role: "Team Member", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "External Relations" },
-  { name: "Name51", role: "Team Member", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "External Relations" },
-  { name: "Name52", role: "Team Member", isLeader: false, emoji: "🤝", quote: "Driven by performance.", category: "External Relations" },
+  // --- Web Development ---
+  { name: "Sidratul Sara", role: "Head of Web Dev", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Web Development" },
+  { name: "Muhammed Adnan", role: "Assistant Head", isLeader: false, emoji: "👑", quote: "Driven by performance.", category: "Web Development" },
+  { name: "Ghazal Ghazi", role: "Team", isLeader: false, emoji: "💻", quote: "Driven by performance.", category: "Web Development" },
+  { name: "Yusuf Sabuwala", role: "Team", isLeader: false, emoji: "💻", quote: "Driven by performance.", category: "Web Development" },
+  { name: "Hashir Hameed", role: "Team", isLeader: false, emoji: "💻", quote: "Driven by performance.", category: "Web Development" },
+  { name: "Adam Serhan", role: "Team", isLeader: false, emoji: "💻", quote: "Driven by performance.", category: "Web Development" },
+  { name: "Yasmeen Khalaf", role: "Team", isLeader: false, emoji: "💻", quote: "Driven by performance.", category: "Web Development" },
 
-  // --- DEPUTY EXEC. ASSISTANTS ---
-  { name: "Name53", role: "Engineering", isLeader: true, emoji: "📋", quote: "Driven by performance.", category: "Deputy Exec. Assistants" },
-  { name: "Name54", role: "Commerce", isLeader: true, emoji: "📋", quote: "Driven by performance.", category: "Deputy Exec. Assistants" },
-
-  // --- SUPPLY CHAIN ---
-  { name: "Name55", role: "Head of Supply Chain", isLeader: true, emoji: "📦", quote: "Driven by performance.", category: "Supply Chain" },
-  { name: "Name56", role: "Team Member", isLeader: false, emoji: "📦", quote: "Driven by performance.", category: "Supply Chain" },
-  { name: "Name57", role: "Team Member", isLeader: false, emoji: "📦", quote: "Driven by performance.", category: "Supply Chain" },
-  { name: "Name58", role: "Team Member", isLeader: false, emoji: "📦", quote: "Driven by performance.", category: "Supply Chain" },
-
-  // --- WEB DEVELOPMENT ---
-  { name: "Sidratul Sara", role: "Head of Web Dev", isLeader: true, emoji: "💻", quote: "Driven by performance.", category: "Web Development" },
-  { name: "Muhammed Adnan", role: "Assistant Head", isLeader: false, emoji: "💻", quote: "Driven by performance.", category: "Web Development" },
-  { name: "Ghazal Ghazi", role: "Team Member", isLeader: false, emoji: "💻", quote: "Driven by performance.", category: "Web Development" },
-  { name: "Yusuf Sabuwala", role: "Team Member", isLeader: false, emoji: "💻", quote: "Driven by performance.", category: "Web Development" },
-  { name: "Hashir Hameed", role: "Team Member", isLeader: false, emoji: "💻", quote: "Driven by performance.", category: "Web Development" },
-  { name: "Adam Serhan", role: "Team Member", isLeader: false, emoji: "💻", quote: "Driven by performance.", category: "Web Development" },
-  { name: "Yasmeen Khalaf", role: "Team Member", isLeader: false, emoji: "💻", quote: "Driven by performance.", category: "Web Development" },
-
-  // --- MEDIA & MARKETING ---
-  { name: "Mazin Rizvi", role: "Advisor", isLeader: true, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Name67", role: "Head of Media & Marketing", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Name68", role: "Team Member", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Name69", role: "Team Member", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Name70", role: "Team Member", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Name71", role: "Team Member", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Name72", role: "Team Member", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Name73", role: "Team Member", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Name74", role: "Team Member", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
-
-  // --- TREASURY ---
-  { name: "Name75", role: "Head of Treasury", isLeader: true, emoji: "💰", quote: "Driven by performance.", category: "Treasury" },
-  { name: "Name76", role: "Team Member", isLeader: false, emoji: "💰", quote: "Driven by performance.", category: "Treasury" },
-  { name: "Name77", role: "Team Member", isLeader: false, emoji: "💰", quote: "Driven by performance.", category: "Treasury" },
-
-  // --- INTERNAL RELATIONS (Inferred from prompt) ---
-  { name: "Name78", role: "Team Member", isLeader: false, emoji: "👥", quote: "Driven by performance.", category: "Internal Relations" },
-  { name: "Name79", role: "Team Member", isLeader: false, emoji: "👥", quote: "Driven by performance.", category: "Internal Relations" }
+  // --- Media & Marketing ---
+  { name: "Hazin Zahid", role: "Head of Media & Marketing", isLeader: true, emoji: "👑", quote: "Driven by performance.", category: "Media & Marketing" },
+  { name: "Mazin Rizvi", role: "Advisor", isLeader: false, emoji: "🧠", quote: "Driven by performance.", category: "Media & Marketing" },
+  { name: "Samriddhi", role: "Team", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
+  { name: "Abdulkadar Awad Muhammad Aslam", role: "Team", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
+  { name: "Ahadali Suchedina", role: "Team", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
+  { name: "Eyad Wafa", role: "Team", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
+  { name: "Sarah D'Silva", role: "Team", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" },
+  { name: "Edliyn Risshona", role: "Team", isLeader: false, emoji: "📸", quote: "Driven by performance.", category: "Media & Marketing" }
 ];

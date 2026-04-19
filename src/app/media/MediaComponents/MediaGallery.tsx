@@ -4,22 +4,22 @@ import Image from "next/image";
 import { useState } from "react";
 
 const media = [
-  "/ausracinglogo.jpg",
-  "/ausracinglogo.jpg",
-  "/ausracinglogo.jpg",
-  "/ausracinglogo.jpg",
-  "/ausracinglogo.jpg",
-  "/ausracinglogo.jpg",
-  "/ausracinglogo.jpg",
+  "/images/team/placeholder.webp",
+  "/images/team/placeholder.webp",
+  "/images/team/placeholder.webp",
+  "/images/team/placeholder.webp",
+  "/images/team/placeholder.webp",
+  "/images/team/placeholder.webp",
+  "/images/team/placeholder.webp",
 ];
 
 const thumbs = [
-  "/ausracinglogo.jpg",
-  "/ausracinglogo.jpg",
-  "/ausracinglogo.jpg",
-  "/ausracinglogo.jpg",
-  "/ausracinglogo.jpg",
-  "/ausracinglogo.jpg",
+  "/images/team/placeholder.webp",
+  "/images/team/placeholder.webp",
+  "/images/team/placeholder.webp",
+  "/images/team/placeholder.webp",
+  "/images/team/placeholder.webp",
+  "/images/team/placeholder.webp",
 
 ];
 
