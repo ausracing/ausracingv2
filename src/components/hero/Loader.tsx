@@ -2,12 +2,27 @@
 
 import { useEffect, useState } from "react";
 
+// ✨ THE MAGIC FIX: Resets on refresh, but stays true during client navigation
+let hasPlayedThisReload = false;
+
 export default function Loader({ isReady, onComplete }: { isReady: boolean; onComplete: () => void }) {
   const [phase, setPhase] = useState(0);
   const [telemetry, setTelemetry] = useState(0);
+  
+  // Initializes based on the variable outside the component
+  const [isAlreadyLoaded] = useState(hasPlayedThisReload);
+
+  // 0. INITIAL CHECK
+  useEffect(() => {
+    if (isAlreadyLoaded) {
+      onComplete(); 
+    }
+  }, [isAlreadyLoaded, onComplete]);
 
   // 1. THE CINEMATIC TIMELINE
   useEffect(() => {
+    if (isAlreadyLoaded) return; 
+
     const t1 = setTimeout(() => setPhase(1), 100); 
     const t2 = setTimeout(() => setPhase(2), 600); 
     const t3 = setTimeout(() => setPhase(3), 2800); 
@@ -17,11 +32,11 @@ export default function Loader({ isReady, onComplete }: { isReady: boolean; onCo
       clearTimeout(t2);
       clearTimeout(t3);
     };
-  }, []);
+  }, [isAlreadyLoaded]);
 
   // 2. THE DYNAMIC GEARBOX
   useEffect(() => {
-    if (telemetry >= 100) return; 
+    if (isAlreadyLoaded || telemetry >= 100) return; 
 
     let delay = 35; 
 
@@ -37,21 +52,27 @@ export default function Loader({ isReady, onComplete }: { isReady: boolean; onCo
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [telemetry, isReady]);
+  }, [telemetry, isReady, isAlreadyLoaded]);
 
-  // 3. THE EXIT TRIGGER (The 4-Panel Setup)
+  // 3. THE EXIT TRIGGER
   useEffect(() => {
+    if (isAlreadyLoaded) return;
+
     if (telemetry === 100) {
+      // Mark as played right before exit so page changes ignore the loader
+      hasPlayedThisReload = true;
+      
       const exitTimer = setTimeout(() => {
         setPhase(4); 
-        // Wait 1200ms to allow all staggered panels to fully clear the ceiling
         setTimeout(onComplete, 1200); 
       }, 400);
       
       return () => clearTimeout(exitTimer);
     }
-  }, [telemetry, onComplete]);
+  }, [telemetry, onComplete, isAlreadyLoaded]);
 
+  // Instantly skip rendering if loaded
+  if (isAlreadyLoaded) return null;
   if (phase === 4 && telemetry === 101) return null;
 
   return (
@@ -70,7 +91,7 @@ export default function Loader({ isReady, onComplete }: { isReady: boolean; onCo
         ))}
       </div>
 
-      {/* THE CONTENT WRAPPER (Fades out just as the panels start moving) */}
+      {/* THE CONTENT WRAPPER */}
       <div className={`relative z-10 w-full h-full transition-opacity duration-300 ${phase === 4 ? "opacity-0" : "opacity-100"}`}>
         
         {/* THE SLOGAN */}
