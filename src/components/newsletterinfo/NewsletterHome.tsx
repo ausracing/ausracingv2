@@ -63,7 +63,7 @@ export default function NewsletterHome() {
 
         <Link
           href="/newsletter"
-          className="mt-4 md:mt-6 inline-block px-5 py-2 border border-white/20 rounded-lg text-sm md:text-base hover:bg-white/10 hover:border-yellow-300 hover:shadow-lg hover:shadow-yellow-400/10 transition duration-300"
+          className="mt-4 md:mt-6 inline-block px-5 py-2 border border-white/20 rounded-lg text-sm md:text-base hover:bg-white/10 hover:border-primary hover:shadow-lg hover:shadow-yellow-400/10 transition duration-300"
         >
           Go to Newsletter
         </Link>
