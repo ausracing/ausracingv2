@@ -34,15 +34,14 @@ export default function Home() {
       <SponsorsStrip />
       <AUSParagraph />
       <Spacer height={55} />
-      <TimelineSection />
-      <Spacer height={55} />
       <CompetitionCountdown />
-      <QuoteSection />
       <Spacer height={55} />
+      <TimelineSection />
+      <Spacer height={15} />
       <CarTeaser />
-      <Spacer height={70} />
+      <Spacer height={90} />
       <NewsletterHome />
-
+      <QuoteSection />
       
     </main>
   );

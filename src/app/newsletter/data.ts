@@ -135,42 +135,42 @@ export const newsletterArticles: Article[] = [
       }
     ]
   },
-  {
-    slug: "POST-1",
-    title: "post 1",
-    shortDescription: "A new aerodynamic update has been revealed.",
-    image: "/images/team/placeholder.webp",
-    date: "16-04-2026",
-    sections: [
-      {
-        text: "Full article about the new car launch goes here...",
-      }
-    ]
-  },
-  {
-    slug: "POST-2",
-    title: "post 2",
-    shortDescription: "Strong performance during testing sessions.",
-    image: "/images/team/placeholder.webp",
-    date: "19-05-2026",
-    sections: [
-      {
-        text: "Full testing breakdown and analysis goes here...",
-      }
-    ]
-  },
-  {
-    slug: "POST-3",
-    title: "post 3",
-    shortDescription: "A new aerodynamic update has been revealed.",
-    image: "/images/team/placeholder.webp",
-    date: "16-06-2026",
-    sections: [
-      {
-        text: "Full article about the new car launch goes here...",
-      }
-    ]
-  },
+  // {
+  //   slug: "POST-1",
+  //   title: "post 1",
+  //   shortDescription: "A new aerodynamic update has been revealed.",
+  //   image: "/images/team/placeholder.webp",
+  //   date: "16-04-2026",
+  //   sections: [
+  //     {
+  //       text: "Full article about the new car launch goes here...",
+  //     }
+  //   ]
+  // },
+  // {
+  //   slug: "POST-2",
+  //   title: "post 2",
+  //   shortDescription: "Strong performance during testing sessions.",
+  //   image: "/images/team/placeholder.webp",
+  //   date: "19-05-2026",
+  //   sections: [
+  //     {
+  //       text: "Full testing breakdown and analysis goes here...",
+  //     }
+  //   ]
+  // },
+  // {
+  //   slug: "POST-3",
+  //   title: "post 3",
+  //   shortDescription: "A new aerodynamic update has been revealed.",
+  //   image: "/images/team/placeholder.webp",
+  //   date: "16-06-2026",
+  //   sections: [
+  //     {
+  //       text: "Full article about the new car launch goes here...",
+  //     }
+  //   ]
+  // },
   {
     slug: "Sept-News",
     title: "September News",

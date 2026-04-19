@@ -16,6 +16,7 @@ export default function Footer() {
               src="/images/logo.webp"
               alt="AUS Racing logo"
               fill
+            sizes="200rem"
               className="object-contain object-left"
             />
           </div>
@@ -45,7 +46,6 @@ export default function Footer() {
 
           <h4 className="text-sm font-medium text-gray-300">
             📍 American Univesity of Sharjah
-            American University of Sharjah
           </h4>
 
           <div className="flex items-center gap-2 text-sm text-gray-400">

@@ -8,12 +8,13 @@ export default function CarTeaser() {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <section id="our-car" className="relative w-full h-[30vh] min-h-[200px] max-h-[280px] overflow-hidden">
+    <section className="relative w-full h-[30vh] min-h-[200px] max-h-[280px] overflow-hidden">
       {/* Background car image */}
       <Image
         src="/images/car/car2.webp"
         alt="AUS Racing Formula Student Car"
         fill
+        sizes="200rem"
         priority
         className="object-cover"
         style={{ objectPosition: "center center" }}

@@ -39,6 +39,7 @@ export default function MediaGallery() {
             src={active}
             alt="active"
             fill
+            sizes="200rem"
             className="object-cover transition duration-500"
             priority
           />
@@ -59,6 +60,7 @@ export default function MediaGallery() {
               src={img}
               alt={`media-${i}`}
               fill
+            sizes="200rem"
               className="object-cover transition duration-300 group-hover:scale-105"
             />
           </div>
@@ -86,6 +88,7 @@ export default function MediaGallery() {
                 src={thumb}
                 alt={`thumb-${i}`}
                 fill
+            sizes="200rem"
                 className="object-cover"
               />
 

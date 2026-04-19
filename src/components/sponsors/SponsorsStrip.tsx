@@ -55,6 +55,7 @@ export default function SponsorsStrip() {
                     src={sponsor.src}
                     alt={sponsor.name}
                     fill
+            sizes="200rem"
                     className="object-contain grayscale opacity-70 transition duration-300 hover:grayscale-0 hover:opacity-100"
                   />
                 </div>

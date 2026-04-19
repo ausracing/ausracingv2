@@ -55,6 +55,7 @@ export default function NewsletterClient({
               src={selected.image}
               alt={selected.title}
               fill
+            sizes="200rem"
               className="object-cover"
               priority
             />

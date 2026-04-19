@@ -62,7 +62,7 @@ export default function CarModel({ modelUrl, className = "" }: CarModelProps) {
           >
             <ambientLight intensity={0.4} />
             <directionalLight position={[10, 10, 5]} intensity={1} castShadow />
-            <pointLight position={[-10, -10, -10]} color="var(--color-primary)" intensity={0.5} />
+            <pointLight position={[-10, -10, -10]} color="black" intensity={0.5} />
 
             <Suspense fallback={null}>
               <CarScene url={modelUrl} onLoadedRef={onLoadedRef} />
