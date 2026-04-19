@@ -155,21 +155,21 @@ export default function CarConceptClient({ modelUrl }: { modelUrl: string }) {
               Engineered<br />
               to race.
             </h1>
-           <p className="text-white/55 text-base md:text-lg leading-relaxed max-w-md mb-4">
-  AUS Racing is the American University of Sharjah's Formula Student
-  team. Every component — from the spaceframe steel chassis to the
-  custom accumulator — is designed, analysed, manufactured, and tested by
-  our students. We compete at Formula Student UK.
-</p>
+            <p className="text-white/55 text-base md:text-lg leading-relaxed max-w-md mb-4">
+              AUS Racing is the American University of Sharjah's Formula Student
+              team. Every component — from the carbon fibre monocoque to the ECU
+              calibration — is designed, analysed, manufactured, and tested by
+              our students. We compete at Formula Student Germany.
+            </p>
             <p className="text-white/30 text-sm leading-relaxed max-w-sm mb-10">
               Hover the annotation dots on the model to explore key car systems.
               Scroll down to meet the departments behind the build.
             </p>
             <div className="flex gap-10">
               {[
-                { value: "EV", label: "Powertrain" },
-  { value: "7", label: "Departments" },
-  { value: "FSUK", label: "Competition" },
+                { value: "600cc", label: "Engine" },
+                { value: "7", label: "Departments" },
+                { value: "FSG", label: "Competition" },
               ].map((s) => (
                 <div key={s.label}>
                   <p className="text-2xl font-black text-primary">{s.value}</p>
@@ -191,7 +191,7 @@ export default function CarConceptClient({ modelUrl }: { modelUrl: string }) {
         </div>
       </section>
 
-      {/* ── Divider ────────────────a──────────────────────────────── */}
+      {/* ── Divider ──────────────────────────────────────────────── */}
       <div className="mx-6 md:mx-12 lg:mx-20 my-20 h-px bg-white/[0.07]" />
 
       {/* ── Department cards ─────────────────────────────────────── */}
