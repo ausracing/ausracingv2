@@ -149,21 +149,18 @@ export default function CarConceptClient({ modelUrl }: { modelUrl: string }) {
             <p className="text-xs font-mono tracking-[0.25em] uppercase text-primary mb-5">
               AUS Racing · Formula Student
             </p>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black uppercase text-foreground leading-[0.92] tracking-tight mb-7">
+            <h1 className="text-5xl md:text-6xl font-orbitron lg:text-7xl font-black uppercase text-foreground leading-[0.92] tracking-tight mb-7">
               Built by<br />
               <span className="text-primary">students.</span><br />
               Engineered<br />
               to race.
             </h1>
            <p className="text-white/55 text-base md:text-lg leading-relaxed max-w-md mb-4">
-  AUS Racing is the American University of Sharjah's Formula Student
-  team. Every component — from the spaceframe steel chassis to the
-  custom accumulator — is designed, analysed, manufactured, and tested by
-  our students. We compete at Formula Student UK.
+  Building a single-seater, racecar for competitions with every component being designed, analysed, manufactured, and tested by our students.
 </p>
             <p className="text-white/30 text-sm leading-relaxed max-w-sm mb-10">
-              Hover the annotation dots on the model to explore key car systems.
-              Scroll down to meet the departments behind the build.
+              Hover annotation dots on model to explore key car systems.
+              Learn below about the departments behind the build.
             </p>
             <div className="flex gap-10">
               {[

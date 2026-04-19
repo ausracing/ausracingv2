@@ -15,7 +15,7 @@ const navLinks = [
   { name: "Our Car", href: "/#our-car" },
   { name: "Team", href: "/team" },
   { name: "Newsletter", href: "/newsletter" },
-  { name: "Media", href: "/media" },
+  // { name: "Media", href: "/media" },
   { name: "Contact Us", href: "/#contact" }
 ];
 

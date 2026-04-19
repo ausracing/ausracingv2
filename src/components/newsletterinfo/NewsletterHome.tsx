@@ -57,8 +57,8 @@ export default function NewsletterHome() {
 
       {/* CTA */}
       <div className="mt-5 md:mt-8 text-center">
-        <p className="text-white/70 text-sm md:text-base">
-          Interested? Check out our newsletter for more updates.
+        <p className="text-white/70 text-sm md:text-base font-medium space-x-1">
+          Interested? &nbsp;Check out our newsletter for more updates.
         </p>
 
         <Link

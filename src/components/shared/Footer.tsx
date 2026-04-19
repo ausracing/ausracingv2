@@ -35,6 +35,7 @@ export default function Footer() {
           </h4>
 
           <a href="/" className="text-sm text-gray-400 hover:text-gray-300 transition">Home</a>
+          <a href="/car-concept" className="text-sm text-gray-400 hover:text-gray-300 transition">Car Concept</a>
           <a href="/media" className="text-sm text-gray-400 hover:text-gray-300 transition">Media</a>
           <a href="/team" className="text-sm text-gray-400 hover:text-gray-300 transition">Team</a>
           <a href="/newsletter" className="text-sm text-gray-400 hover:text-gray-300 transition">Newsletter</a>
