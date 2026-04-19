@@ -40,7 +40,7 @@ export default function CompetitionCountdown() {
   return (
     <section className="bg-black text-white">
       <div className="mx-auto max-w-[1500px] px-6 py-10 md:px-10 md:py-12">
-        <div className="flex items-start font-orbitron justify-between">
+        <div className="flex items-start md:font-orbitron lg:font-orbitron justify-between">
           <h2 className="text-[3rem] font-black uppercase space-x-2  tracking-[-0.06em] sm:text-[5rem] md:text-[7rem]">
             Silverstone
           </h2>
