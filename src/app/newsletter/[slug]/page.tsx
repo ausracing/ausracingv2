@@ -1,9 +1,8 @@
-import Image from "next/image";
-import { notFound } from "next/navigation";
 import { newsletterArticles } from "../data";
-import Footer from "@/components/shared/Footer";
+import { notFound } from "next/navigation";
+import BackButton from "@/components/newsletterinfo/BackButton";
 
-export default async function ArticlePage({
+export default async function Page({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -11,38 +10,55 @@ export default async function ArticlePage({
   const { slug } = await params;
 
   const article = newsletterArticles.find(
-    (p) => p.slug === slug
+    (a) => a.slug === slug
   );
 
   if (!article) return notFound();
 
   return (
-    <div className="min-h-screen bg-black text-white px-10 py-10">
-      <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen bg-black text-white px-6 py-12">
+      <div className="max-w-4xl mx-auto">
 
-        <div className="relative w-full h-[380px] rounded-xl overflow-hidden mb-6">
-          <Image
-            src={article.image}
-            alt={article.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
+        {/* BACK BUTTON (NEW STYLE) */}
+        <BackButton />
+
+       
+
+        {/* CONTENT SECTIONS */}
+        <div className="space-y-12">
+          {article.sections.map((section, i) => (
+            <div key={i} className="space-y-4">
+
+              {/* IMAGE */}
+              {section.image && (
+                <div className="relative w-full h-[1250px] rounded-xl overflow-hidden bg-black">
+                  <img
+                    src={section.image}
+                    alt=""
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              )}
+
+              {/* TEXT */}
+              {section.text && (
+                <p className="text-zinc-300 leading-relaxed">
+                  {section.text}
+                </p>
+              )}
+
+              {/* HEADING */}
+              {section.heading && (
+                <h2 className="text-2xl font-semibold">
+                  {section.heading}
+                </h2>
+              )}
+
+            </div>
+          ))}
         </div>
 
-        <h1 className="text-3xl font-bold">{article.title}</h1>
-
-        <p className="text-white/50 mt-2 text-sm">
-          {article.date}
-        </p>
-
-        <p className="mt-6 text-white/70 leading-relaxed">
-          {article.shortDescription}
-        </p>
-
       </div>
-
-      {/* <Footer/> */}
     </div>
   );
 }

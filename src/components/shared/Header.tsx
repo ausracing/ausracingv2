@@ -16,6 +16,7 @@ const navLinks = [
   { name: "Team", href: "/team" },
   { name: "Newsletter", href: "/newsletter" },
   { name: "Media", href: "/media" },
+  { name: "Contact Us", href: "/#footer" },
   { name: "Contact Us", href: "/#contact" }
 ];
 
