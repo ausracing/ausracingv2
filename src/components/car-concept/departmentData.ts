@@ -25,36 +25,51 @@ export const departments: Department[] = [
     ],
     position: [0.2, 0, 0],
   },
-  {
-    id: "powertrain",
-    icon: "🔧",
-    title: "Powertrain",
-    summary: "Power delivery, cooling, reliability, and driveline efficiency.",
-    detail:
-      "The powertrain team manages the engine, exhaust, cooling circuit, and fuel system. We focus on reliability and peak performance through careful calibration and endurance testing sessions before every competition.",
-    bullets: [
-      "Custom 600cc inline-4 engine",
-      "Turbocharged intake system",
-      "Sequential 6-speed gearbox",
-      "Dry-sump lubrication",
-    ],
-    position: [-1.4, -0.3, 0],
-  },
-  {
-    id: "aerodynamics",
-    icon: "🌬️",
-    title: "Aerodynamics",
-    summary: "CFD, wings, undertray, and drag/downforce balance.",
-    detail:
-      "Our aero team uses CFD simulation and wind-tunnel correlation to develop wings, undertray, and body panels that balance downforce generation with drag. Every surface is validated before manufacture.",
-    bullets: [
-      "CFD-validated front and rear wing packages",
-      "Carbon fibre composite monocoque panels",
-      "Undertray and diffuser development",
-      "Drag/downforce balance optimisation",
-    ],
-    position: [2, -0.5, 0],
-  },
+{
+  id: "powertrain",
+  icon: "⚡",
+  title: "Powertrain",
+  summary: "Electric drivetrain, motor controller, accumulator, and reliability.",
+  detail:
+    "The powertrain team manages the electric motor, motor controller, accumulator, and drivetrain system. We focus on reliability and peak performance through careful calibration and endurance testing sessions before every competition.",
+  bullets: [
+    "ME1616 PMAC electric motor (25–50kW)",
+    "Sevcon Gen4 motor controller",
+    "100.9V accumulator — 616 cells, 28s 22p",
+    "Chain-driven single-speed drivetrain",
+  ],
+  position: [-1.4, -0.3, 0],
+},
+{
+  id: "aerodynamics",
+  icon: "🌬️",
+  title: "Aerodynamics & Bodywork",
+  summary: "Body design, nose aerodynamics, and lightweight panel manufacturing.",
+  detail:
+    "Our aero team designs and manufactures the car's bodywork and nose using 2mm laser-cut aluminium panels rivnutted to 3D printed brackets. The nose is shaped to direct air toward the undertray for downforce.",
+  bullets: [
+    "2mm laser-cut aluminium body panels",
+    "Nose designed to push air to undertray",
+    "3D printed brackets and rivnut connections",
+    "CFD simulations for aerodynamic validation",
+  ],
+  position: [2, -0.5, 0],
+},
+{
+  id: "chassis",
+  icon: "🏗️",
+  title: "Chassis",
+  summary: "Spaceframe steel chassis, TIG welded, FEA validated.",
+  detail:
+    "Our chassis engineers designed a spaceframe steel chassis using ASTM A500 Grade A mild steel tubing, TIG welded throughout. Over 60 tubes with 33.45mm outer diameter and varying wall thicknesses optimise weight while meeting all FSUK safety requirements.",
+  bullets: [
+    "ASTM A500 Grade A spaceframe steel chassis",
+    "60+ TIG welded tubes, 33.45mm OD",
+    "1.2mm max deflection under 300N torsional load",
+    "Rollhoop, firewall, and impact attenuator compliant",
+  ],
+  position: [-0.2, -0.6, 0.6],
+},
   {
     id: "vehicle-dynamics",
     icon: "🏎️",
@@ -70,21 +85,7 @@ export const departments: Department[] = [
     ],
     position: [0.4, -0.4, 0.5],
   },
-  {
-    id: "chassis",
-    icon: "🏗️",
-    title: "Chassis",
-    summary: "Monocoque/spaceframe design, stiffness, safety, and compliance.",
-    detail:
-      "Our chassis engineers design the primary structure to meet both stiffness targets and FSG/FSAE safety requirements. Finite element analysis drives every design iteration from concept through manufacture.",
-    bullets: [
-      "FEA-driven structural design",
-      "Torsional and bending stiffness targets",
-      "Rollhoop and impact attenuator compliance",
-      "Weight optimisation via material selection",
-    ],
-    position: [-0.2, -0.6, 0.6],
-  },
+ 
   {
     id: "sponsorships",
     icon: "🤝",
