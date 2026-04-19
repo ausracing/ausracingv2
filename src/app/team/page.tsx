@@ -35,7 +35,7 @@ const TeamCard = ({ member }: { member: any }) => {
           src={imgSrc}
           alt={member.name}
           fill
-          draggable={false} // 🚀 Prevents dragging
+          draggable={false} // Prevents dragging
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           className={`transition-all select-none duration-500 group-hover:scale-105 ${
             imgSrc.includes('placeholder') 
