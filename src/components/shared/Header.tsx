@@ -98,7 +98,7 @@ export default function Header() {
           return (
             <li
               key={link.name}
-              className={`font-mono text-[11px] tracking-[0.06em] uppercase transition-all duration-300 pb-0.5 border-b-[1.5px] cursor-pointer ${
+              className={`text-[11px] tracking-[0.06em] uppercase transition-all duration-300 pb-0.5 border-b-[1.5px] cursor-pointer ${
                 isActive
                   ? "text-foreground border-white/50 font-bold"
                   : "text-white/60 border-transparent hover:text-primary hover:border-primary"
@@ -114,7 +114,7 @@ export default function Header() {
       <div className="flex-1 flex items-center justify-end">
         <Link
           href="/sponsors"
-          className="font-mono text-[10px] tracking-[0.1em] uppercase px-6 py-2.5 bg-primary text-background font-bold rounded-[4px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,170,0,0.5)] cursor-pointer"
+          className="text-[11px] tracking-[0.1em] uppercase px-4 py-2.5 bg-primary text-background font-bold rounded-[4px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,170,0,0.5)] cursor-pointer"
         >
           Partner With Us &rarr;
         </Link>

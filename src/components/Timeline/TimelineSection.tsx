@@ -73,7 +73,7 @@ export default function TimelineSection() {
                 </p>
 
                 
-                <p className="mt-1 max-w-[140px] text-xs font-medium text-white/80 md:text-sm">
+                <p className="mt-1 max-w-[140px] text-xs font-medium  text-white/70 md:text-sm">
                   {item.title}
                 </p>
               </div>
