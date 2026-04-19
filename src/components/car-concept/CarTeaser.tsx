@@ -11,33 +11,26 @@ export default function CarTeaser() {
     <section id="our-car" className="relative w-full h-[30vh] min-h-[200px] max-h-[280px] overflow-hidden">
       {/* Background car image */}
       <Image
-        src="/images/car/car.webp"
+        src="/images/car/car2.webp"
         alt="AUS Racing Formula Student Car"
         fill
         priority
-        className="object-cover "
-        style={{ objectPosition: "center 30%" }}
+        className="object-cover"
+        style={{ objectPosition: "center center" }}
       />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/60" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
-
-      {/* Scanline texture */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, #fff 2px, #fff 3px)",
-          backgroundSize: "100% 3px",
-        }}
-      />
-
+    {/* Top fade */}
+<div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+    
       {/* Centred content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
         {/* Ghost heading */}
         <p className="text-[clamp(2rem,6vw,5rem)] font-black uppercase tracking-[0.3em] text-white/[0.05] select-none pointer-events-none absolute">
           THE CAR
         </p>
+
+        {/* Label above button */}
+<p className="text-s font-mono tracking-[0.25em] uppercase text-white/70 mb-1 z-10"> CHECK OUT THE CAR        </p>
 
         {/* Animated CTA */}
         <Link href="/car-concept" aria-label="Explore the car concept">
@@ -67,18 +60,18 @@ export default function CarTeaser() {
               transition={{ duration: 0.3 }}
             />
 
-            {/* Label container — no overflow-hidden, use opacity+y instead */}
-            <span className="relative flex items-center justify-center w-28 h-5">
+            {/* Fixed: use a clipping wrapper so spans never overlap */}
+            <span className="relative flex items-center justify-center w-28 h-5 overflow-hidden">
               <motion.span
                 className="absolute text-sm font-mono tracking-[0.2em] uppercase text-white font-semibold whitespace-nowrap"
-                animate={{ y: hovered ? -10 : 0, opacity: hovered ? 0 : 1 }}
+                animate={{ y: hovered ? "-100%" : "0%" , opacity: hovered ? 0 : 1 }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
               >
                 See More
               </motion.span>
               <motion.span
                 className="absolute text-sm font-mono tracking-[0.2em] uppercase text-primary font-semibold whitespace-nowrap"
-                animate={{ y: hovered ? 0 : 10, opacity: hovered ? 1 : 0 }}
+                animate={{ y: hovered ? "0%" : "100%", opacity: hovered ? 1 : 0 }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
               >
                 Explore →
