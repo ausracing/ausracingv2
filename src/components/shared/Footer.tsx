@@ -15,9 +15,10 @@ export default function Footer() {
             <Image
               src="/images/logo.webp"
               alt="AUS Racing logo"
-              fill
-            sizes="200rem"
+              width={128}
+              height={64}
               className="object-contain object-left"
+              style={{ width: 'auto', height: '100%' }}
             />
           </div>
 

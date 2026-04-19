@@ -19,7 +19,7 @@ export default function AUSParagraph() {
         </div>
 
         {/* Heading */}
-        <h2 className="text-3xl lg:text-[26px] font-semibold font-mono text-white leading-[1.2] tracking-[-0.01em] mb-4">
+        <h2 className="text-3xl lg:text-[26px] font-semibold font-orbitron text-white leading-[1.2] tracking-[-0.01em] mb-4">
           Student engineers.<br />
           Real competition.<br />
           Real results.
