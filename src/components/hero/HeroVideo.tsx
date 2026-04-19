@@ -41,7 +41,7 @@ export default function HeroVideo({ onVideoReady }: HeroVideoProps) {
       <div className="relative z-20 text-center flex flex-col items-center gap-6 px-4 select-none">
         
         {/* TITLE BLOCK */}
-        <h1 className="flex flex-wrap justify-center items-center gap-3 lg:gap-4 text-6xl md:text-7xl lg:text-7xl font-bold tracking-[0.1em] text-white uppercase">
+        <h1 className="flex flex-wrap justify-center items-center gap-3 lg:gap-4 text-6xl md:text-7xl lg:text-7xl font-bold font-orbitron tracking-[0.1em] text-white uppercase">
           <span>AUS</span>
           <span>RACING</span>
         </h1>
