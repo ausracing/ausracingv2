@@ -70,6 +70,8 @@ export default function Footer() {
             </a>
 
             <a href="https://www.linkedin.com/company/aus-racing-team/" target="_blank">
+              <FaLinkedin className="text-lg hover:text-gray-300 transition" />
+            </a>
             <a href="https://www.instagram.com/ausracingfs/" target="_blank" rel="noreferrer">
               <FaInstagram className="text-lg hover:text-gray-300 transition" />
             </a>
