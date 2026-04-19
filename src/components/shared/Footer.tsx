@@ -4,36 +4,23 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black text-gray-400 py-14 px-6 border-t border-gray-800">
+    <footer id="contact" className="w-full bg-black text-gray-400 pt-14 pb-6 px-6 border-t border-gray-800">
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
 
         {/* COLUMN 1 — BRAND */}
         <div className="flex flex-col gap-4">
 
-          {/* LOGO BOX */}
-      <div className="relative w-12 h-12 bg-gradient-to-b from-gray-800 to-gray-900 rounded-md border border-gray-700 flex items-center justify-center overflow-visible">
-
-  <div className="absolute w-14 h-14">
-    <Image
-      src="/ausracinglogo.jpg"
-      alt="AUS Racing logo"
-      fill
-      className="object-contain scale-110"
-    />
-  </div>
-
-</div>
-
-          <h3 className="text-lg font-medium text-gray-200">
-            AUS Racing
-          </h3>
-
-          <div className="text-base text-gray-400">
-            🏎️ 🔥🔥
+          <div className="relative w-32 h-16 flex items-center justify-start overflow-visible">
+            <Image
+              src="/images/logo.webp"
+              alt="AUS Racing logo"
+              fill
+              className="object-contain object-left"
+            />
           </div>
 
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-400 mt-2">
             Engineering the future of motorsport performance.
           </p>
 
@@ -58,6 +45,7 @@ export default function Footer() {
 
           <h4 className="text-sm font-medium text-gray-300">
             📍 American Univesity of Sharjah
+            American University of Sharjah
           </h4>
 
           <div className="flex items-center gap-2 text-sm text-gray-400">
@@ -82,11 +70,14 @@ export default function Footer() {
             </a>
 
             <a href="https://www.linkedin.com/company/aus-racing-team/" target="_blank">
-              <FaLinkedin className="text-lg hover:text-gray-300 transition" />
+            <a href="https://www.instagram.com/ausracingfs/" target="_blank" rel="noreferrer">
+              <FaInstagram className="text-lg hover:text-gray-300 transition" />
             </a>
 
+            <a href="https://www.linkedin.com/company/aus-racing-team/posts/?feedView=all" target="_blank" rel="noreferrer">
+              <FaLinkedin className="text-lg hover:text-gray-300 transition" />
+            </a>
           </div>
-
         </div>
 
         {/* COLUMN 4 — NEWSLETTER */}
@@ -105,17 +96,14 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Email address"
-              className="flex-1 px-3 py-2 bg-transparent text-sm text-gray-200 placeholder-gray-600 outline-none"
+              className="flex-1 min-w-0 px-3 py-2 bg-transparent text-sm text-gray-200 placeholder-gray-600 outline-none"
             />
 
-            <button className="px-5 py-2 text-sm text-gray-300 hover:bg-gray-800 transition border-l border-gray-800">
+            <button className="flex-shrink-0 whitespace-nowrap px-5 py-2 text-sm text-gray-300 hover:bg-gray-800 transition border-l border-gray-800">
               Subscribe
             </button>
-
           </div>
-
         </div>
-
       </div>
 
       {/* BOTTOM */}

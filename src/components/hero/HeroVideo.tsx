@@ -1,9 +1,3 @@
-// HeroVideo.tsx
-// OWNER: Hashir
-// Client component — looping muted background video with overlay text and CTA button.
-// Uses: <video> tag with autoPlay loop muted playsInline
-// CTA button: gold "Sponsor Us" button
-// src/components/hero/HeroVideo.tsx
 // src/components/hero/HeroVideo.tsx
 "use client";
 
@@ -40,18 +34,27 @@ export default function HeroVideo({ onVideoReady }: HeroVideoProps) {
         <source src="/media/hero.webm" type="video/webm" />
       </video>
 
-      {/* 2. OVERLAY LAYER (Middle layer: z-10) */}
-      <div className="absolute inset-0 bg-black/50 z-10"></div>
+      {/* 2. OVERLAY LAYER (Dark gradient added for perfect contrast) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80 z-10"></div>
 
       {/* 3. FOREGROUND CONTENT LAYER (Top layer: z-20) */}
       <div className="relative z-20 text-center flex flex-col items-center gap-6 px-4 select-none">
-        <h1 className="text-5xl md:text-7xl font-bold tracking-[0.1em] text-white uppercase font-mono">
-          AUS Racing
+        
+        {/* TITLE BLOCK */}
+        <h1 className="flex flex-wrap justify-center items-center gap-3 lg:gap-4 text-6xl md:text-7xl lg:text-7xl font-bold font-orbitron tracking-[0.1em] text-white uppercase">
+          <span>AUS</span>
+          <span>RACING</span>
         </h1>
         
-        <p className="text-white/80 text-lg md:text-xl max-w-2xl font-mono tracking-wide">
-          Pushing the limits of engineering and performance.
-        </p>
+        {/* SUBTITLE BLOCK (Widened to max-w-4xl so it fits on one line) */}
+        <div className="flex flex-col items-center gap-2 max-w-4xl text-center">
+          <p className="text-white/80 text-lg md:text-xl font-mono tracking-wide">
+            Pushing the limits of engineering and performance.
+          </p>
+          <p className="font-mono text-sm md:text-base text-white/60 tracking-wide">
+            The Official Formula Student Team of The American University of Sharjah
+          </p>
+        </div>
 
         {/* BUTTON GROUP */}
         <div className="mt-4 flex flex-col sm:flex-row gap-4">

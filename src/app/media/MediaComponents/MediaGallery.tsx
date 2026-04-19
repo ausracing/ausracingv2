@@ -22,6 +22,7 @@ const thumbs = [
   "/images/team/placeholder.webp",
   "/images/team/placeholder.webp",
   "/images/team/placeholder.webp",
+
 ];
 
 export default function MediaGallery() {
