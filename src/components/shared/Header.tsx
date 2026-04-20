@@ -59,11 +59,11 @@ export default function Header() {
   }, [pathname]); // Re-run if the page route changes
 
   return (
-    <nav className="sticky top-0 z-50 flex items-center px-12 h-[68px] bg-background/90 backdrop-blur-md border-b border-white/10 select-none">
+    <nav className="sticky top-0 z-50 flex items-center px-12 h-17 bg-background/90 backdrop-blur-md border-b border-white/10 select-none">
 
       {/* LEFT SECTION: Logo Anchor */}
       <div className="flex-1 flex items-center justify-start">
-        <Link href="/" className="ml-6 hover:opacity-80 transition-opacity flex items-center translate-y-[2px]">
+        <Link href="/" className="ml-6 hover:opacity-80 transition-opacity flex items-center translate-y-0.5">
           <Image
             src="/images/logo.webp"
             alt="AUS Racing Logo"
@@ -78,7 +78,7 @@ export default function Header() {
       </div>
 
       {/* CENTER SECTION: Navigation Links */}
-      <ul className="absolute left-1/2 -translate-x-1/2 flex gap-6 list-none m-0 p-0 hidden md:flex">
+      <ul className="absolute left-1/2 -translate-x-1/2 flex gap-6 list-none m-0 p-0 md:flex">
         {navLinks.map((link) => {
           // Separate the path and the hash for logic checks
           const isHashLink = link.href.includes("#");
@@ -114,7 +114,7 @@ export default function Header() {
       <div className="flex-1 flex items-center justify-end">
         <Link
           href="/sponsors"
-          className="text-[11px] tracking-[0.1em] uppercase px-4 py-2.5 bg-primary text-background font-bold rounded-[4px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,170,0,0.5)] cursor-pointer"
+          className="text-[11px] tracking-widest uppercase px-4 py-2.5 bg-primary text-background font-bold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,170,0,0.5)] cursor-pointer"
         >
           Partner With Us &rarr;
         </Link>
