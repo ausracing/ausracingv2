@@ -46,23 +46,24 @@ export default function NewsletterClient({
 
       {/* MAIN */}
       <div className="flex-1 flex items-center justify-center p-6">
-        <Link
-          href={`/newsletter/${selected.slug}`}
-          className="w-full max-w-3xl border border-white/10 rounded-xl overflow-hidden bg-white/5 hover:scale-[1.01] transition"
-        >
-          <div className="relative w-full h-[360px]">
-            <Image
-              src={selected.image}
-              alt={selected.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+  <Link
+    href={`/newsletter/${selected.slug}`}
+    className="w-full max-w-3xl border border-white/10 rounded-xl overflow-hidden bg-white/5 hover:scale-[1.01] transition"
+  >
+    <div className="relative w-full h-[360px]">
+      <Image
+        src={selected.image}
+        alt={selected.title}
+        fill
+        sizes="(max-width: 768px) 100vw, 60vw"
+        className="object-cover"
+        priority
+      />
+    </div>
 
-          <div className="p-6">
-            <h1 className="text-3xl font-bold">{selected.title}</h1>
-            <p className="text-white/60 mt-3 text-sm">
+    <div className="p-6">
+      <h1 className="text-3xl font-bold">{selected.title}</h1>
+      <p className="text-white/60 mt-3 text-sm">
               {selected.shortDescription}
             </p>
             <p className="text-xs text-white/40 mt-3">
