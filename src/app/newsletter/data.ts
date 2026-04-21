@@ -17,12 +17,12 @@ export const newsletterArticles: Article[] = [
    
  {
   slug: "Jun-News",
-  title: "WIP News",
-  shortDescription: "...",
+  title: "June News",
+  shortDescription: "In our first installment, you can read about our choice of wheels and tires or learn about how a suspension and steering system are designed!",
   image: "/newsletter/June24/june_news-1.webp",
   date: "01-07-2024",
 
-  sections: Array.from({ length: 9 }, (_, i) => {
+  sections: Array.from({ length: 10 }, (_, i) => {
     const page = String(i + 2);
 
 
@@ -34,8 +34,8 @@ export const newsletterArticles: Article[] = [
 
  {
   slug: "Jul-News",
-  title: "WIP News",
-  shortDescription: "...",
+  title: "July News",
+  shortDescription: "In our second installment, you can read about our choice of wheels and tires or learn about battery design or how suspension geometries are tuned.",
   image: "/newsletter/July24/july_news-1.webp",
   date: "01-08-2024",
 
@@ -51,17 +51,17 @@ export const newsletterArticles: Article[] = [
 
  {
   slug: "Aug-News",
-  title: "WIP News",
-  shortDescription: "...",
-  image: "/newsletter/Mar25/march_news-1.webp",
+  title: "August News",
+  shortDescription: "In our August 2024 edition, we dive deeper into the dynamics of our car, and introduce a new and rather unexpected dimension to it- environmental conscience.",
+  image: "/newsletter/Aug24/aug_news-1.webp",
   date: "01-09-2024",
 
-  sections: Array.from({ length: 9 }, (_, i) => {
+  sections: Array.from({ length: 8 }, (_, i) => {
     const page = String(i + 2);
 
 
     return {
-      image: `/newsletter/Mar25/march_news-${page}.webp`,
+      image: `/newsletter/Aug24/aug_news-${page}.webp`,
     };
   }),
 },
