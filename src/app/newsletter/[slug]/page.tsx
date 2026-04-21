@@ -15,15 +15,15 @@ export default async function Page({
   if (!article) return notFound();
 
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-12">
+    <div className="min-h-screen bg-black text-white px-4 py-6 md:px-6 md:py-12">
       <div className="max-w-4xl mx-auto">
         <BackButton />
 
-        <div className="space-y-12">
+        <div className="space-y-6 md:space-y-12">
           {article.sections.map((section, i) => (
-            <div key={i} className="space-y-4">
+            <div key={i} className="space-y-3 md:space-y-4">
               {section.image && (
-                <div className="relative w-full h-[1250px] rounded-xl overflow-hidden bg-black">
+                <div className="relative w-full h-[500px] sm:h-[800px] md:h-[1250px] rounded-xl overflow-hidden bg-black">
                   <Image
                     src={section.image}
                     alt=""
@@ -41,7 +41,7 @@ export default async function Page({
               )}
 
               {section.heading && (
-                <h2 className="text-2xl font-semibold">
+                <h2 className="text-xl md:text-2xl font-semibold">
                   {section.heading}
                 </h2>
               )}

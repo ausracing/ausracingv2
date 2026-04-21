@@ -125,7 +125,7 @@ export const newsletterArticles: Article[] = [
   /*
  {
   slug: "Jan-News",
-  title: "January News",
+  title: "BROKEN JAN News",
   shortDescription: "...",
   image: "/newsletter/Jan25/jan_news-1.webp",
   date: "01-02-2025",
