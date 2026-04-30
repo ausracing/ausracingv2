@@ -21,21 +21,21 @@ export default function Home() {
 
   return (
     <main className="bg-[#18181b] text-foreground relative flex flex-col">
-      {/* THE LOADER */}
       {!isLoaderDone && (
         <Loader
           isReady={videoReady}
           onComplete={() => setIsLoaderDone(true)}
         />
       )}
-
-      {/* HERO CONTENT */}
+      
       <HeroVideo onVideoReady={() => setVideoReady(true)}
         isLoaderDone={isLoaderDone} />
+      
       <Loader 
         isReady={videoReady} 
         onComplete={() => setIsLoaderDone(true)} 
       />
+
       <SponsorsStrip />
       <AUSParagraph />
       <Spacer height={55} />
