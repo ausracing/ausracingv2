@@ -7,8 +7,8 @@ export const FILTERS = [
   "Aerodynamics",
   "Brakes",
   "Drivers", 
-  "External Relations",
-  "Internal Relations", // Combined Internal & External
+  "Public Relations",
+  "Internal Relations",
   "Operations", // Combined Treasury & Deputy Execs
   "Supply Chain",
   "Web Development", 
@@ -23,7 +23,7 @@ export const TEAM_DESCRIPTIONS: Record<string, string> = {
   "Aerodynamics": "Manipulating airflow to reduce drag and generate massive cornering downforce.",
   "Brakes": "Engineering high-performance stopping power and thermal management for precision cornering.",
   "Drivers": "Pushing the engineered vehicle to its absolute physical limits on the track.",
-  "External Relations": "Managing sponsor relationships, community outreach, and the team's professional image.",
+  "Public Relations": "Managing sponsor relationships, community outreach, and the team's professional image.",
   "Internal Relations": "Overseeing internal communications, team dynamics, and organizational culture.",
   "Operations": "Managing team finances, logistics, and internal administration for peak operational efficiency.",
   "Supply Chain": "Procuring crucial components and managing logistics to keep manufacturing strictly on schedule.",
@@ -96,13 +96,13 @@ export const TEAM_MEMBERS = [
   { name: "Hassan Eraky", role: "Test Driver", isLeader: false, quote: "Driven by performance.", category: "Drivers" },
   { name: "Saurav Gupte", role: "Test Driver", isLeader: false, quote: "Driven by performance.", category: "Drivers" },
 
-  // --- External Relations ---
-  { name: "Syeda Suha Nawaz", role: "Head of External Relations", isLeader: true, quote: "Driven by performance.", category: "External Relations" },
-  { name: "Aisha Abu Sa'ad", role: "Assistant Head of External Relations", isLeader: false, quote: "Driven by performance.", category: "External Relations" },
-  { name: "Sidratul Sara", role: "Team", isLeader: false, quote: "Driven by performance.", category: "External Relations" },
-  { name: "Mazin Zakki", role: "Team", isLeader: false, quote: "Driven by performance.", category: "External Relations" },
-  { name: "Muhammad Adnan", role: "Team", isLeader: false, quote: "Driven by performance.", category: "External Relations" },
-  { name: "Sameer Ahmed", role: "Team", isLeader: false, quote: "Driven by performance.", category: "External Relations" },
+  // --- Public Relations ---
+  { name: "Syeda Suha Nawaz", role: "Head of Public Relations", isLeader: true, quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Aisha Abu Sa'ad", role: "Assistant Head of Public Relations", isLeader: false, quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Sidratul Sara", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Mazin Zakki", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Muhammad Adnan", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Sameer Ahmed", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Public Relations" },
 
   // --- Internal Relations ---
   { name: "Brahmishtha Bhattacharjee", role: "Head of Internal Relations", isLeader: true, quote: "Driven by performance.", category: "Internal Relations" },
