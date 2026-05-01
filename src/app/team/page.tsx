@@ -86,7 +86,7 @@ export default function TeamPage() {
     <div className="min-h-screen bg-background pt-7 pb-16 px-6">
       
       {/* SECTION HEADER */}
-      <div className="text-center max-w-4xl mx-auto mb-5">
+      <div className="text-center max-w-6xl mx-auto mb-5">
         <h1 className="font-mono text-3xl font-semibold tracking-[0.12em] uppercase text-white mb-2 select-none cursor-default">
           Meet the Team
         </h1>
