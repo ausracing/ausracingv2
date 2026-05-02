@@ -11,14 +11,13 @@ export default function Footer() {
         {/* COLUMN 1 — BRAND */}
         <div className="flex flex-col gap-4">
 
-          <div className="relative w-32 h-16 flex items-center justify-start overflow-visible">
+          <div className="relative w-32 aspect-[128/64] flex items-center justify-start overflow-visible">
             <Image
               src="/images/logo.webp"
               alt="AUS Racing logo"
-              width={128}
-              height={64}
+              fill
+              sizes="(max-width: 768px) 128px, 128px"
               className="object-contain object-left"
-              style={{ width: 'auto', height: '100%' }}
             />
           </div>
 
