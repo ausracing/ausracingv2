@@ -40,7 +40,7 @@ export const TEAM_MEMBERS = [
   { name: "Sameeksha Ramesh", role: "Executive Assistant", isLeader: false, category: "Executive Board", hasPhoto: true, gender: "f"},
 
   // --- Electrical ---
-  { name: "Syed Muneeb Ali", role: "Lead", isLeader: true, category: "Electrical", hasPhoto: true, gender: "m"},
+  { name: "Syed Muneeb Ali", role: "Electrical Lead", isLeader: true, category: "Electrical", hasPhoto: true, gender: "m"},
   { name: "Mohammed Baraa Adnan", role: "Advisor", isLeader: false, category: "Electrical", hasPhoto: true, gender: "m"},
   { name: "Mark Farag", role: "Advisor", isLeader: false, category: "Electrical", hasPhoto: true, gender: "m"},
   { name: "Ehab Taha Galal", role: "Team", isLeader: false, category: "Electrical", hasPhoto: true, gender: "m"},
@@ -65,7 +65,7 @@ export const TEAM_MEMBERS = [
 
   // --- Suspension & Steering ---
   // Suspension
-  { name: "Nafiz Imteaz", role: "Lead", isLeader: true, category: "Suspension & Steering", hasPhoto: false, gender: "m"},
+  { name: "Nafiz Imteaz", role: "Suspension Lead", isLeader: true, category: "Suspension & Steering", hasPhoto: false, gender: "m"},
   { name: "Saurav Gupte", role: "Team", isLeader: false, category: "Suspension & Steering", hasPhoto: true, gender: "m"},
   // Steering
   { name: "Saad Ibrahim", role: "Team", isLeader: false, category: "Suspension & Steering", hasPhoto: true, gender: "m"},
@@ -115,7 +115,7 @@ export const TEAM_MEMBERS = [
   // --- Operations (Deputy Execs & Treasury) ---
   // Treasury
   { name: "Mirra Swaminathan", role: "Head of Treasury", isLeader: true, category: "Operations", hasPhoto: true, gender: "f"},
-  { name: "Toleen", role: "Team", isLeader: false, category: "Operations", hasPhoto: true, gender: "f"},
+  { name: "Toleen", role: "Team", isLeader: false, category: "Operations", hasPhoto: false, gender: "f"},
   // Deputy Executive Assistants
   { name: "Adrish Hussein Danka", role: "Engineering", isLeader: false, category: "Operations", hasPhoto: true, gender: "m"},
   { name: "Navaal Ghazanfar", role: "Commerce", isLeader: false, category: "Operations", hasPhoto: true, gender: "f"},

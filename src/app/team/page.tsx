@@ -53,10 +53,10 @@ const TeamCard = ({ member, priority = false }: { member: any, priority?: boolea
 
       {/* CARD INFO */}
       <div className="p-4">
-        <h3 className="font-mono text-[14px] font-semibold tracking-[0.04em] text-white mb-1.5 line-clamp-2">
+        <h3 className="text-[14px] font-semibold tracking-[0.04em] text-white mb-1.5 line-clamp-2">
           {member.name}
         </h3>
-        <p className="font-mono text-[10px] font-medium tracking-widest uppercase text-primary/80 leading-relaxed line-clamp-2">
+        <p className="text-[10px] font-medium tracking-widest uppercase text-primary/80 leading-relaxed line-clamp-2">
           {member.role}
         </p>
       </div>
@@ -76,8 +76,9 @@ export default function TeamPage() {
       
       {/* SECTION HEADER */}
       <div className="text-center max-w-6xl mx-auto mb-5">
-        <h1 className="font-mono text-3xl font-semibold tracking-[0.12em] uppercase text-white mb-2 select-none cursor-default">
-          Meet the Team
+        <h1 className="font-orbitron text-3xl font-semibold tracking-[0.12em] uppercase text-white mb-2 select-none cursor-default">
+          {/* ✨ FIX: Wrap "Team" in a span and give it the primary color */}
+          Meet the <span className="text-primary">Team</span>
         </h1>
         <div className="w-20 h-[2px] bg-primary mx-auto mb-5"></div>
 
