@@ -33,115 +33,115 @@ export const TEAM_DESCRIPTIONS: Record<string, string> = {
 
 export const TEAM_MEMBERS = [
   // --- Executive Board (Main Board) ---
-  { name: "Saad Ibrahim", role: "Team Principal", isLeader: true, quote: "Driven by performance.", category: "Executive Board" },
-  { name: "Saurav Gupte", role: "Vice Principal/Head of Engineering", isLeader: false, quote: "Driven by performance.", category: "Executive Board" },
-  { name: "Shwetambari Abhirajan", role: "External Coordinator", isLeader: false, quote: "Driven by performance.", category: "Executive Board" },
-  { name: "Mirra Swaminathan", role: "Head of Treasury", isLeader: false, quote: "Driven by performance.", category: "Executive Board" },
-  { name: "Sameeksha Ramesh", role: "Executive Assistant", isLeader: false, quote: "Driven by performance.", category: "Executive Board" },
+  { name: "Saad Ibrahim", role: "Team Principal", isLeader: true, category: "Executive Board", hasPhoto: true, gender: "m"},
+  { name: "Saurav Gupte", role: "Vice Principal/Head of Engineering", isLeader: false, category: "Executive Board", hasPhoto: true, gender: "m"},
+  { name: "Shwetambari Abhirajan", role: "External Coordinator", isLeader: false, category: "Executive Board", hasPhoto: true, gender: "f"},
+  { name: "Mirra Swaminathan", role: "Head of Treasury", isLeader: false, category: "Executive Board", hasPhoto: true, gender: "f"},
+  { name: "Sameeksha Ramesh", role: "Executive Assistant", isLeader: false, category: "Executive Board", hasPhoto: true, gender: "f"},
 
   // --- Electrical ---
-  { name: "Syed Muneeb Ali", role: "Lead", isLeader: true, quote: "Driven by performance.", category: "Electrical" },
-  { name: "Mohammed Baraa Adnan", role: "Advisor", isLeader: false, quote: "Driven by performance.", category: "Electrical" },
-  { name: "Mark Farag", role: "Advisor", isLeader: false, quote: "Driven by performance.", category: "Electrical" },
-  { name: "Ehab Taha Galal", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Electrical" },
-  { name: "Hammad Ahmed Adil", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Electrical" },
-  { name: "Mohammed Shakhawat Hossain", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Electrical" },
-  { name: "Abdallah Yassin", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Electrical" },
-  { name: "Abdullah Alnojoum", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Electrical" },
+  { name: "Syed Muneeb Ali", role: "Lead", isLeader: true, category: "Electrical", hasPhoto: true, gender: "m"},
+  { name: "Mohammed Baraa Adnan", role: "Advisor", isLeader: false, category: "Electrical", hasPhoto: true, gender: "m"},
+  { name: "Mark Farag", role: "Advisor", isLeader: false, category: "Electrical", hasPhoto: true, gender: "m"},
+  { name: "Ehab Taha Galal", role: "Team", isLeader: false, category: "Electrical", hasPhoto: true, gender: "m"},
+  { name: "Hammad Ahmed Adil", role: "Team", isLeader: false, category: "Electrical", hasPhoto: true, gender: "m"},
+  { name: "Mohammed Shakhawat Hossain", role: "Team", isLeader: false, category: "Electrical", hasPhoto: true, gender: "m"},
+  { name: "Abdallah Yassin", role: "Team", isLeader: false, category: "Electrical", hasPhoto: true, gender: "m"},
+  { name: "Abdullah Alnojoum", role: "Team", isLeader: false, category: "Electrical", hasPhoto: true, gender: "m"},
   // Power Delivery -> Mapped to Electrical
-  { name: "Aria Habibagahi", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Electrical" },
-  { name: "Mehdi Kermani", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Electrical" },
+  { name: "Aria Habibagahi", role: "Team", isLeader: false, category: "Electrical", hasPhoto: true, gender: "m"},
+  { name: "Mehdi Kermani", role: "Team", isLeader: false, category: "Electrical", hasPhoto: true, gender: "m"},
 
   // --- Powertrain (Drivetrain & Cooling) ---
   // Drivetrain
-  { name: "Turki Khalid Algarawi", role: "Drivetrain Lead", isLeader: true, quote: "Driven by performance.", category: "Powertrain" },
-  { name: "Saurav Gupte", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Powertrain" },
-  { name: "Farasha Imran", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Powertrain" },
-  { name: "Mohammed Abdulrahman", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Powertrain" },
+  { name: "Turki Khalid Algarawi", role: "Drivetrain Lead", isLeader: true, category: "Powertrain", hasPhoto: true, gender: "m"},
+  { name: "Saurav Gupte", role: "Team", isLeader: false, category: "Powertrain", hasPhoto: true, gender: "m"},
+  { name: "Farasha Imran", role: "Team", isLeader: false, category: "Powertrain", hasPhoto: true, gender: "f"},
+  { name: "Mohammed Abdulrahman", role: "Team", isLeader: false, category: "Powertrain", hasPhoto: false, gender: "m"},
   // Cooling
-  { name: "Nafiz Imteaz", role: "Cooling Lead", isLeader: true, quote: "Driven by performance.", category: "Powertrain" },
-  { name: "Aria Habibagahi", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Powertrain" },
-  { name: "Mohammed Mustafa Yaqoub Al Hinai", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Powertrain" },
+  { name: "Nafiz Imteaz", role: "Cooling Lead", isLeader: true, category: "Powertrain", hasPhoto: false, gender: "m"},
+  { name: "Aria Habibagahi", role: "Team", isLeader: false, category: "Powertrain", hasPhoto: true, gender: "m"},
+  { name: "Mohammed Mustafa Yaqoub Al Hinai", role: "Team", isLeader: false, category: "Powertrain", hasPhoto: false, gender: "m"},
 
   // --- Suspension & Steering ---
   // Suspension
-  { name: "Nafiz Imteaz", role: "Lead", isLeader: true, quote: "Driven by performance.", category: "Suspension & Steering" },
-  { name: "Saurav Gupte", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Suspension & Steering" },
+  { name: "Nafiz Imteaz", role: "Lead", isLeader: true, category: "Suspension & Steering", hasPhoto: false, gender: "m"},
+  { name: "Saurav Gupte", role: "Team", isLeader: false, category: "Suspension & Steering", hasPhoto: true, gender: "m"},
   // Steering
-  { name: "Saad Ibrahim", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Suspension & Steering" },
+  { name: "Saad Ibrahim", role: "Team", isLeader: false, category: "Suspension & Steering", hasPhoto: true, gender: "m"},
 
   // --- Chassis ---
-  { name: "Devansh Ajay Sapru", role: "Chassis Lead", isLeader: true, quote: "Driven by performance.", category: "Chassis" },
-  { name: "Hammad Ahmed Adil", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Chassis" },
-  { name: "Syed Ibrahim Abidi", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Chassis" },
-  { name: "Abbas Murtaza", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Chassis" },
-  { name: "Ethann Thomas Danthi", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Chassis" },
-  { name: "Hazin Zahid", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Chassis" },
-  { name: "Arjun Bomma", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Chassis" },
+  { name: "Devansh Ajay Sapru", role: "Chassis Lead", isLeader: true, category: "Chassis", hasPhoto: true, gender: "m"},
+  { name: "Hammad Ahmed Adil", role: "Team", isLeader: false, category: "Chassis", hasPhoto: true, gender: "m"},
+  { name: "Syed Ibrahim Abidi", role: "Team", isLeader: false, category: "Chassis", hasPhoto: true, gender: "m"},
+  { name: "Abbas Murtaza", role: "Team", isLeader: false, category: "Chassis", hasPhoto: true, gender: "m"},
+  { name: "Ethann Thomas Danthi", role: "Team", isLeader: false, category: "Chassis", hasPhoto: true, gender: "m"},
+  { name: "Hazin Zahid", role: "Team", isLeader: false, category: "Chassis", hasPhoto: true, gender: "m"},
+  { name: "Arjun Bomma", role: "Team", isLeader: false, category: "Chassis", hasPhoto: true, gender: "m"},
 
   // --- Aerodynamics (Bodywork/Aerodynamics) ---
-  { name: "Zouheir Al Halabi", role: "Aerodynamics Lead", isLeader: true, quote: "Driven by performance.", category: "Aerodynamics" },
-  { name: "Ali Diab", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Aerodynamics" },
-  { name: "Rakan", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Aerodynamics" },
+  { name: "Zouheir Al Halabi", role: "Aerodynamics Lead", isLeader: true, category: "Aerodynamics", hasPhoto: true, gender: "m"},
+  { name: "Ali Diab", role: "Team", isLeader: false, category: "Aerodynamics", hasPhoto: true, gender: "m"},
+  { name: "Rakan Amar", role: "Team", isLeader: false, category: "Aerodynamics", hasPhoto: true, gender: "m"},
 
   // --- Brakes ---
-  { name: "Mihir Avirneni", role: "Brakes Lead", isLeader: true, quote: "Driven by performance.", category: "Brakes" },
-  { name: "Amritha Rajeev", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Brakes" },
-  { name: "Safa Muhammed Umer", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Brakes" },
-  { name: "Aboubakr Mohammad", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Brakes" },
+  { name: "Mihir Avirneni", role: "Brakes Lead", isLeader: true, category: "Brakes", hasPhoto: true, gender: "m"},
+  { name: "Amritha Rajeev", role: "Team", isLeader: false, category: "Brakes", hasPhoto: true, gender: "f"},
+  { name: "Safa Muhammed Umer", role: "Team", isLeader: false, category: "Brakes", hasPhoto: true, gender: "f"},
+  { name: "Aboubakr Mohammad", role: "Team", isLeader: false, category: "Brakes", hasPhoto: true, gender: "m"},
 
   // --- Drivers (Vehicle Dynamics Drivers) ---
-  { name: "Said Tayara", role: "Test Driver", isLeader: true, quote: "Driven by performance.", category: "Drivers" },
-  { name: "Anas Saleh", role: "Test Driver", isLeader: false, quote: "Driven by performance.", category: "Drivers" },
-  { name: "Hassan Eraky", role: "Test Driver", isLeader: false, quote: "Driven by performance.", category: "Drivers" },
-  { name: "Saurav Gupte", role: "Test Driver", isLeader: false, quote: "Driven by performance.", category: "Drivers" },
+  { name: "Said Tayara", role: "Test Driver", isLeader: true, category: "Drivers", hasPhoto: true, gender: "m"},
+  { name: "Anas Saleh", role: "Test Driver", isLeader: false, category: "Drivers", hasPhoto: true, gender: "m"},
+  { name: "Hassan Eraky", role: "Test Driver", isLeader: false, category: "Drivers", hasPhoto: true, gender: "m"},
+  { name: "Saurav Gupte", role: "Test Driver", isLeader: false, category: "Drivers", hasPhoto: true, gender: "m"},
 
   // --- Public Relations ---
-  { name: "Syeda Suha Nawaz", role: "Head of Public Relations", isLeader: true, quote: "Driven by performance.", category: "Public Relations" },
-  { name: "Aisha Abu Sa'ad", role: "Assistant Head of Public Relations", isLeader: false, quote: "Driven by performance.", category: "Public Relations" },
-  { name: "Sidratul Sara", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Public Relations" },
-  { name: "Mazin Zakki", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Public Relations" },
-  { name: "Muhammad Adnan", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Public Relations" },
-  { name: "Sameer Ahmed", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Public Relations" },
+  { name: "Syeda Suha Nawaz", role: "Head of Public Relations", isLeader: true, category: "Public Relations", hasPhoto: false, gender: "f"},
+  { name: "Aisha Abu Sa'ad", role: "Assistant Head of Public Relations", isLeader: false, category: "Public Relations", hasPhoto: false, gender: "f"},
+  { name: "Sidratul Sara", role: "Team", isLeader: false, category: "Public Relations", hasPhoto: true, gender: "f"},
+  { name: "Mazin Zakki", role: "Team", isLeader: false, category: "Public Relations", hasPhoto: false, gender: "m"},
+  { name: "Muhammad Adnan", role: "Team", isLeader: false, category: "Public Relations", hasPhoto: false, gender: "m"},
+  { name: "Sameer Ahmed", role: "Team", isLeader: false, category: "Public Relations", hasPhoto: false, gender: "m"},
 
   // --- Internal Relations ---
-  { name: "Brahmishtha Bhattacharjee", role: "Head of Internal Relations", isLeader: true, quote: "Driven by performance.", category: "Internal Relations" },
-  { name: "Sanaaz Aju Anoob", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Internal Relations" },
-  { name: "Amira", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Internal Relations" },
-  { name: "Hassan Eraky", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Internal Relations" },
-  { name: "Syed Musab", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Internal Relations" },
-  { name: "Pavan Lokesh", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Internal Relations" },
+  { name: "Brahmishtha Bhattacharjee", role: "Head of Internal Relations", isLeader: true, category: "Internal Relations", hasPhoto: true, gender: "f"},
+  { name: "Sanaaz Aju Anoob", role: "Team", isLeader: false, category: "Internal Relations", hasPhoto: true, gender: "f"},
+  { name: "Amira", role: "Team", isLeader: false, category: "Internal Relations", hasPhoto: true, gender: "f"},
+  { name: "Hassan Eraky", role: "Team", isLeader: false, category: "Internal Relations", hasPhoto: true, gender: "m"},
+  { name: "Syed Musab", role: "Team", isLeader: false, category: "Internal Relations", hasPhoto: true, gender: "m"},
+  { name: "Pavan Lokesh", role: "Team", isLeader: false, category: "Internal Relations", hasPhoto: true, gender: "m"},
 
   // --- Operations (Deputy Execs & Treasury) ---
   // Treasury
-  { name: "Mirra Swaminathan", role: "Head of Treasury", isLeader: true, quote: "Driven by performance.", category: "Operations" },
-  { name: "Toleen", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Operations" },
+  { name: "Mirra Swaminathan", role: "Head of Treasury", isLeader: true, category: "Operations", hasPhoto: true, gender: "f"},
+  { name: "Toleen", role: "Team", isLeader: false, category: "Operations", hasPhoto: true, gender: "f"},
   // Deputy Executive Assistants
-  { name: "Adrish Hussein Danka", role: "Engineering", isLeader: false, quote: "Driven by performance.", category: "Operations" },
-  { name: "Navaal Ghazanfar", role: "Commerce", isLeader: false, quote: "Driven by performance.", category: "Operations" },
+  { name: "Adrish Hussein Danka", role: "Engineering", isLeader: false, category: "Operations", hasPhoto: true, gender: "m"},
+  { name: "Navaal Ghazanfar", role: "Commerce", isLeader: false, category: "Operations", hasPhoto: true, gender: "f"},
 
   // --- Supply Chain ---
-  { name: "Pranav Rajesh", role: "Head of Supply Chain", isLeader: true, quote: "Driven by performance.", category: "Supply Chain" },
-  { name: "Aryan Agrawal", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Supply Chain" },
-  { name: "Abdullah Ashar", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Supply Chain" },
-  { name: "Noel Daniel", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Supply Chain" },
+  { name: "Pranav Rajesh", role: "Head of Supply Chain", isLeader: true, category: "Supply Chain", hasPhoto: true, gender: "m"},
+  { name: "Aryan Agrawal", role: "Team", isLeader: false, category: "Supply Chain", hasPhoto: true, gender: "m"},
+  { name: "Abdullah Ashar", role: "Team", isLeader: false, category: "Supply Chain", hasPhoto: true, gender: "m"},
+  { name: "Noel Daniel", role: "Team", isLeader: false, category: "Supply Chain", hasPhoto: true, gender: "m"},
 
   // --- Web Development ---
-  { name: "Sidratul Sara", role: "Head of Web Dev", isLeader: true, quote: "Driven by performance.", category: "Web Development" },
-  { name: "Muhammed Adnan", role: "Assistant Head", isLeader: false, quote: "Driven by performance.", category: "Web Development" },
-  { name: "Ghazal Ghazi", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Web Development" },
-  { name: "Yusuf Sabuwala", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Web Development" },
-  { name: "Hashir Hameed", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Web Development" },
-  { name: "Adam Serhan", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Web Development" },
-  { name: "Yasmeen Khalaf", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Web Development" },
+  { name: "Sidratul Sara", role: "Head of Web Dev", isLeader: true, category: "Web Development", hasPhoto: true, gender: "f"},
+  { name: "Muhammed Adnan", role: "Assistant Head", isLeader: false, category: "Web Development", hasPhoto: false, gender: "m"},
+  { name: "Ghazal Ghazi", role: "Team", isLeader: false, category: "Web Development", hasPhoto: true, gender: "f"},
+  { name: "Yusuf Sabuwala", role: "Team", isLeader: false, category: "Web Development", hasPhoto: false, gender: "m"},
+  { name: "Hashir Hameed", role: "Team", isLeader: false, category: "Web Development", hasPhoto: true, gender: "m"},
+  { name: "Adam Serhan", role: "Team", isLeader: false, category: "Web Development", hasPhoto: true, gender: "m"},
+  { name: "Yasmeen Khalaf", role: "Team", isLeader: false, category: "Web Development", hasPhoto: false, gender: "f"},
 
   // --- Media & Marketing ---
-  { name: "Hazin Zahid", role: "Head of Media & Marketing", isLeader: true, quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Mazin Rizvi", role: "Advisor", isLeader: false, quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Samriddhi", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Abdulkadar Awad Muhammad Aslam", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Ahadali Suchedina", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Eyad Wafa", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Sarah D'Silva", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Media & Marketing" },
-  { name: "Edliyn Risshona", role: "Team", isLeader: false, quote: "Driven by performance.", category: "Media & Marketing" }
+  { name: "Hazin Zahid", role: "Head of Media & Marketing", isLeader: true, category: "Media & Marketing", hasPhoto: true, gender: "m"},
+  { name: "Mazin Rizvi", role: "Advisor", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "m"},
+  { name: "Samriddhi", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: false, gender: "f"},
+  { name: "Abdulkadar Awad Muhammad Aslam", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "m"},
+  { name: "Ahadali Suchedina", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "m"},
+  { name: "Eyad Wafa", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "m"},
+  { name: "Sarah D'Silva", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "f"},
+  { name: "Edliyn Risshona", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "f" }
 ];
