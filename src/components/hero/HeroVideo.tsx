@@ -39,6 +39,7 @@ export default function HeroVideo({ onVideoReady, isLoaderDone }: HeroVideoProps
         onCanPlayThrough={onVideoReady}
         onLoadedData={onVideoReady}
         className="absolute inset-0 w-full h-full object-cover z-0"
+        poster="/images/hero-fallback.webp"
         >
   
         {/* 1. MOBILE (under 768px) - Prioritize WebM, fallback to MP4 */}
