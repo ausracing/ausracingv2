@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Loader from "@/components/hero/Loader";
 import HeroVideo from "@/components/hero/HeroVideo";
 import SponsorsStrip from "@/components/sponsors/SponsorsStrip";
@@ -11,6 +11,7 @@ import CompetitionCountdown from "@/components/Countdown_quote/CompetitionCountd
 import { Quote } from "lucide-react";
 import QuoteSection from "@/components/Countdown_quote/QuoteSection";
 import Spacer from "@/components/ui/spacer";
+import ScrollCTA from "@/components/shared/ScrollCTA";
 
 export default function Home() {
   // Keeps track of when the loader is completely finished to unmount it
@@ -19,6 +20,9 @@ export default function Home() {
   // Set to FALSE so the loader actually waits for the video to buffer
   const [videoReady, setVideoReady] = useState(false);
 
+  // 1. Initialize the reference tracker for the Scroll CTA
+  const heroRef = useRef<HTMLElement>(null);
+  
   return (
     <main className="bg-[#18181b] text-foreground relative flex flex-col">
       {!isLoaderDone && (
@@ -27,14 +31,14 @@ export default function Home() {
           onComplete={() => setIsLoaderDone(true)}
         />
       )}
-      
-      <HeroVideo onVideoReady={() => setVideoReady(true)}
-        isLoaderDone={isLoaderDone} />
-      
-      <Loader 
-        isReady={videoReady} 
-        onComplete={() => setIsLoaderDone(true)} 
-      />
+
+      {/* 2. Attach the ref to a section wrapping your massive video */}
+      <section ref={heroRef} className="relative w-full">
+        <HeroVideo 
+          onVideoReady={() => setVideoReady(true)}
+          isLoaderDone={isLoaderDone} 
+        />
+      </section>
 
       <SponsorsStrip />
       <AUSParagraph />
@@ -48,6 +52,8 @@ export default function Home() {
       <NewsletterHome />
       <QuoteSection />
       
+      {/* 3. Drop the CTA component inside the main container */}
+      <ScrollCTA heroRef={heroRef} />
     </main>
   );
 }
