@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const navLinks = [
-  { name: "Home", href: "/#" },
+  { name: "Home", href: "/" },
   { name: "Team", href: "/team" },
   { name: "Our Car", href: "/#our-car" },
   { name: "Newsletter", href: "/newsletter" },
@@ -23,10 +23,12 @@ export default function Header() {
   const [activeHash, setActiveHash] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Observer Effect
+  // 1. SCROLL OBSERVER FOR HOMEPAGE SECTIONS
   useEffect(() => {
-    if (window.location.hash) {
-      setActiveHash(window.location.hash);
+    // If we aren't on the homepage, let the pathname handle active states exclusively
+    if (pathname !== "/") {
+      setActiveHash("");
+      return;
     }
 
     const elements = document.querySelectorAll("section[id], footer[id]");
@@ -39,14 +41,14 @@ export default function Header() {
           }
         });
       },
-      { threshold: 0.5 } 
+      { threshold: 0.3, rootMargin: "-20% 0px -60% 0px" } // Focused viewport window
     );
 
     elements.forEach((el) => observer.observe(el));
 
     const handleScroll = () => {
-      if (window.scrollY < 150) {
-        setActiveHash("");
+      if (window.scrollY < 100) {
+        setActiveHash(""); // Reset to Home at the very top
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -57,22 +59,39 @@ export default function Header() {
     };
   }, [pathname]);
 
-  // SCROLL LOCK & RESIZE LISTENER
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
+  // 2. WATERPROOF CLICK HANDLER (Prevents Double Hashes)
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, name: string, isMobile: boolean) => {
+    if (isMobile) setIsMobileMenuOpen(false);
+
+    // CASE A: On the dedicated page, clicking "Our Car" scrolls to top
+    if (pathname === "/car-concept" && name === "Our Car") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
     }
 
+    // CASE B: Already on the homepage, clicking a homepage anchor link
+    if (pathname === "/" && href.startsWith("/#")) {
+      e.preventDefault();
+      const targetId = href.replace("/#", "");
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", href); // Sets clean URL without doubling up
+        setActiveHash(`#${targetId}`);
+      }
+    }
+  };
+
+  // 3. LOCK BODY SCROLL ON MOBILE MENU
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
     const handleResize = () => {
       if (window.innerWidth >= 1024 && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
       }
     };
-
     window.addEventListener("resize", handleResize);
-
     return () => { 
       document.body.style.overflow = "unset"; 
       window.removeEventListener("resize", handleResize);
@@ -113,18 +132,21 @@ export default function Header() {
         </div>
 
         {/* 3. DESKTOP CENTER: Links */}
-        {/* ✨ FIX 2: Restored your actual mapping code that got deleted */}
         <ul className="order-none hidden lg:flex lg:flex-[2] justify-center items-center gap-6 xl:gap-8 list-none m-0 p-0 lg:order-2">
           {navLinks.map((link) => {
-            const isHashLink = link.href.includes("#");
-            const linkPath = link.href.split("#")[0] || "/";
-            const linkHash = link.href.split("#")[1] ? `#${link.href.split("#")[1]}` : "";
-
             let isActive = false;
-            if (isHashLink) {
-              isActive = pathname === linkPath && activeHash === linkHash;
+
+            // Strict Active Tab Mapping Rules
+            if (pathname === "/car-concept" && link.name === "Our Car") {
+              isActive = true;
+            } else if (pathname === "/") {
+              if (link.href === "/") {
+                isActive = activeHash === "";
+              } else if (link.href.startsWith("/#")) {
+                isActive = activeHash === link.href.replace("/", "");
+              }
             } else {
-              isActive = pathname === link.href && activeHash === "";
+              isActive = pathname === link.href;
             }
 
             return (
@@ -136,7 +158,12 @@ export default function Header() {
                     : "text-white/60 border-transparent hover:text-primary hover:border-primary"
                 }`}
               >
-                <Link href={link.href}>{link.name}</Link>
+                <Link 
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href, link.name, false)}
+                >
+                  {link.name}
+                </Link>
               </li>
             );
           })}
@@ -171,23 +198,25 @@ export default function Header() {
 
         <ul className="flex flex-col items-center gap-8 text-center">
           {navLinks.map((link) => {
-            const isHashLink = link.href.includes("#");
-            const linkPath = link.href.split("#")[0] || "/";
-            const linkHash = link.href.split("#")[1] ? `#${link.href.split("#")[1]}` : "";
-
             let isActive = false;
-            if (isHashLink) {
-              isActive = pathname === linkPath && activeHash === linkHash;
+
+            if (pathname === "/car-concept" && link.name === "Our Car") {
+              isActive = true;
+            } else if (pathname === "/") {
+              if (link.href === "/") {
+                isActive = activeHash === "";
+              } else if (link.href.startsWith("/#")) {
+                isActive = activeHash === link.href.replace("/", "");
+              }
             } else {
-              isActive = pathname === link.href && activeHash === "";
+              isActive = pathname === link.href;
             }
 
             return (
               <li key={link.name} className="py-1">
                 <Link 
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  // FIX 3: Swapped block for inline-block so scale hover works again
+                  onClick={(e) => handleNavClick(e, link.href, link.name, true)}
                   className={`inline-block text-3xl font-mono tracking-widest uppercase transition-all duration-300 hover:scale-110 ${
                     isActive ? "text-primary font-bold" : "text-white/80 hover:text-white"
                   }`}
