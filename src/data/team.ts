@@ -61,7 +61,7 @@ export const TEAM_MEMBERS = [
   // Cooling
   { name: "Nafiz Imteaz", role: "Cooling Lead", isLeader: true, category: "Powertrain", hasPhoto: false, gender: "m"},
   { name: "Aria Habibagahi", role: "Team", isLeader: false, category: "Powertrain", hasPhoto: true, gender: "m"},
-  { name: "Mohammed Mustafa Yaqoub Al Hinai", role: "Team", isLeader: false, category: "Powertrain", hasPhoto: false, gender: "m"},
+  { name: "Mohammed Al Hinai", role: "Team", isLeader: false, category: "Powertrain", hasPhoto: true, gender: "m"},
 
   // --- Suspension & Steering ---
   // Suspension
@@ -140,8 +140,8 @@ export const TEAM_MEMBERS = [
   { name: "Mazin Rizvi", role: "Advisor", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "m"},
   { name: "Samriddhi", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: false, gender: "f"},
   { name: "Abdulkadar Awad Muhammad Aslam", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "m"},
-  { name: "Ahadali Suchedina", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "m"},
   { name: "Eyad Wafa", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "m"},
+  { name: "Ahadali Suchedina", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "m"},
   { name: "Sarah D'Silva", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "f"},
   { name: "Edliyn Risshona", role: "Team", isLeader: false, category: "Media & Marketing", hasPhoto: true, gender: "f" }
 ];

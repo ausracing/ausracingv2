@@ -39,9 +39,15 @@ export default function HeroVideo({ onVideoReady, isLoaderDone }: HeroVideoProps
         onCanPlayThrough={onVideoReady}
         onLoadedData={onVideoReady}
         className="absolute inset-0 w-full h-full object-cover z-0"
-      >
-        <source src="/media/hero.mp4" type="video/mp4" />
-        <source src="/media/hero.webm" type="video/webm" />
+        >
+  
+        {/* 1. MOBILE (under 768px) - Prioritize WebM, fallback to MP4 */}
+        <source src="/media/hero-720p.webm" type="video/webm" media="(max-width: 768px)" />
+        <source src="/media/hero-720p.mp4" type="video/mp4" media="(max-width: 768px)" />
+
+        {/* 2. DESKTOP (Catch-all for larger screens) - Prioritize WebM, fallback to MP4 */}
+        <source src="/media/hero-1080p.webm" type="video/webm" />
+        <source src="/media/hero-1080p.mp4" type="video/mp4" />
       </video>
 
       {/* 2. OVERLAY LAYER (Dark gradient added for perfect contrast) */}
