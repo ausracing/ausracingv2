@@ -23,61 +23,70 @@ export default function Header() {
   const [activeHash, setActiveHash] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // 1. SCROLL OBSERVER FOR HOMEPAGE SECTIONS
+  // 1. BULLETPROOF SCROLL POSITION TRACKER
   useEffect(() => {
-    // If we aren't on the homepage, let the pathname handle active states exclusively
+    // If we aren't on the homepage, kill the tracker
     if (pathname !== "/") {
       setActiveHash("");
       return;
     }
 
-    const elements = document.querySelectorAll("section[id], footer[id]");
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveHash(`#${entry.target.id}`);
-          }
-        });
-      },
-      { threshold: 0.3, rootMargin: "-20% 0px -60% 0px" } // Focused viewport window
-    );
-
-    elements.forEach((el) => observer.observe(el));
-
     const handleScroll = () => {
-      if (window.scrollY < 100) {
-        setActiveHash(""); // Reset to Home at the very top
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
+      const contactSection = document.getElementById("contact");
+      const carSection = document.getElementById("our-car");
 
+      // Check 1: Is the Contact Us footer visible AT ALL on the screen?
+      if (contactSection) {
+        const contactRect = contactSection.getBoundingClientRect();
+        // If the top of the footer crosses into the bottom of the viewport
+        if (contactRect.top <= window.innerHeight - 50) {
+          setActiveHash("#contact");
+          return;
+        }
+      }
+
+      // Check 2: Is the Our Car section occupying the screen?
+      if (carSection) {
+        const carRect = carSection.getBoundingClientRect();
+        // If the top is above the lower third of the screen, AND the bottom hasn't disappeared past the navbar
+        if (carRect.top < window.innerHeight * 0.6 && carRect.bottom > 100) {
+          setActiveHash("#our-car");
+          return;
+        }
+      }
+
+      // Check 3: If neither of those specific sections are strictly in view, default back to Home
+      setActiveHash("");
+    };
+
+    // Run it once immediately to check starting position
+    handleScroll();
+
+    // Attach passive scroll listener for high performance
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
     return () => {
-      elements.forEach((el) => observer.unobserve(el));
       window.removeEventListener("scroll", handleScroll);
     };
   }, [pathname]);
 
-  // 2. WATERPROOF CLICK HANDLER (Prevents Double Hashes)
+  // 2. WATERPROOF CLICK HANDLER 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, name: string, isMobile: boolean) => {
     if (isMobile) setIsMobileMenuOpen(false);
 
-    // CASE A: On the dedicated page, clicking "Our Car" scrolls to top
     if (pathname === "/car-concept" && name === "Our Car") {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
 
-    // CASE B: Already on the homepage, clicking a homepage anchor link
     if (pathname === "/" && href.startsWith("/#")) {
       e.preventDefault();
       const targetId = href.replace("/#", "");
       const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
-        window.history.pushState(null, "", href); // Sets clean URL without doubling up
+        window.history.pushState(null, "", href); 
         setActiveHash(`#${targetId}`);
       }
     }
@@ -102,7 +111,7 @@ export default function Header() {
     <>
       <nav className="sticky top-0 w-full z-50 flex items-center justify-between px-4 md:px-8 lg:px-12 h-17 bg-background/90 backdrop-blur-md border-b border-white/10 select-none">
 
-        {/* 1. MOBILE LEFT: Burger Menu */}
+        {/* 1. MOBILE LEFT */}
         <div className="order-1 lg:hidden flex-none flex justify-start">
           <button 
             onClick={() => setIsMobileMenuOpen(true)}
@@ -115,7 +124,7 @@ export default function Header() {
           </button>
         </div>
 
-        {/* 2. MOBILE CENTER | DESKTOP LEFT: Logo */}
+        {/* 2. LOGO */}
         <div className="order-2 lg:order-1 flex-none lg:flex-1 flex justify-center lg:justify-start">
           <Link href="/" className="hover:opacity-80 transition-opacity flex items-center translate-y-0.5">
             <div className="relative w-[130px] sm:w-[130px] lg:w-[150px] aspect-[150/42]">
@@ -131,20 +140,20 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* 3. DESKTOP CENTER: Links */}
+        {/* 3. DESKTOP LINKS */}
         <ul className="order-none hidden lg:flex lg:flex-[2] justify-center items-center gap-6 xl:gap-8 list-none m-0 p-0 lg:order-2">
           {navLinks.map((link) => {
             let isActive = false;
 
-            // Strict Active Tab Mapping Rules
-            if (pathname === "/car-concept" && link.name === "Our Car") {
-              isActive = true;
-            } else if (pathname === "/") {
-              if (link.href === "/") {
+            // Exclusive Highlighting Logic
+            if (pathname === "/") {
+              if (link.name === "Home") {
                 isActive = activeHash === "";
               } else if (link.href.startsWith("/#")) {
                 isActive = activeHash === link.href.replace("/", "");
               }
+            } else if (pathname === "/car-concept" && link.name === "Our Car") {
+              isActive = true;
             } else {
               isActive = pathname === link.href;
             }
@@ -169,11 +178,15 @@ export default function Header() {
           })}
         </ul>
 
-        {/* 4. ALL SCREENS RIGHT: CTA Button */}
+        {/* 4. CTA BUTTON */}
         <div className="order-3 flex-none lg:flex-1 flex items-center justify-end">
           <Link
             href="/sponsors"
-            className="text-[8px] sm:text-[9px] md:text-[11px] whitespace-nowrap tracking-widest uppercase px-2.5 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-2.5 bg-primary text-background font-bold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,170,0,0.5)] cursor-pointer"
+            className={`text-[8px] sm:text-[9px] md:text-[11px] whitespace-nowrap tracking-widest uppercase px-2.5 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-2.5 font-bold rounded-lg transition-all duration-300 cursor-pointer ${
+              pathname === "/sponsors"
+                ? "bg-transparent text-primary border border-primary hover:bg-primary/10" 
+                : "bg-primary text-background hover:scale-105 hover:shadow-[0_0_20px_rgba(255,170,0,0.5)]"
+            }`}
           >
             Partner With Us &rarr;
           </Link>
@@ -200,14 +213,14 @@ export default function Header() {
           {navLinks.map((link) => {
             let isActive = false;
 
-            if (pathname === "/car-concept" && link.name === "Our Car") {
-              isActive = true;
-            } else if (pathname === "/") {
-              if (link.href === "/") {
+            if (pathname === "/") {
+              if (link.name === "Home") {
                 isActive = activeHash === "";
               } else if (link.href.startsWith("/#")) {
                 isActive = activeHash === link.href.replace("/", "");
               }
+            } else if (pathname === "/car-concept" && link.name === "Our Car") {
+              isActive = true;
             } else {
               isActive = pathname === link.href;
             }
