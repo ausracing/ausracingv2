@@ -8,7 +8,11 @@ export default function FeaturedNews({ article }: any) {
       <div className="rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900">
         <img
           src={article.image}
-          className="w-full h-[400px] object-cover"
+          //className="w-full h-[400px] object-cover"
+  alt=""
+  //fill
+  sizes="100vw"
+  className="object-contain"
         />
 
         <div className="p-6">
