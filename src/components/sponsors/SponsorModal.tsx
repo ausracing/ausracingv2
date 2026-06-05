@@ -36,37 +36,30 @@ Preferred Meeting Time: ${time}
 
   return (
     <>
-      
       <button
         onClick={() => setOpen(true)}
-        className="bg-[#fbb03a] px-6 py-3 text-sm font-bold uppercase tracking-[0.15em] text-black transition hover:brightness-95"
+        className="cursor-pointer bg-[#fbb03a] px-6 py-3 text-sm font-bold uppercase tracking-[0.15em] text-black transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-[1.04] hover:shadow-[0_0_18px_rgba(251,176,58,0.35)] active:scale-95"
       >
         Become a Partner
       </button>
 
-      
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
           <div className="w-full max-w-2xl rounded-[24px] border border-white/10 bg-[#111214] p-6 md:p-8">
-            
-         
             <div className="flex justify-end">
               <button
                 onClick={() => setOpen(false)}
-                className="text-gray-400 hover:text-white text-lg"
+                className="cursor-pointer text-lg text-gray-400 transition hover:text-white"
               >
                 ✕
               </button>
             </div>
 
-           
             <h2 className="text-2xl font-bold text-white">
               Become a Partner
             </h2>
 
-        
             <form onSubmit={handleSubmit} className="mt-6 space-y-5">
-              
               <div>
                 <label className="text-xs uppercase text-gray-400">
                   Company Name *
@@ -74,7 +67,7 @@ Preferred Meeting Time: ${time}
                 <input
                   name="company"
                   required
-                  className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-[#17181b] px-4 text-white focus:border-[#fbb03a]"
+                  className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-[#17181b] px-4 text-white outline-none transition focus:border-[#fbb03a] focus:ring-1 focus:ring-[#fbb03a]/40"
                 />
               </div>
 
@@ -85,7 +78,7 @@ Preferred Meeting Time: ${time}
                 <input
                   name="contact"
                   required
-                  className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-[#17181b] px-4 text-white focus:border-[#fbb03a]"
+                  className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-[#17181b] px-4 text-white outline-none transition focus:border-[#fbb03a] focus:ring-1 focus:ring-[#fbb03a]/40"
                 />
               </div>
 
@@ -96,7 +89,7 @@ Preferred Meeting Time: ${time}
                 <input
                   name="role"
                   required
-                  className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-[#17181b] px-4 text-white focus:border-[#fbb03a]"
+                  className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-[#17181b] px-4 text-white outline-none transition focus:border-[#fbb03a] focus:ring-1 focus:ring-[#fbb03a]/40"
                 />
               </div>
 
@@ -106,13 +99,13 @@ Preferred Meeting Time: ${time}
                 </label>
                 <input
                   name="time"
-                  className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-[#17181b] px-4 text-white focus:border-[#fbb03a]"
+                  className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-[#17181b] px-4 text-white outline-none transition focus:border-[#fbb03a] focus:ring-1 focus:ring-[#fbb03a]/40"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-[#fbb03a] py-3 text-sm font-bold uppercase tracking-[0.15em] text-black hover:brightness-95"
+                className="w-full cursor-pointer bg-[#fbb03a] py-3 text-sm font-bold uppercase tracking-[0.15em] text-black transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_0_18px_rgba(251,176,58,0.35)] active:scale-95"
               >
                 Submit Request
               </button>

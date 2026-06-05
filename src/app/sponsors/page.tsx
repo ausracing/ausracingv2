@@ -10,6 +10,7 @@ import SponsorHero from "../../components/sponsors/SponsorHero"
 import PartnersSection from "../../components/sponsors/PartnersSection"
 import WhyPartnerSection from "../../components/sponsors/WhyPartnerSection"
 import SponsorshipBenefitsSection from "../../components/sponsors/SponsorshipBenefitsSection"
+import SponsorApplySection from "@/components/sponsors/SponsorApplySection"
 
 export default function SponsorsPage() {
 
@@ -27,6 +28,7 @@ export default function SponsorsPage() {
       <SponsorshipBenefitsSection />
       
       <ScrollCTA heroRef={heroRef} />
+      <SponsorApplySection />
     </main>
   )
 }

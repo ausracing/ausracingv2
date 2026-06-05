@@ -20,7 +20,7 @@ export default function PartnersSection() {
 
         <div className="mt-10 flex justify-center">
           <Image
-            src="/Logos_sponsors.png"
+            src="/Logos_all.png"
             alt="Main Sponsors"
             width={900}
             height={400}
