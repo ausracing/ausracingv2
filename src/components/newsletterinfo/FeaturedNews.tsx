@@ -1,13 +1,24 @@
 import Link from "next/link";
 
-export default function FeaturedNews({ article }: any) {
+// Fixes "Any" Type Error
+interface FeaturedArticle {
+  image: string;
+  title: string;
+  shortDescription: string;
+  slug: string;
+}
+
+export default function FeaturedNews({ article }: { article: FeaturedArticle }) {
   if (!article) return null;
 
   return (
     <div className="max-w-5xl mx-auto">
       <div className="rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900">
+
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={article.image}
+          alt={article.title}
           className="w-full h-[400px] object-cover"
         />
 

@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     });
 
     // 4. Fire the welcome email off to Resend
-    const { data: emailData, error: emailError } = await resend.emails.send({
+    const { error: emailError } = await resend.emails.send({
       from: 'AUS Racing <onboarding@resend.dev>',
       to: email, 
       subject: 'Welcome to the Grid | AUS Racing',

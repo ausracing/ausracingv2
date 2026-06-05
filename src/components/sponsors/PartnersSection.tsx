@@ -17,18 +17,17 @@ export default function PartnersSection() {
           </p>
         </div>
 
-
         <div className="mt-10 flex justify-center">
           <Image
-            src="/Logos_sponsors.png"
+            src="/all_sponsor_logos.webp"
             alt="Main Sponsors"
             width={900}
             height={400}
+            priority
+            style={{ width: 'auto', height: 'auto' }}
             className="h-auto max-w-full object-contain"
           />
         </div>
-
-
       </div>
     </section>
   )

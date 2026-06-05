@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useCallback, useRef, useState } from "react";
+import { Suspense, useCallback, useRef, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, ContactShadows } from "@react-three/drei";
 import { motion, AnimatePresence } from "framer-motion";
@@ -32,10 +32,13 @@ export default function CarModel({ modelUrl, className = "" }: CarModelProps) {
 
   // Passed via ref so CarScene always reads the latest version without re-renders
   const onLoadedRef = useRef<(() => void) | null>(null);
-  onLoadedRef.current = () => {
-    modelDoneRef.current = true;
-    tryReveal();
-  };
+  useEffect(() => {
+    onLoadedRef.current = () => {
+      modelDoneRef.current = true;
+      tryReveal();
+    };
+  }, [tryReveal]); // The array tells React to only update this if tryReveal changes
+
 
   return (
     <GLBErrorBoundary>

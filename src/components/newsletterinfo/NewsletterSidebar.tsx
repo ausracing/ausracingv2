@@ -8,7 +8,7 @@ type Article = {
   shortDescription: string;
   image: string;
   date: string;
-  sections: any[];
+  sections: { heading?: string; text?: string; image?: string; }[];
 };
 
 function parseDate(dateStr: string) {
@@ -72,7 +72,7 @@ export default function NewsletterSidebar({
         ].map((btn) => (
           <button
             key={btn.value}
-            onClick={() => setFilter(btn.value as any)}
+            onClick={() => setFilter(btn.value as "all" | "7" | "30" | "90")}
             className={`text-xs px-2 py-1 rounded border transition ${
               filter === btn.value
                 ? "bg-white text-black"

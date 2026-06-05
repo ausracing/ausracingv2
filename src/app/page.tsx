@@ -6,9 +6,8 @@ import SponsorsStrip from "@/components/sponsors/SponsorsStrip";
 import AUSParagraph from "@/components/hero/AUSParagraph";
 import CarTeaser from "@/components/car-concept/CarTeaser";
 import NewsletterHome from "@/components/newsletterinfo/NewsletterHome";
-import TimelineSection from "@/components/Timeline/TimelineSection";
 import CompetitionCountdown from "@/components/Countdown_quote/CompetitionCountdown";
-import { Quote } from "lucide-react";
+import TimelineSection from "@/components/Timeline/TimelineSection";
 import QuoteSection from "@/components/Countdown_quote/QuoteSection";
 import Spacer from "@/components/ui/spacer";
 import ScrollCTA from "@/components/shared/ScrollCTA";
@@ -36,7 +35,6 @@ export default function Home() {
       <section ref={heroRef} className="relative w-full">
         <HeroVideo 
           onVideoReady={() => setVideoReady(true)}
-          isLoaderDone={isLoaderDone} 
         />
       </section>
 
