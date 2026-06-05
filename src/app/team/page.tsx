@@ -9,11 +9,21 @@ import { useState } from "react";
 import Image from "next/image";
 import { FILTERS, TEAM_MEMBERS, TEAM_DESCRIPTIONS } from "@/data/team";
 
+// Fixes "Any" type error
+interface TeamMemberData {
+  name: string;
+  role: string;
+  isLeader: boolean;
+  category: string;
+  hasPhoto: boolean;
+  gender: string;
+}
+
 /**
  * HELPER COMPONENT: TeamCard
  * Handles local image state to prevent 404 spam.
  */
-const TeamCard = ({ member, priority = false }: { member: any, priority?: boolean }) => {
+const TeamCard = ({ member, priority = false }: { member: TeamMemberData, priority?: boolean }) => {
   const namePhotoPath = `/images/team/${member.name.toLowerCase().trim().replace(/\s+/g, '-')}.webp`;
   
   // Determine the correct fallback based on gender (defaults to male if undefined)
@@ -115,7 +125,7 @@ export default function TeamPage() {
       {/* DYNAMIC TEAM DESCRIPTION */}
       <div className="max-w-2xl mx-auto mb-2 flex items-start justify-center px-4 min-h-[40px]">
         <p className="text-[13px] sm:text-[14px] text-white/60 text-center italic transition-opacity duration-300">
-          "{TEAM_DESCRIPTIONS[activeFilter] || "Pushing the absolute limits of collegiate motorsport engineering."}"
+          &quot;{TEAM_DESCRIPTIONS[activeFilter] || "Pushing the absolute limits of collegiate motorsport engineering."}&quot;
         </p>
       </div>
 

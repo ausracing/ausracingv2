@@ -16,7 +16,10 @@ export default function Template({ children }: { children: React.ReactNode }) {
     // THE LOGIC GATE: 
     // If we are on the Home page ("/") AND the cinematic loader hasn't played yet,
     // we disable this template. The cinematic loader is at z-[120] and will handle the screen.
+
+    // Fix: Bypasse es lint error, the feature is intentional
     if (pathname === "/" && !hasPlayed) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSkipTemplate(true);
       return;
     }

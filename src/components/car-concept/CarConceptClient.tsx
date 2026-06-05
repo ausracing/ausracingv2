@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "motion/react";
 import { departments, type Department } from "./departmentData";
@@ -43,6 +43,7 @@ function MasonryGallery() {
         <div key={ci} className="flex flex-col gap-3">
           {col.map((img) => (
             <div key={img.src} className="overflow-hidden rounded-xl border border-card-line bg-card group">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={img.src}
                 alt={img.alt}

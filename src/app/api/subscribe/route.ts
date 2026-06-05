@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     try {
       const fileData = await fs.readFile(filePath, 'utf-8');
       emails = JSON.parse(fileData);
-    } catch (error) {
+    } catch {
       // If the file doesn't exist yet, we just start with an empty array. No big deal.
     }
 

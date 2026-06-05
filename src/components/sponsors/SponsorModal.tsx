@@ -5,10 +5,16 @@ import { useState } from "react"
 export default function SponsorModal() {
   const [open, setOpen] = useState(false)
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const form = e.target
+    // Safely cast the target to include your exact form fields
+    const form = e.target as typeof e.target & {
+      company: { value: string }
+      contact: { value: string }
+      role: { value: string }
+      time: { value: string }
+    }
 
     const company = form.company.value
     const contact = form.contact.value

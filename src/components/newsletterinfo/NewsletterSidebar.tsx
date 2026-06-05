@@ -8,7 +8,9 @@ type Article = {
   shortDescription: string;
   image: string;
   date: string;
-  sections: any[];
+  // If you know the shape, use an interface. 
+  // Otherwise, 'unknown[]' is the strict, safe alternative to 'any[]'
+  sections: unknown[];
 };
 
 function parseDate(dateStr: string) {
@@ -72,7 +74,7 @@ export default function NewsletterSidebar({
         ].map((btn) => (
           <button
             key={btn.value}
-            onClick={() => setFilter(btn.value as any)}
+            onClick={() => setFilter(btn.value as "all" | "7" | "30" | "90")}
             className={`text-xs px-2 py-1 rounded border transition ${
               filter === btn.value
                 ? "bg-white text-black"

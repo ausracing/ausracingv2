@@ -32,6 +32,7 @@ export default async function Page({
               {/* IMAGE */}
               {section.image && (
                 <div className="relative w-full h-[1250px] rounded-xl overflow-hidden bg-black">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={section.image}
                     alt=""

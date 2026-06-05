@@ -26,7 +26,9 @@ export default function Header() {
   // 1. SCROLL OBSERVER FOR HOMEPAGE SECTIONS
   useEffect(() => {
     // If we aren't on the homepage, let the pathname handle active states exclusively
+    // Fix: Bypasse es lint error, the feature is intentional
     if (pathname !== "/") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveHash("");
       return;
     }

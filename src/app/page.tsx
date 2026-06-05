@@ -8,7 +8,6 @@ import CarTeaser from "@/components/car-concept/CarTeaser";
 import NewsletterHome from "@/components/newsletterinfo/NewsletterHome";
 import TimelineSection from "@/components/Timeline/TimelineSection";
 import CompetitionCountdown from "@/components/Countdown_quote/CompetitionCountdown";
-import { Quote } from "lucide-react";
 import QuoteSection from "@/components/Countdown_quote/QuoteSection";
 import Spacer from "@/components/ui/spacer";
 import ScrollCTA from "@/components/shared/ScrollCTA";

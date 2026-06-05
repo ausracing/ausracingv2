@@ -1,7 +1,8 @@
 import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import Image from "next/image";
-import NewsletterForm from "./NewsletterForm"; 
+import NewsletterForm from "./NewsletterForm";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -35,11 +36,21 @@ export default function Footer() {
             Quick Links
           </h4>
 
-          <a href="/" className="text-sm text-gray-400 hover:text-gray-300 transition">Home</a>
-          <a href="/car-concept" className="text-sm text-gray-400 hover:text-gray-300 transition">Car Concept</a>
-          <a href="/media" className="text-sm text-gray-400 hover:text-gray-300 transition">Media</a>
-          <a href="/team" className="text-sm text-gray-400 hover:text-gray-300 transition">Team</a>
-          <a href="/newsletter" className="text-sm text-gray-400 hover:text-gray-300 transition">Newsletter</a>
+          <Link href="/" className="text-sm text-gray-400 hover:text-gray-300 transition">
+            Home
+          </Link>
+          <Link href="/car-concept" className="text-sm text-gray-400 hover:text-gray-300 transition">
+            Car Concept
+          </Link>
+          <Link href="/media" className="text-sm text-gray-400 hover:text-gray-300 transition">
+            Media
+          </Link>
+          <Link href="/team" className="text-sm text-gray-400 hover:text-gray-300 transition">
+            Team
+          </Link>
+          <Link href="/newsletter" className="text-sm text-gray-400 hover:text-gray-300 transition">
+            Newsletter
+          </Link>
 
         </div>
 
@@ -63,13 +74,13 @@ export default function Footer() {
 
           <div className="flex gap-4 pt-2 text-gray-400">
 
-            <a href="https://www.instagram.com/ausracingfs" target="_blank" rel="noreferrer">
+            <Link href="https://www.instagram.com/ausracingfs" target="_blank" rel="noreferrer">
               <FaInstagram className="text-lg hover:text-gray-300 transition" />
-            </a>
+            </Link>
 
-            <a href="https://www.linkedin.com/company/aus-racing-team/" target="_blank" rel="noreferrer">
+            <Link href="https://www.linkedin.com/company/aus-racing-team/" target="_blank" rel="noreferrer">
               <FaLinkedin className="text-lg hover:text-gray-300 transition" />
-            </a>
+            </Link>
           </div>
         </div>
 

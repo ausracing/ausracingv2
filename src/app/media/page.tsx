@@ -1,6 +1,5 @@
 import MediaHero from "./MediaComponents/MediaHero";
 import MediaGallery from "./MediaComponents/MediaGallery";
-import Footer from "@/components/shared/Footer";
 
 export default function MediaPage() {
   return (
