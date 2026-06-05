@@ -8,9 +8,7 @@ type Article = {
   shortDescription: string;
   image: string;
   date: string;
-  // If you know the shape, use an interface. 
-  // Otherwise, 'unknown[]' is the strict, safe alternative to 'any[]'
-  sections: unknown[];
+  sections: { heading?: string; text?: string; image?: string; }[];
 };
 
 function parseDate(dateStr: string) {
