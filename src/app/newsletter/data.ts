@@ -199,7 +199,7 @@ image: `/newsletter/Apr25/april_2025-${page}.webp`,
 {
 slug: "May-News",
 title: "May News",
-shortDescription: "May newsletter out now! Curious about the complexity of a simple bolt in F1 cars? Learn More!",
+shortDescription: "Think a bolt is just a bolt? Think again. In high‑performance racing from Formula Student cars to Formula 1, the humble fastener is a critical engineering component. A single bolt can mean the difference between a car that stays together under extreme loads and one that fails at 200 km/h. May newsletter out now! Curious about the complexity of a simple bolt in F1 cars? Learn More!",
 image: "/newsletter/May25/may_2025_news-1.webp",
 date: "01-06-2025",
 

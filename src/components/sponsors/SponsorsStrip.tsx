@@ -10,7 +10,7 @@ import {
 } from "../ui/carousel"
 
 const baseSponsors = [
-  { name: "AGMC", src: "/logos/agmc.webp" },
+  { name: "AGMC", src: "/logos/agmc2.webp" },
   { name: "Ansys", src: "/logos/ansys1.webp" },
   { name: "Automech", src: "/logos/automech2.webp" },
   { name: "DEWESoft", src: "/logos/dewesoft.webp" },
@@ -18,6 +18,7 @@ const baseSponsors = [
   { name: "Juma Al Majid", src: "/logos/juma.webp" },
   { name: "SRTI Park SoiLab", src: "/logos/soilab.webp" },
   { name: "American University of Sharjah", src: "/logos/aus.webp" },
+  { name: "Bender", src: "/logos/bender.webp" },
 ]
 
 const sponsors = [...baseSponsors, ...baseSponsors, ...baseSponsors]

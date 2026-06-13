@@ -14,8 +14,8 @@ const navLinks = [
   { name: "Team", href: "/team" },
   { name: "Our Car", href: "/#our-car" },
   { name: "Newsletter", href: "/newsletter" },
-  { name: "Media", href: "/media" },
-  { name: "Contact Us", href: "/#contact" }
+  // { name: "Media", href: "/media" },
+  { name: "Contact Us", href: "/sponsors" }
 ];
 
 export default function Header() {
@@ -32,13 +32,19 @@ export default function Header() {
       return;
     }
 
-    const elements = document.querySelectorAll("section[id], footer[id]");
+    // UPDATE 1: Removed [id] from footer so it catches it regardless of its attributes
+    const elements = document.querySelectorAll("section[id], footer");
     
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveHash(`#${entry.target.id}`);
+            // UPDATE 2: If the user hits the footer, clear the hash so "Home" highlights
+            if (entry.target.tagName.toLowerCase() === "footer") {
+              setActiveHash("");
+            } else {
+              setActiveHash(`#${entry.target.id}`);
+            }
           }
         });
       },
@@ -48,7 +54,10 @@ export default function Header() {
     elements.forEach((el) => observer.observe(el));
 
     const handleScroll = () => {
-      if (window.scrollY < 100) {
+      const isAtTop = window.scrollY < 100;
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+
+      if (isAtTop || isAtBottom) {
         setActiveHash(""); // Reset to Home at the very top
       }
     };
@@ -71,7 +80,15 @@ export default function Header() {
       return;
     }
 
-    // CASE B: Already on the homepage, clicking a homepage anchor link
+    // CASE B: Universal Scroll-to-Top for any standard active page (Home, Newsletter, Sponsors, etc.)
+    if (pathname === href) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (href === "/") window.history.pushState(null, "", "/"); // Keeps the homepage URL clean
+      return;
+    }
+
+    // CASE C: Already on the homepage, clicking a homepage anchor link
     if (pathname === "/" && href.startsWith("/#")) {
       e.preventDefault();
       const targetId = href.replace("/#", "");

@@ -2,6 +2,7 @@
 // OWNER: Hashir
 // Server component — short description block about AUS Racing.
 // Placed after hero, before funding bar on homepage.
+import Image from "next/image";
 
 export default function AUSParagraph() {
   return (
@@ -50,16 +51,18 @@ export default function AUSParagraph() {
 
       {/* RIGHT COLUMN: Photo Placeholder */}
       <div className="relative flex items-center justify-center min-h-100 lg:min-h-auto bg-[#1c1c1a] overflow-hidden">
+
+        <Image src="/AUS_Racing_Group.webp" alt="AUS Racing Team" width={600} height={400} className="object-cover w-full h-full opacity-80" />
         
         {/* CSS Grid Pattern translated from your HTML */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size:[32px_32px]"></div>
+        {/* <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size:[32px_32px]"></div> */}
         
         {/* Placeholder Badge */}
-        <div className="relative z-10 border border-white/20 bg-black/50 px-5 py-2 rounded-[3px]">
+        {/* <div className="relative z-10 border border-white/20 bg-black/50 px-5 py-2 rounded-[3px]">
           <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-white/70">
             Team working — photo placeholder
           </span>
-        </div>
+        </div> */}
         
       </div>
 
