@@ -164,7 +164,7 @@ export default function Header() {
                 isActive = activeHash === link.href.replace("/", "");
               }
             } else {
-              isActive = pathname === link.href;
+              isActive = link.href !== "/" && pathname.startsWith(link.href);
             }
 
             return (
@@ -232,7 +232,7 @@ export default function Header() {
                 isActive = activeHash === link.href.replace("/", "");
               }
             } else {
-              isActive = pathname === link.href;
+              isActive = link.href !== "/" && pathname.startsWith(link.href);
             }
 
             return (

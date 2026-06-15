@@ -85,8 +85,13 @@ export default function NewsletterSidebar({
       </div>
 
       {/* SCROLLABLE LIST */}
-      <div className="flex-1 overflow-y-scroll pr-1 space-y-2 custom-scroll">
-
+      <div className="flex-1 overflow-auto pr-1 space-y-2
+                      [&::-webkit-scrollbar]:w-1.5
+                      [&::-webkit-scrollbar]:h-0
+                      [&::-webkit-scrollbar-track]:bg-transparent
+                      [&::-webkit-scrollbar-thumb]:bg-zinc-700
+                      [&::-webkit-scrollbar-thumb]:rounded-full
+                      hover:[&::-webkit-scrollbar-thumb]:bg-zinc-600">
         {filtered.length === 0 ? (
           <p className="text-sm text-zinc-500">
             No articles found
