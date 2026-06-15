@@ -1,7 +1,7 @@
 import { newsletterArticles } from "../data";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/newsletterinfo/BackButton";
-import FlipBook from "@/components/newsletterinfo/FlipBook";
+import FlipBookClient from "@/components/newsletterinfo/FlipBookClient";
 
 export default async function Page({
   params,
@@ -21,7 +21,7 @@ export default async function Page({
       <div className="max-w-7xl mx-auto space-y-6">
         <BackButton />
 
-        <FlipBook sections={article.sections} />
+        <FlipBookClient sections={article.sections} />
       </div>
     </div>
   );

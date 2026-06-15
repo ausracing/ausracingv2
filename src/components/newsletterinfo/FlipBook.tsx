@@ -15,34 +15,31 @@ export default function FlipBook({
 }) {
   return (
     <div className="flex justify-center">
-     <HTMLFlipBook
-  width={700}
-  height={950}
-  size="stretch"
-  minWidth={320}
-  maxWidth={1200}
-  minHeight={450}
-  maxHeight={1600}
-  showCover
-  mobileScrollSupport
-  maxShadowOpacity={0.5}
-  drawShadow
-  flippingTime={800}
-  usePortrait
-  startPage={0}
-
-  startZIndex={0}
-  autoSize={true}
-  clickEventForward={true}
-  useMouseEvents={true}
-  swipeDistance={30}
-  showPageCorners={true}
-  disableFlipByClick={false}
-
-  // ✅ THESE FIX YOUR ERROR
-  className="flipbook"
-  style={{}}
->
+      <HTMLFlipBook
+        width={700}
+        height={950}
+        size="stretch"
+        minWidth={320}
+        maxWidth={1200}
+        minHeight={450}
+        maxHeight={1600}
+        showCover
+        mobileScrollSupport
+        maxShadowOpacity={0.5}
+        drawShadow
+        flippingTime={800}
+        usePortrait
+        startPage={0}
+        startZIndex={0}
+        autoSize={true}
+        clickEventForward={true}
+        useMouseEvents={true}
+        swipeDistance={30}
+        showPageCorners={true}
+        disableFlipByClick={false}
+        className="flipbook"
+        style={{}}
+      >
         {sections.map((section, index) => (
           <div
             key={index}
