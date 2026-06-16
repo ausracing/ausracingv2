@@ -10,10 +10,11 @@ export default function BackButton() {
       onClick={() => router.back()}
       className="
         group 
-        -ml-3 md:-ml-6
+        ml-2 md:-ml-6
         -mt-3 md:-mt-5
-        w-12 h-12
-        flex items-center justify-center flex-shrink-0
+        h-12 px-4 md:px-0 md:w-12
+        flex items-center justify-center gap-2
+        flex-shrink-0
         rounded-full
         bg-black text-white
         border border-white/60
@@ -38,6 +39,10 @@ export default function BackButton() {
           d="M15 19l-7-7 7-7"
         />
       </svg>
+
+      <span className="md:hidden text-sm font-medium">
+      Go Back
+      </span>
     </button>
   );
 }
