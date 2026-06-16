@@ -17,8 +17,9 @@ export default async function Page({
   if (!article) return notFound();
 
   return (
-    <div className="min-h-screen bg-black text-white px-4 py-6 md:px-6 md:py-12">
-      <div className="max-w-7xl mx-auto space-y-6">
+<div className="min-h-screen bg-[rgb(10,10,10)] text-white px-4 py-6 md:px-6 md:py-12">
+  
+        <div className="max-w-7xl mx-auto space-y-6">
         <BackButton />
 
         <FlipBookClient sections={article.sections} />
