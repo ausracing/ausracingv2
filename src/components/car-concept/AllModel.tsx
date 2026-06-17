@@ -1,33 +1,30 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { MODELS } from "./modelConfig";
 import { HOTSPOTS } from "./modelConfig";
 import HotspotPin from "./HotspotPin";
 
-const MODEL_STOPS = MODELS.map((_, i) => i / (MODELS.length + 1));
-const FOOTER_STOP = MODELS.length / (MODELS.length + 1);
-
 const SLOT_GAP_X_DESKTOP = 20;
 const SLOT_GAP_X_MOBILE  = 12;
-const FOOTER_OVERSHOOT_DESKTOP = 22;
-const FOOTER_OVERSHOOT_MOBILE  = 14;
 const LERP_DESKTOP = 0.06;
 const LERP_MOBILE  = 0.10;
 
 const isMobileInit = typeof window !== "undefined" && window.innerWidth < 768;
 
+const sceneCache = new Map<number, THREE.Group>();
+
 interface AllModelsProps {
-  scrollProgress: number;
+  activeIndex: number;
   onReady: () => void;
 }
 
 function ModelSlot({ index, isMobile, slotGapX }: { index: number; isMobile: boolean; slotGapX: number }) {
-  const { url } = MODELS[index];
-  const { scene } = useGLTF(url);
   const groupRef = useRef<THREE.Group>(null);
+  const scene = sceneCache.get(index);
   const [ready, setReady] = useState(false);
 
   useFrame((_, delta) => {
@@ -35,26 +32,13 @@ function ModelSlot({ index, isMobile, slotGapX }: { index: number; isMobile: boo
   });
 
   useEffect(() => {
-    if (!groupRef.current) return;
+    if (!groupRef.current || !scene) return;
     const clone = scene.clone(true);
 
-    clone.traverse((child) => {
-      const mesh = child as THREE.Mesh;
-      if (mesh.isMesh) {
-        if (mesh.material)
-          (mesh.material as THREE.MeshStandardMaterial).envMapIntensity = 1.4;
-        mesh.castShadow = true;
-        mesh.receiveShadow = true;
-      }
-    });
-
-    if (index === 0) {
-      clone.rotation.set(Math.PI / 2, 0, 0);
-      clone.updateMatrixWorld(true);
-    }
-
     const mobileMult  = isMobile ? 0.5 : 1;
-    const scaleFactor = (index === 0 ? 6 : 4) * mobileMult;
+    const defaultScale = index === 0 ? 6 : 4;
+    const modelScale = MODELS[index]?.scale ?? defaultScale;
+    const scaleFactor = modelScale * mobileMult;
     const box         = new THREE.Box3().setFromObject(clone);
     const centre      = box.getCenter(new THREE.Vector3());
     const size        = box.getSize(new THREE.Vector3());
@@ -63,10 +47,16 @@ function ModelSlot({ index, isMobile, slotGapX }: { index: number; isMobile: boo
 
     groupRef.current.clear();
     groupRef.current.add(clone);
-    groupRef.current.position.set(baseX - centre.x * scale, -centre.y * scale, -centre.z * scale);
+    groupRef.current.position.set(
+      baseX - centre.x * scale,
+      -centre.y * scale,
+      -centre.z * scale,
+    );
     groupRef.current.scale.setScalar(scale);
     setReady(true);
   }, [scene, index, isMobile, slotGapX]);
+
+  if (!scene) return null;
 
   return (
     <group ref={groupRef}>
@@ -77,11 +67,14 @@ function ModelSlot({ index, isMobile, slotGapX }: { index: number; isMobile: boo
   );
 }
 
-export default function AllModels({ scrollProgress, onReady }: AllModelsProps) {
+export default function AllModels({ activeIndex, onReady }: AllModelsProps) {
   const [isMobile, setIsMobile] = useState(isMobileInit);
   const stripRef = useRef<THREE.Group>(null);
   const currentX = useRef(0);
-  const notified = useRef(false);
+  const [, forceUpdate] = useState(0);
+  const [initialLoaded, setInitialLoaded] = useState(
+    sceneCache.has(0) || !MODELS[0]?.url
+  );
 
   useEffect(() => {
     const update = () => setIsMobile(window.innerWidth < 768);
@@ -89,44 +82,79 @@ export default function AllModels({ scrollProgress, onReady }: AllModelsProps) {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  const slotGapX        = isMobile ? SLOT_GAP_X_MOBILE : SLOT_GAP_X_DESKTOP;
-  const footerOvershoot = isMobile ? FOOTER_OVERSHOOT_MOBILE : FOOTER_OVERSHOOT_DESKTOP;
-  const lerp            = isMobile ? LERP_MOBILE : LERP_DESKTOP;
+  const slotGapX = isMobile ? SLOT_GAP_X_MOBILE : SLOT_GAP_X_DESKTOP;
+  const lerp    = isMobile ? LERP_MOBILE : LERP_DESKTOP;
+
+  const loadModel = (index: number) => {
+    if (sceneCache.has(index)) return;
+    const url = MODELS[index]?.url;
+    if (!url) return;
+
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/draco/");
+    loader.setDRACOLoader(dracoLoader);
+    loader.load(
+      url,
+      (gltf) => {
+        const clone = gltf.scene.clone(true);
+
+        clone.traverse((child) => {
+          const mesh = child as THREE.Mesh;
+          if (mesh.isMesh) {
+            if (mesh.material)
+              (mesh.material as THREE.MeshStandardMaterial).envMapIntensity = 1.4;
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+          }
+        });
+
+        if (index === 5) {
+          clone.rotation.set(Math.PI / 2, 0, 0);
+          clone.updateMatrixWorld(true);
+        }
+
+        sceneCache.set(index, clone);
+        if (index === 0) setInitialLoaded(true);
+        forceUpdate((n) => n + 1);
+      },
+      undefined,
+      (err) => console.error(`Failed to load model ${url}:`, err),
+    );
+  };
+
+  useEffect(() => {
+    loadModel(0);
+  }, []);
+
+  useEffect(() => {
+    const nextIdx = activeIndex + 1;
+    if (nextIdx < MODELS.length) {
+      loadModel(nextIdx);
+    }
+  }, [activeIndex]);
+
+  useEffect(() => {
+    if (initialLoaded) {
+      onReady();
+    }
+  }, [initialLoaded, onReady]);
 
   useFrame(() => {
-    let targetX: number;
-
-    if (scrollProgress >= FOOTER_STOP) {
-      const lastModelX = (MODELS.length - 1) * slotGapX;
-      const footerT = (scrollProgress - FOOTER_STOP) / (1 - FOOTER_STOP);
-      targetX = lastModelX + footerT * footerOvershoot;
-    } else {
-      let loIdx = 0;
-      for (let i = MODEL_STOPS.length - 1; i >= 0; i--) {
-        if (scrollProgress >= MODEL_STOPS[i]) { loIdx = i; break; }
-      }
-      const hiIdx = Math.min(loIdx + 1, MODEL_STOPS.length - 1);
-      const lo = MODEL_STOPS[loIdx];
-      const hi = MODEL_STOPS[hiIdx];
-      const t = hi > lo ? (scrollProgress - lo) / (hi - lo) : 0;
-      const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-      targetX = (loIdx + eased * (hiIdx - loIdx)) * slotGapX;
-    }
-
+    const targetX = activeIndex * slotGapX;
     currentX.current = THREE.MathUtils.lerp(currentX.current, targetX, lerp);
     if (stripRef.current) stripRef.current.position.x = -currentX.current;
-
-    if (!notified.current) {
-      notified.current = true;
-      setTimeout(() => onReady(), 0);
-    }
   });
 
   return (
     <group ref={stripRef}>
-      {MODELS.map((_, i) => (
-        <ModelSlot key={i} index={i} isMobile={isMobile} slotGapX={slotGapX} />
-      ))}
+      {MODELS.map((_, i) => {
+        const config = MODELS[i];
+        if (!config.url) {
+          return <group key={i} position={[i * slotGapX, 0, 0]} />;
+        }
+        return <ModelSlot key={i} index={i} isMobile={isMobile} slotGapX={slotGapX} />;
+      })}
     </group>
   );
 }

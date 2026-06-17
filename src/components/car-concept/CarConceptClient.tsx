@@ -1,59 +1,63 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 import { MODELS } from "./modelConfig";
 import LoadingOverlay from "./LoadingOverlay";
+import type { Swiper as SwiperClass } from "swiper";
 
 const SceneCanvas = dynamic(() => import("./SceneCanvas"), { ssr: false });
 
-const BG_LABELS = ["THE CAR", "BRAKES", "BODYWORK", "ELECTRONICS", "AERO", "STEERING"];
-const CARD_SHIFT = 0.07;
-const MODEL_STOPS = MODELS.map((_, i) => i / (MODELS.length + 1));
-const CARD_STOPS  = MODEL_STOPS.map((s) => Math.max(0, s - CARD_SHIFT));
-const FOOTER_STOP = MODELS.length / (MODELS.length + 1);
-const TOTAL_SCROLL_VH = 800;
+const swiperStyles = `
+  .car-swiper .swiper-pagination-bullet {
+    background: rgba(255,255,255,0.2);
+    opacity: 1;
+  }
+  .car-swiper .swiper-pagination-bullet-active {
+    background: #F5B041;
+  }
+`;
 
-function ProgressDots({ active, total }: { active: number; total: number }) {
-  if (active < 0) return null;
-  return (
-    <div className="fixed right-2 md:right-6 top-1/2 -translate-y-1/2 z-30 flex flex-col gap-1.5 md:gap-2">
-      {Array.from({ length: total }).map((_, i) => (
-        <div key={i} className={`rounded-full transition-all duration-300 ${i === active ? "w-1 h-3 md:w-1.5 md:h-4 bg-primary" : "w-1 h-1 md:w-1.5 md:h-1.5 bg-white/20"}`} />
-      ))}
-    </div>
-  );
-}
+const BG_LABELS = ["THE CAR", "BRAKES", "ELECTRONICS", "AERO", "STEERING", "CHASSIS", "DRIVETRAIN", "COOLING", "POWER DELIVERY"];
+const SECTIONS = MODELS.length;
 
 export default function CarConceptClient() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [bgIndex, setBgIndex] = useState(0);
   const [canvasReady, setCanvasReady] = useState(false);
   const [loaderDone, setLoaderDone] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const swiperRef = useRef<SwiperClass | null>(null);
 
   useEffect(() => {
-    const onScroll = () => {
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const raw = maxScroll > 0 ? window.scrollY / maxScroll : 0;
-      setScrollProgress(raw);
-      if (raw >= FOOTER_STOP - CARD_SHIFT) { setActiveIndex(-1); return; }
-      let idx = 0;
-      for (let i = CARD_STOPS.length - 1; i >= 0; i--) {
-        if (raw >= CARD_STOPS[i]) { idx = i; break; }
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        swiperRef.current?.slidePrev();
+      } else if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        if (activeIndex < MODELS.length - 1) {
+          e.preventDefault();
+          swiperRef.current?.slideNext();
+        }
       }
-      setActiveIndex(idx);
-      setBgIndex(idx);
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [activeIndex]);
+
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    document.body.style.overflow = activeIndex < MODELS.length - 1 ? "hidden" : "";
+    return () => { document.body.style.overflow = original; };
+  }, [activeIndex]);
 
   const showContent = canvasReady && loaderDone;
 
   return (
     <>
+      <style>{swiperStyles}</style>
       <AnimatePresence>
         {!loaderDone && (
           <motion.div className="fixed inset-0 z-50" exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
@@ -63,28 +67,40 @@ export default function CarConceptClient() {
       </AnimatePresence>
 
       <div className="fixed inset-0 z-0">
-        <SceneCanvas scrollProgress={scrollProgress} onReady={() => setCanvasReady(true)} />
+        <SceneCanvas activeIndex={activeIndex} onReady={() => setCanvasReady(true)} />
       </div>
 
       <AnimatePresence mode="wait">
-        {showContent && activeIndex >= 0 && (
+        {showContent && activeIndex < MODELS.length && (
           <motion.div
-            key={bgIndex}
+            key={activeIndex}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
             className="fixed inset-0 z-10 flex items-center justify-center pointer-events-none select-none"
           >
-            <span className="text-[clamp(4rem,18vw,16rem)] font-black uppercase tracking-widest text-white/[0.08]" style={{ fontFamily: "var(--font-geist-sans)" }}>
-              {BG_LABELS[bgIndex] ?? ""}
+            <span className="text-[clamp(3rem,10vw,10rem)] font-black uppercase tracking-widest text-white/[0.08]" style={{ fontFamily: "var(--font-geist-sans)" }}>
+              {BG_LABELS[activeIndex] ?? ""}
             </span>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <ProgressDots active={activeIndex} total={MODELS.length} />
-      <div className="relative z-10 pointer-events-none" style={{ height: `${TOTAL_SCROLL_VH}vh` }} />
+      <Swiper
+        modules={[Mousewheel, Pagination]}
+        speed={1100}
+        direction="vertical"
+        mousewheel
+        pagination={{ clickable: true }}
+        onSwiper={(s) => { swiperRef.current = s; }}
+        onSlideChange={(s) => setActiveIndex(s.activeIndex)}
+        className="car-swiper fixed inset-0 z-20 h-screen w-full"
+      >
+        {Array.from({ length: SECTIONS }).map((_, i) => (
+          <SwiperSlide key={i} className="!h-screen" />
+        ))}
+      </Swiper>
 
       <AnimatePresence>
         {showContent && activeIndex === 0 && (

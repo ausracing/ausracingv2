@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 interface LoadingOverlayProps {
@@ -9,33 +9,30 @@ interface LoadingOverlayProps {
 
 export default function LoadingOverlay({ onFinished, canvasReady }: LoadingOverlayProps) {
   const [speed, setSpeed] = useState(0);
-  const hasFinished = useRef(false);
-  const startTime = useRef(Date.now());
 
   useEffect(() => {
     let raf: number;
-    const MIN_DURATION = 1200;
+    const startTime = Date.now();
 
     const tick = () => {
-      const elapsed = Date.now() - startTime.current;
-      const timeT = Math.min(elapsed / MIN_DURATION, 1);
-      // only reach 100 when BOTH min time passed AND canvas ready
-      const canProceed = canvasReady && timeT >= 1;
-      const t = canProceed ? 1 : Math.min(timeT, 0.95);
-      const displaySpeed = Math.round(Math.pow(t, 2) * 100);
-      setSpeed(displaySpeed);
-
-      if (!canProceed) {
-        raf = requestAnimationFrame(tick);
-      } else if (!hasFinished.current) {
-        hasFinished.current = true;
-        setSpeed(100);
-        setTimeout(() => onFinished(), 200);
-      }
+      const elapsed = Date.now() - startTime;
+      const t = Math.min(elapsed / 3000, 1);
+      setSpeed(Math.round(Math.pow(t, 1.5) * 100));
+      raf = requestAnimationFrame(tick);
     };
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
+  }, []);
+
+  useEffect(() => {
+    if (canvasReady) {
+      const id = requestAnimationFrame(() => {
+        setSpeed(100);
+        setTimeout(() => onFinished(), 200);
+      });
+      return () => cancelAnimationFrame(id);
+    }
   }, [canvasReady, onFinished]);
 
   const strokeDash = (speed * 75) / 100;

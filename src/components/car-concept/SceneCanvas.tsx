@@ -3,12 +3,7 @@ import { Component, Suspense, useState, useEffect, type ReactNode } from "react"
 import { Canvas } from "@react-three/fiber";
 import { Environment, ContactShadows } from "@react-three/drei";
 import * as THREE from "three";
-import { MODEL_URLS } from "./modelConfig";
 import AllModels from "./AllModel";
-import { useGLTF } from "@react-three/drei";
-
-// Preload at module level — runs once, survives navigation
-MODEL_URLS.forEach((url) => useGLTF.preload(url));
 
 class R3FErrorBoundary extends Component<
   { children: ReactNode },
@@ -25,11 +20,11 @@ class R3FErrorBoundary extends Component<
 }
 
 interface SceneCanvasProps {
-  scrollProgress: number;
+  activeIndex: number;
   onReady: () => void;
 }
 
-export default function SceneCanvas({ scrollProgress, onReady }: SceneCanvasProps) {
+export default function SceneCanvas({ activeIndex, onReady }: SceneCanvasProps) {
   const [isMobile, setIsMobile] = useState(
     typeof window !== "undefined" && window.innerWidth < 768
   );
@@ -66,7 +61,7 @@ export default function SceneCanvas({ scrollProgress, onReady }: SceneCanvasProp
         <pointLight position={[-10, -10, -10]} color="#f5b041" intensity={0.5} />
         <Suspense fallback={null}>
           <R3FErrorBoundary>
-            <AllModels scrollProgress={scrollProgress} onReady={onReady} />
+            <AllModels activeIndex={activeIndex} onReady={onReady} />
           </R3FErrorBoundary>
           <Environment preset="city" />
           <ContactShadows

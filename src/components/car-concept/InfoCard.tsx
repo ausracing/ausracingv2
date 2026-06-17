@@ -32,7 +32,7 @@ export function HeroCard({ visible }: { visible: boolean }) {
           AUS Racing · Formula Student
         </p>
         <h1
-          className="text-3xl md:text-5xl lg:text-6xl font-black uppercase leading-[0.92] tracking-tight mb-4 md:mb-5 text-foreground"
+          className="text-2xl md:text-4xl lg:text-5xl font-black uppercase leading-[0.92] tracking-tight mb-4 md:mb-5 text-foreground"
           style={{ fontFamily: "var(--font-geist-sans)" }}
         >
           Built by<br />
@@ -59,7 +59,7 @@ export function HeroCard({ visible }: { visible: boolean }) {
           ].map((s) => (
             <div key={s.label}>
               <p
-                className="text-xl md:text-2xl font-black text-primary"
+                className="text-lg md:text-xl font-black text-primary"
                 style={{ fontFamily: "var(--font-geist-sans)" }}
               >
                 {s.value}
@@ -113,7 +113,7 @@ export function InfoCard({ activeIndex }: { activeIndex: number }) {
           {hs.text}
         </p>
         <h2
-          className="text-2xl md:text-4xl font-black uppercase text-foreground leading-tight mb-3 md:mb-5"
+          className="text-xl md:text-3xl font-black uppercase text-foreground leading-tight mb-3 md:mb-5"
           style={{ fontFamily: "var(--font-geist-sans)" }}
         >
           {model.label}
