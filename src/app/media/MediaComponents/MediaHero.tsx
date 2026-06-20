@@ -4,7 +4,7 @@ export default function MediaHero() {
   return (
     <div className="relative w-full h-[300px] md:h-[400px] rounded-xl overflow-hidden bg-zinc-900 mb-10">
       <Image
-        src=  "/ausracinglogo.jpg"
+        src=  "/images/team/placeholder.webp"
         alt="AUS Racing Hero"
         fill
         sizes="100vw"

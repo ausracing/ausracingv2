@@ -16,8 +16,8 @@ export default function QuoteSection() {
                             Formula Student
                         </p>
 
-                        <blockquote className="text-xl font-semibold italic leading-relaxed text-zinc-100 [font-family:var(--font-rajdhani)] sm:text-2xl md:text-3xl">
-                            “Twenty years from now you will be more disappointed by the things that you didn&apos;t do than by the ones you did do. So throw off the bowlines. Sail away from the safe harbor. Catch the trade winds in your sails. Explore. Dream. Discover.”
+                        <blockquote className="text-lg font-semibold italic leading-relaxed text-zinc-100 [font-family:var(--font-rajdhani)] sm:text-xl md:text-2xl">
+                            “AUS Racing isn&apos;t just about building a car. It&apos;s about building engineers who aren&apos;t afraid to fail, learn, and get back up. At AUS Racing, we don&apos;t wait for opportunities. We engineer them.”
                         </blockquote>
 
 

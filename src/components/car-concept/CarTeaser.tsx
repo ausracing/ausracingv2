@@ -14,6 +14,7 @@ export default function CarTeaser() {
         src="/images/car/car2.webp"
         alt="AUS Racing Formula Student Car"
         fill
+        sizes="200rem"
         priority
         className="object-cover"
         style={{ objectPosition: "center center" }}

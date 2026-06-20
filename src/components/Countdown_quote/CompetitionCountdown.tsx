@@ -25,9 +25,11 @@ function getTimeLeft() {
 }
 
 export default function CompetitionCountdown() {
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft())
+  const [timeLeft, setTimeLeft] = useState({ days: "00", hours: "00", minutes: "00", seconds: "00" })
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTimeLeft(getTimeLeft())
     const interval = setInterval(() => {
       setTimeLeft(getTimeLeft())
     }, 1000)
@@ -37,69 +39,95 @@ export default function CompetitionCountdown() {
   return (
     <section className="bg-black text-white">
       <div className="mx-auto max-w-[1500px] px-6 py-10 md:px-10 md:py-12">
+        {/* Header: Silverstone UK */}
         <div className="flex items-start justify-between">
-          <h2 className="text-[3rem] font-black uppercase tracking-[-0.06em] sm:text-[5rem] md:text-[7rem]">
+          <h2 className="hidden md:block lg:block text-[3rem] font-black uppercase tracking-[-0.02em] sm:text-[5rem] md:text-[8.5rem] md:font-orbitron lg:font-orbitron ">
             Silverstone
           </h2>
-
-          <h2 className="text-[3rem] font-black uppercase tracking-[-0.06em] sm:text-[5rem] md:text-[7rem]">
+          <h2 className="hidden md:block lg:block text-[3rem] font-black uppercase tracking-[-0.02em] sm:text-[5rem] md:text-[8.5rem] md:font-orbitron lg:font-orbitron text-[#fbb03a] ">
             UK
           </h2>
         </div>
 
-        <div className="mt-4">
-          <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center text-center">
-            <span className="text-[3.5rem] font-black leading-none tracking-[-0.08em] sm:text-[6rem] md:text-[9rem] lg:text-[11rem]">
+        {/* DESKTOP COUNTDOWN (md and up) */}
+        <div className="hidden md:flex items-end justify-center gap-6 lg:gap-10 mt-10">
+          {/* Days */}
+          <div className="flex flex-col items-center">
+            <span className="text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] font-black leading-none tracking-normal">
               {timeLeft.days}
             </span>
-
-            <span className="px-1 pb-2 text-[3.5rem] font-black leading-none tracking-[-0.08em] text-[#fbb03a] sm:px-2 sm:text-[6rem] md:text-[9rem] lg:text-[11rem]">
-              :
-            </span>
-
-            <span className="text-[3.5rem] font-black leading-none tracking-[-0.08em] sm:text-[6rem] md:text-[9rem] lg:text-[11rem]">
-              {timeLeft.hours}
-            </span>
-
-            <span className="px-1 pb-2 text-[3.5rem] font-black leading-none tracking-[-0.08em] text-[#fbb03a] sm:px-2 sm:text-[6rem] md:text-[9rem] lg:text-[11rem]">
-              :
-            </span>
-
-            <span className="text-[3.5rem] font-black leading-none tracking-[-0.08em] sm:text-[6rem] md:text-[9rem] lg:text-[11rem]">
-              {timeLeft.minutes}
-            </span>
-
-            <span className="px-1 pb-2 text-[3.5rem] font-black leading-none tracking-[-0.08em] text-[#fbb03a] sm:px-2 sm:text-[6rem] md:text-[9rem] lg:text-[11rem]">
-              :
-            </span>
-
-            <span className="text-[3.5rem] font-black leading-none tracking-[-0.08em] sm:text-[6rem] md:text-[9rem] lg:text-[11rem]">
-              {timeLeft.seconds}
+            <span className="mt-2 text-xs font-semibold uppercase tracking-[0.28em] text-white/50">
+              Days
             </span>
           </div>
+          <span className="text-[#fbb03a] text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] font-black leading-none pb-4">
+            :
+          </span>
 
-          <div className="mt-3 grid grid-cols-4 text-center">
-            <p className="text-[0.6rem] font-semibold uppercase tracking-[0.28em] text-white/50 md:text-xs">
-              Days
-            </p>
-            <p className="text-[0.6rem] font-semibold uppercase tracking-[0.28em] text-white/50 md:text-xs">
+          {/* Hours */}
+          <div className="flex flex-col items-center">
+            <span className="text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] font-black leading-none tracking-normal">
+              {timeLeft.hours}
+            </span>
+            <span className="mt-2 text-xs font-semibold uppercase tracking-[0.28em] text-white/50">
               Hours
-            </p>
-            <p className="text-[0.6rem] font-semibold uppercase tracking-[0.28em] text-white/50 md:text-xs">
+            </span>
+          </div>
+          <span className="text-[#fbb03a] text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] font-black leading-none pb-4">
+            :
+          </span>
+
+          {/* Minutes */}
+          <div className="flex flex-col items-center">
+            <span className="text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] font-black leading-none tracking-normal">
+              {timeLeft.minutes}
+            </span>
+            <span className="mt-2 text-xs font-semibold uppercase tracking-[0.28em] text-white/50">
               Minutes
-            </p>
-            <p className="text-[0.6rem] font-semibold uppercase tracking-[0.28em] text-white/50 md:text-xs">
+            </span>
+          </div>
+          <span className="text-[#fbb03a] text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] font-black leading-none pb-4">
+            :
+          </span>
+
+          {/* Seconds */}
+          <div className="flex flex-col items-center">
+            <span className="text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] font-black leading-none tracking-normal">
+              {timeLeft.seconds}
+            </span>
+            <span className="mt-2 text-xs font-semibold uppercase tracking-[0.28em] text-white/50">
               Seconds
-            </p>
+            </span>
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6">
+        {/* MOBILE COUNTDOWN */}
+        <div className="md:hidden text-center mt-10">
+          <h2 className="text-[clamp(2rem,8vw,3.5rem)] font-black uppercase">
+            Silverstone UK
+          </h2>
+
+          <div className="mt-8 flex justify-center gap-4 flex-wrap">
+            {[timeLeft.days, timeLeft.hours, timeLeft.minutes, timeLeft.seconds].map((val, i) => (
+              <div key={i} className="flex flex-col items-center">
+                <span className="text-[clamp(3rem,12vw,5rem)] font-black leading-none">
+                  {val}
+                </span>
+                <span className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/50">
+                  {["Days", "Hours", "Minutes", "Seconds"][i]}
+                </span>
+                {i !== 3 && <span className="hidden">:</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer: Event info */}
+        <div className="mt-16 border-t border-white/10 pt-6">
           <div className="mx-auto max-w-xl text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/70 md:text-base">
               Formula Student UK
             </p>
-
             <p className="mt-2 text-sm text-white/60 md:text-base">
               July 15–19, 2026 · Silverstone Circuit, Northamptonshire
             </p>
