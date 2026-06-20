@@ -89,16 +89,16 @@ export default function Loader({ isReady, onComplete }: { isReady: boolean; onCo
 
       {/* THE CONTENT WRAPPER - Text fades out while panels slide */}
       <div className={`relative z-10 w-full h-full flex flex-col items-center justify-center px-4 transition-opacity duration-300 ${phase === 4 ? "opacity-0" : "opacity-100"}`}>
-        
-        {/* THE SLOGAN */}
-        <div className={`mb-6 md:mb-10 transition-all duration-1000 ease-out ${phase >= 1 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+
+        {/* THE SLOGAN - Now uses CSS animation for instant FCP */}
+        <div className="mb-6 md:mb-10 animate-fade-in-up">
           <p className="font-mono text-[10px] md:text-[13px] tracking-[0.3em] md:tracking-[0.5em] text-white/50 uppercase font-medium text-center">
             Racing Towards Electric Excellence
           </p>
         </div>
 
-        {/* THE LOGO BLOCK */}
-        <div className={`flex items-center justify-center gap-3 md:gap-6 mb-12 md:mb-16 transition-all duration-1000 ${phase >= 1 ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}>
+        {/* THE LOGO BLOCK - Now uses CSS animation */}
+        <div className="flex items-center justify-center gap-3 md:gap-6 mb-12 md:mb-16 animate-fade-in-up [animation-delay:200ms]">
           <span className="text-6xl sm:text-7xl md:text-9xl font-black tracking-tighter text-white">
             AUS
           </span>
@@ -126,8 +126,8 @@ export default function Loader({ isReady, onComplete }: { isReady: boolean; onCo
           </div>
         </div>
 
-        {/* THE UNIVERSITY SUBTITLE */}
-        <div className={`mb-12 md:mb-16 transition-all duration-1000 delay-500 ${phase >= 2 ? "opacity-100" : "opacity-0"}`}>
+        {/* THE UNIVERSITY SUBTITLE - Fades in slightly later with a simple delay */}
+        <div className="mb-12 md:mb-16 animate-fade-in-up [animation-delay:600ms]">
           <p className="font-sans text-[10px] md:text-[14px] text-white/30 tracking-[0.1em] text-center uppercase px-4">
             The Official Formula Student Team of The American University of Sharjah
           </p>
