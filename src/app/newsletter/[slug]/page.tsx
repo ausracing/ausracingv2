@@ -9,33 +9,43 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
-  const article = newsletterArticles.find(
-    (a) => a.slug === slug
-  );
+  const article = newsletterArticles.find((a) => a.slug === slug);
 
   if (!article) return notFound();
 
   return (
     <div className="
-      min-h-screen 
-      bg-[rgb(10,10,10)] 
+      fixed inset-0 z-[9999]  {/* FIX 1: Absurdly high z-index to bury the Back To Top button */}
+      w-screen h-[100dvh]     {/* FIX 2: 100dvh stops mobile browsers from creating fake scroll space */}
+      bg-zinc-900
       text-white 
-      px-4 sm:px-6 
-      py-4 sm:py-8 md:py-12
-      overflow-x-hidden
+      overflow-hidden 
+      overscroll-none         {/* FIX 3: Kills the rubber-band bounce effect on iOS */}
+      flex flex-col
     ">
-      <div className="
-        max-w-7xl 
-        mx-auto 
-        space-y-4 sm:space-y-6
-      ">
+      
+      {/* Responsive wrapper for the button */}
+      <div className="p-3 md:absolute md:top-6 md:left-12 z-50">
         <BackButton />
+      </div>
 
-        <div className="w-full">
+      {/* Main Flipbook Content - Kept your exact sizing! */}
+      <div className="
+        flex-1 w-full 
+        px-3 py-2 md:px-12 md:py-4 
+        flex items-center justify-center 
+        overflow-hidden
+      ">
+        <div className="
+          w-full h-full 
+          md:max-w-[1500px] md:max-h-full 
+          md:aspect-[1400/950] 
+          m-auto flex items-center justify-center
+        ">
           <FlipBookClient sections={article.sections} />
         </div>
       </div>
+      
     </div>
   );
 }
