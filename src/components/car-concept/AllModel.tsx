@@ -53,7 +53,7 @@ function ModelSlot({ index, isMobile, slotGapX }: { index: number; isMobile: boo
       -centre.z * scale,
     );
     groupRef.current.scale.setScalar(scale);
-    setReady(true);
+    setTimeout(() => setReady(true), 0);
   }, [scene, index, isMobile, slotGapX]);
 
   if (!scene) return null;

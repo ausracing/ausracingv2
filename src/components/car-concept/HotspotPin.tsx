@@ -1,12 +1,8 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Html } from "@react-three/drei";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Hotspot } from "./modelConfig";
-
-interface ResolvedHotspot extends Hotspot {
-  resolvedPosition: [number, number, number];
-}
 
 const bodyPortal =
   typeof document !== "undefined"

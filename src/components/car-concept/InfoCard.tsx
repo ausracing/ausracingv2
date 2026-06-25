@@ -13,7 +13,7 @@ function Card({ children }: { children: React.ReactNode }) {
 }
 
 // ── Hero card (index 0) ───────────────────────────────────────────────────────
-export function HeroCard({ visible }: { visible: boolean }) {
+export function HeroCard() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -45,7 +45,7 @@ export function HeroCard({ visible }: { visible: boolean }) {
           className="hidden sm:block text-white/60 text-sm md:text-base leading-relaxed mb-5 md:mb-6"
           style={{ fontFamily: "var(--font-geist-mono)" }}
         >
-          AUS Racing is the American University of Sharjah's Formula Student
+          AUS Racing is the American University of Sharjah&apos;s Formula Student
           team. Every component — from the spaceframe steel chassis to the
           custom accumulator — is designed, analysed, manufactured, and
           tested by our students. We compete at Formula Student UK.
