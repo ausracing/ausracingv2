@@ -1,6 +1,7 @@
 import { newsletterArticles } from "../data";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/newsletterinfo/BackButton";
+import FlipBookClient from "@/components/newsletterinfo/FlipBookClient";
 
 export default async function Page({
   params,
@@ -8,46 +9,43 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
   const article = newsletterArticles.find((a) => a.slug === slug);
 
   if (!article) return notFound();
 
   return (
-    <div className="min-h-screen bg-black text-white px-4 py-6 md:px-6 md:py-12">
-      <div className="max-w-4xl mx-auto">
+    <div className="
+      fixed inset-0 z-[9999]  {/* FIX 1: Absurdly high z-index to bury the Back To Top button */}
+      w-screen h-[100dvh]     {/* FIX 2: 100dvh stops mobile browsers from creating fake scroll space */}
+      bg-zinc-900
+      text-white 
+      overflow-hidden 
+      overscroll-none         {/* FIX 3: Kills the rubber-band bounce effect on iOS */}
+      flex flex-col
+    ">
+      
+      {/* Responsive wrapper for the button */}
+      <div className="p-3 md:absolute md:top-6 md:left-12 z-50">
         <BackButton />
+      </div>
 
-        <div className="space-y-6 md:space-y-12">
-          {article.sections.map((section, i) => (
-            <div key={i} className="space-y-3 md:space-y-4">
-              {section.image && (
-
-                <div className="relative w-full h-[500px] sm:h-[800px] md:h-[1250px] rounded-xl overflow-hidden bg-black">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={section.image}
-                    alt="Newsletter section"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              )}
-
-              {section.text && (
-                <p className="text-zinc-300 leading-relaxed">
-                  {section.text}
-                </p>
-              )}
-
-              {section.heading && (
-                <h2 className="text-xl md:text-2xl font-semibold">
-                  {section.heading}
-                </h2>
-              )}
-            </div>
-          ))}
+      {/* Main Flipbook Content - Kept your exact sizing! */}
+      <div className="
+        flex-1 w-full 
+        px-3 py-2 md:px-12 md:py-4 
+        flex items-center justify-center 
+        overflow-hidden
+      ">
+        <div className="
+          w-full h-full 
+          md:max-w-[1500px] md:max-h-full 
+          md:aspect-[1400/950] 
+          m-auto flex items-center justify-center
+        ">
+          <FlipBookClient sections={article.sections} />
         </div>
       </div>
+      
     </div>
   );
 }
