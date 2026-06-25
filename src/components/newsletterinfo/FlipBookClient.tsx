@@ -7,10 +7,16 @@ const FlipBook = dynamic(
   { ssr: false }
 );
 
+interface Section {
+  image?: string;
+  text?: string;
+  heading?: string;
+}
+
 export default function FlipBookClient({
   sections,
 }: {
-  sections: any[];
+  sections: Section[];
 }) {
   return <FlipBook sections={sections} />;
 }

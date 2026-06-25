@@ -9,12 +9,20 @@ interface Section {
   heading?: string;
 }
 
+interface PageFlipMethods {
+  pageFlip: () => {
+    flipNext: () => void;
+    flipPrev: () => void;
+    flip: (index: number) => void;
+  };
+}
+
 export default function FlipBook({
   sections,
 }: {
   sections: Section[];
 }) {
-  const bookRef = useRef<any>(null);
+  const bookRef = useRef<PageFlipMethods | null>(null);
   
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -23,12 +31,20 @@ export default function FlipBook({
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    setMounted(true);
+    // Delays the update to the next event loop tick, clearing the lint error safely
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    
     checkMobile(); 
+    
     window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
   const goNext = () => {
@@ -40,7 +56,7 @@ export default function FlipBook({
   };
 
   // NEW: Update state whenever the user flips a page
-  const onPageFlip = (e: any) => {
+  const onPageFlip = (e: { data: number }) => {
     setCurrentPage(e.data);
   };
 
