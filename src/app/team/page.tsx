@@ -7,7 +7,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { FILTERS, TEAM_MEMBERS, TEAM_DESCRIPTIONS } from "@/data/team";
+import { FILTERS, TEAM_DESCRIPTIONS, useTeamMembers } from "@/lib/team";
 
 // Fixes "Any" type error
 interface TeamMemberData {
@@ -17,6 +17,7 @@ interface TeamMemberData {
   category: string;
   hasPhoto: boolean;
   gender: string;
+  photoUrl: string | null;
 }
 
 /**
@@ -31,8 +32,10 @@ const TeamCard = ({ member, priority = false }: { member: TeamMemberData, priori
     ? '/images/team/fplaceholder.webp' 
     : '/images/team/mplaceholder.webp';
 
-  // Initialize state: Skip the network request entirely if hasPhoto is false
-  const [imgSrc, setImgSrc] = useState(member.hasPhoto ? namePhotoPath : fallbackPath);
+  // Use Pocketbase photo if available, otherwise fall back to static path or placeholder
+  const initialSrc = member.photoUrl 
+    || (member.hasPhoto ? namePhotoPath : fallbackPath);
+  const [imgSrc, setImgSrc] = useState(initialSrc);
 
   return (
     <div 
@@ -78,8 +81,9 @@ export default function TeamPage() {
   // STATE: This remembers which filter bubble is currently clicked.
   const [activeFilter, setActiveFilter] = useState(FILTERS[0]);
   const [showAllFilters, setShowAllFilters] = useState(false);
+  const { members } = useTeamMembers();
 
-  const filteredTeam = TEAM_MEMBERS.filter(member => member.category === activeFilter);
+  const filteredTeam = members.filter(member => member.category === activeFilter);
 
   return (
     <div className="min-h-screen bg-background pt-7 pb-16 px-6">
