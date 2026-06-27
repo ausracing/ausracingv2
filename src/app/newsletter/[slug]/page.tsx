@@ -15,8 +15,8 @@ export default async function Page({
 
   return (
     <div className="
-      fixed inset-0 z-[9999]  {/* FIX 1: Absurdly high z-index to bury the Back To Top button */}
-      w-screen h-[100dvh]     {/* FIX 2: 100dvh stops mobile browsers from creating fake scroll space */}
+      fixed inset-0 z-9999  {/* FIX 1: Absurdly high z-index to bury the Back To Top button */}
+      w-screen h-dvh    {/* FIX 2: 100dvh stops mobile browsers from creating fake scroll space */}
       bg-zinc-900
       text-white 
       overflow-hidden 
@@ -38,8 +38,8 @@ export default async function Page({
       ">
         <div className="
           w-full h-full 
-          md:max-w-[1500px] md:max-h-full 
-          md:aspect-[1400/950] 
+          md:max-w-375 md:max-h-full 
+          md:aspect-1400/950
           m-auto flex items-center justify-center
         ">
           <FlipBookClient sections={article.sections} />
