@@ -109,7 +109,7 @@ export default function NewsletterClient({
       <button
         key={article.slug}
         onClick={() => setSelected(article)}
-        className={`shrink-0 w-[140px] rounded-lg border px-3 py-3 text-left transition ${
+        className={`shrink-0 w-35 rounded-lg border px-3 py-3 text-left transition ${
           selected.slug === article.slug
             ? "border-white bg-white text-black"
             : "border-white/10 bg-white/5 text-white"
@@ -158,7 +158,7 @@ export default function NewsletterClient({
   flex-col
 "
   >
-<div className="relative w-full aspect-[16/9] max-h-[45vh]">
+<div className="relative w-full aspect-video max-h-[45vh]">
             <Image
               src={selected.image}
               alt={selected.title}
