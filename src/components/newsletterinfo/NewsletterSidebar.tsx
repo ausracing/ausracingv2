@@ -16,11 +16,6 @@ function parseDate(dateStr: string) {
   return new Date(year, month - 1, day).getTime();
 }
 
-function isWithinDays(dateStr: string, days: number) {
-  const now = Date.now();
-  const time = parseDate(dateStr);
-  return now - time <= days * 24 * 60 * 60 * 1000;
-}
 
 export default function NewsletterSidebar({
   articles,
@@ -32,8 +27,13 @@ export default function NewsletterSidebar({
   activeSlug: string;
 }) {
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState<"all" | "7" | "30" | "90">("all");
+const years = useMemo(() => {
+  return [...new Set(articles.map((a) => a.date.split("-")[2]))].sort(
+    (a, b) => Number(b) - Number(a)
+  );
+}, [articles]);
 
+const [filter, setFilter] = useState<string>("all");
   const filtered = useMemo(() => {
     const q = query.toLowerCase();
 
@@ -44,16 +44,15 @@ export default function NewsletterSidebar({
           a.shortDescription.toLowerCase().includes(q);
 
         const matchesFilter =
-          filter === "all" || isWithinDays(a.date, Number(filter));
-
+  filter === "all" || a.date.endsWith(filter);
+  
         return matchesSearch && matchesFilter;
       })
       .sort((a, b) => parseDate(b.date) - parseDate(a.date));
   }, [articles, query, filter]);
 
   return (
-    <div className="w-[280px] h-screen bg-zinc-900 border-r border-zinc-800 p-4 flex flex-col">
-
+<div className="w-[280px] h-[100dvh] bg-zinc-900 border-r border-zinc-800 p-4 flex flex-col overflow-hidden">
       {/* SEARCH */}
       <input
         value={query}
@@ -64,15 +63,16 @@ export default function NewsletterSidebar({
 
       {/* FILTER BUTTONS */}
       <div className="flex flex-wrap gap-2 mb-4">
-        {[
-          { label: "All", value: "all" },
-          { label: "7D", value: "7" },
-          { label: "30D", value: "30" },
-          { label: "90D", value: "90" },
-        ].map((btn) => (
-          <button
-            key={btn.value}
-            onClick={() => setFilter(btn.value as "all" | "7" | "30" | "90")}
+     {[
+  { label: "All", value: "all" },
+  ...years.map((year) => ({
+    label: year,
+    value: year,
+  })),
+].map((btn) => (
+  <button
+    key={btn.value}
+    onClick={() => setFilter(btn.value)}
             className={`text-xs px-2 py-1 rounded border transition ${
               filter === btn.value
                 ? "bg-white text-black"
@@ -85,13 +85,22 @@ export default function NewsletterSidebar({
       </div>
 
       {/* SCROLLABLE LIST */}
-      <div className="flex-1 overflow-auto pr-1 space-y-2
-                      [&::-webkit-scrollbar]:w-1.5
-                      [&::-webkit-scrollbar]:h-0
-                      [&::-webkit-scrollbar-track]:bg-transparent
-                      [&::-webkit-scrollbar-thumb]:bg-zinc-700
-                      [&::-webkit-scrollbar-thumb]:rounded-full
-                      hover:[&::-webkit-scrollbar-thumb]:bg-zinc-600">
+      <div
+  className="
+    flex-1
+    min-h-0
+    overflow-y-auto
+    overflow-x-hidden
+    pr-1
+    space-y-2
+
+    [&::-webkit-scrollbar]:w-1.5
+    [&::-webkit-scrollbar-track]:bg-transparent
+    [&::-webkit-scrollbar-thumb]:bg-zinc-700
+    [&::-webkit-scrollbar-thumb]:rounded-full
+    hover:[&::-webkit-scrollbar-thumb]:bg-zinc-600
+  "
+>
         {filtered.length === 0 ? (
           <p className="text-sm text-zinc-500">
             No articles found
