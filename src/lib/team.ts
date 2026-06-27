@@ -23,8 +23,14 @@ export interface TeamMember {
 
 const PB_URL = process.env.NEXT_PUBLIC_POCKETBASE_URL || "";
 
+// Add photoUrl to static members for type compatibility
+const STATIC_MEMBERS_WITH_PHOTO: TeamMember[] = STATIC_MEMBERS.map((m) => ({
+  ...m,
+  photoUrl: null,
+}));
+
 export async function fetchTeamMembers(): Promise<TeamMember[]> {
-  if (!PB_URL) return STATIC_MEMBERS;
+  if (!PB_URL) return STATIC_MEMBERS_WITH_PHOTO;
 
   try {
     const res = await fetch(`${PB_URL}/api/collections/team_members/records?perPage=200`);
@@ -48,12 +54,12 @@ export async function fetchTeamMembers(): Promise<TeamMember[]> {
       };
     });
   } catch {
-    return STATIC_MEMBERS;
+    return STATIC_MEMBERS_WITH_PHOTO;
   }
 }
 
 export function useTeamMembers() {
-  const [members, setMembers] = useState<TeamMember[]>(STATIC_MEMBERS);
+  const [members, setMembers] = useState<TeamMember[]>(STATIC_MEMBERS_WITH_PHOTO);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
