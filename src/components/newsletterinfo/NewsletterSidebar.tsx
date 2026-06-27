@@ -52,8 +52,7 @@ const [filter, setFilter] = useState<string>("all");
   }, [articles, query, filter]);
 
   return (
-<div className="w-[280px] h-[100dvh] bg-zinc-900 border-r border-zinc-800 p-4 flex flex-col overflow-hidden">
-      {/* SEARCH */}
+<div className="w-[280px] h-full bg-zinc-900 border-r border-zinc-800 p-4 flex flex-col overflow-hidden">      {/* SEARCH */}
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}

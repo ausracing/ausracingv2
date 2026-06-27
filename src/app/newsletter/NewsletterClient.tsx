@@ -55,9 +55,12 @@ export default function NewsletterClient({
   );
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col md:flex-row overflow-x-hidden">
+<section className="h-[calc(100dvh-80px)] bg-black text-white overflow-hidden">
+    <div className="h-full flex flex-col md:flex-row">
+
+
       {/* MOBILE TOP BAR */}
-      <div className="md:hidden border-b border-white/10 bg-black sticky top-0 z-20">
+<div className="md:hidden border-b border-white/10 bg-black sticky top-0 z-20">
         {/* Search */}
         <div className="px-4 pt-4 pb-3">
           <input
@@ -126,21 +129,36 @@ export default function NewsletterClient({
       </div>
 
       {/* DESKTOP SIDEBAR */}
-      <div className="hidden md:block">
-        <NewsletterSidebar
-          articles={sorted}
-          onSelect={setSelected}
-          activeSlug={selected.slug}
-        />
-      </div>
+<div className="hidden md:flex h-full shrink-0">
+    <NewsletterSidebar
+        articles={sorted}
+        onSelect={setSelected}
+        activeSlug={selected.slug}
+    />
+</div>
+        
 
       {/* MAIN CONTENT */}
-      <div className="flex-1 flex items-center justify-center p-4 sm:p-6">
-        <Link
-          href={`/newsletter/${selected.slug}`}
-          className="w-full max-w-3xl border border-white/10 rounded-xl overflow-hidden bg-white/5 hover:scale-[1.01] transition"
-        >
-          <div className="relative w-full h-[220px] sm:h-[320px] md:h-[360px]">
+<div className="flex-1 h-full flex items-center justify-center p-6 overflow-hidden">
+    <Link
+    href={`/newsletter/${selected.slug}`}
+    className="
+  w-full
+  max-w-3xl
+  h-auto
+  max-h-[90vh]
+  overflow-hidden
+  border
+  border-white/10
+  rounded-xl
+  bg-white/5
+  transition
+  hover:scale-[1.01]
+  flex
+  flex-col
+"
+  >
+<div className="relative w-full aspect-[16/9] max-h-[45vh]">
             <Image
               src={selected.image}
               alt={selected.title}
@@ -151,8 +169,8 @@ export default function NewsletterClient({
             />
           </div>
 
-          <div className="p-4 sm:p-6">
-            <h1 className="text-2xl sm:text-3xl font-bold">
+<div className="flex-1 p-4 sm:p-6 overflow-hidden">
+              <h1 className="text-2xl sm:text-3xl font-bold">
               {selected.title}
             </h1>
 
@@ -167,5 +185,6 @@ export default function NewsletterClient({
         </Link>
       </div>
     </div>
+    </section>
   );
 }
