@@ -2,35 +2,15 @@
 
 import { useState } from "react"
 
+const calendlyLink = "https://calendly.com/temp14087/30min"
+
 export default function SponsorModal() {
   const [open, setOpen] = useState(false)
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault()
-
-    const form = e.target
-
-    const company = form.company.value
-    const contact = form.contact.value
-    const role = form.role.value
-    const time = form.time.value
-
-    const subject = "Sponsorship Inquiry - AUS Racing"
-    const body = `
-Company Name: ${company}
-Contact Name: ${contact}
-Role: ${role}
-Preferred Meeting Time: ${time}
-`
-
-    window.location.href = `mailto:ausracing@aus.edu?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`
-  }
 
   return (
     <>
       <button
+        type="button"
         onClick={() => setOpen(true)}
         className="cursor-pointer bg-[#fbb03a] px-6 py-3 text-sm font-bold uppercase tracking-[0.15em] text-black transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-[1.04] hover:shadow-[0_0_18px_rgba(251,176,58,0.35)] active:scale-95"
       >
@@ -38,72 +18,39 @@ Preferred Meeting Time: ${time}
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
-          <div className="w-full max-w-2xl rounded-[24px] border border-white/10 bg-[#111214] p-6 md:p-8">
-            <div className="flex justify-end">
-              <button
-                onClick={() => setOpen(false)}
-                className="cursor-pointer text-lg text-gray-400 transition hover:text-white"
-              >
-                ✕
-              </button>
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/80 px-4 py-6">
+          <div className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-[28px] border border-white/10 bg-[#111214] p-5 text-white md:p-6">
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="absolute right-6 top-5 z-10 cursor-pointer text-3xl text-gray-400 transition hover:text-white"
+            >
+              ×
+            </button>
+
+            <div className="pr-10 text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#fbb03a]">
+                Scheduling Service
+              </p>
+
+              <h2 className="mt-3 text-2xl font-black uppercase md:text-4xl">
+                Book a Meeting With{" "}
+                <span className="text-[#fbb03a]">AUS Racing</span>
+              </h2>
+
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/60">
+                Choose a time to speak with the team about sponsorship
+                opportunities and partnership options.
+              </p>
             </div>
 
-            <h2 className="text-2xl font-bold text-white">
-              Become a Partner
-            </h2>
-
-            <form onSubmit={handleSubmit} className="mt-6 space-y-5">
-              <div>
-                <label className="text-xs uppercase text-gray-400">
-                  Company Name *
-                </label>
-                <input
-                  name="company"
-                  required
-                  className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-[#17181b] px-4 text-white outline-none transition focus:border-[#fbb03a] focus:ring-1 focus:ring-[#fbb03a]/40"
-                />
-              </div>
-
-              <div>
-                <label className="text-xs uppercase text-gray-400">
-                  Contact Name *
-                </label>
-                <input
-                  name="contact"
-                  required
-                  className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-[#17181b] px-4 text-white outline-none transition focus:border-[#fbb03a] focus:ring-1 focus:ring-[#fbb03a]/40"
-                />
-              </div>
-
-              <div>
-                <label className="text-xs uppercase text-gray-400">
-                  Your Role *
-                </label>
-                <input
-                  name="role"
-                  required
-                  className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-[#17181b] px-4 text-white outline-none transition focus:border-[#fbb03a] focus:ring-1 focus:ring-[#fbb03a]/40"
-                />
-              </div>
-
-              <div>
-                <label className="text-xs uppercase text-gray-400">
-                  Preferred Meeting Time
-                </label>
-                <input
-                  name="time"
-                  className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-[#17181b] px-4 text-white outline-none transition focus:border-[#fbb03a] focus:ring-1 focus:ring-[#fbb03a]/40"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full cursor-pointer bg-[#fbb03a] py-3 text-sm font-bold uppercase tracking-[0.15em] text-black transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_0_18px_rgba(251,176,58,0.35)] active:scale-95"
-              >
-                Submit Request
-              </button>
-            </form>
+            <div className="mt-5 overflow-hidden rounded-[18px] border border-white/10 bg-white">
+              <iframe
+                src={calendlyLink}
+                title="Book a meeting with AUS Racing"
+                className="h-[560px] w-full"
+              />
+            </div>
           </div>
         </div>
       )}
