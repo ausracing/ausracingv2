@@ -5,9 +5,9 @@
 // Images will be provided later — use next/image with placeholder for now.
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { FILTERS, TEAM_DESCRIPTIONS, useTeamMembers } from "@/lib/team";
+import { TEAM_DESCRIPTIONS, useTeamMembers, useCategories } from "@/lib/team";
 
 // Fixes "Any" type error
 interface TeamMemberData {
@@ -32,10 +32,15 @@ const TeamCard = ({ member, priority = false }: { member: TeamMemberData, priori
     ? '/images/team/fplaceholder.webp' 
     : '/images/team/mplaceholder.webp';
 
-  // Use Pocketbase photo if available, otherwise fall back to static path or placeholder
-  const initialSrc = member.photoUrl 
+  // Determine best image source: Pocketbase > static file > placeholder
+  const getSrc = () => member.photoUrl 
     || (member.hasPhoto ? namePhotoPath : fallbackPath);
-  const [imgSrc, setImgSrc] = useState(initialSrc);
+  const [imgSrc, setImgSrc] = useState(getSrc);
+
+  // Update image when member data changes (e.g. Pocketbase fetch completes)
+  useEffect(() => {
+    setImgSrc(getSrc());
+  }, [member.photoUrl, member.hasPhoto]);
 
   return (
     <div 
@@ -78,12 +83,15 @@ const TeamCard = ({ member, priority = false }: { member: TeamMemberData, priori
 };
 
 export default function TeamPage() {
-  // STATE: This remembers which filter bubble is currently clicked.
-  const [activeFilter, setActiveFilter] = useState(FILTERS[0]);
+  const categories = useCategories();
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [showAllFilters, setShowAllFilters] = useState(false);
   const { members } = useTeamMembers();
 
-  const filteredTeam = members.filter(member => member.category === activeFilter);
+  // Use first category as default once loaded
+  const currentFilter = activeFilter || categories[0] || "";
+
+  const filteredTeam = members.filter(member => member.category === currentFilter);
 
   return (
     <div className="min-h-screen bg-background pt-7 pb-16 px-6">
@@ -98,8 +106,8 @@ export default function TeamPage() {
 
         {/* FILTER BUTTONS CONTAINER */}
         <div className="flex flex-wrap justify-center items-center gap-2 w-full max-w-[1400px] mx-auto mb-6 px-4 select-none">  
-          {FILTERS.map((filter, index) => {
-            const isActive = activeFilter === filter;
+          {categories.map((filter, index) => {
+            const isActive = currentFilter === filter;
             const isHiddenOnMobile = !showAllFilters && index > 4 && !isActive;
             return (
               <button
@@ -129,7 +137,7 @@ export default function TeamPage() {
       {/* DYNAMIC TEAM DESCRIPTION */}
       <div className="max-w-2xl mx-auto mb-2 flex items-start justify-center px-4 min-h-[40px]">
         <p className="text-[13px] sm:text-[14px] text-white/60 text-center italic transition-opacity duration-300">
-          &quot;{TEAM_DESCRIPTIONS[activeFilter] || "Pushing the absolute limits of collegiate motorsport engineering."}&quot;
+          &quot;{TEAM_DESCRIPTIONS[currentFilter] || "Pushing the absolute limits of collegiate motorsport engineering."}&quot;
         </p>
       </div>
 
