@@ -59,6 +59,7 @@ const TeamCard = ({ member, priority = false }: { member: TeamMemberData, priori
           fill
           draggable={false}
           priority={priority}
+          unoptimized={imgSrc.startsWith('http')}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           // ✨ FIX: We just apply object-cover directly to everything now!
           className="transition-all select-none duration-500 group-hover:scale-105 object-cover"
