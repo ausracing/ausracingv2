@@ -13,8 +13,8 @@ export async function POST(req: Request) {
     }
 
     // 1. EXPLICIT CHECK: Ask Resend if this email already exists
-    const { data: existingContact } = await resend.contacts.get({ 
-      email: email 
+    const { data: existingContact } = await resend.contacts.get({
+      email: email
     });
 
     // 2. If data comes back, they are already on the roster. Stop here.
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     // 4. Fire the welcome email off to Resend
     const { error: emailError } = await resend.emails.send({
       from: 'AUS Racing <onboarding@resend.dev>',
-      to: email, 
+      to: email,
       subject: 'Welcome to the Grid | AUS Racing',
       html: `
         <div style="font-family: monospace; background-color: #18181b; color: #ffffff; padding: 40px; border-radius: 8px;">
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
 
     // 5. Tell the frontend it's a brand new subscriber
     return NextResponse.json({ success: true, alreadySubscribed: false });
-    
+
   } catch (error) {
     console.error("Resend API Error:", error);
     return NextResponse.json({ error: 'Failed to process subscription' }, { status: 500 });

@@ -39,10 +39,8 @@ export default function SceneCanvas({ activeIndex, onReady }: SceneCanvasProps) 
     <div className="w-full h-full">
       <Canvas
         shadows
-        // Wider FOV on mobile compensates for the narrow viewport,
-        // keeping the model visually prominent without scaling geometry
         camera={{
-          position: isMobile ? [0, 1.2, 5] : [0, 1.5, 7],
+          position: isMobile ? [0, 1.8, 8] : [0, 1.5, 7],
           fov: isMobile ? 60 : 50,
         }}
         gl={{
@@ -50,8 +48,6 @@ export default function SceneCanvas({ activeIndex, onReady }: SceneCanvasProps) 
           toneMapping: THREE.ACESFilmicToneMapping,
           powerPreference: "high-performance",
         }}
-        // Cap DPR at 1.5 — full 3× on high-end phones tanks frame rate
-        // with no meaningful visual benefit at this canvas size
         dpr={[1, 1.5]}
         style={{ background: "transparent" }}
         frameloop="always"
@@ -67,7 +63,6 @@ export default function SceneCanvas({ activeIndex, onReady }: SceneCanvasProps) 
           <ContactShadows
             position={[0, -0.8, 0]}
             opacity={0.35}
-            // Smaller shadow scale on mobile — shadows bleed at narrow widths
             scale={isMobile ? 8 : 15}
             blur={1.5}
             far={0.8}

@@ -16,7 +16,7 @@ export interface ModelConfig {
 
 export const MODELS: ModelConfig[] = [
   {
-    url: "/models/CAR.glb",
+    url: "/models/CAR_v2.glb",
     label: "AUS Racing Car",
     camPos: [0, 2, 10], camTarget: [0, 0, 0],
     hotspots: [],
@@ -31,12 +31,13 @@ export const MODELS: ModelConfig[] = [
     ],
   },
   {
-    url: "/models/Pedal_box_assembly_v10.glb",
+    url: "/models/TSAC.glb",
+    scale: 2.5,
     label: "Electronics",
     camPos: [-3, 2, 8], camTarget: [-1, 0, 0], infoSide: "right",
     hotspots: [
-      { position: [0.5, 0.8, 0.5], text: "TODO: needs real info - ECU and wiring harness" },
-      { position: [0.7, 0.4, 0.5], text: "TODO: needs real info - Data acquisition and sensors" },
+      { position: [0.5, 0.8, 0.5], text: "ECU and wiring harness" },
+      { position: [0.7, 0.4, 0.5], text: "Data acquisition and sensors" },
     ],
   },
   {
@@ -50,13 +51,13 @@ export const MODELS: ModelConfig[] = [
     ],
   },
   {
-    url: "/models/Full_brake_assembly_with_wheel.glb",
+    url: "/models/steering_v2.glb",
     label: "Steering",
-    scale: 3,
+    scale: 4,
     camPos: [-3, 2, 8], camTarget: [-1, 0, 0], infoSide: "right",
     hotspots: [
-      { position: [0.7, 0.35, 0.7], text: "TODO: needs real info - Steering rack and column" },
-      { position: [0.7, 0.3, 0.7], text: "TODO: needs real info - Custom uprights and hubs" },
+      { position: [0.7, 0.35, 0.7], text: "Steering rack and column" },
+      { position: [0.7, 0.3, 0.7], text: "Custom uprights and hubs" },
     ],
   },
   {
@@ -65,8 +66,8 @@ export const MODELS: ModelConfig[] = [
     scale: 5,
     camPos: [-3, 2, 8], camTarget: [-1, 0, 0], infoSide: "right",
     hotspots: [
-      { position: [0.5, 0.7, 0.5], text: "TODO: needs real info - Spaceframe steel chassis" },
-      { position: [0.5, 0.3, 0.5], text: "TODO: needs real info - Impact attenuator and roll hoop" },
+      { position: [0.5, 0.7, 0.5], text: "Spaceframe steel chassis" },
+      { position: [0.5, 0.3, 0.5], text: "Impact attenuator and roll hoop" },
     ],
   },
   {
@@ -75,26 +76,21 @@ export const MODELS: ModelConfig[] = [
     scale: 5,
     camPos: [-3, 2, 8], camTarget: [-1, 0, 0], infoSide: "left",
     hotspots: [
-      { position: [0.5, 0.7, 0.5], text: "TODO: needs real info - Chain drive and differential" },
-      { position: [0.5, 0.3, 0.5], text: "TODO: needs real info - Gearbox and sprocket assembly" },
+      { position: [0.5, 0.7, 0.5], text: "Chain drive and differential" },
+      { position: [0.5, 0.3, 0.5], text: "Gearbox and sprocket assembly" },
     ],
   },
-  {
-    label: "Cooling",
-    camPos: [-3, 2, 8], camTarget: [-1, 0, 0], infoSide: "right",
-    hotspots: [
-      { position: [0.5, 0.7, 0.5], text: "TODO: needs real info - Radiator and cooling ducts" },
-      { position: [0.5, 0.3, 0.5], text: "TODO: needs real info - Electric water pump and hoses" },
-    ],
-  },
-  {
-    label: "Power Delivery",
-    camPos: [-3, 2, 8], camTarget: [-1, 0, 0], infoSide: "left",
-    hotspots: [
-      { position: [0.5, 0.7, 0.5], text: "TODO: needs real info - Motor controller and battery pack" },
-      { position: [0.5, 0.3, 0.5], text: "TODO: needs real info - HV wiring and BMS" },
-    ],
-  },
+  // No 3D model file yet — commented out until models are ready
+  // {
+  //   label: "Cooling",
+  //   camPos: [-3, 2, 8], camTarget: [-1, 0, 0], infoSide: "right",
+  //   hotspots: [],
+  // },
+  // {
+  //   label: "Power Delivery",
+  //   camPos: [-3, 2, 8], camTarget: [-1, 0, 0], infoSide: "left",
+  //   hotspots: [],
+  // },
 ];
 
 export const MODEL_URLS = MODELS.map((m) => m.url).filter(Boolean) as string[];

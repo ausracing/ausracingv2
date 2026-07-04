@@ -16,20 +16,35 @@ const swiperStyles = `
   .car-swiper .swiper-pagination-bullet {
     background: rgba(255,255,255,0.2);
     opacity: 1;
+    width: 8px;
+    height: 8px;
   }
   .car-swiper .swiper-pagination-bullet-active {
     background: #F5B041;
   }
+  @media (max-width: 767px) {
+    .car-swiper .swiper-pagination-bullet {
+      width: 6px;
+      height: 6px;
+    }
+  }
 `;
 
-const BG_LABELS = ["THE CAR", "BRAKES", "ELECTRONICS", "AERO", "STEERING", "CHASSIS", "DRIVETRAIN", "COOLING", "POWER DELIVERY"];
+const BG_LABELS = ["THE CAR", "BRAKES", "ELECTRONICS", "AERO", "STEERING", "CHASSIS", "DRIVETRAIN"];
 const SECTIONS = MODELS.length;
 
 export default function CarConceptClient() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [canvasReady, setCanvasReady] = useState(false);
   const [loaderDone, setLoaderDone] = useState(false);
+  const [forceShow, setForceShow] = useState(false);
   const swiperRef = useRef<SwiperClass | null>(null);
+
+  // Fallback: if canvas/models fail to load within 5s, show content anyway
+  useEffect(() => {
+    const t = setTimeout(() => setForceShow(true), 5000);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -48,25 +63,27 @@ export default function CarConceptClient() {
   }, [activeIndex]);
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return; // don't lock scroll on mobile — Swiper handles touch
     const original = document.body.style.overflow;
     document.body.style.overflow = activeIndex < MODELS.length - 1 ? "hidden" : "";
     return () => { document.body.style.overflow = original; };
   }, [activeIndex]);
 
-  const showContent = canvasReady && loaderDone;
+  const showContent = (canvasReady && loaderDone) || forceShow;
 
   return (
     <>
       <style>{swiperStyles}</style>
       <AnimatePresence>
-        {!loaderDone && (
+        {!loaderDone && !forceShow && (
           <motion.div className="fixed inset-0 z-50" exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
             <LoadingOverlay onFinished={() => setLoaderDone(true)} canvasReady={canvasReady} />
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="fixed inset-0 z-0">
+      <div className="fixed inset-0 z-0" style={{ padding: "env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px)" }}>
         <SceneCanvas activeIndex={activeIndex} onReady={() => setCanvasReady(true)} />
       </div>
 

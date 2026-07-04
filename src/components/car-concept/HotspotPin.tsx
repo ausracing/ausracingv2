@@ -11,14 +11,32 @@ const bodyPortal =
 
 export default function HotspotPin({ hotspot }: { hotspot: Hotspot }) {
   const [hovered, setHovered] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Dismiss tooltip on tap outside (mobile)
+  useEffect(() => {
+    if (!hovered) return;
+    const handler = (e: Event) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setHovered(false);
+      }
+    };
+    document.addEventListener("touchstart", handler);
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("touchstart", handler);
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [hovered]);
 
   return (
     <Html position={hotspot.position} style={{ pointerEvents: "auto", zIndex: 40 }} zIndexRange={[100, 0]} sprite occlude={false} portal={bodyPortal}>
       <div
+        ref={ref}
         className="relative"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        onTouchStart={() => setHovered((v) => !v)}
+        onClick={() => setHovered((v) => !v)}
       >
         <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping pointer-events-none" />
         <div className="relative w-5 h-5 rounded-full bg-white border-2 border-primary shadow-[0_0_12px_color-mix(in_srgb,var(--color-primary)_60%,transparent)] z-10 cursor-pointer" />

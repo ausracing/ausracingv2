@@ -137,10 +137,6 @@ export default function AllModels({ activeIndex, onReady }: AllModelsProps) {
           }
         });
 
-        if (index === 4) {
-          clone.rotation.set(Math.PI, 0, 0);
-          clone.updateMatrixWorld(true);
-        }
         if (index === 5) {
           clone.rotation.set(Math.PI / 2, 0, 0);
           clone.updateMatrixWorld(true);
