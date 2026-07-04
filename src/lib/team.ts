@@ -20,7 +20,7 @@ export interface TeamMember {
   photoUrl: string | null;
 }
 
-const PB_URL = "http://192.168.8.210:9090";
+const PB_URL = process.env.NEXT_PUBLIC_PB_URL || "http://192.168.8.210:9090";
 
 // Add photoUrl to static members for type compatibility
 const STATIC_MEMBERS_WITH_PHOTO: TeamMember[] = STATIC_MEMBERS.map((m) => ({
