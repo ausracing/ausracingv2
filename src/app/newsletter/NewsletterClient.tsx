@@ -1,22 +1,12 @@
+// src/app/newsletters/NewsletterClient.tsx
+
 "use client";
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import NewsletterSidebar from "@/components/newsletterinfo/NewsletterSidebar";
-
-type Article = {
-  slug: string;
-  title: string;
-  shortDescription: string;
-  image: string;
-  date: string;
-  sections: {
-    heading?: string;
-    text?: string;
-    image?: string;
-  }[];
-};
+import { Article } from "@/data/newsletter";
 
 function parseDate(dateStr: string) {
   const [day, month, year] = dateStr.split("-").map(Number);
@@ -33,14 +23,18 @@ export default function NewsletterClient({
   );
 
   const [selected, setSelected] = useState<Article>(sorted[0]);
-
-  // Mobile-only search + pagination
   const [search, setSearch] = useState("");
   const [mobilePage, setMobilePage] = useState(0);
 
-  const filtered = sorted.filter((article) =>
-    article.date.toLowerCase().includes(search.toLowerCase())
-  );
+  // Omni-search checks Title, Description, and Date
+  const filtered = sorted.filter((article) => {
+    const q = search.toLowerCase();
+    return (
+      article.title.toLowerCase().includes(q) ||
+      article.shortDescription.toLowerCase().includes(q) ||
+      article.date.toLowerCase().includes(q)
+    );
+  });
 
   const itemsPerPage = 5;
 
@@ -55,136 +49,131 @@ export default function NewsletterClient({
   );
 
   return (
-<section className="h-[calc(100dvh-80px)] bg-black text-white overflow-hidden">
-    <div className="h-full flex flex-col md:flex-row">
+    <section className="h-[calc(100dvh-80px)] bg-black text-white overflow-hidden">
+      <div className="h-full flex flex-col md:flex-row">
 
-
-      {/* MOBILE TOP BAR */}
-<div className="md:hidden border-b border-white/10 bg-black sticky top-0 z-20">
-        {/* Search */}
-        <div className="px-4 pt-4 pb-3">
-          <input
-            type="text"
-            placeholder="Search date (01-09-2024)"
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              setMobilePage(0);
-            }}
-            className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none"
-          />
-        </div>
-
-        {/* Pagination controls */}
-        <div className="flex items-center justify-between px-4 pb-3">
-          <button
-            onClick={() => setMobilePage((p) => Math.max(0, p - 1))}
-            disabled={mobilePage === 0}
-            className="rounded-xl border border-white/10 px-3 py-1 text-sm disabled:opacity-30"
-          >
-            Prev
-          </button>
-
-          <p className="text-xs text-white/50">
-            {mobilePage + 1} / {totalPages}
-          </p>
-
-          <button
-            onClick={() =>
-              setMobilePage((p) =>
-                Math.min(totalPages - 1, p + 1)
-              )
-            }
-            disabled={mobilePage >= totalPages - 1}
-            className="rounded-xl border border-white/10 px-3 py-1 text-sm disabled:opacity-30"
-          >
-            Next
-          </button>
-        </div>
-
-    {/* Horizontal scrollable article list */}
-<div className="overflow-x-auto pb-4">
-  <div className="flex gap-2 px-4 min-w-max">
-    {mobileArticles.map((article) => (
-      <button
-        key={article.slug}
-        onClick={() => setSelected(article)}
-        className={`shrink-0 w-35 rounded-lg border px-3 py-3 text-left transition ${
-          selected.slug === article.slug
-            ? "border-white bg-white text-black"
-            : "border-white/10 bg-white/5 text-white"
-        }`}
-      >
-        <p className="text-xs font-medium leading-tight truncate">
-          {article.title}
-        </p>
-
-        <p className="mt-1 text-[10px] opacity-60">
-          {article.date}
-        </p>
-      </button>
-    ))}
-  </div>
-</div>
-      </div>
-
-      {/* DESKTOP SIDEBAR */}
-<div className="hidden md:flex h-full shrink-0">
-    <NewsletterSidebar
-        articles={sorted}
-        onSelect={setSelected}
-        activeSlug={selected.slug}
-    />
-</div>
-        
-
-      {/* MAIN CONTENT */}
-<div className="flex-1 h-full flex items-center justify-center p-6 overflow-hidden">
-    <Link
-    href={`/newsletter/${selected.slug}`}
-    className="
-  w-full
-  max-w-3xl
-  h-auto
-  max-h-[90vh]
-  overflow-hidden
-  border
-  border-white/10
-  rounded-xl
-  bg-white/5
-  transition
-  hover:scale-[1.01]
-  flex
-  flex-col
-"
-  >
-<div className="relative w-full aspect-video max-h-[45vh]">
-            <Image
-              src={selected.image}
-              alt={selected.title}
-              fill
-              sizes="(max-width: 768px) 100vw, 60vw"
-              className="object-cover"
-              priority
+        {/* MOBILE TOP BAR */}
+        <div className="md:hidden border-b border-white/10 bg-black sticky top-0 z-20 shrink-0">
+          <div className="px-4 pt-4 pb-3">
+            <input
+              type="text"
+              placeholder="Search 'May', 'battery', or '2025'..."
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setMobilePage(0);
+              }}
+              className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none"
             />
           </div>
 
-<div className="flex-1 p-4 sm:p-6 overflow-hidden">
-              <h1 className="text-2xl sm:text-3xl font-bold">
-              {selected.title}
-            </h1>
+          <div className="flex items-center justify-between px-4 pb-3">
+            <button
+              onClick={() => setMobilePage((p) => Math.max(0, p - 1))}
+              disabled={mobilePage === 0}
+              className="rounded-xl border border-white/10 px-3 py-1 text-sm disabled:opacity-30"
+            >
+              Prev
+            </button>
 
-            <p className="mt-3 text-sm text-white/60 sm:text-base">
-              {selected.shortDescription}
+            <p className="text-xs text-white/50">
+              {mobilePage + 1} / {totalPages}
             </p>
 
-            <p className="mt-3 text-xs text-white/40">
-              {selected.date}
-            </p>
+            <button
+              onClick={() =>
+                setMobilePage((p) =>
+                  Math.min(totalPages - 1, p + 1)
+                )
+              }
+              disabled={mobilePage >= totalPages - 1}
+              className="rounded-xl border border-white/10 px-3 py-1 text-sm disabled:opacity-30"
+            >
+              Next
+            </button>
           </div>
-        </Link>
+
+          <div className="overflow-x-auto pb-4">
+            <div className="flex gap-2 px-4 min-w-max">
+              {mobileArticles.map((article) => (
+                <button
+                  key={article.slug}
+                  onClick={() => setSelected(article)}
+                  className={`shrink-0 w-35 rounded-lg border px-3 py-3 text-left transition ${
+                    selected.slug === article.slug
+                      ? "border-white bg-white text-black"
+                      : "border-white/10 bg-white/5 text-white"
+                  }`}
+                >
+                  <p className="text-xs font-medium leading-tight truncate">
+                    {article.title}
+                  </p>
+                  <p className="mt-1 text-[10px] opacity-60">
+                    {article.date}
+                  </p>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* DESKTOP SIDEBAR */}
+        <div className="hidden md:flex h-full shrink-0">
+          <NewsletterSidebar
+              articles={sorted}
+              onSelect={setSelected}
+              activeSlug={selected.slug}
+          />
+        </div>
+
+        {/* MAIN CONTENT AREA */}
+        <div className="flex-1 h-full flex items-center justify-center p-4 sm:p-6 overflow-hidden min-h-0">
+          <Link
+            href={`/newsletter/${selected.slug}`}
+            className="
+              w-full
+              max-w-3xl lg:max-w-4xl xl:max-w-5xl /* Expanded widths for 1440px+ laptops */
+              h-auto
+              max-h-full /* STRICT FIX: Mathematically prevents the card from overflowing the flex container */
+              overflow-hidden
+              border border-white/10 rounded-xl bg-white/5
+              transition hover:scale-[1.01]
+              flex flex-col
+            "
+          >
+            {/* 
+              STRICT FIX: Mobile gets a compact h-36 to leave room for text. 
+              Only md+ screens get the aspect-video scaling. 
+            */}
+            <div className="relative w-full h-36 sm:h-48 md:h-auto md:aspect-video md:max-h-[45vh] shrink-0">
+              <Image
+                src={selected.image}
+                alt={selected.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 60vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+
+            {/* STRICT FIX: min-h-0 and overflow-hidden trap the text, forcing line-clamp to trigger */}
+            <div className="flex-1 p-4 sm:p-6 flex flex-col min-h-0 overflow-hidden">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold shrink-0">
+                {selected.title}
+              </h1>
+
+              {/* Text is slightly scaled down on small mobile screens to prevent cramming */}
+              <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-white/60 line-clamp-3 md:line-clamp-4 leading-relaxed">
+                {selected.shortDescription}
+              </p>
+
+              <p className="mt-auto pt-2 sm:pt-3 text-[10px] sm:text-xs text-white/40 shrink-0">
+                {selected.date}
+              </p>
+            </div>
+          </Link>
+        </div>
       </div>
-    </div>
     </section>
   );
 }
