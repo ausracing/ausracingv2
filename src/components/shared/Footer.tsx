@@ -2,7 +2,6 @@ import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
-import NewsletterForm from "./NewsletterForm";
 
 export default function Footer() {
   return (
