@@ -2,6 +2,10 @@
 "use client";
 
 
+// PLEASE DELETE 
+
+
+
 
 /*
 import FooterLayout from "./FooterLayout";

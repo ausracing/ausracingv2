@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 // Fixes "Any" Type Error
 interface FeaturedArticle {
@@ -12,13 +13,15 @@ export default function FullArticle({ article }: { article: FeaturedArticle }) {
   return (
     <div className="flex-1 p-10 overflow-y-auto">
       <div className="max-w-4xl mx-auto">
-        
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={article.image}
-          alt={article.title}
-          className="w-full h-[450px] object-cover rounded-2xl"
-        />
+
+        <div className="relative w-full h-[450px] rounded-2xl overflow-hidden">
+          <Image
+            src={article.image}
+            alt={article.title}
+            fill
+            className="object-cover"
+          />
+        </div>
 
         <h1 className="text-4xl font-bold mt-6">
           {article.title}

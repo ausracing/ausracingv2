@@ -40,9 +40,6 @@ export default function Footer() {
           <Link href="/car-concept" className="text-sm text-gray-400 hover:text-gray-300 transition">
             Car Concept
           </Link>
-          <Link href="/media" className="text-sm text-gray-400 hover:text-gray-300 transition">
-            Media
-          </Link>
           <Link href="/team" className="text-sm text-gray-400 hover:text-gray-300 transition">
             Team
           </Link>
