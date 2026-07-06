@@ -76,7 +76,9 @@ export default function Header() {
     // CASE A: On the dedicated page, clicking "Our Car" scrolls to top
     if (pathname === "/car-concept" && name === "Our Car") {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (!pathname.startsWith("/car-concept")) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
       return;
     }
 

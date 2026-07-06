@@ -52,8 +52,8 @@ export default function CarConceptClient() {
         e.preventDefault();
         swiperRef.current?.slidePrev();
       } else if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        e.preventDefault();
         if (activeIndex < MODELS.length - 1) {
-          e.preventDefault();
           swiperRef.current?.slideNext();
         }
       }
@@ -63,12 +63,10 @@ export default function CarConceptClient() {
   }, [activeIndex]);
 
   useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    if (isMobile) return; // don't lock scroll on mobile — Swiper handles touch
     const original = document.body.style.overflow;
-    document.body.style.overflow = activeIndex < MODELS.length - 1 ? "hidden" : "";
+    document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = original; };
-  }, [activeIndex]);
+  }, []);
 
   const showContent = (canvasReady && loaderDone) || forceShow;
 
