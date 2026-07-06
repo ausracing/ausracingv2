@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { newsletterArticles } from "../../app/newsletter/data";
+import { newsletterArticles } from "@/data/newsletter";
+
 
 function parseDate(dateStr: string) {
   const [day, month, year] = dateStr.split("-").map(Number);

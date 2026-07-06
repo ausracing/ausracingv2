@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import HTMLFlipBook from "react-pageflip";
+import Image from "next/image";
 
 interface Section {
   image?: string;
@@ -143,11 +144,13 @@ export default function FlipBook({
           >
             {section.image && (
               <div className="flex-1 w-full h-full relative">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={section.image}
                   alt={`Page ${index + 1}`}
-                  className="w-full h-full object-contain absolute inset-0"
+                  fill
+                  draggable={false}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-contain"
                 />
               </div>
             )}

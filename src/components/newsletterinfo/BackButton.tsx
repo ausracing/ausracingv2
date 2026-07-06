@@ -1,3 +1,5 @@
+// src/components/newsletterinfo/BackButton.tsx
+
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -10,32 +12,25 @@ export default function BackButton() {
       onClick={() => router.back()}
       className="
         group 
-        flex items-center justify-center gap-2
-        
-        /* Mobile: Rectangular, full width */
-        w-full h-12 px-4 py-2 rounded-lg 
-        
-        /* Desktop: Pill-shaped, auto-width to fit text perfectly */
+        flex items-center justify-center gap-1.5 sm:gap-2
+        w-full h-10 sm:h-12 px-2 sm:px-4 py-2 rounded-lg 
         md:w-auto md:px-5 md:py-2.5 md:rounded-full
-        
-        bg-black/50 text-white
-        border border-white/20
-        backdrop-blur-md
-        hover:bg-zinc-800 hover:border-white/40
+        bg-black text-white
+        border border-zinc-800
+        hover:bg-zinc-900 hover:border-amber-500/50 hover:text-amber-500
         active:scale-95
         transition-all duration-200
       "
       aria-label="Go back"
     >
       <svg 
-        className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-0.5" 
+        className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:-translate-x-0.5" 
         fill="none" stroke="currentColor" viewBox="0 0 24 24"
       >
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
       </svg>
-      
-      {/* whitespace-nowrap prevents the text from ever stacking vertically again */}
-      <span className="text-sm font-medium whitespace-nowrap">Go Back</span>
+      {/* Scaled down to text-xs on mobile for 320px support */}
+      <span className="text-xs sm:text-sm font-medium whitespace-nowrap">Go Back</span>
     </button>
   );
 }
