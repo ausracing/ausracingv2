@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Html } from "@react-three/drei";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Hotspot } from "./modelConfig";
