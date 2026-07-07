@@ -1,118 +1,127 @@
-// page.tsx — /team route
-// OWNER: Hashir
-// Server component — full team page.
-// Contains: grid of team member cards with image, name, role.
-// Images will be provided later — use next/image with placeholder for now.
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { FILTERS, TEAM_MEMBERS, TEAM_DESCRIPTIONS } from "@/data/team";
+import { client, urlFor } from "@/lib/sanity";
+import type { TeamMember } from "@/lib/queries";
 
-// Fixes "Any" type error
-interface TeamMemberData {
-  name: string;
-  role: string;
-  isLeader: boolean;
-  category: string;
-  hasPhoto: boolean;
-  gender: string;
-}
+// Static fallback data
+const FALLBACK_FILTERS = [
+  "Executive Board", "Electrical", "Powertrain", "Suspension & Steering",
+  "Chassis", "Aerodynamics", "Brakes", "Drivers", "Public Relations",
+  "Internal Relations", "Operations", "Supply Chain", "Web Development",
+  "Media & Marketing"
+];
 
-/**
- * HELPER COMPONENT: TeamCard
- * Handles local image state to prevent 404 spam.
- */
-const TeamCard = ({ member, priority = false }: { member: TeamMemberData, priority?: boolean }) => {
-  const namePhotoPath = `/images/team/${member.name.toLowerCase().trim().replace(/\s+/g, '-')}.webp`;
-  
-  // Determine the correct fallback based on gender (defaults to male if undefined)
-  const fallbackPath = member.gender === 'f' 
-    ? '/images/team/fplaceholder.webp' 
-    : '/images/team/mplaceholder.webp';
+const FALLBACK_DESCRIPTIONS: Record<string, string> = {
+  "Executive Board": "Guiding the strategic vision, operations, and ultimate success of the racing team.",
+  "Electrical": "Designing the custom wiring harnesses and high-voltage systems that power our vehicle.",
+  "Powertrain": "Optimizing battery output and energy efficiency for peak track performance.",
+  "Suspension & Steering": "Engineering dynamic suspension geometry to maximize tire grip and driver handling.",
+  "Chassis": "Fabricating a lightweight, structurally rigid frame to protect the driver and anchor the car.",
+  "Aerodynamics": "Manipulating airflow to reduce drag and generate massive cornering downforce.",
+  "Brakes": "Engineering high-performance stopping power and thermal management for precision cornering.",
+  "Drivers": "Pushing the engineered vehicle to its absolute physical limits on the track.",
+  "Public Relations": "Managing sponsor relationships, community outreach, and the team's professional image.",
+  "Internal Relations": "Overseeing internal communications, team dynamics, and organizational culture.",
+  "Operations": "Managing team finances, logistics, and internal administration for peak operational efficiency.",
+  "Supply Chain": "Procuring crucial components and managing logistics to keep manufacturing strictly on schedule.",
+  "Web Development": "Building the digital track: developing our high-performance team platform.",
+  "Media & Marketing": "Crafting our story and showcasing our speed to the world.",
+};
 
-  // Initialize state: Skip the network request entirely if hasPhoto is false
-  const [imgSrc, setImgSrc] = useState(member.hasPhoto ? namePhotoPath : fallbackPath);
+const genderPlaceholder = (gender: string) =>
+  gender === 'f' ? '/images/team/fplaceholder.webp' : '/images/team/mplaceholder.webp';
+
+const nameToPath = (name: string) =>
+  '/images/team/' + name.toLowerCase().trim().replace(/\s+/g, '-') + '.webp';
+
+const TeamCard = ({ member, priority = false }: { member: TeamMember; priority?: boolean }) => {
+  const [imgSrc, setImgSrc] = useState(
+    member.photo
+      ? urlFor(member.photo).width(400).height(500).url()
+      : nameToPath(member.name)
+  );
+  const fallback = genderPlaceholder(member.gender);
 
   return (
-    <div 
-      className={`group flex flex-col h-full bg-[#18181b] rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer w-[260px] sm:w-[220px] flex-shrink-0 border
-        ${member.isLeader 
-          ? "border-2 border-primary shadow-[0_0_35px_rgba(234,179,8,0.6)]" 
-          : "border border-white/10 hover:border-primary hover:shadow-[0_8px_24px_rgba(234,179,8,0.45)]"
-        }`}
-    >
-      {/* PHOTO CONTAINER */}
+    <div className={`group flex flex-col h-full bg-[#18181b] rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer w-[260px] sm:w-[220px] flex-shrink-0 border ${
+      member.isLeader
+        ? "border-2 border-primary shadow-[0_0_35px_rgba(234,179,8,0.6)]"
+        : "border border-white/10 hover:border-primary hover:shadow-[0_8px_24px_rgba(234,179,8,0.45)]"
+    }`}>
       <div className={`w-full aspect-[4/5] select-none relative flex items-center justify-center overflow-hidden border-b ${member.isLeader ? "border-primary" : "border-white/10"}`}>
-        
-        <Image 
+        <Image
           src={imgSrc}
           alt={member.name}
           fill
           draggable={false}
           priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-          // ✨ FIX: We just apply object-cover directly to everything now!
           className="transition-all select-none duration-500 group-hover:scale-105 object-cover"
-          onError={() => setImgSrc(fallbackPath)}
+          onError={() => setImgSrc(fallback)}
         />
-
-        {/* Overlay to keep the "dark" aesthetic consistent */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
       </div>
-
-      {/* CARD INFO */}
       <div className="p-4">
-        <h3 className="text-[14px] font-semibold tracking-[0.04em] text-white mb-1.5 line-clamp-2">
-          {member.name}
-        </h3>
-        <p className="text-[10px] font-medium tracking-widest uppercase text-primary/80 leading-relaxed line-clamp-2">
-          {member.role}
-        </p>
+        <h3 className="text-[14px] font-semibold tracking-[0.04em] text-white mb-1.5 line-clamp-2">{member.name}</h3>
+        <p className="text-[10px] font-medium tracking-widest uppercase text-primary/80 leading-relaxed line-clamp-2">{member.role}</p>
       </div>
     </div>
   );
 };
 
 export default function TeamPage() {
-  // STATE: This remembers which filter bubble is currently clicked.
-  const [activeFilter, setActiveFilter] = useState(FILTERS[0]);
+  const [members, setMembers] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [activeFilter, setActiveFilter] = useState(FALLBACK_FILTERS[0]);
   const [showAllFilters, setShowAllFilters] = useState(false);
 
-  const filteredTeam = TEAM_MEMBERS.filter(member => member.category === activeFilter);
+  useEffect(() => {
+    client.fetch<TeamMember[]>(`*[_type == "teamMember"] | order(order asc, isLeader desc, name asc) { _id, name, role, isLeader, category, gender, photo }`)
+      .then((data) => {
+        if (data?.length > 0) setMembers(data);
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
+
+  const filteredMembers = members.filter(m => m.category === activeFilter);
+
+  // Use first member's category if activeFilter doesn't match
+  const activeCategory = filteredMembers.length > 0
+    ? activeFilter
+    : (members.find(m => m.category === members[0]?.category)?.category || FALLBACK_FILTERS[0]);
+
+  const categories = [...new Set(members.map(m => m.category))].filter(Boolean);
+  const displayFilters = categories.length > 0 ? categories : FALLBACK_FILTERS;
 
   return (
     <div className="min-h-screen bg-background pt-7 pb-16 px-6">
-      
-      {/* SECTION HEADER */}
       <div className="text-center max-w-6xl mx-auto mb-5">
         <h1 className="font-orbitron text-3xl font-semibold tracking-[0.12em] uppercase text-white mb-2 select-none cursor-default">
-          {/* ✨ FIX: Wrap "Team" in a span and give it the primary color */}
           Meet the <span className="text-primary">Team</span>
         </h1>
         <div className="w-20 h-[2px] bg-primary mx-auto mb-5"></div>
 
-        {/* FILTER BUTTONS CONTAINER */}
-        <div className="flex flex-wrap justify-center items-center gap-2 w-full max-w-[1400px] mx-auto mb-6 px-4 select-none">  
-          {FILTERS.map((filter, index) => {
+        <div className="flex flex-wrap justify-center items-center gap-2 w-full max-w-[1400px] mx-auto mb-6 px-4 select-none">
+          {displayFilters.map((filter, index) => {
             const isActive = activeFilter === filter;
-            const isHiddenOnMobile = !showAllFilters && index > 4 && !isActive;
+            const isHidden = !showAllFilters && index > 4 && !isActive;
             return (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`
-                  px-4 py-2 rounded-full border text-[11px] font-mono tracking-wider transition-all duration-300 uppercase cursor-pointer select-none
-                  ${isActive ? "bg-primary text-black border-primary font-bold" : "bg-[#18181b] text-white/70 border-white/10 hover:border-white/30 hover:text-white"}
-                  ${isHiddenOnMobile ? "hidden md:block" : "block"}
-                `}
+                className={`px-4 py-2 rounded-full border text-[11px] font-mono tracking-wider transition-all duration-300 uppercase cursor-pointer select-none ${
+                  isActive
+                    ? "bg-primary text-black border-primary font-bold"
+                    : "bg-[#18181b] text-white/70 border-white/10 hover:border-white/30 hover:text-white"
+                } ${isHidden ? "hidden md:block" : "block"}`}
               >
                 {filter}
               </button>
             );
           })}
-
-          {/* INLINE MORE/LESS BUTTON (Mobile Only) */}
           <button
             onClick={() => setShowAllFilters(!showAllFilters)}
             className="md:hidden px-4 py-2 rounded-full border border-primary/50 text-primary text-[11px] font-mono tracking-wider uppercase hover:bg-primary/10 transition-colors select-none cursor-pointer"
@@ -122,22 +131,29 @@ export default function TeamPage() {
         </div>
       </div>
 
-      {/* DYNAMIC TEAM DESCRIPTION */}
       <div className="max-w-2xl mx-auto mb-2 flex items-start justify-center px-4 min-h-[40px]">
         <p className="text-[13px] sm:text-[14px] text-white/60 text-center italic transition-opacity duration-300">
-          &quot;{TEAM_DESCRIPTIONS[activeFilter] || "Pushing the absolute limits of collegiate motorsport engineering."}&quot;
+          &quot;{FALLBACK_DESCRIPTIONS[activeFilter] || "Pushing the absolute limits of collegiate motorsport engineering."}&quot;
         </p>
       </div>
 
-      {/* TEAM CARDS CONTAINER */}
-      <div className="flex flex-wrap justify-center gap-6 max-w-[1200px] mx-auto">
-        {[...filteredTeam]
-          .sort((a, b) => (a.isLeader === b.isLeader ? 0 : a.isLeader ? -1 : 1))
-          .map((member, index) => (
-            <TeamCard key={`${member.name}-${index}`} member={member} priority={index < 5}/>
-          ))}
-      </div>
-      
+      {loading ? (
+        <div className="flex justify-center py-20">
+          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+        </div>
+      ) : (
+        <div className="flex flex-wrap justify-center gap-6 max-w-[1200px] mx-auto">
+          {filteredMembers.length > 0 ? (
+            [...filteredMembers]
+              .sort((a, b) => (a.isLeader === b.isLeader ? 0 : a.isLeader ? -1 : 1))
+              .map((member, index) => (
+                <TeamCard key={member._id} member={member} priority={index < 5} />
+              ))
+          ) : (
+            <p className="text-white/40 text-sm py-10">No members found for this category.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

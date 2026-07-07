@@ -1,10 +1,14 @@
-import { newsletterArticles } from "@/data/newsletter";
+import { getNewsletterArticles } from "@/lib/queries";
+import { sanityArticleToArticle } from "@/lib/newsletter";
 import NewsletterClient from "./NewsletterClient";
 
-export default function NewslettersPage() {
+export default async function NewslettersPage() {
+  const sanityArticles = await getNewsletterArticles();
+  const articles = sanityArticles.map(sanityArticleToArticle);
+
   return (
     <>
-      <NewsletterClient articles={newsletterArticles} />
+      <NewsletterClient articles={articles} />
     </>
   );
 }

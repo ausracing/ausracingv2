@@ -6,11 +6,14 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import NewsletterSidebar from "@/components/newsletterinfo/NewsletterSidebar";
-import { Article } from "@/data/newsletter";
+import type { Article } from "@/data/newsletter";
 
 function parseDate(dateStr: string) {
-  const [day, month, year] = dateStr.split("-").map(Number);
-  return new Date(year, month - 1, day).getTime();
+  const parts = dateStr.split("-").map(Number);
+  if (dateStr.match(/^\d{4}-\d{2}-\d{2}$/)) {
+    return new Date(parts[0], parts[1] - 1, parts[2]).getTime();
+  }
+  return new Date(parts[2], parts[1] - 1, parts[0]).getTime();
 }
 
 export default function NewsletterClient({
