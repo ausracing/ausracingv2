@@ -1,211 +1,136 @@
 "use client";
-
-import { useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
-import { motion, AnimatePresence } from "motion/react";
-import { departments, type Department } from "./departmentData";
-import DepartmentCard from "./DepartmentCard";
-import DepartmentModal from "./DepartmentModal";
-import ScrollCTA from "@/components/shared/ScrollCTA";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import { MODELS } from "./modelConfig";
+import LoadingOverlay from "./LoadingOverlay";
+import type { Swiper as SwiperClass } from "swiper";
 
-const CarModel = dynamic(() => import("./CarModel"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-44 h-[2px] bg-white/10 rounded-full overflow-hidden">
-        <div className="h-full w-1/3 bg-primary rounded-full animate-pulse" />
-      </div>
-    </div>
-  ),
-});
+const SceneCanvas = dynamic(() => import("./SceneCanvas"), { ssr: false });
 
-// ─── Placeholder gallery images ───────────────────────────────────────────────
-const GALLERY = [
-  { src: "https://placehold.co/600x400/111/333?text=Testing+Day", alt: "Testing day" },
-  { src: "https://placehold.co/600x900/111/333?text=Build+Shop", alt: "Build shop" },
-  { src: "https://placehold.co/600x400/111/333?text=FSG+2024", alt: "FSG 2024" },
-  { src: "https://placehold.co/600x700/111/333?text=Aero+Dev", alt: "Aero development" },
-  { src: "https://placehold.co/600x400/111/333?text=Chassis+Fab", alt: "Chassis fabrication" },
-  { src: "https://placehold.co/600x500/111/333?text=Driver+Brief", alt: "Driver briefing" },
-  { src: "https://placehold.co/600x800/111/333?text=Endurance+Run", alt: "Endurance run" },
-  { src: "https://placehold.co/600x400/111/333?text=Team+Photo", alt: "Team photo" },
-  { src: "https://placehold.co/600x600/111/333?text=Suspension+Rig", alt: "Suspension rig" },
-];
+const swiperStyles = `
+  .car-swiper .swiper-pagination-bullet {
+    background: rgba(255,255,255,0.2);
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+  }
+  .car-swiper .swiper-pagination-bullet-active {
+    background: #F5B041;
+  }
+  @media (max-width: 767px) {
+    .car-swiper .swiper-pagination-bullet {
+      width: 6px;
+      height: 6px;
+    }
+  }
+`;
 
-// ─── Masonry gallery ──────────────────────────────────────────────────────────
-function MasonryGallery() {
-  const cols: typeof GALLERY[] = [[], [], []];
-  GALLERY.forEach((img, i) => cols[i % 3].push(img));
+const BG_LABELS = ["THE CAR", "BRAKES", "ELECTRONICS", "AERO", "STEERING", "CHASSIS", "DRIVETRAIN"];
+const SECTIONS = MODELS.length;
 
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
-      {cols.map((col, ci) => (
-        <div key={ci} className="flex flex-col gap-3">
-          {col.map((img) => (
-            <div key={img.src} className="overflow-hidden rounded-xl border border-card-line bg-card group">
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-}
+export default function CarConceptClient() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [canvasReady, setCanvasReady] = useState(false);
+  const [loaderDone, setLoaderDone] = useState(false);
+  const [forceShow, setForceShow] = useState(false);
+  const swiperRef = useRef<SwiperClass | null>(null);
 
-// ─── Main client component ────────────────────────────────────────────────────
-export default function CarConceptClient({ modelUrl }: { modelUrl: string }) {
-  const heroRef = useRef<HTMLElement>(null);
-  const [selectedDept, setSelectedDept] = useState<Department | null>(null);
+  // Fallback: if canvas/models fail to load within 5s, show content anyway
+  useEffect(() => {
+    const t = setTimeout(() => setForceShow(true), 5000);
+    return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        swiperRef.current?.slidePrev();
+      } else if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        e.preventDefault();
+        if (activeIndex < MODELS.length - 1) {
+          swiperRef.current?.slideNext();
+        }
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [activeIndex]);
+
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = original; };
+  }, []);
+
+  const showContent = (canvasReady && loaderDone) || forceShow;
 
   return (
     <>
-      {/* Fixed scroll CTA — viewport-anchored, hides once past hero */}
-      <ScrollCTA heroRef={heroRef} />
-
-      {/* Department modal with AnimatePresence fade */}
+      <style>{swiperStyles}</style>
       <AnimatePresence>
-        {selectedDept && (
-          <motion.div
-            key="modal-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <DepartmentModal
-              dept={selectedDept}
-              onClose={() => setSelectedDept(null)}
-            />
+        {!loaderDone && !forceShow && (
+          <motion.div className="fixed inset-0 z-50" exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+            <LoadingOverlay onFinished={() => setLoaderDone(true)} canvasReady={canvasReady} />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* ── Hero: two-column split ───────────────────────────────── */}
-      <section ref={heroRef} className="relative min-h-screen overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.025]"
-          style={{
-            backgroundImage: "radial-gradient(#F5B041 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        />
+      <div className="fixed inset-0 z-0" style={{ padding: "env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px)" }}>
+        <SceneCanvas activeIndex={activeIndex} onReady={() => setCanvasReady(true)} />
+      </div>
 
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-
-          {/* LEFT — text, vertically centred */}
-          <div className="flex flex-col justify-center px-8 md:px-14 lg:px-16 pt-24 pb-16 lg:py-0">
-            <p className="text-xs font-mono tracking-[0.25em] uppercase text-primary mb-5">
-              AUS Racing · Formula Student
-            </p>
-            <h1 className="text-5xl md:text-6xl font-orbitron lg:text-7xl font-black uppercase text-foreground leading-[0.92] tracking-tight mb-7">
-              Built by<br />
-              <span className="text-primary">students.</span><br />
-              Engineered<br />
-              to race.
-            </h1>
-           <p className="text-white/55 text-base md:text-lg leading-relaxed max-w-md mb-4">
-  Building a single-seater, racecar for competitions with every component being designed, analysed, manufactured, and tested by our students.
-</p>
-            <p className="text-white/30 text-sm leading-relaxed max-w-sm mb-10">
-              Hover annotation dots on model to explore key car systems.
-              Learn below about the departments behind the build.
-            </p>
-            <div className="flex gap-10">
-              {[
-                { value: "EV", label: "Powertrain" },
-  { value: "7", label: "Departments" },
-  { value: "FSUK", label: "Competition" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <p className="text-2xl font-black text-primary">{s.value}</p>
-                  <p className="text-[10px] font-mono uppercase tracking-widest text-white/35">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT — 3D car, vertically centred */}
-          <div className="relative flex items-center justify-center min-h-[60vh] lg:min-h-screen">
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-3/4 h-2/3 bg-primary/6 rounded-full blur-[100px]" />
-            </div>
-            <div className="w-full h-[60vh] lg:h-[85vh] max-w-3xl pointer-events-auto px-4 lg:px-0">
-              <CarModel modelUrl={modelUrl} className="w-full h-full" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Divider ────────────────a──────────────────────────────── */}
-      <div className="mx-6 md:mx-12 lg:mx-20 my-20 h-px bg-white/[0.07]" />
-
-      {/* ── Department cards ─────────────────────────────────────── */}
-      <section className="px-6 md:px-12 lg:px-20 pb-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-10">
-            <p className="text-xs font-mono tracking-[0.25em] uppercase text-primary mb-3">
-              The team
-            </p>
-            <h2 className="text-3xl md:text-4xl font-black uppercase text-foreground tracking-tight">
-              Pillars of <span className="text-primary">Excellence</span>
-            </h2>
-            <p className="mt-3 text-white/40 text-sm max-w-lg leading-relaxed">
-              Organised into specialised departments, each bringing unique expertise to the build.
-              Click any card to learn more.
-            </p>
-          </div>
-
-          {/* Faster stagger — 40ms not 70ms, shorter y travel */}
+      <AnimatePresence mode="wait">
+        {showContent && activeIndex < MODELS.length && (
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={{
-              hidden: {},
-              visible: { transition: { staggerChildren: 0.04 } },
-            }}
+            key={activeIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-10 flex items-center justify-center pointer-events-none select-none"
           >
-            {departments.map((dept) => (
-              <motion.div
-                key={dept.id}
-                className="h-full"
-                variants={{
-                  hidden: { opacity: 0, y: 12 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
-                }}
-              >
-                <DepartmentCard dept={dept} onClick={setSelectedDept} />
-              </motion.div>
-            ))}
+            <span className="text-[clamp(3rem,10vw,10rem)] font-black uppercase tracking-widest text-white/[0.08]" style={{ fontFamily: "var(--font-geist-sans)" }}>
+              {BG_LABELS[activeIndex] ?? ""}
+            </span>
           </motion.div>
-        </div>
-      </section>
+        )}
+      </AnimatePresence>
 
-      {/* ── Divider ──────────────────────────────────────────────── */}
-      <div className="mx-6 md:mx-12 lg:mx-20 mb-20 h-px bg-white/[0.07]" />
+      <Swiper
+        modules={[Mousewheel, Pagination]}
+        speed={1100}
+        direction="vertical"
+        mousewheel
+        pagination={{ clickable: true }}
+        onSwiper={(s) => { swiperRef.current = s; }}
+        onSlideChange={(s) => setActiveIndex(s.activeIndex)}
+        className="car-swiper fixed inset-0 z-20 h-screen w-full"
+      >
+        {Array.from({ length: SECTIONS }).map((_, i) => (
+          <SwiperSlide key={i} className="!h-screen" />
+        ))}
+      </Swiper>
 
-      {/* ── Gallery ──────────────────────────────────────────────── */}
-      <section className="px-6 md:px-12 lg:px-20 pb-32">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-10">
-            <p className="text-xs font-mono tracking-[0.25em] uppercase text-primary mb-3">
-              Behind the scenes
-            </p>
-            <h2 className="text-3xl md:text-4xl font-black uppercase text-foreground tracking-tight">
-              The <span className="text-primary">Build</span>
-            </h2>
-            <p className="mt-3 text-white/40 text-sm max-w-lg leading-relaxed">
-              From the workshop floor to the competition paddock.
-            </p>
-          </div>
-          <MasonryGallery />
-        </div>
-      </section>
+      <AnimatePresence>
+        {showContent && activeIndex === 0 && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 pointer-events-none"
+            style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
+          >
+            <motion.span animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 2.4 }} className="text-[10px] tracking-[0.35em] uppercase text-primary" style={{ fontFamily: "var(--font-geist-mono)" }}>
+              Scroll to explore
+            </motion.span>
+            <motion.div animate={{ scaleY: [0, 1, 0], opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 2.4, delay: 0.2 }} style={{ transformOrigin: "top" }} className="w-px h-6 bg-gradient-to-b from-primary to-transparent" />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

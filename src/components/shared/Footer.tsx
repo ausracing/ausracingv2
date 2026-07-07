@@ -1,9 +1,13 @@
+"use client";
 import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "";
+  if (pathname === "/car-concept" || pathname.startsWith("/car-concept/")) return null;
+
   return (
     <footer className="w-full bg-black text-gray-400 py-10 px-6 border-t border-gray-800">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
