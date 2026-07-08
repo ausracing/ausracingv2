@@ -2,10 +2,14 @@
 
 import { useState } from "react"
 
-const calendlyLink = "https://calendly.com/temp14087/30min"
+const calendlyLink = process.env.NEXT_PUBLIC_CALENDLY_LINK
 
 export default function SponsorModal() {
   const [open, setOpen] = useState(false)
+
+  if (!calendlyLink) {
+    return null
+  }
 
   return (
     <>
