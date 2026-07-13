@@ -14,11 +14,11 @@ export function sanityArticleToArticle(sanity: SanityArticle): Article {
     slug,
     title: sanity.title,
     shortDescription: sanity.shortDescription,
-    image: urlFor(sanity.coverImage).url(),
+    image: urlFor(sanity.coverImage),
     pdfUrl: buildPdfUrl(slug),
     date: sanity.date,
     sections: sanity.sections.map((sec: SanityArticleSection): ArticleSection => ({
-      image: urlFor(sec.image).url(),
+      image: urlFor(sec.image),
     })),
   };
 }

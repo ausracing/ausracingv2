@@ -14,7 +14,7 @@ const nameToPath = (name: string) =>
 const TeamCard = ({ member, priority = false }: { member: TeamMember; priority?: boolean }) => {
   const [imgSrc, setImgSrc] = useState(
     member.photo
-      ? urlFor(member.photo).url()
+      ? urlFor(member.photo)
       : nameToPath(member.name)
   );
   const fallback = genderPlaceholder(member.gender);
