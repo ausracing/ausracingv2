@@ -21,6 +21,7 @@ export default function FeaturedNews({ article }: { article: FeaturedArticle }) 
             src={article.image}
             alt={article.title}
             fill
+            unoptimized={article.image.startsWith('http')}
             className="object-cover"
           />
         </div>

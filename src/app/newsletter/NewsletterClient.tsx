@@ -155,6 +155,7 @@ export default function NewsletterClient({
                 fill
                 sizes="(max-width: 768px) 100vw, 60vw"
                 className="object-cover"
+                unoptimized={selected.image.startsWith('http')}
                 priority
               />
             </div>
