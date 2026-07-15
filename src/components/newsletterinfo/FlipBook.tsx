@@ -149,6 +149,7 @@ export default function FlipBook({
                   alt={`Page ${index + 1}`}
                   fill
                   draggable={false}
+                  unoptimized={section.image.startsWith('http')}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain"
                 />

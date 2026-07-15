@@ -13,12 +13,14 @@ const builder = imageUrlBuilder(client);
 
 /**
  * Build a Sanity image URL from an image reference.
+ * Returns a clean URL string with no query params.
+ * Let Next.js `<Image>` handle sizing via its own query params.
  *
  * @param source - A Sanity image reference (asset object, ref string, etc.)
- * @returns An ImageUrlBuilder instance for chaining .width(), .url(), etc.
+ * @returns A clean URL string.
  */
-export function urlFor(source: SanityImageSource) {
-  return builder.image(source);
+export function urlFor(source: SanityImageSource): string {
+  return builder.image(source).url().split("?")[0];
 }
 
 /**

@@ -14,7 +14,7 @@ const nameToPath = (name: string) =>
 const TeamCard = ({ member, priority = false }: { member: TeamMember; priority?: boolean }) => {
   const [imgSrc, setImgSrc] = useState(
     member.photo
-      ? urlFor(member.photo).width(400).height(500).url()
+      ? urlFor(member.photo)
       : nameToPath(member.name)
   );
   const fallback = genderPlaceholder(member.gender);
@@ -32,6 +32,7 @@ const TeamCard = ({ member, priority = false }: { member: TeamMember; priority?:
           fill
           draggable={false}
           priority={priority}
+          unoptimized={imgSrc.startsWith('http')}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           className="transition-all select-none duration-500 group-hover:scale-105 object-cover"
           onError={() => setImgSrc(fallback)}
