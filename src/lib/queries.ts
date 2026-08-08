@@ -8,7 +8,8 @@ export const teamMembersQuery = `*[_type == "teamMember"] | order(order asc, isL
   isLeader,
   category,
   gender,
-  photo
+  photo,
+  order
 }`
 
 export interface TeamMember {
@@ -19,6 +20,7 @@ export interface TeamMember {
   category: string
   gender: string
   photo: any | null
+  order?: number
 }
 
 export async function getTeamMembers(): Promise<TeamMember[]> {

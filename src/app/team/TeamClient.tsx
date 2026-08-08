@@ -133,7 +133,23 @@ export default function TeamClient({ members }: { members: TeamMember[] }) {
       <div className="flex flex-wrap justify-center gap-6 max-w-[1200px] mx-auto">
         {displayMembers.length > 0 ? (
           [...displayMembers]
-            .sort((a, b) => (a.isLeader === b.isLeader ? 0 : a.isLeader ? -1 : 1))
+            .sort((a, b) => {
+              // 1. LEADER RULE
+              if (a.isLeader !== b.isLeader) {
+                return a.isLeader ? -1 : 1; 
+              }
+              
+              // 2. THE ORDER RULE (If both are leaders (or both are NOT leaders), sort by custom Sanity numbers.)
+              const orderA = a.order ?? 0;
+              const orderB = b.order ?? 0;
+              
+              if (orderA !== orderB) {
+                return orderA - orderB;
+              }
+              
+              // 3. THE ALPHABETICAL FALLBACK (If they have the exact same number, sort by name)
+              return a.name.localeCompare(b.name);
+            })
             .map((member, index) => (
               <TeamCard key={member._id} member={member} priority={index < 5} />
             ))

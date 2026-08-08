@@ -11,6 +11,7 @@ import TimelineSection from "@/components/Timeline/TimelineSection";
 import QuoteSection from "@/components/Countdown_quote/QuoteSection";
 import Spacer from "@/components/ui/spacer";
 import ScrollCTA from "@/components/shared/ScrollCTA";
+import SilverstoneHighlights from "@/components/comp-highlights/SilverstoneHighlights";
 
 export default function Home() {
   // Keeps track of when the loader is completely finished to unmount it
@@ -41,8 +42,7 @@ export default function Home() {
       <SponsorsStrip />
       <AUSParagraph />
       <Spacer height={55} />
-      <CompetitionCountdown />
-      <Spacer height={55} />
+      <SilverstoneHighlights />
       <TimelineSection />
       <Spacer height={15} />
       <CarTeaser />

@@ -62,7 +62,7 @@ export default function HeroVideo({ onVideoReady }: HeroVideoProps) {
             The Official Formula Student Team of The American University of Sharjah. <br></br> Join us on this exciting journey as we redefine what it means to be an engineering student in UAE.
           </p>
         </div>
-
+              
         {/* BUTTON GROUP */}
         <div className="mt-4 flex flex-col sm:flex-row gap-4">
           <a 
@@ -72,10 +72,12 @@ export default function HeroVideo({ onVideoReady }: HeroVideoProps) {
             View Sponsorship Specs
           </a>
           <a 
-            href="/car-concept" 
+            href="https://forms.gle/NgrzrENpcmCNiSAR6"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-3 bg-black/85 border-[1.5px] border-white/20 text-white text-sm tracking-[0.1em] uppercase font-bold rounded-[4px] hover:bg-black hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
           >
-            See the Car &rarr;
+            Join the 2027 Team
           </a>
         </div>
       </div>
