@@ -1,11 +1,16 @@
 // src/data/openings.ts
 
-export const CATEGORIES = [
-  "All", 
-  "Mechanical", 
-  "Electrical", 
-  "Concept Class", 
-  "Commerce"
+export type Category = {
+  id: string;
+  image: string | null;
+};
+
+export const CATEGORIES: Category[] = [
+  { id: "All", image: null },
+  { id: "Mechanical", image: "/images/teams/mechanical.png" },
+  { id: "Electrical", image: "/images/teams/electrical.png" },
+  { id: "Concept Class", image: "/images/teams/concept-class.png" },
+  { id: "Commerce", image: "/images/teams/commerce.png" },
 ];
 
 export const OPENINGS = [

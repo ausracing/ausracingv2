@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import Link from "next/link";
 import { CATEGORIES, OPENINGS } from "@/data/openings";
+import Image from "next/image";
 
 // --- ANIMATION VARIANTS ---
 const containerVariants = {
@@ -112,15 +113,15 @@ export default function JoinPage() {
           <div className="flex gap-1 p-1 bg-white/5 border border-white/10 rounded-lg backdrop-blur-sm overflow-x-auto hide-scrollbar max-w-full">
             {CATEGORIES.map((category) => (
               <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
                 className={`px-5 py-2 rounded-md text-[11px] md:text-xs font-mono tracking-widest uppercase transition-all duration-300 whitespace-nowrap ${
-                  activeCategory === category
+                  activeCategory === category.id
                     ? "bg-primary text-black font-bold shadow-[0_0_15px_rgba(255,170,0,0.4)]"
                     : "text-white/50 hover:text-white hover:bg-white/5"
                 }`}
               >
-                {category}
+                {category.id}
               </button>
             ))}
           </div>
@@ -133,64 +134,87 @@ export default function JoinPage() {
           className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"
         >
           <AnimatePresence mode="popLayout">
-            {filteredOpenings.map((opening) => (
-              <motion.div
-                key={opening.name}
-                layout
-                variants={cardVariants}
-                initial="hidden"
-                animate="show"
-                exit="exit"
-                className="group relative flex flex-col justify-between p-6 rounded-xl bg-[#111] border border-primary/20 hover:border-primary hover:shadow-[0_0_20px_rgba(255,170,0,0.2)] transition-all duration-500 overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            {filteredOpenings.map((opening) => {
+              const categoryImage = CATEGORIES.find((c) => c.id === opening.category)?.image;
 
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-3">
-                    
-                    <div className="flex items-center gap-2">
-                      <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-primary font-bold">
-                        {opening.category}
-                      </span>
-                      
-                      {opening.subcategory && (
-                        <>
-                          <span className="text-white/20 text-[9px]">•</span>
-                          <span className={`text-[9px] font-mono uppercase tracking-[0.2em] font-bold ${
-                            opening.subcategory === 'Software' ? 'text-blue-400' : 'text-orange-400'
-                          }`}>
-                            {opening.subcategory}
-                          </span>
-                        </>
-                      )}
-                    </div>
-                    
-                    <div className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-primary transition-colors duration-500" />
-                  </div>
-                  
-                  <h3 className="text-lg md:text-xl font-bold font-orbitron uppercase text-white mb-2 group-hover:text-primary transition-colors duration-300 line-clamp-2">
-                    {opening.name}
-                  </h3>
-                  
-                  <p className="text-[13px] text-white/60 leading-relaxed mb-5 line-clamp-3">
-                    {opening.desc}
-                  </p>
-                </div>
-
-                {/* ✨ FIX: Button href now pulls directly from opening.formLink */}
-                <Link 
-                  href={opening.formLink || "#"} 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative z-10 w-full py-2.5 px-4 flex items-center justify-center gap-2 border border-white/20 rounded-lg text-[11px] font-mono uppercase tracking-widest text-white hover:bg-primary hover:text-black hover:border-primary transition-all duration-300"
+              return (
+                <motion.div
+                  key={opening.name}
+                  layout
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                  className="group relative flex flex-col p-6 rounded-xl bg-[#111] border border-primary/20 hover:border-primary hover:shadow-[0_0_20px_rgba(255,170,0,0.2)] transition-all duration-500 overflow-hidden"
                 >
-                  Apply Now
-                  <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
-              </motion.div>
-            ))}
+                  {/* Category image background — behind title/category, fades left + bottom into the card */}
+                  {categoryImage && (
+                    <div className="absolute inset-x-0 top-0 h-[132px] pointer-events-none" aria-hidden="true">
+                      <Image
+                        src={categoryImage}
+                        alt=""
+                        fill
+                        sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                        className="object-cover object-right opacity-90"
+                      />
+                      {/* Dark scrim: mutes the subject to a faint silhouette */}
+                      <div className="absolute inset-0 bg-black/40" />
+                      {/* Left fade: card bg opaque at left edge -> transparent by ~65%, subject stays visible on the right */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#111] via-[#111]/70 via-30% to-transparent to-65%" />
+                      {/* Bottom fade: melts the image into the card bg below the title area */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent from-60% to-[#111]" />
+                    </div>
+                  )}
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  <div className="relative z-10 flex flex-1 flex-col">
+                    <div className="flex items-center justify-between mb-3">
+
+                      <div className="flex items-center gap-2">
+                        <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-primary font-bold">
+                          {opening.category}
+                        </span>
+
+                        {opening.subcategory && (
+                          <>
+                            <span className="text-white/20 text-[9px]">•</span>
+                            <span className={`text-[9px] font-mono uppercase tracking-[0.2em] font-bold ${
+                              opening.subcategory === 'Software' ? 'text-blue-400' : 'text-orange-400'
+                            }`}>
+                              {opening.subcategory}
+                            </span>
+                          </>
+                        )}
+                      </div>
+
+                      <div className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-primary transition-colors duration-500" />
+                    </div>
+
+                    <h3 className="max-w-[55%] text-lg md:text-xl font-bold font-orbitron uppercase text-white mb-2 group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                      {opening.name}
+                    </h3>
+
+                    <p className="text-[13px] text-white/60 leading-relaxed mb-5 line-clamp-3">
+                      {opening.desc}
+                    </p>
+
+                    {/* ✨ FIX: Button href now pulls directly from opening.formLink */}
+                    <Link
+                      href={opening.formLink || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative z-10 mt-auto w-full py-2.5 px-4 flex items-center justify-center gap-2 border border-white/20 rounded-lg text-[11px] font-mono uppercase tracking-widest text-white hover:bg-primary hover:text-black hover:border-primary transition-all duration-300"
+                    >
+                      Apply Now
+                      <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </Link>
+                  </div>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </motion.div>
 
