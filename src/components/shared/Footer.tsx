@@ -78,7 +78,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* COLUMN 4 — NEWSLETTER */}
+        {/* COLUMN 4 — NEWSLETTER
         <div className="flex flex-col gap-2">
           <h4 className="text-sm font-medium text-gray-300">
             Newsletter
@@ -87,13 +87,13 @@ export default function Footer() {
             Sign up to our newsletter to stay updated with AUS Racing.
           </p>
 
-          {/* Branded Gold Status Indicator */}
+           Branded Gold Status Indicator 
           <div className="mt-1">
             <span className="inline-block rounded bg-yellow-500/10 px-3 py-1 text-xs font-medium text-yellow-500 border border-yellow-500/20">
               Coming Soon
             </span>
           </div>
-        </div>
+        </div> */}
 
       </div>
 

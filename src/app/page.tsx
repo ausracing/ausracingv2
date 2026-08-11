@@ -12,6 +12,7 @@ import QuoteSection from "@/components/Countdown_quote/QuoteSection";
 import Spacer from "@/components/ui/spacer";
 import ScrollCTA from "@/components/shared/ScrollCTA";
 import SilverstoneHighlights from "@/components/comp-highlights/SilverstoneHighlights";
+import SilverstoneJourney from "@/components/comp-highlights/SilverstoneJourney";
 
 export default function Home() {
   // Keeps track of when the loader is completely finished to unmount it
@@ -42,12 +43,10 @@ export default function Home() {
       <SponsorsStrip />
       <AUSParagraph />
       <Spacer height={55} />
-      <SilverstoneHighlights />
-      <TimelineSection />
+      <SilverstoneJourney />
       <Spacer height={15} />
       <CarTeaser />
       <Spacer height={90} />
-      <NewsletterHome />
       <QuoteSection />
       
       {/* 3. Drop the CTA component inside the main container */}

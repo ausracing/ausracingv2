@@ -74,7 +74,7 @@ export default function TeamCreditsPage() {
     // 1500ms DELAY BEFORE SCROLLING STARTS
     timeoutId = setTimeout(() => {
       animationFrameId = requestAnimationFrame(scroll);
-    }, 1500);
+    }, 2500);
 
     const stopAutoScroll = () => setIsAutoScrolling(false);
 
@@ -148,8 +148,9 @@ export default function TeamCreditsPage() {
                   <Image 
                     src={activeMemory.src} 
                     alt={activeMemory.alt || "AUS Racing Memory"} 
-                    fill 
-                    className="object-cover opacity-80"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
                   />
                 </motion.div>
               </AnimatePresence>

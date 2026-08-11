@@ -29,11 +29,9 @@ export default function TimelineSection() {
   return (
     <section id="our-car" className="w-full bg-black py-20 text-white">
       <div className="mx-auto max-w-6xl px-6">
-        
-
    
         <h2 className="text-center text-3xl font-bold md:text-5xl font-orbitron uppercase">
-          Our <span className="text-[#fbb03a]">Progress</span>
+          Build <span className="text-[#fbb03a]">Timeline</span>
         </h2>
 
    
@@ -49,7 +47,7 @@ export default function TimelineSection() {
   
                 <div
                   className={`relative z-10 h-4 w-4 rounded-full border ${
-                    index < timeline.length - 1
+                    index < timeline.length
                       ? "border-[#fbb03a] bg-[#fbb03a] shadow-[0_0_12px_rgba(251,176,58,0.8)]"
                       : "border-white/30 bg-black"
                   }`}

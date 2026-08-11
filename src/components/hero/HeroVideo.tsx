@@ -72,12 +72,12 @@ export default function HeroVideo({ onVideoReady }: HeroVideoProps) {
             View Sponsorship Specs
           </a>
           <a 
-            href="https://forms.gle/NgrzrENpcmCNiSAR6"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/join"
+            // target="_blank"
+            // rel="noopener noreferrer"
             className="px-8 py-3 bg-black/85 border-[1.5px] border-white/20 text-white text-sm tracking-[0.1em] uppercase font-bold rounded-[4px] hover:bg-black hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
           >
-            Join the 2027 Team
+            Join the team &rarr;
           </a>
         </div>
       </div>

@@ -9,37 +9,40 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
+// 1. UPDATED CORE NAV LINKS (Newsletter Removed)
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Team", href: "/team" },
+  { name: "Highlights", href: "/credits" },
   { name: "Our Car", href: "/#our-car" },
-  { name: "Newsletter", href: "/newsletter" },
-  // { name: "Media", href: "/media" },
   { name: "Contact Us", href: "/sponsors" }
 ];
+
+// 2. DYNAMIC BREADCRUMB TITLES
+// Map the URL path to the title you want displayed after the " | "
+const DYNAMIC_TITLES: Record<string, string> = {
+  "/join": "Hiring 2027",
+  // Add any future sub-pages here!
+};
 
 export default function Header() {
   const pathname = usePathname();
   const [activeHash, setActiveHash] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // 1. SCROLL OBSERVER FOR HOMEPAGE SECTIONS
+  // SCROLL OBSERVER FOR HOMEPAGE SECTIONS
   useEffect(() => {
-    // If we aren't on the homepage, let the pathname handle active states exclusively
     if (pathname !== "/") {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveHash("");
       return;
     }
 
-    // UPDATE 1: Removed [id] from footer so it catches it regardless of its attributes
     const elements = document.querySelectorAll("section[id], footer");
     
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // UPDATE 2: If the user hits the footer, clear the hash so "Home" highlights
             if (entry.target.tagName.toLowerCase() === "footer") {
               setActiveHash("");
             } else {
@@ -48,7 +51,7 @@ export default function Header() {
           }
         });
       },
-      { threshold: 0.3, rootMargin: "-20% 0px -60% 0px" } // Focused viewport window
+      { threshold: 0.3, rootMargin: "-20% 0px -60% 0px" } 
     );
 
     elements.forEach((el) => observer.observe(el));
@@ -58,7 +61,7 @@ export default function Header() {
       const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
 
       if (isAtTop || isAtBottom) {
-        setActiveHash(""); // Reset to Home at the very top
+        setActiveHash("");
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -69,11 +72,10 @@ export default function Header() {
     };
   }, [pathname]);
 
-  // 2. WATERPROOF CLICK HANDLER (Prevents Double Hashes)
+  // WATERPROOF CLICK HANDLER
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, name: string, isMobile: boolean) => {
     if (isMobile) setIsMobileMenuOpen(false);
 
-    // CASE A: On the dedicated page, clicking "Our Car" scrolls to top
     if (pathname === "/car-concept" && name === "Our Car") {
       e.preventDefault();
       if (!pathname.startsWith("/car-concept")) {
@@ -82,28 +84,26 @@ export default function Header() {
       return;
     }
 
-    // CASE B: Universal Scroll-to-Top for any standard active page (Home, Newsletter, Sponsors, etc.)
     if (pathname === href) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
-      if (href === "/") window.history.pushState(null, "", "/"); // Keeps the homepage URL clean
+      if (href === "/") window.history.pushState(null, "", "/");
       return;
     }
 
-    // CASE C: Already on the homepage, clicking a homepage anchor link
     if (pathname === "/" && href.startsWith("/#")) {
       e.preventDefault();
       const targetId = href.replace("/#", "");
       const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
-        window.history.pushState(null, "", href); // Sets clean URL without doubling up
+        window.history.pushState(null, "", href);
         setActiveHash(`#${targetId}`);
       }
     }
   };
 
-  // 3. LOCK BODY SCROLL ON MOBILE MENU
+  // LOCK BODY SCROLL ON MOBILE MENU
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
     const handleResize = () => {
@@ -117,6 +117,9 @@ export default function Header() {
       window.removeEventListener("resize", handleResize);
     };
   }, [isMobileMenuOpen]);
+
+  // Check if we are on a page that needs a dynamic breadcrumb
+  const currentDynamicTitle = DYNAMIC_TITLES[pathname];
 
   return (
     <>
@@ -151,12 +154,11 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* 3. DESKTOP CENTER: Links */}
+        {/* 3. DESKTOP CENTER: Links + Dynamic Breadcrumb */}
         <ul className="order-none hidden lg:flex lg:flex-[2] justify-center items-center gap-6 xl:gap-8 list-none m-0 p-0 lg:order-2">
           {navLinks.map((link) => {
             let isActive = false;
 
-            // Strict Active Tab Mapping Rules
             if (pathname === "/car-concept" && link.name === "Our Car") {
               isActive = true;
             } else if (pathname === "/") {
@@ -188,6 +190,15 @@ export default function Header() {
             );
           })}
 
+          {/* THE DYNAMIC BREADCRUMB PIPELINE */}
+          {currentDynamicTitle && (
+            <li className="flex items-center gap-4 ml-2 animate-in fade-in slide-in-from-left-2 duration-500">
+              <span className="text-white/20 font-light select-none">|</span>
+              <span className="text-[11px] whitespace-nowrap tracking-[0.06em] uppercase font-bold text-primary pb-0.5 border-b-[1.5px] border-primary/50 shadow-primary/20">
+                {currentDynamicTitle}
+              </span>
+            </li>
+          )}
         </ul>
 
         {/* 4. ALL SCREENS RIGHT: CTA Button */}
@@ -251,6 +262,15 @@ export default function Header() {
               </li>
             );
           })}
+
+          {/* MOBILE DYNAMIC BREADCRUMB */}
+          {currentDynamicTitle && (
+            <li className="py-1 mt-4 border-t border-white/10 pt-8 w-1/2 flex flex-col items-center">
+              <span className="inline-block text-xl font-mono tracking-widest uppercase text-primary font-bold">
+                {currentDynamicTitle}
+              </span>
+            </li>
+          )}
         </ul>
 
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-full text-center px-6">
