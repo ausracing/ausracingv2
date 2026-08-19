@@ -22,7 +22,7 @@ export default function NewsletterClient({
   articles: Article[];
 }) {
   const sorted = [...articles].sort(
-    (a, b) => parseDate(b.date) - parseDate(a.date)
+    (a, b) => parseDate(b.date) - parseDate(a.date),
   );
 
   const [selected, setSelected] = useState<Article>(sorted[0]);
@@ -46,15 +46,11 @@ export default function NewsletterClient({
     return filtered.slice(start, start + itemsPerPage);
   }, [filtered, mobilePage]);
 
-  const totalPages = Math.max(
-    1,
-    Math.ceil(filtered.length / itemsPerPage)
-  );
+  const totalPages = Math.max(1, Math.ceil(filtered.length / itemsPerPage));
 
   return (
     <section className="h-[calc(100dvh-80px)] bg-black text-white overflow-hidden">
       <div className="h-full flex flex-col md:flex-row">
-
         {/* MOBILE TOP BAR */}
         <div className="md:hidden border-b border-white/10 bg-black sticky top-0 z-20 shrink-0">
           <div className="px-4 pt-4 pb-3">
@@ -85,9 +81,7 @@ export default function NewsletterClient({
 
             <button
               onClick={() =>
-                setMobilePage((p) =>
-                  Math.min(totalPages - 1, p + 1)
-                )
+                setMobilePage((p) => Math.min(totalPages - 1, p + 1))
               }
               disabled={mobilePage >= totalPages - 1}
               className="rounded-xl border border-white/10 px-3 py-1 text-sm disabled:opacity-30"
@@ -111,9 +105,7 @@ export default function NewsletterClient({
                   <p className="text-xs font-medium leading-tight truncate">
                     {article.title}
                   </p>
-                  <p className="mt-1 text-[10px] opacity-60">
-                    {article.date}
-                  </p>
+                  <p className="mt-1 text-[10px] opacity-60">{article.date}</p>
                 </button>
               ))}
             </div>
@@ -123,9 +115,9 @@ export default function NewsletterClient({
         {/* DESKTOP SIDEBAR */}
         <div className="hidden md:flex h-full shrink-0">
           <NewsletterSidebar
-              articles={sorted}
-              onSelect={setSelected}
-              activeSlug={selected.slug}
+            articles={sorted}
+            onSelect={setSelected}
+            activeSlug={selected.slug}
           />
         </div>
 
@@ -155,7 +147,7 @@ export default function NewsletterClient({
                 fill
                 sizes="(max-width: 768px) 100vw, 60vw"
                 className="object-cover"
-                unoptimized={selected.image.startsWith('http')}
+                unoptimized={selected.image.startsWith("http")}
                 priority
               />
             </div>

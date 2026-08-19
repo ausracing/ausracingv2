@@ -1,4 +1,4 @@
-import SponsorModal from "./SponsorModal"
+import SponsorModal from "./SponsorModal";
 export default function SponsorHero() {
   return (
     <section className="bg-[#0a0a0a] text-white">
@@ -14,9 +14,9 @@ export default function SponsorHero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-8 text-gray-400 md:text-lg">
-            Join the companies powering one of the UAE&apos;s top Formula Student
-            programs. Your support goes directly into the car, the competition,
-            and the engineers of tomorrow.
+            Join the companies powering one of the UAE&apos;s top Formula
+            Student programs. Your support goes directly into the car, the
+            competition, and the engineers of tomorrow.
           </p>
           <div className="mt-8">
             <SponsorModal />
@@ -24,5 +24,5 @@ export default function SponsorHero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

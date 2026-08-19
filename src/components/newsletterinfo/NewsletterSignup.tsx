@@ -8,13 +8,9 @@ import { FaInstagram, FaLinkedin } from "react-icons/fa";
 export default function NewsletterSignup() {
   return (
     <section className="w-full flex justify-center py-16 px-6">
-
       <Card className="w-full max-w-2xl p-10 flex flex-col items-center gap-6 text-center">
-
         {/* Title */}
-        <h2 className="text-3xl font-bold">
-          Join AUS Racing
-        </h2>
+        <h2 className="text-3xl font-bold">Join AUS Racing</h2>
 
         <p className="text-muted-foreground">
           Get updates on engineering builds, race events, and team progress.
@@ -35,7 +31,6 @@ export default function NewsletterSignup() {
 
         {/* Social icons */}
         <div className="flex items-center gap-6 pt-2">
-
           <a
             href="https://instagram.com"
             target="_blank"
@@ -51,11 +46,8 @@ export default function NewsletterSignup() {
           >
             <FaLinkedin className="text-2xl hover:text-blue-600 transition" />
           </a>
-
         </div>
-
       </Card>
-
     </section>
   );
 }

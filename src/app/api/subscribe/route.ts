@@ -1,6 +1,6 @@
 // src/app/api/subscribe/route.ts
-import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -9,12 +9,12 @@ export async function POST(req: Request) {
     const { email } = await req.json();
 
     if (!email) {
-      return NextResponse.json({ error: 'Email is required' }, { status: 400 });
+      return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
 
     // 1. EXPLICIT CHECK: Ask Resend if this email already exists
     const { data: existingContact } = await resend.contacts.get({
-      email: email
+      email: email,
     });
 
     // 2. If data comes back, they are already on the roster. Stop here.
@@ -30,9 +30,9 @@ export async function POST(req: Request) {
 
     // 4. Fire the welcome email off to Resend
     const { error: emailError } = await resend.emails.send({
-      from: 'AUS Racing <onboarding@resend.dev>',
+      from: "AUS Racing <onboarding@resend.dev>",
       to: email,
-      subject: 'Welcome to the Grid | AUS Racing',
+      subject: "Welcome to the Grid | AUS Racing",
       html: `
         <div style="font-family: monospace; background-color: #18181b; color: #ffffff; padding: 40px; border-radius: 8px;">
           <h1 style="color: #eab308; text-transform: uppercase; letter-spacing: 2px;">Welcome to the Team</h1>
@@ -46,9 +46,11 @@ export async function POST(req: Request) {
 
     // 5. Tell the frontend it's a brand new subscriber
     return NextResponse.json({ success: true, alreadySubscribed: false });
-
   } catch (error) {
     console.error("Resend API Error:", error);
-    return NextResponse.json({ error: 'Failed to process subscription' }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to process subscription" },
+      { status: 500 },
+    );
   }
 }

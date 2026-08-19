@@ -10,7 +10,12 @@ export const metadata: Metadata = {
 export default function CarConceptPage() {
   return (
     <main className="bg-background overflow-x-hidden">
-      <link rel="preload" href="/models/CAR.glb" as="fetch" crossOrigin="anonymous" />
+      <link
+        rel="preload"
+        href="/models/CAR.glb"
+        as="fetch"
+        crossOrigin="anonymous"
+      />
       <CarConceptClient />
     </main>
   );

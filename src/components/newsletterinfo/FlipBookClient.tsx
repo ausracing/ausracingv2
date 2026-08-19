@@ -2,10 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const FlipBook = dynamic(
-  () => import("./FlipBook"),
-  { ssr: false }
-);
+const FlipBook = dynamic(() => import("./FlipBook"), { ssr: false });
 
 interface Section {
   image?: string;
@@ -13,10 +10,6 @@ interface Section {
   heading?: string;
 }
 
-export default function FlipBookClient({
-  sections,
-}: {
-  sections: Section[];
-}) {
+export default function FlipBookClient({ sections }: { sections: Section[] }) {
   return <FlipBook sections={sections} />;
 }

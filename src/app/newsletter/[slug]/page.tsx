@@ -1,4 +1,7 @@
-import { getNewsletterArticles, getNewsletterArticleBySlug } from "@/lib/queries";
+import {
+  getNewsletterArticles,
+  getNewsletterArticleBySlug,
+} from "@/lib/queries";
 import { sanityArticleToArticle } from "@/lib/newsletter";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/newsletterinfo/BackButton";
@@ -33,7 +36,10 @@ export default async function Page({
           </div>
           <div className="pointer-events-auto shrink-0 w-[48%] md:w-auto flex justify-end">
             {article.pdfUrl && (
-              <DownloadPdfButton pdfUrl={article.pdfUrl} issueName={article.title} />
+              <DownloadPdfButton
+                pdfUrl={article.pdfUrl}
+                issueName={article.title}
+              />
             )}
           </div>
         </div>

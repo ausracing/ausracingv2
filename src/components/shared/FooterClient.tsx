@@ -1,11 +1,6 @@
-
 "use client";
 
-
-// PLEASE DELETE 
-
-
-
+// PLEASE DELETE
 
 /*
 import FooterLayout from "./FooterLayout";

@@ -6,8 +6,8 @@ export const SIDEBAR_MEMORIES = [
     src: "/images/silverstone/team-photo.webp",
     alt: "Team Photo at Silverstone",
     caption: "Silverstone Team Photo",
-    names: "Mohammad Al Hinai, Devansh Sapru, Saad Ibrahim, Mihir Avirneni, Syed Muneeb Ali",
-
+    names:
+      "Mohammad Al Hinai, Devansh Sapru, Saad Ibrahim, Mihir Avirneni, Syed Muneeb Ali",
   },
   {
     id: "Electrical",
@@ -21,7 +21,8 @@ export const SIDEBAR_MEMORIES = [
     src: "/images/silverstone/team-discussion.webp",
     alt: "Team Discussion",
     caption: "Team Discussion",
-    names: "Hammad Adil, Syed Muneeb Ali, Mihir Avirneni, Devansh Sapru, Mohammad Al Hinai",
+    names:
+      "Hammad Adil, Syed Muneeb Ali, Mihir Avirneni, Devansh Sapru, Mohammad Al Hinai",
   },
   {
     id: "Suspension & Steering",
@@ -36,5 +37,5 @@ export const SIDEBAR_MEMORIES = [
     alt: "Hazin and Hinai",
     caption: "Hazin & Mohammad Al Hinai",
     names: "Hazin, Mohammad Al Hinai",
-  }
-];  
+  },
+];

@@ -3,10 +3,12 @@
 Next.js 15 · TypeScript · Tailwind CSS v4 · shadcn/ui · Motion
 
 ## Prerequisites
+
 - Node.js v22+
 - npm
 
 ## Getting Started
+
 ```bash
 git clone https://github.com/ausracing/ausracingv2.git
 cd ausracingv2
@@ -42,17 +44,18 @@ src/app/
 └── media/
 └── page.tsx          → /media
 ```
+
 **layout.tsx** is the global wrapper. Hashir owns this file — it imports Header and Footer so they appear on every page automatically. Do not add page-specific content here.
 
 ---
 
 ## Server vs Client Components
 
-| Type | When to use | How |
-|------|-------------|-----|
-| Server component | Default. Static layout, cards, grids, pages | Nothing — just write your component normally |
-| Client component | Needs state, onClick, animations, hooks | Add `"use client"` as the very first line |
-| Dynamic import | Heavy client components (carousel, modal) | `const X = dynamic(() => import(...), { ssr: false })` |
+| Type             | When to use                                 | How                                                    |
+| ---------------- | ------------------------------------------- | ------------------------------------------------------ |
+| Server component | Default. Static layout, cards, grids, pages | Nothing — just write your component normally           |
+| Client component | Needs state, onClick, animations, hooks     | Add `"use client"` as the very first line              |
+| Dynamic import   | Heavy client components (carousel, modal)   | `const X = dynamic(() => import(...), { ssr: false })` |
 
 **Rule of thumb:** if it doesn't need interactivity, keep it a server component.
 
@@ -102,19 +105,18 @@ public/
 └── fonts/
 ```
 
-
 ---
 
 ## Colors
 
 Defined in `src/app/globals.css`. The site is always dark themed.
 
-| Utility class | Value | Use for |
-|---------------|-------|---------|
-| `bg-background` | `#000000` | page backgrounds |
-| `text-foreground` | white | body text |
-| `text-primary` | `#F5B041` | gold accents, headings |
-| `bg-primary` | `#F5B041` | gold buttons, highlights |
+| Utility class        | Value     | Use for                   |
+| -------------------- | --------- | ------------------------- |
+| `bg-background`      | `#000000` | page backgrounds          |
+| `text-foreground`    | white     | body text                 |
+| `text-primary`       | `#F5B041` | gold accents, headings    |
+| `bg-primary`         | `#F5B041` | gold buttons, highlights  |
 | `text-brand-primary` | `#F5B041` | same gold via brand token |
 
 ---
@@ -122,11 +124,13 @@ Defined in `src/app/globals.css`. The site is always dark themed.
 ## shadcn Components
 
 Check what's already installed:
+
 ```bash
 ls src/components/ui/
 ```
 
 Add a new component if it's not there:
+
 ```bash
 npx shadcn@latest add <component-name>
 # examples:
@@ -152,18 +156,19 @@ Full list: https://ui.shadcn.com/docs/components
 
 ## Assignments
 
-| Name | Branch | Owns |
-|------|--------|------|
-| Yusuf | `feature/car-concept` | CarTeaser, DepartmentCard, DepartmentModal, /car-concept page |
-| Hashir | `feature/hero` | HeroVideo, Loader, AUSParagraph, Header, layout.tsx, /team page |
-| Yasmeen | `feature/sponsors` | SponsorSlider, FundingBar, QuoteSection, SponsorTiers, /sponsors page |
-| Adam | `feature/newsletter` | NewsletterSignup, NewsletterCard, Footer, /media page, performance |
+| Name    | Branch                | Owns                                                                  |
+| ------- | --------------------- | --------------------------------------------------------------------- |
+| Yusuf   | `feature/car-concept` | CarTeaser, DepartmentCard, DepartmentModal, /car-concept page         |
+| Hashir  | `feature/hero`        | HeroVideo, Loader, AUSParagraph, Header, layout.tsx, /team page       |
+| Yasmeen | `feature/sponsors`    | SponsorSlider, FundingBar, QuoteSection, SponsorTiers, /sponsors page |
+| Adam    | `feature/newsletter`  | NewsletterSignup, NewsletterCard, Footer, /media page, performance    |
 
 ---
 
 ## Deployment
 
 Deploys to Vercel on merge to main. Test your build locally before opening a PR:
+
 ```bash
 npm run build
 npm run start

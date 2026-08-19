@@ -1,13 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Image from "next/image"
-import AutoScroll from "embla-carousel-auto-scroll"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "../ui/carousel"
+import * as React from "react";
+import Image from "next/image";
+import AutoScroll from "embla-carousel-auto-scroll";
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 
 const baseSponsors = [
   { name: "AGMC", src: "/logos/agmc2.webp" },
@@ -19,9 +15,9 @@ const baseSponsors = [
   { name: "SRTI Park SoiLab", src: "/logos/soilab.webp" },
   { name: "American University of Sharjah", src: "/logos/aus.webp" },
   { name: "Bender", src: "/logos/bender.webp" },
-]
+];
 
-const sponsors = [...baseSponsors, ...baseSponsors, ...baseSponsors]
+const sponsors = [...baseSponsors, ...baseSponsors, ...baseSponsors];
 
 export default function SponsorsStrip() {
   const plugin = React.useRef(
@@ -31,8 +27,8 @@ export default function SponsorsStrip() {
       stopOnInteraction: false,
       stopOnMouseEnter: true,
       stopOnFocusIn: false,
-    })
-  )
+    }),
+  );
 
   return (
     <section className="w-full overflow-hidden bg-[#0a0a0a] py-4">
@@ -57,7 +53,7 @@ export default function SponsorsStrip() {
                     src={sponsor.src}
                     alt={sponsor.name}
                     fill
-            sizes="200rem"
+                    sizes="200rem"
                     className="object-contain grayscale opacity-70 transition duration-300 hover:grayscale-0 hover:opacity-100"
                   />
                 </div>
@@ -67,5 +63,5 @@ export default function SponsorsStrip() {
         </CarouselContent>
       </Carousel>
     </section>
-  )
+  );
 }

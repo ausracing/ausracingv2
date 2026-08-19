@@ -20,9 +20,9 @@ export default function CarTeaser() {
         style={{ objectPosition: "center center" }}
       />
 
-    {/* Top fade */}
-<div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-background to-transparent pointer-events-none" />
-    
+      {/* Top fade */}
+      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+
       {/* Centred content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
         {/* Ghost heading */}
@@ -31,7 +31,10 @@ export default function CarTeaser() {
         </p>
 
         {/* Label above button */}
-<p className="text-s font-mono tracking-[0.25em] uppercase text-white/70 mb-1 z-10"> CHECK OUT THE CAR        </p>
+        <p className="text-s font-mono tracking-[0.25em] uppercase text-white/70 mb-1 z-10">
+          {" "}
+          CHECK OUT THE CAR{" "}
+        </p>
 
         {/* Animated CTA */}
         <Link href="/car-concept" aria-label="Explore the car concept">
@@ -65,14 +68,20 @@ export default function CarTeaser() {
             <span className="relative flex items-center justify-center w-28 h-5 overflow-hidden">
               <motion.span
                 className="absolute text-sm font-mono tracking-[0.2em] uppercase text-white font-semibold whitespace-nowrap"
-                animate={{ y: hovered ? "-100%" : "0%" , opacity: hovered ? 0 : 1 }}
+                animate={{
+                  y: hovered ? "-100%" : "0%",
+                  opacity: hovered ? 0 : 1,
+                }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
               >
                 See More
               </motion.span>
               <motion.span
                 className="absolute text-sm font-mono tracking-[0.2em] uppercase text-primary font-semibold whitespace-nowrap"
-                animate={{ y: hovered ? "0%" : "100%", opacity: hovered ? 1 : 0 }}
+                animate={{
+                  y: hovered ? "0%" : "100%",
+                  opacity: hovered ? 1 : 0,
+                }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
               >
                 Explore →

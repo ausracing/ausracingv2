@@ -1,5 +1,11 @@
 "use client";
-import { Component, Suspense, useState, useEffect, type ReactNode } from "react";
+import {
+  Component,
+  Suspense,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, ContactShadows } from "@react-three/drei";
 import * as THREE from "three";
@@ -24,9 +30,12 @@ interface SceneCanvasProps {
   onReady: () => void;
 }
 
-export default function SceneCanvas({ activeIndex, onReady }: SceneCanvasProps) {
+export default function SceneCanvas({
+  activeIndex,
+  onReady,
+}: SceneCanvasProps) {
   const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" && window.innerWidth < 768
+    typeof window !== "undefined" && window.innerWidth < 768,
   );
 
   useEffect(() => {
@@ -54,7 +63,11 @@ export default function SceneCanvas({ activeIndex, onReady }: SceneCanvasProps) 
       >
         <ambientLight intensity={0.4} />
         <directionalLight position={[10, 10, 5]} intensity={1} castShadow />
-        <pointLight position={[-10, -10, -10]} color="#f5b041" intensity={0.5} />
+        <pointLight
+          position={[-10, -10, -10]}
+          color="#f5b041"
+          intensity={0.5}
+        />
         <Suspense fallback={null}>
           <R3FErrorBoundary>
             <AllModels activeIndex={activeIndex} onReady={onReady} />

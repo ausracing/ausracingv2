@@ -31,19 +31,21 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { type: "tween", duration: 0.5, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "tween", duration: 0.5, ease: "easeOut" },
+  },
 };
 
 export default function SilverstoneJourney() {
   return (
     <section className="w-full bg-black flex flex-col relative z-10">
-      
       {/* =========================================
           PART 1: HIGHLIGHTS WIDGET
       ========================================= */}
       {/* ✨ FIX 1: Removed min-h to let the content dictate the height naturally */}
       <div className="grid grid-cols-1 lg:grid-cols-2 w-full border-t border-white/10 relative z-10">
-        
         {/* LEFT COLUMN: Typography & CTAs */}
         <div className="flex flex-col justify-center p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-white/10 bg-black">
           <div className="flex items-center gap-4 mb-7">
@@ -54,21 +56,23 @@ export default function SilverstoneJourney() {
           </div>
 
           <h2 className="text-3xl lg:text-[40px] font-semibold font-orbitron text-white leading-[1.1] tracking-[-0.01em] mb-2 uppercase">
-            Silverstone<br />
+            Silverstone
+            <br />
             2026
           </h2>
-          
+
           <h3 className="text-xl lg:text-[22px] font-semibold font-orbitron text-primary leading-[1.2] uppercase mb-4">
             FSUK Concept Class Highlights
           </h3>
 
           <p className="text-[14px] text-white/70 leading-[1.75] mb-8 max-w-lg">
-            Watch the highlights of our first ever competition and the team that got us there.
+            Watch the highlights of our first ever competition and the team that
+            got us there.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link 
-              href="/credits" 
+            <Link
+              href="/credits"
               className="px-6 py-3 bg-primary/90 text-background text-[12px] tracking-[0.1em] uppercase font-bold rounded-[4px] hover:bg-primary transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
             >
               Highlights & Credits &rarr;
@@ -78,36 +82,45 @@ export default function SilverstoneJourney() {
 
         {/* RIGHT COLUMN: The Motion Grid */}
         <div className="relative flex items-center justify-center bg-black overflow-hidden p-8 lg:p-12">
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-50px" }}
             className="grid grid-cols-2 gap-3 w-full h-full max-h-[500px]"
           >
-            <motion.div variants={itemVariants} className="col-span-1 row-span-2 relative rounded-[4px] overflow-hidden">
-               <Image 
-                src={HIGHLIGHT_IMAGES[0]} 
-                alt="Track Action" 
+            <motion.div
+              variants={itemVariants}
+              className="col-span-1 row-span-2 relative rounded-[4px] overflow-hidden"
+            >
+              <Image
+                src={HIGHLIGHT_IMAGES[0]}
+                alt="Track Action"
                 fill
                 sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
               />
             </motion.div>
-            <motion.div variants={itemVariants} className="relative rounded-[4px] overflow-hidden min-h-[200px]">
-               <Image 
-                src={HIGHLIGHT_IMAGES[1]} 
-                alt="Team Garage" 
-                fill 
+            <motion.div
+              variants={itemVariants}
+              className="relative rounded-[4px] overflow-hidden min-h-[200px]"
+            >
+              <Image
+                src={HIGHLIGHT_IMAGES[1]}
+                alt="Team Garage"
+                fill
                 sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
               />
             </motion.div>
-            <motion.div variants={itemVariants} className="relative rounded-[4px] overflow-hidden min-h-[200px]">
-               <Image 
-                src={HIGHLIGHT_IMAGES[2]} 
-                alt="Car Close up" 
-                fill 
+            <motion.div
+              variants={itemVariants}
+              className="relative rounded-[4px] overflow-hidden min-h-[200px]"
+            >
+              <Image
+                src={HIGHLIGHT_IMAGES[2]}
+                alt="Car Close up"
+                fill
                 sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
               />
@@ -130,7 +143,6 @@ export default function SilverstoneJourney() {
       {/* ✨ FIX 3: Removed the heavy top padding (pt-0 instead of pt-6) */}
       <div id="our-car" className="w-full pb-20 pt-0 text-white">
         <div className="mx-auto max-w-6xl px-6">
-     
           <h2 className="text-center text-3xl font-bold md:text-5xl font-orbitron uppercase">
             Build <span className="text-[#fbb03a]">Timeline</span>
           </h2>
@@ -167,7 +179,7 @@ export default function SilverstoneJourney() {
             <div className="absolute left-1/2 top-0 h-full w-[1px] -translate-x-1/2 bg-white/10" />
             <div className="space-y-8">
               {timeline.map((item, index) => {
-                const isLeft = index % 2 === 0
+                const isLeft = index % 2 === 0;
                 return (
                   <div
                     key={item.title}
@@ -185,11 +197,10 @@ export default function SilverstoneJourney() {
                       </h3>
                     </div>
                   </div>
-                )
+                );
               })}
             </div>
           </div>
-
         </div>
       </div>
     </section>

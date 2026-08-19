@@ -7,7 +7,10 @@ interface LoadingOverlayProps {
   canvasReady: boolean;
 }
 
-export default function LoadingOverlay({ onFinished, canvasReady }: LoadingOverlayProps) {
+export default function LoadingOverlay({
+  onFinished,
+  canvasReady,
+}: LoadingOverlayProps) {
   const [speed, setSpeed] = useState(0);
 
   useEffect(() => {
@@ -47,12 +50,38 @@ export default function LoadingOverlay({ onFinished, canvasReady }: LoadingOverl
     >
       <div className="relative size-60">
         <svg className="rotate-[135deg] size-full" viewBox="0 0 36 36">
-          <circle cx="18" cy="18" r="16" fill="none" className="stroke-current text-white/5" strokeWidth="1" strokeDasharray="75 100" strokeLinecap="round" />
-          <circle cx="18" cy="18" r="16" fill="none" className="stroke-current text-primary transition-all duration-75" strokeWidth="2.5" strokeDasharray={`${strokeDash} 100`} strokeLinecap="round" style={{ filter: "drop-shadow(0 0 8px color-mix(in srgb, var(--color-primary) 40%, transparent))" }} />
+          <circle
+            cx="18"
+            cy="18"
+            r="16"
+            fill="none"
+            className="stroke-current text-white/5"
+            strokeWidth="1"
+            strokeDasharray="75 100"
+            strokeLinecap="round"
+          />
+          <circle
+            cx="18"
+            cy="18"
+            r="16"
+            fill="none"
+            className="stroke-current text-primary transition-all duration-75"
+            strokeWidth="2.5"
+            strokeDasharray={`${strokeDash} 100`}
+            strokeLinecap="round"
+            style={{
+              filter:
+                "drop-shadow(0 0 8px color-mix(in srgb, var(--color-primary) 40%, transparent))",
+            }}
+          />
         </svg>
         <div className="absolute top-1/2 start-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-          <span className="text-7xl font-black text-white italic tracking-tighter tabular-nums leading-none">{speed}</span>
-          <span className="text-primary font-mono text-xs block uppercase tracking-[0.4em] mt-1 font-bold">km/h</span>
+          <span className="text-7xl font-black text-white italic tracking-tighter tabular-nums leading-none">
+            {speed}
+          </span>
+          <span className="text-primary font-mono text-xs block uppercase tracking-[0.4em] mt-1 font-bold">
+            km/h
+          </span>
         </div>
       </div>
       <div className="mt-4">

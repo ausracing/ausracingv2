@@ -5,16 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
-  const pathname = typeof window !== "undefined" ? window.location.pathname : "";
-  if (pathname === "/car-concept" || pathname.startsWith("/car-concept/")) return null;
+  const pathname =
+    typeof window !== "undefined" ? window.location.pathname : "";
+  if (pathname === "/car-concept" || pathname.startsWith("/car-concept/"))
+    return null;
 
   return (
     <footer className="w-full bg-black text-gray-400 py-10 px-6 border-t border-gray-800">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-
         {/* COLUMN 1 — BRAND */}
         <div className="flex flex-col gap-4">
-
           <div className="relative w-32 h-16 flex items-center justify-start overflow-visible">
             <Image
               src="/images/logo.webp"
@@ -22,40 +22,46 @@ export default function Footer() {
               width={128}
               height={64}
               className="object-contain object-left"
-              style={{ width: 'auto', height: '100%' }}
+              style={{ width: "auto", height: "100%" }}
             />
-          </div> 
+          </div>
           <p className="text-sm text-gray-400 mt-2 leading-relaxed">
             Engineering the future of motorsport performance from AUS.
           </p>
-
         </div>
-
 
         {/* COLUMN 2 — QUICK LINKS */}
         <div className="flex flex-col gap-3">
-          <h4 className="text-sm font-medium text-gray-300">
-            Quick Links
-          </h4>
-          <Link href="/" className="text-sm text-gray-400 hover:text-gray-300 transition">
+          <h4 className="text-sm font-medium text-gray-300">Quick Links</h4>
+          <Link
+            href="/"
+            className="text-sm text-gray-400 hover:text-gray-300 transition"
+          >
             Home
           </Link>
-          <Link href="/car-concept" className="text-sm text-gray-400 hover:text-gray-300 transition">
+          <Link
+            href="/car-concept"
+            className="text-sm text-gray-400 hover:text-gray-300 transition"
+          >
             Car Concept
           </Link>
-          <Link href="/team" className="text-sm text-gray-400 hover:text-gray-300 transition">
+          <Link
+            href="/team"
+            className="text-sm text-gray-400 hover:text-gray-300 transition"
+          >
             Team
           </Link>
-          <Link href="/newsletter" className="text-sm text-gray-400 hover:text-gray-300 transition">
+          <Link
+            href="/newsletter"
+            className="text-sm text-gray-400 hover:text-gray-300 transition"
+          >
             Newsletter
           </Link>
         </div>
 
         {/* COLUMN 3 — UAE INFO + SOCIALS */}
         <div className="flex flex-col gap-3">
-          <h4 className="text-sm font-medium text-gray-300">
-            UAE Office
-          </h4>
+          <h4 className="text-sm font-medium text-gray-300">UAE Office</h4>
           <div className="flex items-center gap-2 text-sm text-gray-400">
             <FiMail />
             <span>ausracing@aus.edu</span>
@@ -69,10 +75,18 @@ export default function Footer() {
             <span>American University of Sharjah, UAE</span>
           </div>
           <div className="flex gap-4 pt-2 text-gray-400">
-            <Link href="https://www.instagram.com/ausracingfs" target="_blank" rel="noreferrer">
+            <Link
+              href="https://www.instagram.com/ausracingfs"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaInstagram className="text-lg hover:text-gray-300 transition" />
             </Link>
-            <Link href="https://www.linkedin.com/company/aus-racing-team/" target="_blank" rel="noreferrer">
+            <Link
+              href="https://www.linkedin.com/company/aus-racing-team/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaLinkedin className="text-lg hover:text-gray-300 transition" />
             </Link>
           </div>
@@ -94,7 +108,6 @@ export default function Footer() {
             </span>
           </div>
         </div> */}
-
       </div>
 
       {/* BOTTOM */}

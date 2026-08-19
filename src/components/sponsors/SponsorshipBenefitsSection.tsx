@@ -83,7 +83,7 @@ const benefits = [
     gold: false,
     platinum: true,
   },
-]
+];
 
 function CheckMark({ active }: { active: boolean }) {
   return (
@@ -94,7 +94,7 @@ function CheckMark({ active }: { active: boolean }) {
         <span className="text-sm text-white/15">—</span>
       )}
     </div>
-  )
+  );
 }
 
 export default function SponsorshipBenefitsSection() {
@@ -141,7 +141,11 @@ export default function SponsorshipBenefitsSection() {
               {benefits.map((benefit, index) => (
                 <tr
                   key={benefit.name}
-                  className={index !== benefits.length - 1 ? "border-b border-white/6" : ""}
+                  className={
+                    index !== benefits.length - 1
+                      ? "border-b border-white/6"
+                      : ""
+                  }
                 >
                   <td className="px-5 py-4 text-sm leading-6 text-gray-300">
                     {benefit.name}
@@ -163,9 +167,7 @@ export default function SponsorshipBenefitsSection() {
             </tbody>
           </table>
         </div>
-
-    
       </div>
     </section>
-  )
+  );
 }
