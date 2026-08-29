@@ -100,10 +100,16 @@ export const OPENINGS = [
     desc: "Manage bills of materials, procurement, supplier relations, inventory, costing, and the global supply chain.",
     formLink: "https://forms.gle/NVBWwzfYUK9LHREK9",
   },
-  // {
-  //   name: "Treasury & Administration",
-  //   category: "Commerce",
-  //   desc: "Oversee the team's financial strategy, budget allocation, and day-to-day organizational management.",
-  //   formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
-  // },
+  {
+    name: "Treasury Team",
+    category: "Commerce",
+    desc: "Track finances and transactions worth approximately AED 200,000, develop CBOM and DBOM files, and maintain accurate financial records.",
+    formLink: "https://forms.gle/vatxPdxdQU7bSpP99",
+  },
+  {
+    name: "External Relations Team",
+    category: "Commerce",
+    desc: "Secure sponsorships, build stakeholder relationships, and manage corporate communications, networking, and partnership development.",
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLScpeGY9Wh0a1hdteP9fSPXH9GGqeKfZ4ocDLzHBzTIac4uICQ/viewform",
+  }
 ];
