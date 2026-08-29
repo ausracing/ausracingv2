@@ -40,22 +40,22 @@ export default function Footer() {
             Home
           </Link>
           <Link
-            href="/car-concept"
-            className="text-sm text-gray-400 hover:text-gray-300 transition"
-          >
-            Car Concept
-          </Link>
-          <Link
             href="/team"
             className="text-sm text-gray-400 hover:text-gray-300 transition"
           >
             Team
           </Link>
           <Link
-            href="/newsletter"
+            href="/highlights"
             className="text-sm text-gray-400 hover:text-gray-300 transition"
           >
-            Newsletter
+            Highlights
+          </Link>
+          <Link
+            href="/sponsors"
+            className="text-sm text-gray-400 hover:text-gray-300 transition"
+          >
+            Partner with Us
           </Link>
         </div>
 
