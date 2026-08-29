@@ -72,16 +72,11 @@ export default function TeamClient({ members }: { members: TeamMember[] }) {
 
   const FILTER_ORDER = [
     "Executive Board",
+    "Mechanical",
     "Electrical",
-    "Powertrain",
-    "Suspension & Steering",
-    "Chassis",
-    "Aerodynamics",
-    "Brakes",
-    "Drivers",
-    "Public Relations",
+    "Treasury",
+    "External Relations",
     "Internal Relations",
-    "Operations",
     "Supply Chain",
     "Web Development",
     "Media & Marketing",
@@ -90,32 +85,22 @@ export default function TeamClient({ members }: { members: TeamMember[] }) {
   const defaultDescriptions: Record<string, string> = {
     "Executive Board":
       "Guiding the strategic vision, operations, and ultimate success of the racing team.",
+    Mechanical:
+      "Engineering, fabricating, and optimizing the chassis, powertrain, aero, suspension, and braking systems.",
     Electrical:
-      "Designing the custom wiring harnesses and high-voltage systems that power our vehicle.",
-    Powertrain:
-      "Optimizing battery output and energy efficiency for peak track performance.",
-    "Suspension & Steering":
-      "Engineering dynamic suspension geometry to maximize tire grip and driver handling.",
-    Chassis:
-      "Fabricating a lightweight, structurally rigid frame to protect the driver and anchor the car.",
-    Aerodynamics:
-      "Manipulating airflow to reduce drag and generate massive cornering downforce.",
-    Brakes:
-      "Engineering high-performance stopping power and thermal management for precision cornering.",
-    Drivers:
-      "Pushing the engineered vehicle to its absolute physical limits on the track.",
-    "Public Relations":
-      "Managing sponsor relationships, community outreach, and the team's professional image.",
+      "Designing custom wiring harnesses, high-voltage battery architecture, and telemetry sensors.",
+    Treasury:
+      "Overseeing team budgeting, financial planning, allocations, and monetary compliance.",
+    "External Relations":
+      "Managing industry sponsorships, corporate partnerships, and public relations.",
     "Internal Relations":
-      "Overseeing internal communications, team dynamics, and organizational culture.",
-    Operations:
-      "Managing team finances, logistics, and internal administration for peak operational efficiency.",
+      "Managing team communications, recruitment, culture, and organizational operations.",
     "Supply Chain":
-      "Procuring crucial components and managing logistics to keep manufacturing strictly on schedule.",
+      "Procuring competition-grade materials, components, and managing logistics.",
     "Web Development":
-      "Building the digital track: developing our high-performance team platform.",
+      "Building the digital track: developing and maintaining our high-performance web platform.",
     "Media & Marketing":
-      "Crafting our story and showcasing our speed to the world.",
+      "Showcasing our builds, branding, and storytelling to the motorsport community.",
   };
 
   // Sort filters by the defined order

@@ -242,7 +242,7 @@ export default function JoinPage() {
                             <span className="text-white/20 text-[9px]">•</span>
                             <span
                               className={`text-[9px] font-mono uppercase tracking-[0.2em] font-bold ${
-                                opening.subcategory === "Software"
+                                opening.subcategory.includes("Software")
                                   ? "text-blue-400"
                                   : "text-orange-400"
                               }`}
@@ -256,7 +256,7 @@ export default function JoinPage() {
                       <div className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-primary transition-colors duration-500" />
                     </div>
 
-                    <h3 className="max-w-[55%] text-lg md:text-xl font-bold font-orbitron uppercase text-white mb-2 group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                    <h3 className="w-full text-lg md:text-xl font-bold font-orbitron uppercase text-white mb-2 group-hover:text-primary transition-colors duration-300 line-clamp-3 drop-shadow-md relative z-10">
                       {opening.name}
                     </h3>
 

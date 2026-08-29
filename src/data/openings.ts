@@ -9,7 +9,6 @@ export const CATEGORIES: Category[] = [
   { id: "All", image: null },
   { id: "Mechanical", image: "/images/hiring-bg/mechanical.webp" },
   { id: "Electrical", image: "/images/hiring-bg/electrical.webp" },
-  { id: "Concept Class", image: "/images/hiring-bg/concept-class.webp" },
   { id: "Commerce", image: "/images/hiring-bg/commerce.webp" },
 ];
 
@@ -18,98 +17,93 @@ export const OPENINGS = [
   // MECHANICAL TEAM
   // ==========================================
   {
-    name: "Chassis",
+    name: "Chassis & Structural Design",
     category: "Mechanical",
-    desc: "Engineer the structural foundation of the vehicle, focusing on weight reduction, torsional rigidity, and driver safety.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
+    desc: "Design the frame, load paths, and mounting structures, focusing on vehicle packaging, driver ergonomics, and safety.",
+    formLink: "https://forms.gle/zMaZztJ23XTnXunH6",
   },
   {
-    name: "Suspension",
+    name: "Suspension, Steering & Vehicle Dynamics",
     category: "Mechanical",
-    desc: "Design the vehicle's dynamic handling systems to ensure maximum mechanical grip and responsive cornering.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
+    desc: "Engineer the suspension geometry, kinematics, and alignment, focusing on precise steering, handling, and vehicle setup.",
+    formLink: "https://forms.gle/zMaZztJ23XTnXunH6",
   },
   {
-    name: "Steering",
+    name: "Braking Systems",
     category: "Mechanical",
-    desc: "Develop precise and highly responsive steering mechanisms connecting the driver to the track.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
+    desc: "Develop the pedal box, hydraulics, and brake bias, managing rotors, calipers, mounting, and system validation.",
+    formLink: "https://forms.gle/zMaZztJ23XTnXunH6",
   },
   {
-    name: "Drivetrain",
+    name: "Aerodynamics & Bodywork",
     category: "Mechanical",
-    desc: "Optimize the mechanical power transfer from the motor to the wheels for maximum track performance.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
+    desc: "Design wings, undertrays, and ducting using CFD, optimizing cooling airflow, body panels, and composites.",
+    formLink: "https://forms.gle/zMaZztJ23XTnXunH6",
   },
   {
-    name: "Brakes",
+    name: "Powertrain & Drivetrain Integration",
     category: "Mechanical",
-    desc: "Develop high-performance stopping systems, focusing on thermal management and hydraulic efficiency.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
+    desc: "Manage motor and gearbox mounting, differentials, drive shafts, transmission, cooling, and powertrain packaging.",
+    formLink: "https://forms.gle/zMaZztJ23XTnXunH6",
+  },
+  {
+    name: "Manufacturing & Vehicle Assembly",
+    category: "Mechanical",
+    desc: "Execute machining, welding, fabrication, and composite work, ensuring precise fitment, fastener selection, and final assembly.",
+    formLink: "https://forms.gle/zMaZztJ23XTnXunH6",
   },
 
   // ==========================================
-  // ELECTRICAL & POWER DELIVERY (Hardware & Software)
+  // ELECTRICAL & POWER DELIVERY
   // ==========================================
   {
     name: "Battery Systems",
     category: "Electrical",
-    subcategory: "Hardware",
-    desc: "Design and optimize the accumulator and energy storage systems for maximum track endurance.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
+    subcategory: "Hardware Engineering",
+    desc: "Design and optimize the accumulator and energy storage systems for maximum track endurance and power delivery.",
+    formLink: "https://forms.gle/NVBWwzfYUK9LHREK9",
   },
   {
     name: "High Voltage Systems",
     category: "Electrical",
-    subcategory: "Hardware",
-    desc: "Manage high-voltage power distribution and the core tractive systems powering the vehicle.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
+    subcategory: "Hardware Engineering",
+    desc: "Manage high-voltage power distribution and the core tractive electronics powering the vehicle.",
+    formLink: "https://forms.gle/NVBWwzfYUK9LHREK9",
   },
   {
-    name: "Embedded Systems",
+    name: "Embedded Electronics",
     category: "Electrical",
-    subcategory: "Hardware",
-    desc: "Develop custom PCBs, wiring harnesses, and low-voltage sensor integration networks.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
+    subcategory: "Hardware Engineering",
+    desc: "Develop custom PCBs, wiring harnesses, and low-voltage embedded electronics and sensor networks.",
+    formLink: "https://forms.gle/NVBWwzfYUK9LHREK9",
   },
   {
     name: "Embedded Firmware",
     category: "Electrical",
-    subcategory: "Software",
-    desc: "Write high-performance, real-time code to control vehicle dynamics and driver interfaces.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
+    subcategory: "Software Engineering",
+    desc: "Write high-performance, real-time code to control vehicle dynamics, battery management, and driver interfaces.",
+    formLink: "https://forms.gle/NVBWwzfYUK9LHREK9",
   },
   {
     name: "Telemetry & Data Systems",
     category: "Electrical",
-    subcategory: "Software",
-    desc: "Build wireless data pipelines to monitor car health and track metrics in real-time.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
+    subcategory: "Software Engineering",
+    desc: "Build wireless data pipelines and software to monitor car health and track metrics in real-time.",
+    formLink: "https://forms.gle/NVBWwzfYUK9LHREK9",
   },
-
-  // ==========================================
-  // CONCEPT CLASS
-  // ==========================================
-  {
-    name: "Concept Class Engineering",
-    category: "Concept Class",
-    desc: "Research, design, and simulate future vehicle iterations and advanced aerodynamic packages for our upcoming campaigns.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
-  },
-
   // ==========================================
   // COMMERCE & OPERATIONS
   // ==========================================
   {
-    name: "Procurement & Supply Chain",
+    name: "Operations & Logistics",
     category: "Commerce",
-    desc: "Coordinate global part sourcing, shipping logistics, and inventory management to keep the build strictly on schedule.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
+    desc: "Manage bills of materials, procurement, supplier relations, inventory, costing, and the global supply chain.",
+    formLink: "https://forms.gle/NVBWwzfYUK9LHREK9",
   },
-  {
-    name: "Operations & Treasury",
-    category: "Commerce",
-    desc: "Oversee the team's financial strategy, budget allocation, and day-to-day organizational management.",
-    formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
-  },
+  // {
+  //   name: "Treasury & Administration",
+  //   category: "Commerce",
+  //   desc: "Oversee the team's financial strategy, budget allocation, and day-to-day organizational management.",
+  //   formLink: "https://forms.gle/YOUR_FORM_LINK_HERE",
+  // },
 ];
