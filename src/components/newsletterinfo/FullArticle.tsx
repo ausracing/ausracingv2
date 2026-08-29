@@ -13,24 +13,19 @@ export default function FullArticle({ article }: { article: FeaturedArticle }) {
   return (
     <div className="flex-1 p-10 overflow-y-auto">
       <div className="max-w-4xl mx-auto">
-
         <div className="relative w-full h-[450px] rounded-2xl overflow-hidden">
           <Image
             src={article.image}
             alt={article.title}
             fill
-            unoptimized={article.image.startsWith('http')}
+            unoptimized={article.image.startsWith("http")}
             className="object-cover"
           />
         </div>
 
-        <h1 className="text-4xl font-bold mt-6">
-          {article.title}
-        </h1>
+        <h1 className="text-4xl font-bold mt-6">{article.title}</h1>
 
-        <p className="text-zinc-300 mt-4 leading-7">
-          {article.content}
-        </p>
+        <p className="text-zinc-300 mt-4 leading-7">{article.content}</p>
 
         <Link
           href="/newsletter"

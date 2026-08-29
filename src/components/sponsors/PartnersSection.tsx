@@ -1,14 +1,49 @@
 import Image from "next/image";
 
 const baseSponsors = [
-  { name: "AGMC", src: "/logos/agmc2.webp", category: "sponsor", url: "https://www.agmc.com" },
-  { name: "Juma Al Majid", src: "/logos/juma.webp", category: "sponsor", url: "https://www.al-majid.com/" },
-  { name: "Ansys", src: "/logos/ansys1.webp", category: "partner", url: "https://www.ansys.com" },
-  { name: "Automech", src: "/logos/automech2.webp", category: "partner", url: "https://automechgroup.com/" },
-  { name: "DEWESoft", src: "/logos/dewesoft.webp", category: "partner", url: "https://www.dewesoft.com" },
+  {
+    name: "AGMC",
+    src: "/logos/agmc2.webp",
+    category: "sponsor",
+    url: "https://www.agmc.com",
+  },
+  {
+    name: "Juma Al Majid",
+    src: "/logos/juma.webp",
+    category: "sponsor",
+    url: "https://www.al-majid.com/",
+  },
+  {
+    name: "Ansys",
+    src: "/logos/ansys1.webp",
+    category: "partner",
+    url: "https://www.ansys.com",
+  },
+  {
+    name: "Automech",
+    src: "/logos/automech2.webp",
+    category: "partner",
+    url: "https://automechgroup.com/",
+  },
+  {
+    name: "DEWESoft",
+    src: "/logos/dewesoft.webp",
+    category: "partner",
+    url: "https://www.dewesoft.com",
+  },
   // { name: "Fluid Codes", src: "/logos/fluidcodes1.webp", category: "partner", url: "https://www.fluidcodes.com" },
-  { name: "SRTI Park SoiLab", src: "/logos/soilab.webp", category: "partner", url: "https://srtip.ae/soilab/" },
-  { name: "Bender", src: "/logos/bender.webp", category: "partner", url: "https://www.bender.de/en/" },
+  {
+    name: "SRTI Park SoiLab",
+    src: "/logos/soilab.webp",
+    category: "partner",
+    url: "https://srtip.ae/soilab/",
+  },
+  {
+    name: "Bender",
+    src: "/logos/bender.webp",
+    category: "partner",
+    url: "https://www.bender.de/en/",
+  },
 ];
 
 export default function PartnersSection() {
@@ -25,7 +60,8 @@ export default function PartnersSection() {
             <span className="text-[#fbb03a]">Partners</span>
           </h2>
           <p className="mt-4 text-sm md:text-base text-gray-400">
-            Every partner is recognised on the car, at events, and across our platforms.
+            Every partner is recognised on the car, at events, and across our
+            platforms.
           </p>
         </div>
 

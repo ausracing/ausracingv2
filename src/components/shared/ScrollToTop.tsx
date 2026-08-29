@@ -37,7 +37,9 @@ export default function ScrollToTop() {
         bg-black/60 backdrop-blur-md border border-white/10 
         text-white/70 hover:text-primary hover:border-primary/40 
         transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"
+          isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8 pointer-events-none"
         }`}
     >
       {/* 1. UPRIGHT TEXT STACK: Extended heights to fit all 11 characters cleanly */}
@@ -51,17 +53,17 @@ export default function ScrollToTop() {
 
       {/* 2. STATIONARY ARROW: Locked safely in the bottom 48px square */}
       <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
-        <svg 
-          className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5" 
-          fill="none" 
-          stroke="currentColor" 
+        <svg
+          className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5"
+          fill="none"
+          stroke="currentColor"
           viewBox="0 0 24 24"
         >
-          <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth={2.5} 
-            d="M5 15l7-7 7 7" 
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2.5}
+            d="M5 15l7-7 7 7"
           />
         </svg>
       </div>

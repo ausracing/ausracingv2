@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { newsletterArticles } from "@/data/newsletter";
 
-
 function parseDate(dateStr: string) {
   const [day, month, year] = dateStr.split("-").map(Number);
   return new Date(year, month - 1, day).getTime();
@@ -10,7 +9,7 @@ function parseDate(dateStr: string) {
 
 export default function NewsletterHome() {
   const sorted = [...newsletterArticles].sort(
-    (a, b) => parseDate(b.date) - parseDate(a.date)
+    (a, b) => parseDate(b.date) - parseDate(a.date),
   );
   const latest = sorted[0];
 

@@ -30,7 +30,8 @@ const rajdhani = Rajdhani({
 
 export const metadata: Metadata = {
   title: "AUS Racing | Formula Student Team",
-  description: "The official Formula Student team of the American University of Sharjah.",
+  description:
+    "The official Formula Student team of the American University of Sharjah.",
 };
 
 export default function RootLayout({
@@ -39,16 +40,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} ${rajdhani.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} ${rajdhani.variable} h-full antialiased`}
+    >
       <head>
         <link rel="preconnect" href="https://cdn.sanity.io" />
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
       </head>
       <body className="min-h-full flex flex-col font-sans overflow-x-hidden">
         <Header />
-        <main className="flex-1">
-          {children}
-        </main>
+        <main className="flex-1">{children}</main>
         <FooterClient />
         <ScrollToTop />
 

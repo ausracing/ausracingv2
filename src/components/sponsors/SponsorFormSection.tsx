@@ -79,5 +79,5 @@ export default function SponsorFormSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -30,7 +30,14 @@ export default function HotspotPin({ hotspot }: { hotspot: Hotspot }) {
   }, [hovered]);
 
   return (
-    <Html position={hotspot.position} style={{ pointerEvents: "auto", zIndex: 40 }} zIndexRange={[100, 0]} sprite occlude={false} portal={bodyPortal}>
+    <Html
+      position={hotspot.position}
+      style={{ pointerEvents: "auto", zIndex: 40 }}
+      zIndexRange={[100, 0]}
+      sprite
+      occlude={false}
+      portal={bodyPortal}
+    >
       <div
         ref={ref}
         className="relative"
@@ -48,7 +55,9 @@ export default function HotspotPin({ hotspot }: { hotspot: Hotspot }) {
               exit={{ opacity: 0, y: 6 }}
               className="absolute bottom-8 left-1/2 -translate-x-1/2 w-56 bg-black/80 border border-white/10 rounded-xl px-4 py-3 backdrop-blur-md pointer-events-none"
             >
-              <p className="text-sm text-white/50 font-normal leading-snug">{hotspot.text}</p>
+              <p className="text-sm text-white/50 font-normal leading-snug">
+                {hotspot.text}
+              </p>
               <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-black/80 border-r border-b border-white/10 rotate-45" />
             </motion.div>
           )}

@@ -36,20 +36,24 @@ export default function NewsletterSidebar({
       .sort((a, b) => parseDate(b.date) - parseDate(a.date));
 
     // Dynamically group the filtered results by Year
-    return filtered.reduce((acc, article) => {
-      const year = article.date.split("-")[2];
-      if (!acc[year]) acc[year] = [];
-      acc[year].push(article);
-      return acc;
-    }, {} as Record<string, Article[]>);
+    return filtered.reduce(
+      (acc, article) => {
+        const year = article.date.split("-")[2];
+        if (!acc[year]) acc[year] = [];
+        acc[year].push(article);
+        return acc;
+      },
+      {} as Record<string, Article[]>,
+    );
   }, [articles, query]);
 
   // Sort years in descending order (e.g., 2026, 2025, 2024)
-  const years = Object.keys(filteredAndGrouped).sort((a, b) => Number(b) - Number(a));
+  const years = Object.keys(filteredAndGrouped).sort(
+    (a, b) => Number(b) - Number(a),
+  );
 
   return (
     <div className="w-70 h-full bg-zinc-900 border-r border-zinc-800 p-4 flex flex-col overflow-hidden select-none">
-      
       {/* UPGRADE: Instructional placeholder */}
       <input
         value={query}
@@ -76,13 +80,10 @@ export default function NewsletterSidebar({
         "
       >
         {years.length === 0 ? (
-          <p className="text-sm text-zinc-500">
-            No articles found
-          </p>
+          <p className="text-sm text-zinc-500">No articles found</p>
         ) : (
           years.map((year) => (
             <div key={year} className="flex flex-col">
-              
               <h3 className="text-xs font-bold text-zinc-500 tracking-widest uppercase mb-2">
                 {year}
               </h3>
@@ -107,9 +108,7 @@ export default function NewsletterSidebar({
                       {a.shortDescription}
                     </p>
 
-                    <p className="text-[10px] text-zinc-500 mt-1">
-                      {a.date}
-                    </p>
+                    <p className="text-[10px] text-zinc-500 mt-1">{a.date}</p>
                   </button>
                 ))}
               </div>

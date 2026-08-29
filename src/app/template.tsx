@@ -12,8 +12,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Check our existing memory bank
     const hasPlayed = sessionStorage.getItem("aus_loader_played");
-    
-    // THE LOGIC GATE: 
+
+    // THE LOGIC GATE:
     // If we are on the Home page ("/") AND the cinematic loader hasn't played yet,
     // we disable this template. The cinematic loader is at z-[120] and will handle the screen.
 
@@ -24,7 +24,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    // For all other scenarios (page switching, or returning home later), 
+    // For all other scenarios (page switching, or returning home later),
     // run the normal snappy cascade.
     const timer = setTimeout(() => {
       setIsRevealing(false);
@@ -55,7 +55,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
       </div>
 
       {/* THE PAGE CONTENT */}
-      <div className={`transition-opacity duration-500 delay-100 ${isRevealing ? "opacity-0" : "opacity-100"}`}>
+      <div
+        className={`transition-opacity duration-500 delay-100 ${isRevealing ? "opacity-0" : "opacity-100"}`}
+      >
         {children}
       </div>
     </>

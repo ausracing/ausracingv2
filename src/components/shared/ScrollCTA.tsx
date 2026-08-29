@@ -4,7 +4,11 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function ScrollCTA({ heroRef }: { heroRef: React.RefObject<HTMLElement | null> }) {
+export default function ScrollCTA({
+  heroRef,
+}: {
+  heroRef: React.RefObject<HTMLElement | null>;
+}) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -13,7 +17,7 @@ export default function ScrollCTA({ heroRef }: { heroRef: React.RefObject<HTMLEl
       const heroBottom = heroRef.current.getBoundingClientRect().bottom;
       setVisible(heroBottom > window.innerHeight * 0.2);
     };
-    
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [heroRef]);
@@ -37,13 +41,21 @@ export default function ScrollCTA({ heroRef }: { heroRef: React.RefObject<HTMLEl
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ repeat: Infinity, duration: 2.4, ease: "easeInOut" }}
             className="relative text-[11px] font-mono tracking-[0.35em] uppercase text-primary"
-            style={{ textShadow: "0 0 12px rgba(245,176,65,0.6), 0 0 30px rgba(245,176,65,0.3)" }}
+            style={{
+              textShadow:
+                "0 0 12px rgba(245,176,65,0.6), 0 0 30px rgba(245,176,65,0.3)",
+            }}
           >
             Scroll for details
           </motion.span>
           <motion.div
             animate={{ scaleY: [0, 1, 0], opacity: [0, 1, 0] }}
-            transition={{ repeat: Infinity, duration: 2.4, ease: "easeInOut", delay: 0.2 }}
+            transition={{
+              repeat: Infinity,
+              duration: 2.4,
+              ease: "easeInOut",
+              delay: 0.2,
+            }}
             style={{ transformOrigin: "top" }}
             className="w-px h-6 bg-gradient-to-b from-primary to-transparent"
           />

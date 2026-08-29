@@ -1,38 +1,38 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
 export default function SponsorModal() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // Safely cast the target to include your exact form fields
     const form = e.target as typeof e.target & {
-      company: { value: string }
-      contact: { value: string }
-      role: { value: string }
-      time: { value: string }
-    }
+      company: { value: string };
+      contact: { value: string };
+      role: { value: string };
+      time: { value: string };
+    };
 
-    const company = form.company.value
-    const contact = form.contact.value
-    const role = form.role.value
-    const time = form.time.value
+    const company = form.company.value;
+    const contact = form.contact.value;
+    const role = form.role.value;
+    const time = form.time.value;
 
-    const subject = "Sponsorship Inquiry - AUS Racing"
+    const subject = "Sponsorship Inquiry - AUS Racing";
     const body = `
 Company Name: ${company}
 Contact Name: ${contact}
 Role: ${role}
 Preferred Meeting Time: ${time}
-`
+`;
 
     window.location.href = `mailto:ausracing@aus.edu?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`
-  }
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+  };
 
   return (
     <>
@@ -55,9 +55,7 @@ Preferred Meeting Time: ${time}
               </button>
             </div>
 
-            <h2 className="text-2xl font-bold text-white">
-              Become a Partner
-            </h2>
+            <h2 className="text-2xl font-bold text-white">Become a Partner</h2>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-5">
               <div>
@@ -114,5 +112,5 @@ Preferred Meeting Time: ${time}
         </div>
       )}
     </>
-  )
+  );
 }

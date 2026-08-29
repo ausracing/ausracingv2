@@ -10,9 +10,9 @@ import HotspotPin from "./HotspotPin";
 import ModelErrorBoundary from "./ModelErrorBoundary";
 
 const SLOT_GAP_X_DESKTOP = 20;
-const SLOT_GAP_X_MOBILE  = 12;
+const SLOT_GAP_X_MOBILE = 12;
 const LERP_DESKTOP = 0.06;
-const LERP_MOBILE  = 0.10;
+const LERP_MOBILE = 0.1;
 
 const isMobileInit = typeof window !== "undefined" && window.innerWidth < 768;
 
@@ -23,7 +23,17 @@ interface AllModelsProps {
   onReady: () => void;
 }
 
-function ModelSlot({ index, isMobile, slotGapX, activeIndex }: { index: number; isMobile: boolean; slotGapX: number; activeIndex: number }) {
+function ModelSlot({
+  index,
+  isMobile,
+  slotGapX,
+  activeIndex,
+}: {
+  index: number;
+  isMobile: boolean;
+  slotGapX: number;
+  activeIndex: number;
+}) {
   const groupRef = useRef<THREE.Group>(null);
   const scene = sceneCache.get(index);
   const positionedRef = useRef(false);
@@ -34,7 +44,9 @@ function ModelSlot({ index, isMobile, slotGapX, activeIndex }: { index: number; 
 
   useEffect(() => {
     if (!groupRef.current || !scene) {
-      console.log(`[CAR-MODEL] Slot ${index}: waiting for scene (hasRef=${!!groupRef.current}, hasScene=${!!scene})`);
+      console.log(
+        `[CAR-MODEL] Slot ${index}: waiting for scene (hasRef=${!!groupRef.current}, hasScene=${!!scene})`,
+      );
       return;
     }
 
@@ -47,13 +59,13 @@ function ModelSlot({ index, isMobile, slotGapX, activeIndex }: { index: number; 
 
     const clone = scene.clone(true);
 
-    const mobileMult  = isMobile ? 0.35 : 1;
+    const mobileMult = isMobile ? 0.35 : 1;
     const defaultScale = index === 0 ? 6 : 4;
     const modelScale = MODELS[index]?.scale ?? defaultScale;
     const scaleFactor = modelScale * mobileMult;
-    const box         = new THREE.Box3().setFromObject(clone);
-    const centre      = box.getCenter(new THREE.Vector3());
-    const size        = box.getSize(new THREE.Vector3());
+    const box = new THREE.Box3().setFromObject(clone);
+    const centre = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
 
     // Guard against empty geometry (Draco decode not ready yet)
     if (size.x === 0 && size.y === 0 && size.z === 0) {
@@ -61,8 +73,8 @@ function ModelSlot({ index, isMobile, slotGapX, activeIndex }: { index: number; 
       return;
     }
 
-    const scale       = scaleFactor / Math.max(size.x, size.y, size.z);
-    const baseX       = index * slotGapX;
+    const scale = scaleFactor / Math.max(size.x, size.y, size.z);
+    const baseX = index * slotGapX;
 
     groupRef.current.clear();
     groupRef.current.add(clone);
@@ -79,9 +91,11 @@ function ModelSlot({ index, isMobile, slotGapX, activeIndex }: { index: number; 
   return (
     <ModelErrorBoundary index={index}>
       <group ref={groupRef}>
-        {scene && index === activeIndex && (HOTSPOTS[index] ?? []).map((hotspot, i) => (
-          <HotspotPin key={i} hotspot={hotspot} />
-        ))}
+        {scene &&
+          index === activeIndex &&
+          (HOTSPOTS[index] ?? []).map((hotspot, i) => (
+            <HotspotPin key={i} hotspot={hotspot} />
+          ))}
       </group>
     </ModelErrorBoundary>
   );
@@ -93,7 +107,7 @@ export default function AllModels({ activeIndex, onReady }: AllModelsProps) {
   const currentX = useRef(0);
   const [, forceUpdate] = useState(0);
   const [initialLoaded, setInitialLoaded] = useState(
-    sceneCache.has(0) || !MODELS[0]?.url
+    sceneCache.has(0) || !MODELS[0]?.url,
   );
   const frameRef = useRef(0);
 
@@ -104,13 +118,13 @@ export default function AllModels({ activeIndex, onReady }: AllModelsProps) {
   }, []);
 
   const slotGapX = isMobile ? SLOT_GAP_X_MOBILE : SLOT_GAP_X_DESKTOP;
-  const lerp    = isMobile ? LERP_MOBILE : LERP_DESKTOP;
+  const lerp = isMobile ? LERP_MOBILE : LERP_DESKTOP;
 
   const loadModel = (index: number) => {
     if (sceneCache.has(index)) return;
     const url = MODELS[index]?.url;
     if (!url) return;
-    
+
     console.log(`[CAR-MODEL] 🟡 Starting load model ${index}: ${url}`);
 
     const loader = new GLTFLoader();
@@ -131,7 +145,8 @@ export default function AllModels({ activeIndex, onReady }: AllModelsProps) {
           const mesh = child as THREE.Mesh;
           if (mesh.isMesh) {
             if (mesh.material)
-              (mesh.material as THREE.MeshStandardMaterial).envMapIntensity = 1.4;
+              (mesh.material as THREE.MeshStandardMaterial).envMapIntensity =
+                1.4;
             mesh.castShadow = true;
             mesh.receiveShadow = true;
           }
@@ -143,8 +158,10 @@ export default function AllModels({ activeIndex, onReady }: AllModelsProps) {
         }
 
         sceneCache.set(index, clone);
-        console.log(`[CAR-MODEL] Model ${index} added to cache. Cache size: ${sceneCache.size}, keys: [${Array.from(sceneCache.keys()).join(',')}]`);
-        
+        console.log(
+          `[CAR-MODEL] Model ${index} added to cache. Cache size: ${sceneCache.size}, keys: [${Array.from(sceneCache.keys()).join(",")}]`,
+        );
+
         if (index === 0) setInitialLoaded(true);
         forceUpdate((n) => n + 1);
       },
@@ -178,10 +195,12 @@ export default function AllModels({ activeIndex, onReady }: AllModelsProps) {
     const targetX = activeIndex * slotGapX;
     currentX.current = THREE.MathUtils.lerp(currentX.current, targetX, lerp);
     if (stripRef.current) stripRef.current.position.x = -currentX.current;
-    
+
     frameRef.current++;
     if (frameRef.current % 30 === 0) {
-      console.log(`[CAR-MODEL] Frame: strip.x=${stripRef.current?.position.x.toFixed(2)}, targetX=${targetX}, current=${currentX.current.toFixed(2)}, activeIndex=${activeIndex}`);
+      console.log(
+        `[CAR-MODEL] Frame: strip.x=${stripRef.current?.position.x.toFixed(2)}, targetX=${targetX}, current=${currentX.current.toFixed(2)}, activeIndex=${activeIndex}`,
+      );
     }
   });
 
@@ -192,7 +211,15 @@ export default function AllModels({ activeIndex, onReady }: AllModelsProps) {
         if (!config.url) {
           return <group key={i} position={[i * slotGapX, 0, 0]} />;
         }
-        return <ModelSlot key={i} index={i} isMobile={isMobile} slotGapX={slotGapX} activeIndex={activeIndex} />;
+        return (
+          <ModelSlot
+            key={i}
+            index={i}
+            isMobile={isMobile}
+            slotGapX={slotGapX}
+            activeIndex={activeIndex}
+          />
+        );
       })}
     </group>
   );
