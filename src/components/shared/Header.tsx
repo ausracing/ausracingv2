@@ -201,19 +201,6 @@ export default function Header() {
               </li>
             );
 
-            // ✨ FIX: Reduced the gap to ~8px on both sides using negative margins and made it gold
-            if (link.name === "Join the Team") {
-              return [
-                <li
-                  key={`sep-${link.name}`}
-                  className="text-white/20 font-light select-none -mx-4 xl:-mx-6"
-                >
-                  |
-                </li>,
-                navItem,
-              ];
-            }
-
             return navItem;
           })}
         </ul>
