@@ -32,6 +32,8 @@ export default function HotspotPin({ hotspot }: { hotspot: Hotspot }) {
   return (
     <Html
       position={hotspot.position}
+      center
+      distanceFactor={8}
       style={{ pointerEvents: "auto", zIndex: 40 }}
       zIndexRange={[100, 0]}
       sprite

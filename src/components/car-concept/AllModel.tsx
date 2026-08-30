@@ -152,9 +152,14 @@ export default function AllModels({ activeIndex, onReady }: AllModelsProps) {
           }
         });
 
-        if (index === 5) {
-          clone.rotation.set(Math.PI / 2, 0, 0);
+        const config = MODELS[index];
+        if (config?.initialRotation) {
+          clone.rotation.set(...config.initialRotation);
           clone.updateMatrixWorld(true);
+        } 
+        else if (index === 5) { // Fallback just in case
+            clone.rotation.set(Math.PI / 2, 0, 0);
+            clone.updateMatrixWorld(true);
         }
 
         sceneCache.set(index, clone);
