@@ -98,7 +98,7 @@ export const OPENINGS = [
     name: "Operations & Logistics",
     category: "Commerce",
     desc: "Manage bills of materials, procurement, supplier relations, inventory, costing, and the global supply chain.",
-    formLink: "https://forms.gle/NVBWwzfYUK9LHREK9",
+    formLink: "https://forms.gle/44ukXZZkjBAP2UW18",
   },
   {
     name: "Treasury Team",
