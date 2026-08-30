@@ -17,8 +17,8 @@ const BG_LABELS = [
   "BRAKES",
   "ELECTRONICS",
   "AERO",
-  "SUSPENSION",
-  "AERO",
+  "STEERING",
+  "CHASSIS",
   "DRIVETRAIN",
 ];
 const SECTIONS = MODELS.length;
