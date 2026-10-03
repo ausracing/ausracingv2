@@ -98,7 +98,7 @@ export default function SponsorFormModal() {
                     Request Sent
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-gray-400">
-                    Our team will be in touch within 48 hours.
+                    Our team will be in touch soon.
                   </p>
                 </motion.div>
               ) : (
@@ -125,7 +125,7 @@ export default function SponsorFormModal() {
                           type="text"
                           name="companyName"
                           required
-                          placeholder="Acme Engineering Ltd."
+                          placeholder="Company Ltd."
                           className="h-12 w-full rounded-xl border border-white/10 bg-[#17181b] px-4 text-sm text-white outline-none transition placeholder:text-gray-500 focus:border-[#fbb03a]/40"
                         />
                       </div>
@@ -166,7 +166,7 @@ export default function SponsorFormModal() {
                           type="email"
                           name="email"
                           required
-                          placeholder="jane@acme.com"
+                          placeholder="jane@company.com"
                           className="h-12 w-full rounded-xl border border-white/10 bg-[#17181b] px-4 text-sm text-white outline-none transition placeholder:text-gray-500 focus:border-[#fbb03a]/40"
                         />
                       </div>
