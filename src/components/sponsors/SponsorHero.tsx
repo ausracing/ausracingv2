@@ -1,4 +1,5 @@
-import SponsorModal from "./SponsorModal";
+import SponsorFormModal from "./SponsorFormModal";
+
 export default function SponsorHero() {
   return (
     <section className="bg-[#0a0a0a] text-white">
@@ -19,7 +20,7 @@ export default function SponsorHero() {
             competition, and the engineers of tomorrow.
           </p>
           <div className="mt-8">
-            <SponsorModal />
+            <SponsorFormModal />
           </div>
         </div>
       </div>

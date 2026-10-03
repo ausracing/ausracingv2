@@ -1,4 +1,4 @@
-import SponsorModal from "../sponsors/SponsorModal";
+import SponsorFormModal from "./SponsorFormModal";
 
 export default function SponsorApplySection() {
   return (
@@ -18,7 +18,7 @@ export default function SponsorApplySection() {
         </p>
 
         <div className="mt-10 flex justify-center">
-          <SponsorModal />
+          <SponsorFormModal />
         </div>
       </div>
     </section>

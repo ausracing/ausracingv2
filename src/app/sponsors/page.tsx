@@ -30,6 +30,8 @@ export default function SponsorsPage() {
       <SponsorshipBenefitsSection />
 
       <ScrollCTA heroRef={heroRef} />
+      
+      {/* The CTA block that links down to the form */}
       <SponsorApplySection />
     </main>
   );

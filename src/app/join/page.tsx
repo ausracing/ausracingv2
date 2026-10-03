@@ -29,7 +29,7 @@ export default function JoinPage() {
   const [activeCategory, setActiveCategory] = useState("All");
 
   // ✨ TOGGLE THIS VARIABLE: Set to false to close recruitment
-  const isHiringOpen = true;
+  const isHiringOpen = process.env.NEXT_PUBLIC_HIRING_OPEN === "true";
 
   const filteredOpenings = OPENINGS.filter(
     (opening) =>
