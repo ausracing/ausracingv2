@@ -98,7 +98,7 @@ export default function SponsorFormModal() {
                     Request Sent
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-gray-400">
-                    Our team will be in touch within 48 hours.
+                    Our team will be in touch soon.
                   </p>
                 </motion.div>
               ) : (
