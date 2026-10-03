@@ -52,7 +52,7 @@ export default function SponsorFormSection() {
                   type="text"
                   name="companyName"
                   required
-                  placeholder="Acme Engineering Ltd."
+                  placeholder="AGMC"
                   className="h-14 w-full rounded-xl border border-white/10 bg-[#17181b] px-5 text-base text-white outline-none placeholder:text-gray-500 focus:border-[#fbb03a]/40 transition"
                 />
               </div>
@@ -65,7 +65,7 @@ export default function SponsorFormSection() {
                   type="text"
                   name="contactName"
                   required
-                  placeholder="Jane Smith"
+                  placeholder="Jane Doe"
                   className="h-14 w-full rounded-xl border border-white/10 bg-[#17181b] px-5 text-base text-white outline-none placeholder:text-gray-500 focus:border-[#fbb03a]/40 transition"
                 />
               </div>
@@ -93,7 +93,7 @@ export default function SponsorFormSection() {
                   type="email"
                   name="email"
                   required
-                  placeholder="jane@acme.com"
+                  placeholder="jane@agmc.com"
                   className="h-14 w-full rounded-xl border border-white/10 bg-[#17181b] px-5 text-base text-white outline-none placeholder:text-gray-500 focus:border-[#fbb03a]/40 transition"
                 />
               </div>
