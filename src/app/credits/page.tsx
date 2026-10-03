@@ -210,7 +210,7 @@ export default function TeamCreditsPage() {
             <div className="flex flex-col items-center text-center">
               {/* ✨ FIX: Shrunk text to text-2xl */}
               <h2 className="text-2xl font-orbitron font-bold uppercase tracking-[0.15em] text-white">
-                <span className="text-primary">2026</span> Roster
+                <span className="text-primary">2025-2026</span> Roster
               </h2>
               {/* ✨ FIX: Reduced bottom spacing and line length */}
               <div className="w-12 h-[2px] bg-primary/70 mt-4"></div>
@@ -271,7 +271,7 @@ export default function TeamCreditsPage() {
 
             <div className="pt-10 pb-8 flex flex-col items-center justify-center text-center w-full">
               <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/30 mb-3">
-                End of 2026 Roster
+                End of 2025-2026 Roster
               </span>
               <div className="w-px h-12 bg-gradient-to-b from-white/20 to-transparent" />
             </div>
