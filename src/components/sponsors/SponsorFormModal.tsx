@@ -111,7 +111,7 @@ export default function SponsorFormModal() {
                       Partner With <span className="text-[#fbb03a]">AUS Racing</span>
                     </h2>
                     <p className="mt-3 text-sm leading-6 text-gray-400">
-                      Fill in the form below and our External Relations team will get back to you within 48 hours.
+                      Fill in the form below and our External Relations team will get back to you soon.
                     </p>
                   </div>
 
