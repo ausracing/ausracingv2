@@ -76,3 +76,14 @@ export async function getNewsletterArticleBySlug(
     params: { slug },
   });
 }
+
+export const sponsorshipProposalQuery = `*[_type == "sponsorshipProposal"][0] {
+  "pdfUrl": file.asset->url
+}`;
+
+export async function getSponsorshipProposalUrl(): Promise<string | null> {
+  const data = await sanityFetch<{ pdfUrl?: string } | null>({
+    query: sponsorshipProposalQuery,
+  });
+  return data?.pdfUrl || null;
+}

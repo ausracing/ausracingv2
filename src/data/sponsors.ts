@@ -15,7 +15,7 @@ export type StripSponsor = {
 
 // Placeholder descriptions, replace with real copy
 const DESC_LONG =
-  "[Description: 2-3 sentences about the company and its role in the team]";
+  "AGMC is one of the UAE's leading mobility providers, with 45+ locations and 2,500+ people across the Emirates. Our portfolio spans luxury and accessible mobility with brands including BMW, MINI, Rolls-Royce, Geely, Riddara, INEOS Grenadier, Lotus, Budget, AGMC Prime and Pitstop360..";
 const DESC_MEDIUM =
   "We are guided by our founder’s simple yet highly effective philosophy of satisfying and exceeding the expectations of our customers, both small or big, through service excellence, honesty, integrity, and social awareness. This principle has become ingrained in all aspects of the business and is truly responsible for the group’s unrivalled success.";
 const DESC_SHORT =
@@ -26,7 +26,7 @@ export const sponsors: Sponsor[] = [
   {
     name: "AGMC",
     logo: "/logos/agmc2.webp",
-    description: "From their beginnings in 1976, Today, AGMC provides a seamless mobility ecosystem, designed to serve people across every stage of their journey.",
+    description: DESC_LONG,
     url: "https://www.agmc.com",
     tier: "title",
   },
@@ -40,7 +40,7 @@ export const sponsors: Sponsor[] = [
   {
     name: "Ansys",
     logo: "/logos/ansys1.webp",
-    description: DESC_SHORT,
+    description: "ANSYS, Inc. is the leader in multiphysics simulation software. For more than 50 years, Ansys software has enabled innovators across industries to push boundaries by using the predictive power of simulation.",
     url: "https://www.ansys.com",
     tier: "partner",
   },
