@@ -4,20 +4,9 @@ import * as React from "react";
 import Image from "next/image";
 import AutoScroll from "embla-carousel-auto-scroll";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
+import { stripSponsors } from "@/data/sponsors";
 
-const baseSponsors = [
-  { name: "AGMC", src: "/logos/agmc2.webp" },
-  { name: "Ansys", src: "/logos/ansys1.webp" },
-  { name: "Automech", src: "/logos/automech2.webp" },
-  { name: "DEWESoft", src: "/logos/dewesoft.webp" },
-  { name: "Fluid Codes", src: "/logos/fluidcodes1.webp" },
-  { name: "Juma Al Majid", src: "/logos/juma.webp" },
-  { name: "SRTI Park SoiLab", src: "/logos/soilab.webp" },
-  { name: "American University of Sharjah", src: "/logos/aus.webp" },
-  { name: "Bender", src: "/logos/bender.webp" },
-];
-
-const sponsors = [...baseSponsors, ...baseSponsors, ...baseSponsors];
+const sponsors = [...stripSponsors, ...stripSponsors, ...stripSponsors];
 
 export default function SponsorsStrip() {
   const plugin = React.useRef(
