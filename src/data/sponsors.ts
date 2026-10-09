@@ -13,69 +13,68 @@ export type StripSponsor = {
   src: string;
 };
 
-// Placeholder descriptions, replace with real copy
-const DESC_LONG =
-  "AGMC is one of the UAE's leading mobility providers, with 45+ locations and 2,500+ people across the Emirates. Our portfolio spans luxury and accessible mobility with brands including BMW, MINI, Rolls-Royce, Geely, Riddara, INEOS Grenadier, Lotus, Budget, AGMC Prime and Pitstop360..";
-const DESC_MEDIUM =
-  "We are guided by our founder’s simple yet highly effective philosophy of satisfying and exceeding the expectations of our customers, both small or big, through service excellence, honesty, integrity, and social awareness. This principle has become ingrained in all aspects of the business and is truly responsible for the group’s unrivalled success.";
-const DESC_SHORT =
-  "[Description: 1 sentence about the company and its role in the team]";
-
 // Partners page: to add a sponsor, add one entry here.
 export const sponsors: Sponsor[] = [
   {
     name: "AGMC",
     logo: "/logos/agmc2.webp",
-    description: DESC_LONG,
+    description:
+      "AGMC is one of the UAE's leading mobility providers, with 45+ locations and 2,500+ people across the Emirates. Its portfolio spans luxury and accessible mobility, with brands including BMW, MINI, Rolls-Royce, Geely, Riddara, INEOS Grenadier, Lotus, Budget, AGMC Prime and Pitstop360. As our title sponsor, AGMC backs the team's push to compete at the highest level.",
     url: "https://www.agmc.com",
     tier: "title",
   },
   {
     name: "Juma Al Majid",
     logo: "/logos/juma.webp",
-    description: DESC_MEDIUM,
+    description:
+      "Founded in Dubai in 1950, Juma Al Majid Holding Group is one of the UAE's leading business conglomerates. Its interests span automotive, heavy equipment, trading and manufacturing, contracting and services, real estate, hospitality and FMCG. Built on honesty, integrity and service excellence, the group has partnered with international brands for over seven decades and played a key role in the UAE's growth.",
     url: "https://www.al-majid.com/",
     tier: "official",
   },
   {
     name: "Ansys",
     logo: "/logos/ansys1.webp",
-    description: "ANSYS, Inc. is the leader in multiphysics simulation software. For more than 50 years, Ansys software has enabled innovators across industries to push boundaries by using the predictive power of simulation.",
+    description:
+      "Ansys, now part of Synopsys, is a global leader in engineering simulation software. Its tools let engineers model structures, fluids, electromagnetics and more before anything is built, cutting development time and cost. Used across automotive, aerospace, energy and electronics, Ansys software helps our team analyse and optimise vehicle performance virtually, long before it reaches the track.",
     url: "https://www.ansys.com",
     tier: "partner",
   },
   {
     name: "Automech",
     logo: "/logos/automech2.webp",
-    description: DESC_SHORT,
+    description:
+      "Founded in 1991 as a small repair workshop serving Dubai's shipping industry, Automech Group has grown into a diversified UAE engineering and industrial solutions provider. Operating from Dubai, Abu Dhabi and Dammam, its capabilities include precision machining, steel fabrication, marine engineering, dewatering equipment and manufacturing of components for the oil and gas sector, delivering complete engineering solutions across industries.",
     url: "https://automechgroup.com/",
     tier: "partner",
   },
   {
     name: "DEWESoft",
     logo: "/logos/dewesoft.webp",
-    description: DESC_SHORT,
+    description:
+      "DEWESoft is a Slovenian leader in data acquisition and test and measurement technology. Its modular hardware and intuitive software let engineers capture, synchronise and analyse data from sensors, vehicle buses, video and more in a single system. Trusted across automotive, aerospace, energy and research, DEWESoft equips our team to measure and understand vehicle behaviour with precision.",
     url: "https://www.dewesoft.com",
     tier: "partner",
   },
-  // { name: "Fluid Codes", logo: "/logos/fluidcodes1.webp", description: DESC_SHORT, url: "https://www.fluidcodes.com", tier: "partner" },
+  // { name: "Fluid Codes", ... } kept commented out as before
   {
     name: "SRTI Park SoiLab",
     logo: "/logos/soilab.webp",
-    description: DESC_SHORT,
+    description:
+      "SoiLab, the Sharjah Open Innovation Lab, is the prototyping and manufacturing hub of the Sharjah Research, Technology and Innovation Park. It offers workshops and advanced facilities, including 3D printing and smart materials, where startups, researchers and industry can design, build and test new ideas. SoiLab gives our team access to world-class rapid prototyping right here in Sharjah.",
     url: "https://srtip.ae/soilab/",
     tier: "partner",
   },
   {
     name: "Bender",
     logo: "/logos/bender.webp",
-    description: DESC_SHORT,
+    description:
+      "Bender is a German family-owned company and a world leader in electrical safety. Since 1936 it has developed insulation monitoring, residual current monitoring and fault location systems that protect people and equipment from electrical hazards. Its solutions also support EV charging infrastructure and high-voltage systems, a vital area of expertise as our team works with electric powertrains.",
     url: "https://www.bender.de/en/",
     tier: "partner",
   },
 ];
 
-// Scrolling logo strip (kept separate: it includes Fluid Codes and AUS)
+// Scrolling logo strip (unchanged)
 export const stripSponsors: StripSponsor[] = [
   { name: "AGMC", src: "/logos/agmc2.webp" },
   { name: "Ansys", src: "/logos/ansys1.webp" },

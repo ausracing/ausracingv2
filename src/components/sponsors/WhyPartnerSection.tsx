@@ -33,22 +33,22 @@ export default function WhyPartnerSection() {
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           <BenefitCard
             title="International Exposure"
-            description="Formula Student competitions attract global automotive companies, engineers, and media, giving sponsors valuable brand visibility in an international engineering environment."
+            description="AUS Racing competes at Formula Student UK, Silverstone alongside 100+ university teams from 30+ countries, in front of industry names like Mercedes-AMG HPP, McLaren Applied, and Aston Martin Cognizant F1. Sponsor branding travels with the car from Sharjah to one of motorsport's most iconic circuits."
           />
 
           <BenefitCard
             title="Access to Top Talent"
-            description="Sponsors connect with highly motivated engineering and business students gaining real-world experience in design, manufacturing, and racing."
+            description="A 40+ member, 6-discipline engineering team (mechanical, electrical, business, and more)  the same caliber of student engineers UK sponsors like Cosworth, Accu, and MAHLE Powertrain actively scout for graduate roles and internships."
           />
 
           <BenefitCard
             title="Industry Networking"
-            description="Sponsors can build relationships with companies, engineers, and innovators across the Formula Student community and motorsport ecosystem."
+            description="Past and current partners already include AGMC (BMW/MINI/Rolls-Royce importer, UAE), Ansys, DEWESoft and Fluid Codes; sponsors join a proven network, not a first-time pitch."
           />
 
           <BenefitCard
             title="Innovation & CSR Impact"
-            description="Supporting AUS Racing demonstrates commitment to education, innovation, and developing the next generation of engineers in the UAE."
+            description="Now in its 2nd season, AUS Racing gives sponsors a direct stake in developing the next generation of UAE engineers, with a visible presence at one of Europe's most established engineering competitions."
           />
         </div>
       </div>

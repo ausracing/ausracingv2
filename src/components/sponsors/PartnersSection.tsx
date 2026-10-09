@@ -130,9 +130,9 @@ function VerticalCard({
           </svg>
         )}
       </h4>
-      {/* line-clamp-6 ensures the boxes don't resize unevenly due to text */}
+      {/* line-clamp-7 ensures the boxes don't resize unevenly due to text */}
       <p
-        className={`mb-6 mt-3 line-clamp-6 text-gray-400 ${
+        className={`mb-6 mt-3 line-clamp-7 text-gray-400 ${
           compact ? "text-sm leading-6" : "text-sm leading-7 md:text-base"
         }`}
       >
