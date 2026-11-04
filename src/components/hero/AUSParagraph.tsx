@@ -3,6 +3,7 @@
 // Server component — short description block about AUS Racing.
 // Placed after hero, before funding bar on homepage.
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AUSParagraph() {
   return (
@@ -61,6 +62,14 @@ export default function AUSParagraph() {
             </div>
           </div>
         </div>
+
+        {/* Rules Search CTA */}
+        <Link
+          href="/rules"
+          className="self-start mt-8 text-[11px] font-bold uppercase tracking-widest px-4 py-2.5 rounded-lg border border-primary text-primary hover:bg-primary hover:text-background transition-all duration-300"
+        >
+          Search the FSUK Rules &rarr;
+        </Link>
       </div>
 
       {/* RIGHT COLUMN: Photo Placeholder */}
