@@ -15,6 +15,7 @@ const navLinks = [
   { name: "Team", href: "/team" },
   { name: "Highlights", href: "/credits" },
   { name: "Our Car", href: "/#our-car" },
+  { name: "Rules", href: "/rules" },
   { name: "Contact Us", href: "/sponsors" },
   { name: "Join the Team", href: "/join" },
 ];
