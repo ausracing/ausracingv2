@@ -74,6 +74,8 @@ export default function TeamClient({ members }: { members: TeamMember[] }) {
     "Executive Board",
     "Mechanical",
     "Electrical",
+    "Concept Class",
+    "Driverless",
     "Treasury",
     "External Relations",
     "Internal Relations",
@@ -89,6 +91,10 @@ export default function TeamClient({ members }: { members: TeamMember[] }) {
       "Engineering, fabricating, and optimizing the chassis, powertrain, aero, suspension, and braking systems.",
     Electrical:
       "Designing custom wiring harnesses, high-voltage battery architecture, and telemetry sensors.",
+    "Concept Class":
+      "Developing early-stage vehicle concepts, engineering design studies, and competition proposals.",
+    Driverless:
+      "Building autonomous perception, planning, and control systems for complete autonomous racing.",
     Treasury:
       "Overseeing team budgeting, financial planning, allocations, and monetary compliance.",
     "External Relations":
